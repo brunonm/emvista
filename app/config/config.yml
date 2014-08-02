@@ -1,0 +1,110 @@
+imports:
+    - { resource: parameters.ini }
+    - { resource: security.yml }
+
+framework:
+    #esi:             ~
+    #translator:      { fallback: %locale% }
+    secret:          %secret%
+    #charset:         UTF-8
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig', 'php'] } #assets_version: SomeVersionScheme
+    default_locale: %locale%
+    session:
+        #auto_start:     true
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    filters:
+        cssrewrite: ~
+        # closure:
+        #     jar: %kernel.root_dir%/java/compiler.jar
+        # yui_css:
+        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+        mappings:
+          gedmo_translatable:
+              type: annotation
+              prefix: Gedmo\Translatable\Entity
+              dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+              alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+              is_bundle: false
+          gedmo_translator:
+              type: annotation
+              prefix: Gedmo\Translator\Entity
+              dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+              alias: GedmoTranslator # this one is optional and will default to the name set for the mapping
+              is_bundle: false
+          gedmo_loggable:
+              type: annotation
+              prefix: Gedmo\Loggable\Entity
+              dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+              alias: GedmoLoggable # this one is optional and will default to the name set for the mapping
+              is_bundle: false
+          gedmo_tree:
+              type: annotation
+              prefix: Gedmo\Tree\Entity
+              dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+              alias: GedmoTree # this one is optional and will default to the name set for the mapping
+              is_bundle: false
+
+        
+        
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+
+jms_security_extra:
+#    secure_controllers:  true
+    secure_all_services: false
+    
+sphinxsearch:
+    indexes:
+        posts: emvista1
+    searchd:
+        host:   localhost
+        port:   9313
+    indexer:
+        bin:    /usr/local/sphinx/bin/indexer
+    
+
+stof_doctrine_extensions:
+    orm:
+        default: 
+            sluggable: true
+            
+            
+            
+moip:
+  credential:
+    token: DWKHPDVCBMF4X1PJVHJU297E0Z4CWVN9
+    key: TYHI5PMAETB1YZBEQX7E1B9060ZOCLEAJ6QIAI3B 
+  environment: test

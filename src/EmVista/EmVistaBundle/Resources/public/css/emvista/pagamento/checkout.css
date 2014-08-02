@@ -1,0 +1,140 @@
+ .block_pledge{
+    height: 70px;
+    background-color: #00A19C;
+    margin: 6px 6px 6px 26px;
+    color: #FFF;
+    font-size: 18px;
+    line-height: 70px;
+    font-weight: bold;
+    text-align: center;
+}
+.block_pledge_active{
+    background-color: #FFD441;
+    color: #333;
+}
+.block_pledge_disabled{
+    background-color: #F0F0F0   ;
+    color: #333;
+}
+
+.block_pledge, .recompensa .descricao{
+    margin-top: 6px;
+}
+.recompensa{
+    background-color: #F2F2F2;
+    cursor: pointer;
+}
+.recompensa .descricao{
+    width: 410px;
+    text-align: justify;
+    text-overflow:ellipsis;
+    height: 70px;
+    overflow: hidden;
+}
+.recompensa .descricao .tituloRecompensa{
+    font-weight: bold;
+}
+.recompensa .descricao:hover{
+    overflow: auto;
+}
+.titulo{
+    font-size: 29px;
+    margin-bottom: 30px;
+    color:#777;
+}
+
+.col_lateral_checkout{
+    background-color: #fff;
+    height: 100%;
+}
+
+.col_lateral_checkout .titulo{
+    font-size: 22px;
+    color: #727272;
+    font-weight: normal;
+    font-style: normal;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.choice_pledge{
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #636161;
+}
+.lateral_content{
+    padding: 20px;
+}
+.hidden-content{
+    margin-left: 15px;
+    padding: 2px;
+    display: none;
+}
+.faqbox{
+    margin-bottom: 8px;
+}
+input.btn-apoiar{
+    background: url('/bundles/emvista/images/btn_apoiar_checkout.png') transparent;
+    height: 61px;
+    width: 184px;
+    border: none;
+}
+input.btn-continuar{
+    background: url('/bundles/emvista/images/btn_continuar.png') transparent;
+    height: 61px;
+    width: 275px;
+    border: none;
+
+}
+input.input-white{
+    border-color: #fff;
+    -moz-box-shadow: none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+}
+input.input-white:focus{
+    border-color: #fff;
+}
+.valorPago .add-on{
+    border-color: #fff;
+    background-color: #fff;
+    color: #00A09B;
+    font-size: 18px;
+    font-weight: bold;
+}
+.valorPago{
+    border: 1px solid #EBEBEB;
+    margin-left: 20px;
+}
+.nomeDoProjeto{
+    font-weight: bold;
+}
+.voceIraApoiar{
+    margin-bottom: 10px;
+}
+.checkbox-recompensa{
+    display: none;
+}
+.recompensas{
+    margin-bottom: 40px;
+}
+.faqbox .question{
+    cursor: pointer;
+}
+.disabled_box{
+    width: 620px;
+    height: 85px;
+    position: absolute;
+    z-index: 12;
+    background-color: #fff;
+    opacity: 0.65;
+}
+.disabled_box_text{
+    height: 85px;
+    position: absolute;
+    z-index: 13;
+}
+.disabled_box_text h4{
+    line-height: 85px;
+    text-align: center;
+    width: 620px;
+}

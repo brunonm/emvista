@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="imagine.class">Imagine\Gd\Imagine</parameter>
+        <parameter key="service.pagamento.class">EmVista\EmVistaBundle\Services\PagamentoService</parameter>
+        <parameter key="service.projeto.class">EmVista\EmVistaBundle\Services\ProjetoService</parameter>
+        <parameter key="service.submissao.class">EmVista\EmVistaBundle\Services\SubmissaoService</parameter>
+        <parameter key="service.usuario.class">EmVista\EmVistaBundle\Services\UsuarioService</parameter>
+        <parameter key="core.mailer.class">EmVista\EmVistaBundle\Core\Mailer\Swift</parameter>
+    </parameters>
+
+    <services>
+        <service id="imagine" class="%imagine.class%"></service>
+
+        <service id="core.mailer" class="%core.mailer.class%">
+            <argument type="service" id="mailer"/>
+            <call method="setDefaultFrom">
+                <argument>%mailer_default_from%</argument>
+            </call>
+        </service>
+
+        <service id="service.pagamento" class="%service.pagamento.class%">
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.default_entity_manager" />
+            </call>
+            <call method="setValidator">
+                <argument type="service" id="respect.validator" />
+            </call>
+            <call method="setPaymentGateway">
+                <argument type="service" id="payment.moip" />
+            </call>
+            <call method="setMailer">
+                <argument type="service" id="core.mailer" />
+            </call>
+        </service>
+
+        <service id="service.projeto" class="%service.projeto.class%">
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.default_entity_manager" />
+            </call>
+            <call method="setValidator">
+                <argument type="service" id="respect.validator" />
+            </call>
+            <call method="setMailer">
+                <argument type="service" id="core.mailer" />
+            </call>
+            <call method="setSearchEngine">
+                <argument type="service" id="search.sphinxsearch.search" />
+            </call>
+            <call method="setPercentualEmvista">
+                <argument>%percentual_emvista%</argument>
+            </call>
+        </service>
+
+        <service id="service.submissao" class="%service.submissao.class%">
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.default_entity_manager" />
+            </call>
+            <call method="setValidator">
+                <argument type="service" id="respect.validator" />
+            </call>
+            <call method="setMailer">
+                <argument type="service" id="core.mailer" />
+            </call>
+            <call method="setProjetoService">
+                <argument type="service" id="service.projeto" />
+            </call>
+            <call method="setQuantidadeDiasMinimo">
+                <argument>%projeto_quantidade_dias_minimo%</argument>
+            </call>
+            <call method="setQuantidadeDiasMaximo">
+                <argument>%projeto_quantidade_dias_maximo%</argument>
+            </call>
+            <call method="setUploadDir">
+                <argument>%upload_dir%</argument>
+            </call>
+            <call method="setImagine">
+                <argument type="service" id="imagine" />
+            </call>
+        </service>
+
+        <service id='service.usuario' class="%service.usuario.class%" >
+            <call method="setMailer">
+                <argument type="service" id="core.mailer" />
+            </call>
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.default_entity_manager" />
+            </call>
+            <call method="setValidator">
+                <argument type="service" id="respect.validator" />
+            </call>
+            <call method="setEncoderFactory">
+                <argument type="service" id="security.encoder_factory" />
+            </call>
+            <call method="setImagine">
+                <argument type="service" id="imagine" />
+            </call>
+            <call method="setProfileDir">
+                <argument>%upload_profile_dir%</argument>
+            </call>
+            <call method="setProfileTempDir">
+                <argument>%upload_profile_temp_dir%</argument>
+            </call>
+            <call method="setProfileWebPath">
+                <argument>%profile_web_path%</argument>
+            </call>
+            <call method="setProfileWebTempPath">
+                <argument>%profile_web_temp_path%</argument>
+            </call>
+            <call method="setProfileHeight">
+                <argument>%profile_height%</argument>
+            </call>
+            <call method="setProfileWidth">
+                <argument>%profile_width%</argument>
+            </call>
+        </service>
+    </services>
+</container>

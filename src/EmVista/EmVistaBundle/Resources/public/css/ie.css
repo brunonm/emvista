@@ -1,0 +1,11 @@
+.project .entry-header {
+    background: #000;
+    filter: alpha(opacity = 70);    
+}
+.project-signup-menu li { /** IE 7 **/
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.project-signup-menu a span { /** IE 7 **/
+    padding-top: 2px;
+}

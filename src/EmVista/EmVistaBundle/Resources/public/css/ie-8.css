@@ -1,0 +1,12 @@
+.project .entry-header {
+    background: #000;
+    filter: alpha(opacity = 70);    
+}
+.project-signup-menu li.last-item { /** IE 8 **/
+    border-left:  none;
+}
+.topbar-inner {
+    background: #0BA19C !important;
+    color: #CCC;
+    filter: none;
+}

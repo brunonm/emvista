@@ -1,0 +1,27 @@
+EmVistaBundle:
+    resource: "@EmVistaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    options:
+        expose: true
+login_check:
+    pattern:   /login_check
+    options:
+        expose: true
+logout:
+    pattern:   /logout
+    options:
+        expose: true
+
+projeto_visualizar:
+    pattern:  /{projetoSlug}
+    defaults: { _controller: EmVistaBundle:Projeto:visualizar}
+    options:
+        expose: true
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+    
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

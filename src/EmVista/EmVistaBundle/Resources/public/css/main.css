@@ -1,0 +1,1089 @@
+    body {
+    background: url('/bundles/emvista/images/bg-body-transparent.png') left top;
+    background-color: #fff;
+    line-height: 18px;
+    font-size: 13px;
+}
+body, *{
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+input, textarea, select, button ,p{
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+h1{
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: normal
+}
+
+a {
+    color: #0BA19C;
+}
+a:hover {
+    color: #0BA19C;
+    text-decoration: underline;
+}
+.row {
+    margin-bottom: 10px;
+}
+
+/** #topbar **/
+.topbar {
+    position: static;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+.topbar-inner {
+    background: #0BA19C;
+    color: #fff;
+}
+.topbar-inner a {
+    color: #fff;
+}
+.topbar-inner .brand {
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 0px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);;
+    color: #fff;
+}
+.topbar-inner .brand:hover {
+    background: none;
+}
+.topbar-inner .brand a {
+    color: #FFD100;
+}
+.topbar-inner .brand a:hover {
+    color: #FFFFFF;
+}
+.topbar .nav > li > a{
+    color: #FFFFFF;
+    text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);;
+    padding: 10px 10px 11px;
+}
+.navbar .nav > li > a:focus,.navbar .nav > li > a:hover{
+    color: white;
+}
+
+/** flash message **/
+.subnav-fixed{
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 1400;
+}
+.flash-message{
+    margin: auto auto;
+    width: 300px;
+}
+button.close{
+    background: transparent;
+    border: 0;
+}
+
+/** acount menu subnav **/
+.account-menu .menu-item {
+    background: url('/bundles/emvista/images/account-menu-separator.png') no-repeat right top;
+}
+
+.account-menu .dropdown .dropdown-menu a{
+    color: #0BA19C;
+    font-size: 12px;
+    margin: 0;
+    text-decoration: none;
+}
+
+.account-menu .dropdown .dropdown-menu a:hover{
+    background: #0BA19C;
+    color: white;
+}
+
+.account-menu a {
+    margin: 0 5px;
+}
+.account-menu .last-item {
+    background: none;
+    margin-right: 0;
+}
+.account-menu .item-search a {
+    background: url('/bundles/emvista/images/icon-search.png') no-repeat 10px 10px;
+    width: 18px;
+    overflow: hidden;
+    text-indent: 50px;
+}
+.account-menu .last-item.item-search a { /** se search √© o √∫ltimo item **/
+    padding-right: 0;
+}
+
+
+/** #masthead **/
+#masthead {
+    background: url('/bundles/emvista/images/bg-header-fade.png') repeat-x left bottom;
+    padding-bottom: 40px;
+    margin-bottom: -80px;
+}
+#masthead > .inner {
+    background: #E9E9E9;
+    padding: 10px 0 40px;
+}
+.emvista-logo {
+    background: url('/bundles/emvista/images/emvista-logo.png') no-repeat left top;
+    width: 241px;
+    height: 43px;
+    overflow: hidden;
+    margin: 14px 0 0;
+}
+.emvista-logo a {
+    display: block;
+    height: 43px;
+    width: 100px;
+    padding-left: 250px;
+}
+.project-signup-menu {
+    padding: 0;
+    margin: 0;
+    float: right;
+    font-size: 16px;
+}
+.project-signup-menu-parent{
+    border-radius: 4px;
+    background: #fff;
+    list-style: none;
+    display: block;
+    float: right;
+}
+.project-signup-menu li {
+    list-style: none;
+    display: block;
+    float: left;
+    padding: 0px 5px;
+    text-align: center;
+    /*border: 1px solid #AAA;*/
+    min-width: 63px;
+    max-width: 70px;
+    height: 56px;
+
+}
+.project-signup-menu li.fist-item, .project-signup-menu li:first-child {
+    border-right: none;
+    background: url('/bundles/emvista/images/signup-menu-separator.png') no-repeat right 15px #fff;
+    padding-right: 13px;
+    padding-left: 8px;
+    border-radius: 4px;
+
+}
+.project-signup-menu li.last-item, .project-signup-menu li:last-child {
+    border-left: none;
+}
+.project-signup-menu a {
+    display: block;
+    text-align: center;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    padding-top: 14px;
+}
+.project-signup-menu a span {
+    color: #999;
+    display: block
+}
+.project-signup-menu a:hover, .project-signup-menu a:hover span {
+    text-decoration: none;
+    color: #000;
+}
+#content {
+    background: #fff;
+    padding: 20px 20px 20px;
+    position: relative;
+    z-index: 11;
+}
+.page-header {
+    border: none;
+}
+.page-header h2 {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: normal;
+}
+/** Projects **/
+.entry-content{
+    
+}
+.project {
+    position: relative;
+}
+.project .entry-header {
+    background: url('/bundles/emvista/images/bg-project-header.png') transparent;
+    color: #fff;
+    padding: 10px;
+    max-height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    max-width: 100%;
+    z-index: 9;
+    color: #fff;
+    font-size: 18px;
+}
+.project .entry-header > h3/*, .project-title */{
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: normal;
+    font-size: 19px;
+}
+.project-title{
+    /*height: 54px;*/
+
+}
+.entry-header .entry-title.project-title{
+    height: auto;
+}
+.entry-header .entry-title.project-title a{
+    color: #fff;
+}
+
+.project .entry-header .by-author {
+    font-size: 14px;
+}
+.project-thumb {
+    position: relative;
+    background: #0BA19C;
+    padding: 0;
+    margin: 0 0 95px;
+    height: 300px;
+    max-height: 300px;
+    overflow: hidden;
+    z-index: 7;
+}
+.project-thumb img {
+    padding: 0;
+    margin: 0;
+    border: none;
+    max-width: none;
+}
+.span3 .project-description{
+    height: 90px;
+    overflow: auto;
+}
+.project-description {
+    clear: both;
+}
+.project-description, .project-description p {
+    color: #666;
+    font-size: 12px;
+}
+.project-meta {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: none;
+    color: #666;
+    height: 110px;
+    z-index: 8;
+    top: 270px;
+    right: 0;
+    left: 0;
+}
+.page-header{
+    margin-bottom: 20px;
+}
+
+.project-time-left, .project-price {
+    display: block;
+    float: left;
+    background: #000;
+    padding: 50px 10px 0px;
+    opacity: 0.9;
+    font-size: 12px;
+    text-align: center;
+    max-width: 50%;
+    position: absolute;
+    top: 30px;
+}
+.project-time-left {
+    background-image: url('/bundles/emvista/images/icon-time.png');
+    background-repeat: no-repeat;
+    background-position: center 10px;
+    left: 0;
+    right: 50%;
+    height: 35px;
+}
+.span3 .price.project-price{
+    height: 35px;
+}
+.project-price {
+    background-image: url('/bundles/emvista/images/icon-chart.png');
+    background-repeat: no-repeat;
+    background-position: center 15px;
+    right: 0;
+    left: 50%;
+}
+.project-progress-status {
+    color: #000;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 0;
+    height: 20px;
+    width: 200px;
+    height: 30px;
+    color: #666;
+    background: url('/bundles/emvista/images/bg-progress-bar-base.png') no-repeat;
+}
+.project-fail-bar{
+    background-color: #BDBDBD;
+    color: #000;
+}
+.project-success-bar{
+    background-color: #0BA19C;
+    color: #fff;
+}
+.project-waitingPayment-bar{
+    background-color: #fff;
+    color: #000;
+}
+.project-waitingPayment-bar, .project-success-bar, .project-fail-bar{
+    text-align: center;
+    width: 100%;
+}
+.project-progress-status .progress-bar-container {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 30px;
+}
+.project-progress-status .progress-bar {
+    display: block;
+    height: 20px;
+    background: url('/bundles/emvista/images/bg-progress-bar-percentage.png') no-repeat 3px 1px;
+}
+.project-progress-status .progress-number {
+    font-size: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    line-height: 1;
+    padding: 4px 10px 0 0;
+    text-align: right;
+    font-weight: bold;
+}
+.project-progress-status .alternate-color {
+    color: #fff;
+}
+
+/** Custom project formats **/
+.project.format-full .entry-header {
+    right: 50%;
+}
+.project.format-wide .entry-header {
+    right: 100px;
+}
+.project.format-full .project-thumb, .project.format-wide .project-thumb {
+    height: 200px;
+    max-height: 200px;
+    margin: 0;
+}
+.project.format-full .project-thumb, .project.format-full .project-thumb {
+    margin: 0;
+}
+.project.format-full .project-meta, .project.format-wide .project-meta {
+    bottom: 0;
+    height: 200px;
+    left: auto;
+    right: 0;
+    top: 0;
+    width: 100px;
+    background: #000;
+}
+.project.format-full .project-progress-status, .project.format-wide .project-progress-status {
+    position: absolute;
+    top: auto;
+    right: 105px;
+    bottom: 0;
+    left: auto;
+}
+.project.format-full .project-time-left, .project.format-wide .project-time-left {
+    background-position: center 25px;
+    width: 90px;
+    max-width: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 70px;
+    position: relative;
+    top: 0;
+    z-index: 9;
+}
+.project.format-full .project-price, .project.format-wide .project-price {
+    background-position: center 28px;
+    width: 90px;
+    max-width: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 63px;
+    height: 20px;
+    position: relative;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 9;
+}
+
+.see-more {
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+/** PAGAMENTO - Checkout **/
+.checkout-reward-title {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.checkout-reward-selector {
+    text-align: center;
+}
+
+.checkout-continue {
+    padding-top: 20px;
+}
+
+/** FOOTER **/
+#footer {
+    background: url('/bundles/emvista/images/bg-footer-fade.png') repeat-x left top;
+    color: #BDBDBD;
+    margin: -80px 0 0 0;
+    padding: 40px 0 0 0;
+    position: relative;
+    z-index: 10;
+}
+#footer > .inner {
+    background: #1E1E1E;
+    padding-top: 60px;
+}
+#footer h4 {
+    color: #BDBDBD;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 14px;
+}
+#footer a {
+    color: #BDBDBD;
+}
+#footer .nav > li > a{
+    display: inline;
+}
+#footer a:hover {
+    text-decoration: underline;
+}
+#footer h4{
+    line-height: 36px;
+}
+.footer-categories-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.footer-categories-menu a {
+    color: #fff !important;
+}
+.footer-sign-newsletter {
+}
+.footer-sign-newsletter input {
+    border-radius: 0;
+    margin-bottom: 0px;
+}
+.footer-sign-newsletter button {
+    background: #0BA19C;
+    color: #FFF;
+    height: 28px;
+    padding: 4px 6px;
+    margin-left: -4px;
+    line-height: 18px;
+    text-transform: uppercase;
+    border:0 none;
+}
+.footer-sign-newsletter .sign-newsletter-form {
+    padding: 10px 0 0;
+}
+
+.social-medias {
+    margin: 0;
+    padding: 0;
+}
+.social-medias li {
+    display: block;
+    width: 50px;
+    height: 50px;
+    float: left;
+    overflow: hidden;
+    margin: 0 20px 10px 0;
+    background: url('/bundles/emvista/images/social-icons.png') no-repeat;
+}
+.social-medias li a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-indent: 60px;
+}
+.social-medias .media-type-twitter {
+    background-position: left top;
+}
+.social-medias li.media-type-facebook {
+    background-position: -73px top;
+}
+.social-medias .media-type-google {
+    background-position: -143px top;
+}
+.social-medias .media-type-vimeo {
+    background-position: 0px -64px;
+}
+.social-medias .media-type-flickr {
+    background-position: -73px -64px;
+}
+.social-medias .media-type-youtube {
+    background-position: -143px -64px;
+}
+.footer-top-navigation{
+    background: url('/bundles/emvista/images/emvista-logo-grey.png')  no-repeat bottom right;
+}
+.footer-navigation {
+    font-size: 12px;
+    color: #333;
+}
+.footer-navigation-menu {
+    color: #fff;
+}
+.footer-navigation-menu li {
+    display: inline;
+    float: none;
+}
+.footer-navigation-menu li:after {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    content: "|";
+    padding: 0 5px;
+    color: #BDBDBD;
+}
+.footer-navigation-menu li.last-item:after {
+    content: "";
+}
+.footer-navigation-menu a {
+    display: inline;
+    float: none;
+    padding: 0;
+}
+.footer-copyright {
+    text-align: right;
+}
+
+
+
+
+/**loading **/
+
+.loading{
+    position: absolute;
+    z-index: 12;
+    background-color: #fff;
+    opacity:0.65;
+    -moz-opacity: 0.65;
+    filter: alpha(opacity=65);
+}
+.loading-image{
+    position: absolute;
+    z-index: 13;
+    background: url('/bundles/emvista/images/loading.gif') no-repeat center center;
+}
+
+/** tela projetos **/
+div#abasProjeto{
+    position: absolute;
+    width: 461px;
+    height: 50px;
+    z-index: 999;
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+    color: #383838;
+    margin: -64px 0 0 500px;
+}
+div#abasProjeto.abaProjeto{
+    background: url('/bundles/emvista/images/bg_aba.png') 8px -30px no-repeat transparent;
+}
+div#abasProjeto.abaComentario{
+        background: url('/bundles/emvista/images/bg_aba2.png') 98px -30px no-repeat transparent;
+}
+div#abasProjeto.abaAtualizacoes{
+        background: url('/bundles/emvista/images/bg_aba2.png') 237px -30px no-repeat transparent;
+}
+div#abasProjeto ul{
+    list-style-type: none;
+    padding-top: 13px;
+    text-align: left;
+}
+div#abasProjeto ul li{
+    display: inline;
+    padding-right: 30px;
+}
+div#abasProjeto ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+div#abasProjeto ul li span{
+    color: #777;
+    font-size: 11px;
+}
+div#abasProjeto li:first-child{
+    padding: 0 30px 0 26px;
+}
+div#abasProjeto li.atual{
+    color: #0ba19c;
+}
+.row_top {
+    background-color: #777;
+    width: 100%;
+    height: 344px;
+    margin-bottom: 17px;
+}
+.colab_numeros{
+    font-size: 54px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 54px;
+    padding-top: 20px
+}
+.colaboradores{
+    font-size: 19px;
+    color: #fff;
+    line-height: 19px;
+}
+.colab_valor{
+    font-size: 31px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 31px;
+    padding-top: 30px;
+}
+.youGotTag,.notReachedTag,.weGetTag,.waitingPaymentTag{
+    width: 100px;
+    height: 167px;
+    float: right;
+    margin: -266px 10px 0 0;
+    position: relative;
+}
+.youGotTag{
+    background: url('/bundles/emvista/images/youGotTag.png') transparent;
+}
+.notReachedTag{
+    background: url('/bundles/emvista/images/notReachedTag.png') transparent;
+}
+.weGetTag{
+    background: url('/bundles/emvista/images/weGetTag.png') transparent;
+}
+.waitingPaymentTag{
+    background: url('/bundles/emvista/images/waitingPaymentTag.png') transparent;
+}
+.project-progress-top{
+    position: absolute;
+    margin-top: 30px;
+    left: 651px;
+}
+[class^="icon-"], [class*=" icon-"]{
+    background-image: url("/bundles/emvista/css/bootstrap/img/glyphicons-halflings.png")
+}
+
+.icon-white,
+.nav-tabs > .active > a > [class^="icon-"],
+.nav-tabs > .active > a > [class*=" icon-"],
+.nav-pills > .active > a > [class^="icon-"],
+.nav-pills > .active > a > [class*=" icon-"],
+.nav-list > .active > a > [class^="icon-"],
+.nav-list > .active > a > [class*=" icon-"],
+.navbar-inverse .nav > .active > a > [class^="icon-"],
+.navbar-inverse .nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"] {
+  background-image: url("/bundles/emvista/css/bootstrap/img/glyphicons-halflings-white.png");
+}
+
+.apoiar{/**melhorar isso**/
+        width: 267px;
+        height: 124px;
+        background-image: url('/bundles/emvista/images/bg_apoiar.png');
+        padding: 35px 0 0 22px;
+}
+
+.cont_principal{
+    color: #777;
+    text-align: justify;
+    padding-bottom: 40px;
+}
+
+.col_lateral{
+    background-color: #eee;
+    width: 289px;
+}
+
+.col_lateral .conteudo{
+    padding: 20px 30px 30px 30px;
+    margin-bottom: 5px;
+    background: url('/bundles/emvista/images/bg_divisao.jpg') bottom no-repeat;
+    color: #777;
+}
+/*
+.col_lateral .conteudo:hover{
+    background-color: #e0e0e0;
+}*/
+.col_lateral .semDivisao{
+    background: none;
+}
+
+.col_lateral .conteudo .grafico{
+    float: left;
+    margin-right: 15px;
+}
+.col_lateral .conteudo h2{
+    padding-bottom: 10px;
+    font-weight: inherit;
+}
+.col_lateral .conteudo h3{
+    font-size: 19px;
+    font-weight: inherit;
+    margin: -10px 0 0 64px;
+    color: inherit;
+}
+.col_lateral .conteudo h4{
+    font-size: 11px;
+    font-weight: inherit;
+    margin-top: -4px;
+    padding-bottom: 7px;
+    color: inherit;
+}
+.col_lateral .conteudo h5{
+    font-size: 19px;
+    font-weight: inherit;
+    color: inherit;
+    padding: 0 0 10px 0;
+    margin: 0;
+}
+.col_lateral .autor h2,.col_lateral .recompensas h2{
+    padding-bottom: 10px;
+    font-weight: inherit;
+    padding:  20px 0px 0px 30px;
+
+}
+.col_lateral .autor .conteudo:hover{
+    background: none;
+}
+.col_lateral .autorImagem{
+    float: left;
+    padding-right: 9px;
+    width: 94px;
+}
+
+.col_lateral  .conteudo ul{
+    list-style-type: none;
+    padding-top: 40px;
+}
+.col_lateral .conteudo ul li{
+    padding-bottom: 5px;
+}
+.col_lateral .conteudo ul li img{
+    margin-bottom: -3px;
+}
+
+
+div.conteudo .share img{
+    vertical-align: center;
+}
+
+@media(min-height:640px){
+    #content{
+        min-height: 260px
+    }
+}
+@media(min-height:768px){
+    #content{
+        min-height: 390px
+    }
+}
+@media(min-height:800px){
+    #content{
+        min-height: 420px
+    }
+}
+@media(min-height:1020px){
+    #content{
+        min-height: 640px
+    }
+}
+.nav>li>a:hover{
+    background-color: transparent;
+}
+.navbar .container{
+    width: 940px;
+}
+h1, h2, h3, h4, h5, h6{
+    margin:0;
+}
+p {
+    margin: 0 0 9px
+}
+li{
+    line-height: 18px;
+}
+label, input, button, select, textarea{
+    font-size: 13px;
+    line-height: 18px;
+}
+.hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+input.input-search{
+    background:url('/bundles/emvista/images/icon-search-14x15.png') no-repeat 120px 8px #0BA19C;
+    border: 0 none;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #FFF;
+    width:100px;
+    padding: 6px 35px 6px 15px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    height: 16px;
+    
+    
+}
+input.input-search:focus{
+
+    background-image: none;
+    background-position: 220px 8px;
+    background-color: #fff;
+
+
+    color: #333;
+    width: 200px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.5) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.5) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.5) inset;
+
+}
+input.input-search:focus,input.input-searchAnimation{
+    
+    -webkit-transition: all 0.4s linear 0s;
+    -moz-transition: all 0.4s linear, 0s;
+    -o-transition: all 0.4s linear 0s;
+    transition: all 0.4s linear 0s;
+}
+input.input-search.inLoading:focus{
+    background:url('/bundles/emvista/images/loading.gif') no-repeat 220px 6px #FFF;
+    background-size: 17px 17px;
+}
+input.input-search.inLoading{
+    background:url('/bundles/emvista/images/loading.gif') no-repeat 120px 6px #0BA19C;
+    background-size: 17px 17px;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+form.form-search{
+    margin: 4px 8px 0px;
+}
+
+ul.rightBarDiscovery{
+    border-left: 1px solid #DDD;
+}
+ul.rightBarDiscovery ol{
+    margin-left: 6px;
+}
+ul.rightBarDiscovery li a{
+    padding: 4px 8px 4px 8px;
+    margin: 2px;
+}
+ul.rightBarDiscovery li a.label-selected{
+    color:white;
+}
+ul.rightBarDiscovery li span{
+    margin: 2px;
+    width: 200px;
+}
+ul.rightBarDiscovery li a i.active-sign{
+    display: none;
+}
+ul.rightBarDiscovery li.active a i.active-sign{
+    display: block;
+}
+ul.rightBarDiscovery li.active a,ul.rightBarDiscovery li.active a:hover{
+    border-color: #0BA19C;
+    color:#FFF;
+}
+ul.rightBarDiscovery li.active a{
+    background-color: #0BA19C;
+}
+ul.rightBarDiscovery li a:hover{
+    border-color: #0BA19C;
+    color:#0BA19C;
+}
+
+.label-selected{
+    background-color: #0BA19C;
+
+}
+.nav li a.label-category{
+    webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 1px 4px 2px;
+    width: 200px;
+    border: 1px solid WHITE;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+}
+.quickSearchContent{
+    height: 0px
+}
+
+.span16 .project-thumb img{
+    width: 860px;
+    heigth: 200px;
+}
+
+.span8 .project-thumb img{
+    width: 360px;
+    height: 200px;
+}
+.span4 .project-thumb img{
+    width: 220px;
+    height: 300px;
+}
+.oculto{
+    display: none !important;
+}
+
+/*Submissao*/
+
+#submissao-container-recompensas .recompensa{
+    display: block;
+    margin-bottom: 18px;
+    margin-top: 18px;
+    border-bottom: 1px solid #eee;
+    -webkit-margin-top-collapse: separate;
+}
+
+.row.signUpOrLogIn{
+    margin-bottom:0px;
+}
+.signUpOrLogIn .control-group{
+    margin-bottom: 0px;
+}
+.signUpOrLogIn .focado{
+    background-color: #f8f8f8;
+}
+.signUpOrLogIn .agrupador{
+        padding-left: 20px;
+}
+.signUpOrLogIn .button-field {
+    margin-top:10px;
+}
+.signUpOrLogIn .button-field .checkbox{
+    margin-left:10px;
+}
+.dropdown-menu .profile-name{
+    margin-left:50px;
+}
+.dropdown-menu .img-profile img{
+    height: 32px;
+}
+.noProjectFound{
+    text-align: center;
+    line-height: 200px;
+    height: 350px;
+}
+ .nav-pills > .active > a, .nav-pills > .active > a:hover{
+    background-color: #0BA19C;
+}
+.span12 .project-thumb img{
+    width: 860px;
+    height: 200px;
+}
+.span6 .project-thumb img{
+    width: 360px;
+    height: 200px;
+}
+.span3 .project-thumb img{
+    width: 220px;
+    height: 300px;
+}
+
+.hero-unit{
+    margin-top: 80px;
+    margin-bottom: 80px;
+    background-color: #fff;
+    color: #777;
+    
+}
+.hero-unit h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 100px;
+}
+.hero-unit p{
+    margin-top: 15px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: normal;
+}
+.hero-unit p a{
+    font-size: 25px;    
+    
+}
+.form-actions{
+    background-color: transparent;
+}
+.blog .post:nth-child(odd){
+    background-color: #f8f8f8;
+}
+.blog .post{
+    padding: 10px 0 10px;
+}
+.blog .post .span8{
+    padding-right: 10px;
+}
+.helpTitle{
+    margin-bottom:20px;
+}
+.helpTopicTitle{
+    margin-bottom:5px;
+    margin-top:10px;
+}
+.autorField{
+    margin-bottom: 20px;
+}
+.uploadedImagemField{
+    text-align: center;
+}
+.jcrop-holder{
+    margin: auto;
+}
+.userImageProfile{
+    height: 140px;
+}
+.layoutTempoParaFimDoProjeto{
+    display: none;
+}
+.modal form{
+    margin: 0 0 0 0;
+}

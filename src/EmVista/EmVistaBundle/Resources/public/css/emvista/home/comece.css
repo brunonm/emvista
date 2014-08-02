@@ -1,0 +1,86 @@
+.rowComece [class*="span"]{
+    margin-left: 0;
+}
+.rowComece .span1{
+    width: 80px;
+}
+.rowComece .span2{
+    width: 200px;
+}
+.rowComece .span3{
+    width: 320px;
+}
+.rowComece .span6{
+    width: 680px;
+}
+.rowComece .spanHalf1{
+    width: 46px;
+}
+
+.rowComece .spanHalf1 img{
+    width: 35px;
+    margin: 80px 0 0 5px;
+
+}
+.rowComece .first{
+    margin-left: 20px;
+}
+.fundoVerde{
+    background-color: #00A09B;
+    height: 200px;
+}
+.fundoVerde img{
+    height: 200px;
+    width: 200px;
+}
+.fundoAmarelo{
+    background-color: #FFD441;
+    height: 176px;
+}
+.comeceTitulo{
+    font-size: 35px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    color: #727272;
+}
+.comeceBody{
+    color: #969696;
+    min-height: 80px;
+}
+.linhaMeio{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.barraLateral{
+    background-color: #9F9F9F;
+}
+.setaDireita{
+    background-image: url(/bundles/emvista/images/comece/setaDireita.png)
+}
+.videoField{
+    margin-top: 50px;
+}
+.faqCabecalho{
+    margin-bottom: 30px;
+}
+.faqTitulo{
+    font-weight: bold;
+    margin-top: 10px;
+}
+.comeceField{
+    margin-left: 0px
+}
+.rowTextSteps{
+    margin-bottom: 0
+}
+.rowArrowDown{
+    margin-bottom: 20px
+}
+h1{
+    color: #727272;
+    margin-bottom: 10px;
+}
+.video{
+    text-align: center;
+}

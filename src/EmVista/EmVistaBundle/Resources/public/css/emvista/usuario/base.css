@@ -1,0 +1,47 @@
+.userImageProfile{
+    position: relative
+}
+
+.userImageProfile .alterarImagem{
+    display: none;
+    position: absolute;
+    bottom: 6px;
+    left: 5px;
+    background: #fff;
+    width: 129px;
+    text-align: center;
+}
+.uploadImageField{
+    border: 10px dashed #ccc;
+    height: 300px;
+    width: 300px;
+    margin: auto;
+}
+
+.uploadImageField.active{
+    border-color: #0BA19C; 
+}
+input.uploadImageField{
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+.uploadImageField{
+    cursor: pointer;
+}
+.uploadImageField .uploadImagemInstructions{
+    text-align: center;
+    margin-top: 100px;
+}
+.fileinput-button{
+    position: relative;
+    overflow: hidden;
+}
+.fileinput-button input{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
