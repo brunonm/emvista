@@ -10,41 +10,30 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\ProjetoImagem
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class ProjetoImagem extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Projeto $projeto
      *
-     * @ManyToOne(targetEntity="Projeto", inversedBy="imagens")
-     * @JoinColumn(name="projeto_id", referencedColumnName="id", nullable=false)
      */
     private $projeto;
 
     /**
      * @var Imagem $imagem
      *
-     * @ManyToOne(targetEntity="Imagem")
-     * @JoinColumn(name="imagem_id", referencedColumnName="id", nullable=false)
      */
     private $imagem;
 
     /**
      * @var TipoProjetoImagem $tipoProjetoImagem
      *
-     * @ManyToOne(targetEntity="TipoProjetoImagem")
-     * @JoinColumn(name="tipo_projeto_imagem_id", referencedColumnName="id", nullable=false)
      */
     private $tipoProjetoImagem;
 

@@ -7,8 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EmVista\EmVistaBundle\Entity\StatusDoacao
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class StatusDoacao{
 
@@ -22,23 +20,18 @@ class StatusDoacao{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
     /**
      * @var string $descricao
      *
-     * @ORM\Column(name="descricao", type="string", length=255)
      */
     private $descricao;
 

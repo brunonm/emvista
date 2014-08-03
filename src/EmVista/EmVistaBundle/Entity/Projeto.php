@@ -17,24 +17,18 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\Projeto
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\ProjetoRepository")
  */
 class Projeto extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255, nullable=true)
      */
     private $nome;
 
@@ -42,8 +36,6 @@ class Projeto extends EntityAbstract{
     /**
      * @var string $slug
      *
-     * @Gedmo\Slug(fields={"nome"}, updatable=true)
-     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
      */
     private $slug;
 
@@ -51,133 +43,108 @@ class Projeto extends EntityAbstract{
     /**
      * @var text $descricao
      *
-     * @ORM\Column(name="descricao", type="text", nullable=true)
      */
     private $descricao;
 
     /**
      * @var string $descricaoCurta
      *
-     * @ORM\Column(name="descricao_curta", type="string", length=130, nullable=true)
      */
     private $descricaoCurta;
 
     /**
      * @var Usuario $usuario
      *
-     * @ManyToOne(targetEntity="Usuario", inversedBy="projetos")
-     * @JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
     /**
      * @var Categoria $categoria
      *
-     * @ManyToOne(targetEntity="Categoria")
-     * @JoinColumn(name="categoria_id", referencedColumnName="id")
      */
     private $categoria;
 
     /**
      * @var TermoUso $termoUso
      *
-     * @ManyToOne(targetEntity="TermoUso")
-     * @JoinColumn(name="termo_uso_id", referencedColumnName="id", nullable=false)
      */
     private $termoUso;
 
     /**
      * @var Recompensa[]
      *
-     * @OneToMany(targetEntity="Recompensa", mappedBy="projeto")
-     * @OrderBy({"valorMinimo" = "ASC"})
      */
     private $recompensas;
 
     /**
      * @var decimal $valor
      *
-     * @ORM\Column(name="valor", type="decimal", scale=2, nullable=true)
      */
     private $valor;
 
     /**
      * @var decimal $valorArrecadado
      *
-     * @ORM\Column(name="valor_arrecadado", type="decimal", scale=2, nullable=false)
      */
     private $valorArrecadado;
 
     /**
      * @var Video $video
      *
-     * @OneToOne(targetEntity="Video")
-     * @JoinColumn(name="video_id", referencedColumnName="id")
      */
     private $video;
 
     /**
      * @var datetime $dataInicio
      *
-     * @ORM\Column(name="data_inicio", type="datetime", nullable=true)
      */
     private $dataInicio;
 
     /**
      * @var datetime $dataFim
      *
-     * @ORM\Column(name="data_fim", type="datetime", nullable=true)
      */
     private $dataFim;
 
     /**
      * @var datetime $dataAprovacao
      *
-     * @ORM\Column(name="data_aprovacao", type="datetime", nullable=true)
      */
     private $dataAprovacao;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime", nullable=false)
      */
     private $dataCadastro;
 
     /**
      * @var integer $quantidadeDias
      *
-     * @ORM\Column(name="quantidade_dias", type="integer", nullable=true)
      */
     private $quantidadeDias;
 
     /**
      * @var StatusFinanceiro $statusFinanceiro
      *
-     * @ManyToOne(targetEntity="StatusFinanceiro")
-     * @JoinColumn(name="status_financeiro_id", referencedColumnName="id")
      */
     private $statusFinanceiro;
 
     /**
      * @var object $statusArrecadacao
      *
-     * @ManyToOne(targetEntity="StatusArrecadacao")
-     * @JoinColumn(name="status_arrecadacao_id", referencedColumnName="id")
      */
     private $statusArrecadacao;
 
     /**
      * @var boolean $publicado
      *
-     * @ORM\Column(name="publicado", type="boolean", nullable=false)
      */
     private $publicado;
 
     /**
      * @var ProjetoImagem[]
      *
-     * @OneToMany(targetEntity="ProjetoImagem", mappedBy="projeto")
      */
     private $imagens;
 

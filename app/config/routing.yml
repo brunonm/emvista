@@ -1,9 +1,15 @@
-EmVistaBundle:
-    resource: "@EmVistaBundle/Controller/"
-    type:     annotation
+#EmVistaBundle:
+#    resource: "@EmVistaBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
+#    options:
+#        expose: true
+emvista:
+    resource: "@EmVistaBundle/Resources/config/routing.yml"
     prefix:   /
     options:
         expose: true
+
 login_check:
     pattern:   /login_check
     options:
@@ -18,6 +24,7 @@ projeto_visualizar:
     defaults: { _controller: EmVistaBundle:Projeto:visualizar}
     options:
         expose: true
+
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
     

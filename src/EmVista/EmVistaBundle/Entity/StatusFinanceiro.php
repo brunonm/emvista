@@ -8,8 +8,6 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\StatusFinanceiro
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class StatusFinanceiro extends EntityAbstract{
 
@@ -19,23 +17,18 @@ class StatusFinanceiro extends EntityAbstract{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
     /**
      * @var string $descricao
      *
-     * @ORM\Column(name="descricao", type="string", length=255)
      */
     private $descricao;
 

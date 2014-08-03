@@ -63,7 +63,7 @@
                 <nav>
                     <ul class="nav navigation-menu footer-navigation-menu">
                         <li class="menu-item item-ajuda"><a href="<?php echo $view['router']->generate('home_ajuda'); ?>">Ajuda</a></li>
-                        <li class="menu-item item-termos"><a href="<?php echo $view['router']->generate('home_termosUso'); ?>">Termos de uso</a></li>
+                        <li class="menu-item item-termos"><a href="<?php echo $view['router']->generate('home_termos-uso'); ?>">Termos de uso</a></li>
                         <li class="menu-item last-item item-contato"><a href="mailto:contato@emvista.me" target="_blank">Contato</a></li>
                     </ul>
                 </nav>

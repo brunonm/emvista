@@ -11,40 +11,30 @@ use EmVista\EmVistaBundle\Entity\TipoMovimentacaoFinanceira;
 /**
  * EmVista\EmVistaBundle\Entity\MovimentacaoFinanceira
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class MovimentacaoFinanceira{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var TipoMovimentacaoFinanceira
      *
-     * @ManyToOne(targetEntity="TipoMovimentacaoFinanceira")
-     * @JoinColumn(name="tipomovimentacaofinanceira_id", referencedColumnName="id", nullable=false)
      */
     private $tipoMovimentacaoFinanceira;
 
     /**
      * @var Doacao
      *
-     * @ManyToOne(targetEntity="Doacao", inversedBy="movimentacoesFinanceiras")
-     * @JoinColumn(name="doacao_id", referencedColumnName="id", nullable=false)
      */
     private $doacao;
 
     /**
      * @var decimal $valor
      *
-     * @ORM\Column(name="valor", type="decimal", scale=2)
      */
     private $valor;
     
@@ -52,77 +42,65 @@ class MovimentacaoFinanceira{
     /**
      * @var string $transacaoId
      *
-     * @ORM\Column(name="transacaoId", type="string", length=255, nullable=true)
      */
     private $transacaoId;
 
     /**
      * @var string $status
      *
-     * @ORM\Column(name="status", type="string", length=255, nullable=true)
      */
     private $status;
 
     /**
      * @var string $razaoPendencia
      *
-     * @ORM\Column(name="razaoPendencia", type="string", length=255, nullable=true)
      */
     private $razaoPendencia;
 
     /**
      * @var string $codigoRazao
      *
-     * @ORM\Column(name="codigoRazao", type="string", length=255, nullable=true)
      */
     private $codigoRazao;
 
     /**
      * @var string $errorCode
      *
-     * @ORM\Column(name="errorCode", type="string", length=255, nullable=true)
      */
     private $errorCode;
 
     /**
      * @var string $token
      *
-     * @ORM\Column(name="token", type="string", length=255, nullable=true)
      */
     private $token;
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="dataCadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var datetime $dataEdicao
      *
-     * @ORM\Column(name="dataEdicao", type="datetime", nullable=true)
      */
     private $dataEdicao;
     
     /**
      * @var datetime $taxa
      *
-     * @ORM\Column(name="taxa", type="decimal", scale=2, nullable=true)
      */
     private $taxa;
 
     /**
      * @var datetime $valorLiquido
      *
-     * @ORM\Column(name="valorLiquido", type="decimal", scale=2, nullable=true)
      */
     private $valorLiquido;
     
     /**
      * @var GatewayPagamento
      * 
-     * @ManyToOne(targetEntity="GatewayPagamento")
-     * @JoinColumn(name="gatewayPagamento_id", referencedColumnName="id", nullable=false)
      */
     private $gatewayPagamento;
 

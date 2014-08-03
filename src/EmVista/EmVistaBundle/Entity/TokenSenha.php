@@ -12,53 +12,42 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * TokenSenha
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class TokenSenha extends EntityAbstract{
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="token", type="string", length=255, nullable=true)
      */
     private $token;
 
     /**
      * @var Usuario $usuario
      *
-     * @ManyToOne(targetEntity="Usuario")
-     * @JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="data_expiracao", type="datetime")
      */
     private $dataExpiracao;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="ativo", type="boolean")
      */
     private $ativo;
 

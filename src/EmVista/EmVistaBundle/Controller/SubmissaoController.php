@@ -30,7 +30,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/termosUso", name="submissao_termosUso")
      */
     public function termosUsoAction(){
@@ -39,7 +38,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/iniciar", name="submissao_iniciar")
      * @Method("post")
      */
@@ -50,7 +48,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/dadosBasicos", name="submissao_dadosBasicos")
      */
     public function dadosBasicosAction($submissaoId){
@@ -68,7 +65,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/salvarDadosBasicos", name="submissao_salvarDadosBasicos")
      * @Method("post")
      */
@@ -86,7 +82,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/descricao", name="submissao_descricao")
      */
     public function descricaoAction($submissaoId){
@@ -103,7 +98,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/salvarDescricao", name="submissao_salvarDescricao")
      * @Method("post")
      */
@@ -121,7 +115,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/recompensas", name="submissao_recompensas")
      */
     public function recompensasAction($submissaoId){
@@ -138,7 +131,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/salvarRecompensas", name="submissao_salvarRecompensas")
      * @Method("post")
      */
@@ -156,7 +148,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/video", name="submissao_video")
      */
     public function videoAction($submissaoId){
@@ -175,7 +166,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/salvarVideo", name="submissao_salvarVideo")
      * @Method("post")
      */
@@ -196,7 +186,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/imagens", name="submissao_imagens")
      */
     public function imagensAction($submissaoId){
@@ -218,7 +207,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/getCropParams", name="submissao_getCropParams")
      */
     public function getCropParamsAction(){
@@ -227,7 +215,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/salvarImagemOriginal", name="submissao_salvarImagemOriginal")
      * @Method("post")
      */
@@ -259,7 +246,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/salvarCrop", name="submissao_salvarCrop")
      * @Method("post")
      */
@@ -279,7 +265,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/maisSobreVoce", name="submissao_maisSobreVoce")
      */
     public function maisSobreVoceAction($submissaoId){
@@ -300,7 +285,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/salvarMaisSobreVoce", name="submissao_salvarMaisSobreVoce")
      * @Method("post")
      */
@@ -317,7 +301,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/concluir", name="submissao_concluir")
      */
     public function concluirAction($submissaoId){
@@ -356,7 +339,6 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/submissao/{submissaoId}/sucesso", name="submissao_sucesso")
      */
     public function sucessoAction($submissaoId){

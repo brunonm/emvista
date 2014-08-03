@@ -10,52 +10,40 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * StatusPagamento
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class StatusPagamento extends EntityAbstract{
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var gatewayPagamento
      *
-     * @ManyToOne(targetEntity="GatewayPagamento")
-     * @JoinColumn(name="gatewayPagamento_id", referencedColumnName="id", nullable=false)
      */
     private $gatewayPagamento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="gatewayStatus", type="string", length=3)
      */
     private $gatewayStatus;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="valorGatewayStatus", type="string", length=255)
      */
     private $valorGatewayStatus;
     /**
      * @var string
      *
-     * @ORM\Column(name="descricaoGatewayStatus", type="string", length=255)
      */
     private $descricaoGatewayStatus;
 
     /**
      * @var statusDoacao
      *
-     * @ManyToOne(targetEntity="StatusDoacao")
-     * @JoinColumn(name="statusDoacao_id", referencedColumnName="id", nullable=false)
      */
     private $statusDoacao;
 

@@ -9,45 +9,36 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\TermoUso
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class TermoUso extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var text $termoUso
      *
-     * @ORM\Column(name="termoUso", type="text")
      */
     private $termoUso;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="dataCadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var datetime $dataFim
      *
-     * @ORM\Column(name="dataFim", type="datetime", nullable=true)
      */
     private $dataFim;
 
     /**
      * @var boolean $ativo
      *
-     * @ORM\Column(name="ativo", type="boolean")
      */
     private $ativo;
 

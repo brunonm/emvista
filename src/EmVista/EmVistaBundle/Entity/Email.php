@@ -8,8 +8,6 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * Email
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Email extends EntityAbstract{
 
@@ -34,23 +32,18 @@ class Email extends EntityAbstract{
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="titulo", type="string", length=255)
      */
     private $titulo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="texto", type="text")
      */
     private $texto;
 

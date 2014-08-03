@@ -15,62 +15,48 @@ use EmVista\EmVistaBundle\Entity\MovimentacaoFinanceira;
 /**
  * EmVista\EmVistaBundle\Entity\Doacao
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\DoacaoRepository")
  */
 class Doacao{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Usuario
      *
-     * @ManyToOne(targetEntity="Usuario", inversedBy="doacoes")
-     * @JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
     /**
      * @var Recompensa
      *
-     * @ManyToOne(targetEntity="Recompensa")
-     * @JoinColumn(name="recompensa_id", referencedColumnName="id", nullable=false)
      */
     private $recompensa;
 
     /**
      * @var decimal $valor
      *
-     * @ORM\Column(name="valor", type="decimal", scale=2, nullable=false)
      */
     private $valor;
 
     /**
      * @var StatusDoacao
      *
-     * @ManyToOne(targetEntity="StatusDoacao")
-     * @JoinColumn(name="status_id", referencedColumnName="id", nullable=false)
      */
     private $status;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="dataCadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var MovimentacaoFinanceira[]
      *
-     * @OneToMany(targetEntity="MovimentacaoFinanceira", mappedBy="doacao")
      */
     private $movimentacoesFinanceiras;
 

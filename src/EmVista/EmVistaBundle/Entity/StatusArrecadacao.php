@@ -8,8 +8,6 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\StatusArrecadacao
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class StatusArrecadacao extends EntityAbstract{
 
@@ -22,23 +20,18 @@ class StatusArrecadacao extends EntityAbstract{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
     /**
      * @var string $descricao
      *
-     * @ORM\Column(name="descricao", type="string", length=255)
      */
     private $descricao;
 

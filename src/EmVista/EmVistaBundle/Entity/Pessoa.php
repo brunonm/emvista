@@ -6,8 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
- * @ORM\Table()
- * @ORM\Entity
  */
 class Pessoa extends EntityAbstract{
 
@@ -17,17 +15,12 @@ class Pessoa extends EntityAbstract{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Usuario $usuario
      *
-     * @ORM\OneToOne(targetEntity="Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
@@ -35,21 +28,18 @@ class Pessoa extends EntityAbstract{
      *
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=50, nullable=false)
      */
     private $nome;
 
     /**
      * @var string $documento
      *
-     * @ORM\Column(name="documento", type="string", length=14, nullable=false)
      */
     private $documento;
 
     /**
      * @var string $tipo
      *
-     * @ORM\Column(name="tipo", type="string", length=1, nullable=false)
      */
     private $tipo;
 

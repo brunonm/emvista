@@ -10,67 +10,54 @@ use Doctrine\ORM\Mapping\JoinColumn;
 /**
  * EmVista\EmVistaBundle\Entity\Recompensa
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\RecompensaRepository")
  */
 class Recompensa extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var float $valorMinimo
      *
-     * @ORM\Column(name="valor_minimo", type="decimal", scale=2, nullable=false)
      */
     private $valorMinimo;
 
     /**
      * @var text $descricao
      *
-     * @ORM\Column(name="descricao", type="text")
      */
     private $descricao;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var integer $quantidadeApoiadores
      *
-     * @ORM\Column(name="quantidade_apoiadores", type="integer")
      */
     private $quantidadeApoiadores = 0;
 
     /**
      * @var string $titulo
      *
-     * @ORM\Column(name="titulo", type="string", length=255)
      */
     private $titulo;
 
     /**
      * @var string $quantidadeMaximaApoiadores = 0
      *
-     * @ORM\Column(name="quantidade_maxima_apoiadores", type="integer", nullable=true)
      */
     private $quantidadeMaximaApoiadores;
 
     /**
      * @var Projeto
      *
-     * @ManyToOne(targetEntity="Projeto", inversedBy="recompensas")
-     * @JoinColumn(name="projeto_id", referencedColumnName="id", nullable=false)
      */
     private $projeto;
 

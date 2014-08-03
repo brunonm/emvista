@@ -9,8 +9,6 @@ use EmVista\EmVistaBundle\Entity\MovimentacaoFinanceira;
 /**
  * EmVista\EmVistaBundle\Entity\LogPaypal
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class LogPagamento{
     
@@ -19,44 +17,36 @@ class LogPagamento{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var text $conteudoRetorno
      *
-     * @ORM\Column(name="conteudoRetorno", type="text")
      */
     private $conteudoRetorno;
 
     /**
      * @var MovimentacaoFinanceira
      *
-     * @ManyToOne(targetEntity="MovimentacaoFinanceira")
      */
     private $movimentacaoFinanceira;
 
     /**
      * @var text $conteudo
      *
-     * @ORM\Column(name="conteudo_envio", type="text")
      */
     private $conteudoEnvio;
 
     /**
      * @var text $host
      *
-     * @ORM\Column(name="host", type="text")
      */
     private $host;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="dataCadastro", type="datetime")
      */
     private $dataCadastro;
    

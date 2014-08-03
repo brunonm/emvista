@@ -1,0 +1,47 @@
+EmVista\EmVistaBundle\Entity\Pessoa:
+    type: entity
+    table: pessoa
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nome:
+            type: string
+            scale: 0
+            length: 50
+            unique: false
+            nullable: false
+            precision: 0
+        documento:
+            type: string
+            scale: 0
+            length: 14
+            unique: false
+            nullable: false
+            precision: 0
+        tipo:
+            type: string
+            scale: 0
+            length: 1
+            unique: false
+            nullable: false
+            precision: 0
+    oneToOne:
+        usuario:
+            targetEntity: EmVista\EmVistaBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

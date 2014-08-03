@@ -1,0 +1,73 @@
+EmVista\EmVistaBundle\Entity\Recompensa:
+    type: entity
+    table: recompensa
+    repositoryClass: EmVista\EmVistaBundle\Repository\RecompensaRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        valorMinimo:
+            type: decimal
+            scale: 2
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: valor_minimo
+        descricao:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: data_cadastro
+        quantidadeApoiadores:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: quantidade_apoiadores
+        titulo:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        quantidadeMaximaApoiadores:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: quantidade_maxima_apoiadores
+    manyToOne:
+        projeto:
+            targetEntity: EmVista\EmVistaBundle\Entity\Projeto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: recompensas
+            joinColumns:
+                projeto_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

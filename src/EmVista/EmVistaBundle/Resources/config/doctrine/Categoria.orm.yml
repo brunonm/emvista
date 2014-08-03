@@ -1,0 +1,51 @@
+EmVista\EmVistaBundle\Entity\Categoria:
+    type: entity
+    table: categoria
+    repositoryClass: EmVista\EmVistaBundle\Repository\CategoriaRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nome:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: data_cadastro
+        quantidadeProjetosPublicados:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: quantidade_projetos_publicados
+        slug:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+            slug:
+                fields:
+                    - nome
+                update: true
+    lifecycleCallbacks: {  }

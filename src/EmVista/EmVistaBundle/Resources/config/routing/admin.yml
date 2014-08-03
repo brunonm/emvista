@@ -1,0 +1,12 @@
+admin_index:
+    pattern: /admin
+    defaults: { _controller: EmVistaBundle:Admin:index }
+
+admin_gerenciar-administradores:
+    pattern: /admin/gerenciar-administradores
+    defaults: { _controller: EmVistaBundle:Admin:gerenciarAdministradores }
+
+admin_vincular-usuario-administrador:
+    pattern: /admin/vincular-usuario-administrador
+    defaults: { _controller: EmVistaBundle:Admin:vincularUsuarioAdministrador }
+

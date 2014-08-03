@@ -1,0 +1,55 @@
+EmVista\EmVistaBundle\Entity\LogPagamento:
+    type: entity
+    table: log_pagamento
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        conteudoRetorno:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        conteudoEnvio:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: conteudo_envio
+        host:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        movimentacaoFinanceira:
+            targetEntity: EmVista\EmVistaBundle\Entity\MovimentacaoFinanceira
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                movimentacaoFinanceira_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

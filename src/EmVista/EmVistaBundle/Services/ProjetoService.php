@@ -31,13 +31,13 @@ class ProjetoService extends ServiceAbstract{
     /**
      * @var float
      */
-    protected $percentualEmvista;
+    protected $percentualPlataforma;
 
     /**
-     * @param float $percentualEmvista
+     * @param float $percentualPlataforma
      */
-    public function setPercentualEmVista($percentualEmvista){
-        $this->percentualEmvista = $percentualEmvista;
+    public function setPercentualPlataforma($percentualPlataforma){
+        $this->percentualPlataforma = $percentualPlataforma;
         return $this;
     }
 
@@ -216,7 +216,7 @@ class ProjetoService extends ServiceAbstract{
             $item['projeto'] = $projeto;
             $item['contribuicoes'] = $this->countDoacoes(ServiceData::build(array('projetoId' => $projeto->getId())));
             $item['valorLiquido'] = $liquidoETaxa['valorLiquido'];
-            $item['valorRepasse'] = $item['valorLiquido'] - ($projeto->getValorArrecadado() * $this->percentualEmvista);
+            $item['valorRepasse'] = $item['valorLiquido'] - ($projeto->getValorArrecadado() * $this->percentualPlataforma);
             $item['taxas'] = $liquidoETaxa['taxa'];;
 
             $result[] = $item;

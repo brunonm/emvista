@@ -1,0 +1,11 @@
+emvista_home:
+    resource: "@EmVistaBundle/Resources/config/routing/home.yml"
+    prefix:   /
+
+emvista_projeto:
+    resource: "@EmVistaBundle/Resources/config/routing/projeto.yml"
+    prefix:   /
+
+emvista_usuario:
+    resource: "@EmVistaBundle/Resources/config/routing/usuario.yml"
+    prefix:   /

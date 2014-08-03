@@ -1,0 +1,33 @@
+EmVista\EmVistaBundle\Entity\Video:
+    type: entity
+    table: video
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        identificador:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        siteVideo:
+            targetEntity: EmVista\EmVistaBundle\Entity\SiteVideo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                site_video_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

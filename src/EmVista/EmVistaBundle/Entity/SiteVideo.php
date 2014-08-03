@@ -8,8 +8,6 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\SiteVideo
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class SiteVideo extends EntityAbstract{
 
@@ -19,30 +17,24 @@ class SiteVideo extends EntityAbstract{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=100)
      */
     private $nome;
 
     /**
      * @var string $embed
      *
-     * @ORM\Column(name="embed", type="text")
      */
     private $embed;
 
     /**
      * @var string $watchUrl
      *
-     * @ORM\Column(name="watch_url", type="string")
      */
     private $watchUrl;
 

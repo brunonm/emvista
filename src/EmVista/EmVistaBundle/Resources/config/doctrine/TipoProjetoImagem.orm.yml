@@ -1,0 +1,45 @@
+EmVista\EmVistaBundle\Entity\TipoProjetoImagem:
+    type: entity
+    table: tipo_projeto_imagem
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nome:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        aspectRatio:
+            type: float
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: aspect_ratio
+        largura:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        altura:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+    lifecycleCallbacks: {  }

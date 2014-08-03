@@ -46,11 +46,6 @@ class HomeController extends ControllerAbstract{
         return $this->render(
             'EmVistaBundle:Home:index.html.php',
             array(
-                'primario'   => $primario,
-                'secundario' => $secundario,
-                'novos'      => $novos,
-                'retaFinal'  => $retaFinal,
-                'finalizados' => $finalizados
             ));
     }
 
@@ -103,7 +98,7 @@ class HomeController extends ControllerAbstract{
      * @Route("/cadastre/submeterEmailProjeto", name="home_cadastre_submeterEmailProjeto")
      * @Method("post")
      */
-    public function submeterEmailProjeto(){
+    public function submeterEmailProjetoAction(){
         try{
             $sd = ServiceData::build($this->getRequest()->request->all());
             $this->get('service.submissao')->enviarEmailSubmissao($sd);

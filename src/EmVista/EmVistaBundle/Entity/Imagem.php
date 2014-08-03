@@ -10,39 +10,30 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\Imagem
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Imagem extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Usuario $usuario
      *
-     * @ManyToOne(targetEntity="Usuario")
-     * @JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
     /**
      * @var string $originalFilename
      *
-     * @ORM\Column(name="original_filename", type="string", length=255)
      */
     private $originalFilename;
 
     /**
      * @var string $extensao
      *
-     * @ORM\Column(name="extensao", type="string", length=5)
      */
     private $extensao;
 
@@ -50,7 +41,6 @@ class Imagem extends EntityAbstract{
      * Tamanho em Kilobytes (KB)
      * @var integer $size
      *
-     * @ORM\Column(name="size", type="integer")
      */
     private $size;
 
@@ -58,7 +48,6 @@ class Imagem extends EntityAbstract{
      * Largura em pixels
      * @var integer $largura
      *
-     * @ORM\Column(name="largura", type="float")
      */
     private $largura;
 
@@ -66,7 +55,6 @@ class Imagem extends EntityAbstract{
      * Altura em pixels
      * @var integer $altura
      *
-     * @ORM\Column(name="altura", type="float")
      */
     private $altura;
 
@@ -74,14 +62,12 @@ class Imagem extends EntityAbstract{
      * Altura em pixels
      * @var integer $altura
      *
-     * @ORM\Column(name="webPath", type="string", length=255, nullable=true)
      */
     private $webPath;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="dataCadastro", type="datetime", nullable=false)
      */
     private $dataCadastro;
 

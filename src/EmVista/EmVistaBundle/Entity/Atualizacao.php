@@ -11,46 +11,36 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\Atualizacao
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Atualizacao extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Projeto
      *
-     * @ManyToOne(targetEntity="Projeto", inversedBy="recompensas")
-     * @JoinColumn(name="projeto_id", referencedColumnName="id", nullable=false)
      */
     private $projeto;
 
     /**
      * @var string $titulo
      *
-     * @ORM\Column(name="titulo", type="string", length=255)
      */
     private $titulo;
 
     /**
      * @var text $texto
      *
-     * @ORM\Column(name="texto", type="text")
      */
     private $texto;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 

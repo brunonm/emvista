@@ -9,16 +9,11 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * FormaPagamento
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class FormaPagamento extends EntityAbstract{
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     
@@ -26,7 +21,6 @@ class FormaPagamento extends EntityAbstract{
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="string", length=3)
      */
     private $codigo;
 
@@ -34,14 +28,12 @@ class FormaPagamento extends EntityAbstract{
     /**
      * @var string
      *
-     * @ORM\Column(name="valor", type="string", length=255)
      */
     private $valor;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao", type="string", length=255)
      */
     private $descricao;
 
@@ -49,8 +41,6 @@ class FormaPagamento extends EntityAbstract{
     /**
      * @var gatewayPagamento
      *
-     * @ManyToOne(targetEntity="GatewayPagamento")
-     * @JoinColumn(name="gatewayPagamento_id", referencedColumnName="id", nullable=false)
      */
     private $gatewayPagamento;
 

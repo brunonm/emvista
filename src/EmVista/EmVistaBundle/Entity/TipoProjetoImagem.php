@@ -8,8 +8,6 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\TipoProjetoImagem
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class TipoProjetoImagem extends EntityAbstract{
 
@@ -21,37 +19,30 @@ class TipoProjetoImagem extends EntityAbstract{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
     /**
      * @var float $aspectRatio
      *
-     * @ORM\Column(name="aspect_ratio", type="float", nullable=true)
      */
     private $aspectRatio;
 
     /**
      * @var integer $largura
      *
-     * @ORM\Column(name="largura", type="integer", nullable=true)
      */
     private $largura;
 
     /**
      * @var integer $altura
      *
-     * @ORM\Column(name="altura", type="integer", nullable=true)
      */
     private $altura;
 

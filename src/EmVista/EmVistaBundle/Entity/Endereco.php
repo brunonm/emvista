@@ -9,23 +9,16 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\Endereco
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Endereco extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     
     /**
-    * @OneToOne(targetEntity="Usuario", inversedBy="endereco")
-    * @JoinColumn(name="usuario_id", referencedColumnName="id")
     */
     private $usuario;
 
@@ -33,42 +26,36 @@ class Endereco extends EntityAbstract{
     /**
      * @var string $cep
      *
-     * @ORM\Column(name="cep", type="string", length=8)
      */
     private $cep;
     
     /**
      * @var string $uf
      *
-     * @ORM\Column(name="uf", type="string", length=2)
      */
     private $uf;
     
     /**
      * @var string $cidade
      *
-     * @ORM\Column(name="cidade", type="string", length=60)
      */
     private $cidade;
     
     /**
      * @var string $bairro
      *
-     * @ORM\Column(name="bairro", type="string", length=255)
      */
     private $bairro;
     
     /**
      * @var string $endereco
      *
-     * @ORM\Column(name="endereco", type="string", length=255)
      */
     private $endereco;
     
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
     

@@ -7,8 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * GatewayPagamento
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class GatewayPagamento{
     
@@ -16,16 +14,12 @@ class GatewayPagamento{
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 

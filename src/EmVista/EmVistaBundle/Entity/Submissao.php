@@ -11,61 +11,48 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\Submissao
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\SubmissaoRepository")
  */
 class Submissao extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Projeto
      *
-     * @OneToOne(targetEntity="Projeto")
-     * @JoinColumn(name="projeto_id", referencedColumnName="id", nullable=false)
      */
     private $projeto;
 
     /**
      * @var StatusSubmissao
      *
-     * @ManyToOne(targetEntity="StatusSubmissao")
-     * @JoinColumn(name="status_id", referencedColumnName="id", nullable=false)
      */
     private $status;
 
     /**
      * @var text $observacaoResposta
      *
-     * @ORM\Column(name="observacao_resposta", type="text", nullable=true)
      */
     private $observacaoResposta;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var datetime $dataEnvio
      *
-     * @ORM\Column(name="data_envio", type="datetime", nullable=true)
      */
     private $dataEnvio;
 
     /**
      * @var datetime $dataResposta
      *
-     * @ORM\Column(name="data_resposta", type="datetime", nullable=true)
      */
     private $dataResposta;
 

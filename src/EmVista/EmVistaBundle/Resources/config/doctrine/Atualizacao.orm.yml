@@ -1,0 +1,48 @@
+EmVista\EmVistaBundle\Entity\Atualizacao:
+    type: entity
+    table: atualizacao
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        texto:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: data_cadastro
+    manyToOne:
+        projeto:
+            targetEntity: EmVista\EmVistaBundle\Entity\Projeto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: recompensas
+            joinColumns:
+                projeto_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -25,7 +25,6 @@ use EmVista\EmVistaBundle\Services\Exceptions\UsuarioNaoPossuiAcessoAdministrati
 class UsuarioController extends ControllerAbstract{
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/meus-projetos", name="usuario_meusProjetos")
      */
     public function meusProjetosAction(){
@@ -38,7 +37,6 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/contribuicoes", name="usuario_contribuicoes")
      */
     public function contribuicoesAction(){
@@ -50,7 +48,6 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/dados-pessoais", name="usuario_dadosPessoais")
      */
     public function dadosPessoaisAction(){
@@ -59,7 +56,6 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/alterar-dados-pessoais", name="usuario_alterarDadosPessoais")
      */
     public function alterarDadosPessoaisAction(){
@@ -78,7 +74,6 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/confirmacao-inativar-conta", name="usuario_confirmacaoInativarConta")
      */
     public function confirmacaoInativarContaAction(){
@@ -87,7 +82,6 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/inativar-conta", name="usuario_inativarConta")
      */
     public function inativarContaAction(){
@@ -250,7 +244,6 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/salvarImagemTemporariaProfile", name="usuario_salvarImagemTemporariaProfile")
      * @Method("post")
      */
@@ -282,7 +275,6 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/recortaImagemProfile", name="usuario_recortaImagemProfile")
      * @Method("post")
      */
@@ -310,7 +302,6 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/usuario/apoiadores-projeto/{projetoId}", name="usuario_apoiadoresProjeto")
      */
     public function apoiadoresProjetoAction($projetoId){

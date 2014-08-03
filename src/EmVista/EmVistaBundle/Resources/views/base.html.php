@@ -39,7 +39,7 @@
         <div id="fb-root"></div>
 
         <div class="topbar navbar" id="topbar">
-            <?php echo $view['actions']->render('EmVistaBundle:Home:topbar'); ?>
+            <?php echo $view['actions']->render(new \Symfony\Component\HttpKernel\Controller\ControllerReference('EmVistaBundle:Home:topbar')); ?>
         </div>
 
         <header id="masthead">
@@ -98,7 +98,7 @@
         </div>
 
         <footer id="footer" class="footer">
-            <?php echo $view['actions']->render('EmVistaBundle:Home:footer'); ?>
+            <?php echo $view['actions']->render(new \Symfony\Component\HttpKernel\Controller\ControllerReference('EmVistaBundle:Home:footer')); ?>
         </footer>
 
         <div id="modal"><?php $view['slots']->output('modal'); ?></div>

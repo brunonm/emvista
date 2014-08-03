@@ -63,7 +63,6 @@ class ProjetoController extends ControllerAbstract{
 
     /**
      * @Route("/projeto/salvar-atualizacao", name="projeto_salvarAtualizacao")
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      */
     public function salvarAtualizacaoAction(){
         $sd = ServiceData::build($this->getRequest()->get('atualizacao'));

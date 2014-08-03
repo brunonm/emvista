@@ -1,0 +1,184 @@
+EmVista\EmVistaBundle\Entity\Projeto:
+    type: entity
+    table: projeto
+    repositoryClass: EmVista\EmVistaBundle\Repository\ProjetoRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nome:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        slug:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+            slug:
+                fields:
+                    - nome
+                update: true
+        descricao:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        descricaoCurta:
+            type: string
+            scale: 0
+            length: 130
+            unique: false
+            nullable: true
+            precision: 0
+            column: descricao_curta
+        valor:
+            type: decimal
+            scale: 2
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        valorArrecadado:
+            type: decimal
+            scale: 2
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: valor_arrecadado
+        dataInicio:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: data_inicio
+        dataFim:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: data_fim
+        dataAprovacao:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: data_aprovacao
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: data_cadastro
+        quantidadeDias:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: quantidade_dias
+        publicado:
+            type: boolean
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        usuario:
+            targetEntity: EmVista\EmVistaBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: projetos
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        categoria:
+            targetEntity: EmVista\EmVistaBundle\Entity\Categoria
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categoria_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        termoUso:
+            targetEntity: EmVista\EmVistaBundle\Entity\TermoUso
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                termo_uso_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        statusFinanceiro:
+            targetEntity: EmVista\EmVistaBundle\Entity\StatusFinanceiro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                status_financeiro_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        statusArrecadacao:
+            targetEntity: EmVista\EmVistaBundle\Entity\StatusArrecadacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                status_arrecadacao_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        recompensas:
+            targetEntity: EmVista\EmVistaBundle\Entity\Recompensa
+            cascade: {  }
+            mappedBy: projeto
+            inversedBy: null
+            orphanRemoval: false
+            orderBy:
+                valorMinimo: ASC
+        imagens:
+            targetEntity: EmVista\EmVistaBundle\Entity\ProjetoImagem
+            cascade: {  }
+            mappedBy: projeto
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    oneToOne:
+        video:
+            targetEntity: EmVista\EmVistaBundle\Entity\Video
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                video_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -16,7 +16,6 @@ use EmVista\EmVistaBundle\Services\Exceptions\QuantidadeMaximaDeRecompensaAtingi
 class PagamentoController extends ControllerAbstract{
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/pagamento/checkout/{projetoId}", name="pagamento_checkout")
      */
     public function checkoutAction($projetoId){
@@ -31,7 +30,6 @@ class PagamentoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/pagamento/continue-checkout", name="pagamento_continueCheckout")
      */
     public function continueCheckoutAction(){
@@ -67,7 +65,6 @@ class PagamentoController extends ControllerAbstract{
     }
 
     /**
-     * @Secure(roles="IS_AUTHENTICATED_FULLY")
      * @Route("/pagamento/retorno-pagamento/{movFinanceiraId}", name="pagamento_retornoPagamento")
      */
     public function retornoPagamentoAction($movFinanceiraId){

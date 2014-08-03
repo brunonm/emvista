@@ -1,0 +1,7 @@
+usuario_registro:
+    pattern: /usuario/registro
+    defaults: { _controller: EmVistaBundle:Usuario:registro }
+
+usuario_login:
+    pattern: /usuario/login
+    defaults: { _controller: EmVistaBundle:Usuario:login }

@@ -8,8 +8,6 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
 /**
  * EmVista\EmVistaBundle\Entity\Role
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Role implements RoleInterface{
 
@@ -19,16 +17,12 @@ class Role implements RoleInterface{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $ome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 

@@ -11,73 +11,58 @@ use EmVista\EmVistaBundle\Entity\Usuario;
 /**
  * EmVista\EmVistaBundle\Entity\UsuarioDetalhesPagamento
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class UsuarioDetalhesPagamento{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Usuario
-     * @ManyToOne(targetEntity="Usuario")
-     * @JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
     /**
      * @var GatewayPagamento
-     * @ManyToOne(targetEntity="GatewayPagamento")
-     * @JoinColumn(name="gatewayPagamento_id", referencedColumnName="id", nullable=false)
      */
     private $gatewayPagamento;
 
     /**
      * @var string $gatewayId
      *
-     * @ORM\Column(name="gatewayId", type="string", length=255)
      */
     private $gatewayId;
 
     /**
      * @var string $gatewayEmail
      *
-     * @ORM\Column(name="gatewayEmail", type="string", length=255)
      */
     private $gatewayEmail;
 
     /**
      * @var string $gatewayStatus
      *
-     * @ORM\Column(name="gatewayStatus", type="string", length=255, nullable=true)
      */
     private $gatewayStatus;
 
     /**
      * @var string $primeiroNome
      *
-     * @ORM\Column(name="primeiroNome", type="string", length=255)
      */
     private $primeiroNome;
 
     /**
      * @var string $ultimoNome
      *
-     * @ORM\Column(name="ultimoNome", type="string", length=255, nullable=true)
      */
     private $ultimoNome;
 
     /**
      * @var string $pais
      *
-     * @ORM\Column(name="pais", type="string", length=255)
      */
     private $pais;
 

@@ -18,82 +18,64 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 /**
  * EmVista\EmVistaBundle\Entity\Usuario
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\UsuarioRepository")
  */
 class Usuario extends EntityAbstract implements UserInterface, AdvancedUserInterface, \Serializable{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
     /**
      * @var string $email
      *
-     * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
     /**
      * @var string $senha
      *
-     * @ORM\Column(name="senha", type="string", length=255)
      */
     private $senha;
 
     /**
      * @var Projeto[]
      *
-     * @OneToMany(targetEntity="Projeto", mappedBy="usuario")
      */
     private $projetos;
 
     /**
      * @var string $salt
      *
-     * @ORM\Column(name="salt", type="string", length=40)
      */
     private $salt;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      *  @var boolean $status
      *
-     * @ORM\Column(name="status", type="boolean")
      */
     private $status;
 
     /**
      * @var Imagem $imagemProfile
      *
-     * @OneToOne(targetEntity="Imagem")
-     * @JoinColumn(name="imagem_profile_id", referencedColumnName="id", nullable=true)
      */
     private $imagemProfile;
 
     /**
-     * @ManyToMany(targetEntity="Role")
-     * @JoinTable(name="usuario_role",
-     *            joinColumns={@JoinColumn(name="usuario_id", referencedColumnName="id")},
-     *            inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
      *
      * @var ArrayCollection $userRoles
      */
@@ -108,7 +90,6 @@ class Usuario extends EntityAbstract implements UserInterface, AdvancedUserInter
     /**
      * @var Doacao[]
 
-     * @OneToMany(targetEntity="Doacao", mappedBy="usuario")
      */
     private $doacoes;
 

@@ -1,0 +1,19 @@
+projeto_salvar-atualizacao:
+    pattern: /projeto/salvar-atualizacao
+    defaults: { _controller: EmVistaBundle:Projeto:salvarAtualizacao }
+
+projeto_descubra:
+    pattern: /descubra
+    defaults: { _controller: EmVistaBundle:Projeto:descubra, search: "" }
+
+projeto_descubra-search:
+    pattern: /descubra/{search}
+    defaults: { _controller: EmVistaBundle:Projeto:descubra }
+
+projeto_search:
+    pattern: /projeto/search/{search}
+    defaults: { _controller: EmVistaBundle:Projeto:search }
+
+projeto_listar-json:
+    pattern: /projeto/listar-json
+    defaults: { _controller: EmVistaBundle:Projeto:listarJson }

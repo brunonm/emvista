@@ -9,46 +9,36 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 /**
  * EmVista\EmVistaBundle\Entity\Categoria
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\CategoriaRepository")
  */
 class Categoria extends EntityAbstract{
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var integer $quantidadeProjetosPublicados
      *
-     * @ORM\Column(name="quantidade_projetos_publicados", type="integer", nullable=true)
      */
     private $quantidadeProjetosPublicados;
 
     /**
      *
-     * @Gedmo\Slug(fields={"nome"}, updatable=true)
-     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
-     * @var type
+     * @var string
      */
     private $slug;
 
