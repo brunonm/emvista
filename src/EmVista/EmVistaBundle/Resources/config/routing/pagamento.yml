@@ -1,0 +1,15 @@
+pagamento_checkout:
+    pattern: /pagamento/checkout/{projetoId}
+    defaults: { _controller: EmVistaBundle:Pagamento:checkout }
+
+pagamento_continue-checkout:
+    pattern: /pagamento/continue-checkout
+    defaults: { _controller: EmVistaBundle:Pagamento:continueCheckout }
+
+pagamento_review:
+    pattern: /pagamento/review
+    defaults: { _controller: EmVistaBundle:Pagamento:review }
+
+pagamento_retorno-pagamento:
+    pattern: /pagamento/retorno-pagamento
+    defaults: { _controller: EmVistaBundle:Pagamento:retornoPagamento }

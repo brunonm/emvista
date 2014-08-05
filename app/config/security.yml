@@ -22,6 +22,19 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/pagamento/checkout, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/pagamento/continue-checkout, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/pagamento/retorno-pagamento, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/meus-projetos, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/contribuicoes, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/dados-pessoais, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/alterar-dados-pessoais, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/confirmacao-inativar-conta, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/inativar-conta, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/salvar-imagem-temporaria-profile, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/recorta-imagem-profile, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/apoiadores-projeto, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/submissao, roles: IS_AUTHENTICATED_FULLY }
 
 #security:
 #    encoders:

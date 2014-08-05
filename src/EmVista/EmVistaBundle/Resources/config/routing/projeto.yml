@@ -5,6 +5,8 @@ projeto_salvar-atualizacao:
 projeto_descubra:
     pattern: /descubra
     defaults: { _controller: EmVistaBundle:Projeto:descubra, search: "" }
+    requirements:
+        url: .*/$
 
 projeto_descubra-search:
     pattern: /descubra/{search}

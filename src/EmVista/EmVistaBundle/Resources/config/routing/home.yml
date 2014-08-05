@@ -10,7 +10,6 @@ home_topbar:
     pattern: /__home/topbar
     defaults: { _controller: EmVistaBundle:Home:topbar }
 
-
 home_ajuda:
     pattern: /ajuda
     defaults: { _controller: EmVistaBundle:Home:ajuda }
@@ -19,7 +18,7 @@ home_cadastre:
     pattern: /cadastre
     defaults: { _controller: EmVistaBundle:Home:cadastre }
 
-home_submeter-email-projeto:
+home_cadastre_submeter-email-projeto:
     pattern: /cadastre/submeter-email-projeto
     defaults: { _controller: EmVistaBundle:Home:submeterEmailProjeto }
 
@@ -30,7 +29,6 @@ home_comece:
 home_crowdfunding:
     pattern: /crowdfunding
     defaults: { _controller: EmVistaBundle:Home:crowdfunding }
-
 
 home_termos-uso:
     pattern: /termos-uso

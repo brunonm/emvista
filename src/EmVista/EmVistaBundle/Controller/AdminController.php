@@ -226,40 +226,4 @@ class AdminController extends ControllerAbstract{
         return $this->render('EmVistaBundle:Admin:estornos.html.php', array('projetos' => $projetos));
     }
 
-//    /**
-//     * @Route("/admin/estorno-sucesso", name="admin_estornoSucesso")
-//     */
-//    public function estornoSucessoAction(){
-//        return $this->render('EmVistaBundle:Admin:estornoSucesso.html.php');
-//    }
-//
-//    /**
-//     * @Route("/admin/administrar-projetos-destaques", name="admin_administrarProjetosDestaques")
-//     */
-//    public function administrarProjetosDestaquesAction(){
-//        $projetosDestaque = $this->get('service.projeto')->listarProjetosDestaqueHome();
-//        return $this->render('EmVistaBundle:Admin:administrarProjetosDestaques.html.php', array('projetosDestaque' => $projetosDestaque));
-//    }
-//
-//    /**
-//     * @Route("/admin/lista-projetos-destaques/{projetoId}/{tipoDestaque}", name="admin_listaProjetosDestaques")
-//     */
-//    public function listaProjetosDestaquesAction($projetoId, $tipoDestaque){
-//        $projeto = $this->get('service.projeto')->getProjeto($projetoId);
-//        $projetosPublicados = $this->get('service.projeto')->listarProjetosPublicados();
-//        return $this->render('EmVistaBundle:Admin:listaProjetosPrincipais.html.php', array(
-//                   'projeto' => $projeto,
-//                   'tipoDestaque' => $tipoDestaque,
-//                   'projetos' => $projetosPublicados
-//               ));
-//    }
-//
-//    /**
-//     * @Route("/admin/alterar-projeto-principal/{projetoAntigoId}/{projetoId}/{tipoDestaque}", name="_admin_projetos_principais_alterar")
-//     */
-//    public function alterarProjetoDestaqueAction(){
-//        $serviceData = ServiceData::build($this->getRequest()->attributes->all());
-//        $this->get('service.projeto')->alteraProjetoPrincipal($serviceData);
-//        return $this->redirect($this->generateUrl('_admin_projetos_principais'));
-//    }
 }
