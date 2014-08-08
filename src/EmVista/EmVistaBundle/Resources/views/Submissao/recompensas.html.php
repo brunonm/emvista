@@ -2,7 +2,7 @@
 <?php $view['slots']->start('submissao-body') ?>
 
 <form class="form-horizontal" method="post"
-      action="<?php echo $view['router']->generate('submissao_salvarRecompensas', array('submissaoId' => $submissao->getId())); ?>">
+      action="<?php echo $view['router']->generate('submissao_salvar-recompensas', array('submissaoId' => $submissao->getId())); ?>">
 
     <input type="hidden" name="submissaoId" id="submissaoId" value="<?php echo $submissao->getId(); ?>"/>
 

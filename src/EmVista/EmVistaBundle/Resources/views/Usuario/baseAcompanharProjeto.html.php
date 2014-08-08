@@ -10,7 +10,7 @@
     <div class="span12">
         <ul class="nav nav-tabs">
             <li class="active">
-                <a href="<?php echo $view['router']->generate('usuario_apoiadoresProjeto', array('projetoId' => $projeto->getId())); ?>">Apoiadores</a>
+                <a href="<?php echo $view['router']->generate('usuario_apoiadores-projeto', array('projetoId' => $projeto->getId())); ?>">Apoiadores</a>
             </li>
 <!--            <li>
                 <a href="#">Arrecadação</a>

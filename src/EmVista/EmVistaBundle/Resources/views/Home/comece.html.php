@@ -218,7 +218,7 @@
 
 <div id="modalCadastre" class="modal hide fade">
     <form class="form-horizontal" id="form-submissao" method="post"
-          action="<?php echo $view['router']->generate('home_cadastre_submeterEmailProjeto'); ?>">
+          action="<?php echo $view['router']->generate('home_cadastre_submeter-email-projeto'); ?>">
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>

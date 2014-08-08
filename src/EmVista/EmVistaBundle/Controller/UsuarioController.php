@@ -56,7 +56,7 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/usuario/alterar-dados-pessoais", name="usuario_alterarDadosPessoais")
+     * @Route("/usuario/alterar-dados-pessoais", name="usuario_alterar-dados-pessoais")
      */
     public function alterarDadosPessoaisAction(){
         $serviceData = ServiceData::build($this->getRequest()->get('usuario'));
@@ -74,7 +74,7 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/usuario/confirmacao-inativar-conta", name="usuario_confirmacaoInativarConta")
+     * @Route("/usuario/confirmacao-inativar-conta", name="usuario_confirmacao-inativar-conta")
      */
     public function confirmacaoInativarContaAction(){
         return $this->render('EmVistaBundle:Usuario:confirmacaoInativarConta.html.php', array('usuario' => $this->getUser(),
@@ -244,7 +244,7 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/usuario/salvarImagemTemporariaProfile", name="usuario_salvarImagemTemporariaProfile")
+     * @Route("/usuario/salvarImagemTemporariaProfile", name="usuario_salvar-imagem-temporaria-profile")
      * @Method("post")
      */
     public function salvarImagemTemporariaProfileAction(){
@@ -302,7 +302,7 @@ class UsuarioController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/usuario/apoiadores-projeto/{projetoId}", name="usuario_apoiadoresProjeto")
+     * @Route("/usuario/apoiadores-projeto/{projetoId}", name="usuario_apoiadores-projeto")
      */
     public function apoiadoresProjetoAction($projetoId){
         try{

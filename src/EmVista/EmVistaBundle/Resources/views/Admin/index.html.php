@@ -8,16 +8,16 @@
                 <a href="<?php echo $view['router']->generate('admin_categorias') ?>">Categorias</a>
             </li>
             <li>
-                <a href="<?php echo $view['router']->generate('admin_registroTermoUso') ?>">Termos de uso</a>
+                <a href="<?php echo $view['router']->generate('admin_registro-termo-uso') ?>">Termos de uso</a>
             </li>
             <li>
-                <a href="<?php echo $view['router']->generate('admin_gerenciarAdministradores') ?>">Gerenciar administradores</a>
+                <a href="<?php echo $view['router']->generate('admin_gerenciar-administradores') ?>">Gerenciar administradores</a>
             </li>
             <li>
-                <a href="<?php echo $view['router']->generate('admin_listaAprovacaoSubmissao') ?>">Aprovação de submissões</a>
+                <a href="<?php echo $view['router']->generate('admin_lista-aprovacao-submissao') ?>">Aprovação de submissões</a>
             </li>
             <li>
-                <a href="<?php echo $view['router']->generate('admin_publicacaoProjetos') ?>">Publicação de projetos</a>
+                <a href="<?php echo $view['router']->generate('admin_publicacao-projetos') ?>">Publicação de projetos</a>
             </li>
             <li>
                 <a href="<?php echo $view['router']->generate('admin_estornos') ?>">Estornos</a>

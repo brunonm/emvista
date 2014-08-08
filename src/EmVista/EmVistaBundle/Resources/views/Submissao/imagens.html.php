@@ -10,7 +10,7 @@
             <p>Selecione uma imagem ilustrativa do seu projeto. O tamanho máximo permitido é de 2MB e são aceitos os formatos JPG e PNG. </p>
 
             <input id="fileupload" type="file" name="imagem"
-                    data-url="<?php echo $view['router']->generate('submissao_salvarImagemOriginal', array('submissaoId' => $submissao->getId())); ?>">
+                    data-url="<?php echo $view['router']->generate('submissao_salvar-imagem-original', array('submissaoId' => $submissao->getId())); ?>">
         </div>
 
         <div id="crop-controls" style="display: none;">
@@ -43,7 +43,7 @@
             <div class="controls">
                 <a href="<?php echo $view['router']->generate('submissao_video', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn">Voltar</a>
-                <a href="<?php echo $view['router']->generate('submissao_maisSobreVoce', array('submissaoId' => $submissao->getId())); ?>"
+                <a href="<?php echo $view['router']->generate('submissao_mais-sobre-voce', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn" id="button-avancar" disabled>Avançar</a>
             </div>
         </div>

@@ -19,7 +19,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eu<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo $view['router']->generate('usuario_dadosPessoais') ?>">
+                            <li><a href="<?php echo $view['router']->generate('usuario_dados-pessoais') ?>">
                                     <div class="pull-left img-profile">
                                         <img src="<?php echo $user->getImageProfileWebPath()?>" >
                                     </div>

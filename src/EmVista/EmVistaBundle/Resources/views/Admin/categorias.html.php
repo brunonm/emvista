@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle:Admin:index.html.php'); ?>
 <?php $view['slots']->start('admin-body') ?>
 
-<form class="form-horizontal" method="post" action="<?php echo $view['router']->generate('admin_salvarCategoria'); ?>">
+<form class="form-horizontal" method="post" action="<?php echo $view['router']->generate('admin_salvar-categoria'); ?>">
     <div class="control-group">
         <label class="control-label">Nova categoria</label>
         <div class="controls">
@@ -13,7 +13,7 @@
 
 <?php if(count($categorias) > 0): ?>
 
-    <form class="form-horizontal" method="post" action="<?php echo $view['router']->generate('admin_salvarCategoria'); ?>">
+    <form class="form-horizontal" method="post" action="<?php echo $view['router']->generate('admin_salvar-categoria'); ?>">
 
         <div class="control-group">
             <label class="control-label">Categorias</label>

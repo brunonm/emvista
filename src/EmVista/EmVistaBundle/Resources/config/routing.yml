@@ -1,9 +1,9 @@
 emvista_home:
-    resource: "@EmVistaBundle/Resources/config/routing/admin.yml"
+    resource: "@EmVistaBundle/Resources/config/routing/home.yml"
     prefix:   /
 
-emvista_home:
-    resource: "@EmVistaBundle/Resources/config/routing/home.yml"
+emvista_admin:
+    resource: "@EmVistaBundle/Resources/config/routing/admin.yml"
     prefix:   /
 
 emvista_pagamento:

@@ -34,7 +34,7 @@ class HomeController extends ControllerAbstract{
             $this->get('service.projeto')->getProjeto(32),
         );
         $primario   = array(
-            $this->get('service.projeto')->getProjeto(33),
+            $this->get('service.projeto')->getProjeto(1),
             );
 
         $finalizados = array(
@@ -46,6 +46,7 @@ class HomeController extends ControllerAbstract{
         return $this->render(
             'EmVistaBundle:Home:index.html.php',
             array(
+                'primario'   => $primario,
             ));
     }
 

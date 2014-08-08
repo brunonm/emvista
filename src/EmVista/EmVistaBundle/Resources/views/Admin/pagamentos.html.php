@@ -28,7 +28,7 @@
                 <td>R$ <?php echo number_format($item['taxas'], 2, ',', '.'); ?></td>
                 <td><strong>R$ <?php echo number_format($item['valorRepasse'], 2, ',', '.'); ?></strong></td>
                 <td>
-                    <a href="<?php echo $view['router']->generate('admin_informarPagamento',
+                    <a href="<?php echo $view['router']->generate('admin_informar-pagamento',
                                                                   array('projetoId' => $item['projeto']->getId())); ?>">Finalizar</a>
                 </td>
             </tr>

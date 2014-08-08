@@ -44,11 +44,11 @@ class SubmissaoController extends ControllerAbstract{
     public function iniciarAction(){
         $sd = ServiceData::build()->setUser($this->getUser());
         $submissao = $this->get('service.submissao')->iniciar($sd);
-        return $this->redirect($this->generateUrl('submissao_dadosBasicos', array('submissaoId' => $submissao->getId())));
+        return $this->redirect($this->generateUrl('submissao_dados-basicos', array('submissaoId' => $submissao->getId())));
     }
 
     /**
-     * @Route("/submissao/{submissaoId}/dadosBasicos", name="submissao_dadosBasicos")
+     * @Route("/submissao/{submissaoId}/dadosBasicos", name="submissao_dados-basicos")
      */
     public function dadosBasicosAction($submissaoId){
         try{
@@ -65,7 +65,7 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/submissao/{submissaoId}/salvarDadosBasicos", name="submissao_salvarDadosBasicos")
+     * @Route("/submissao/{submissaoId}/salvarDadosBasicos", name="submissao_salvar-dados-basicos")
      * @Method("post")
      */
     public function salvarDadosBasicosAction($submissaoId){
@@ -76,7 +76,7 @@ class SubmissaoController extends ControllerAbstract{
             $this->setSuccessMessage(SubmissaoMessages::DADOS_BASICOS_SALVO_SUCESSO);
         }catch(ServiceValidationException $e){
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
-            $response = $this->redirect($this->generateUrl('submissao_dadosBasicos', array('submissaoId' => $submissaoId)));
+            $response = $this->redirect($this->generateUrl('submissao_dados-basicos', array('submissaoId' => $submissaoId)));
         }
         return $response;
     }
@@ -98,7 +98,7 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/submissao/{submissaoId}/salvarDescricao", name="submissao_salvarDescricao")
+     * @Route("/submissao/{submissaoId}/salvarDescricao", name="submissao_salvar-descricao")
      * @Method("post")
      */
     public function salvarDescricaoAction($submissaoId){
@@ -131,7 +131,7 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/submissao/{submissaoId}/salvarRecompensas", name="submissao_salvarRecompensas")
+     * @Route("/submissao/{submissaoId}/salvarRecompensas", name="submissao_salvar-recompensas")
      * @Method("post")
      */
     public function salvarRecompensasAction($submissaoId){
@@ -166,7 +166,7 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/submissao/{submissaoId}/salvarVideo", name="submissao_salvarVideo")
+     * @Route("/submissao/{submissaoId}/salvarVideo", name="submissao_salvar-video")
      * @Method("post")
      */
     public function salvarVideoAction($submissaoId){
@@ -215,7 +215,7 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/submissao/{submissaoId}/salvarImagemOriginal", name="submissao_salvarImagemOriginal")
+     * @Route("/submissao/{submissaoId}/salvarImagemOriginal", name="submissao_salvar-imagem-original")
      * @Method("post")
      */
     public function salvarImagemOriginalAction($submissaoId){
@@ -265,7 +265,7 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/submissao/{submissaoId}/maisSobreVoce", name="submissao_maisSobreVoce")
+     * @Route("/submissao/{submissaoId}/maisSobreVoce", name="submissao_mais-sobre-voce")
      */
     public function maisSobreVoceAction($submissaoId){
         try{
@@ -285,7 +285,7 @@ class SubmissaoController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/submissao/{submissaoId}/salvarMaisSobreVoce", name="submissao_salvarMaisSobreVoce")
+     * @Route("/submissao/{submissaoId}/salvarMaisSobreVoce", name="submissao_salvar-mais-sobre-voce")
      * @Method("post")
      */
     public function salvarMaisSobreVoceAction($submissaoId){
@@ -295,7 +295,7 @@ class SubmissaoController extends ControllerAbstract{
             $response = $this->forward('EmVistaBundle:Submissao:concluir', array('submissaoId' => $submissaoId));
         }catch(ServiceValidationException $e){
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
-            $response = $this->redirect($this->generateUrl('submissao_maisSobreVoce', array('submissaoId' => $submissaoId)));
+            $response = $this->redirect($this->generateUrl('submissao_mais-sobre-voce', array('submissaoId' => $submissaoId)));
         }
         return $response;
     }
@@ -312,12 +312,12 @@ class SubmissaoController extends ControllerAbstract{
             $response = $this->redirect($this->generateUrl('submissao_sucesso', $param));
         }catch(ServiceValidationException $e){
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
-            $response = $this->redirect($this->generateUrl('submissao_maisSobreVoce', $param));
+            $response = $this->redirect($this->generateUrl('submissao_mais-sobre-voce', $param));
 
         # SE DEU ERRO EM ALGUMA ETAPA, REDIRECIONA
         }catch(DadosBasicosErrorException $e){
             $this->setWarningMessage($e->getMessage());
-            $response = $this->redirect($this->generateUrl('submissao_dadosBasicos', $param));
+            $response = $this->redirect($this->generateUrl('submissao_dados-basicos', $param));
         }catch(DescricaoErrorException $e){
             $this->setWarningMessage($e->getMessage());
             $response = $this->redirect($this->generateUrl('submissao_descricao', $param));
@@ -332,7 +332,7 @@ class SubmissaoController extends ControllerAbstract{
             $response = $this->redirect($this->generateUrl('submissao_imagens', $param));
         }catch(MaisSobreVoceErrorException $e){
             $this->setWarningMessage($e->getMessage());
-            $response = $this->redirect($this->generateUrl('submissao_maisSobreVoce', $param));
+            $response = $this->redirect($this->generateUrl('submissao_mais-sobre-voce', $param));
         }
 
         return $response;

@@ -7,7 +7,7 @@
     <div class="span2">
         <ul class="nav nav-pills nav-stacked">
             <li class="<?php echo ($step == 1 ? 'active' : ''); ?>">
-                <a href="<?php echo $view['router']->generate('submissao_dadosBasicos', $params) ?>">Dados básicos</a>
+                <a href="<?php echo $view['router']->generate('submissao_dados-basicos', $params) ?>">Dados básicos</a>
             </li>
             <li class="<?php echo ($step == 2 ? 'active' : ''); ?>">
                 <a href="<?php echo $view['router']->generate('submissao_descricao', $params) ?>">Descrição</a>
@@ -22,7 +22,7 @@
                 <a href="<?php echo $view['router']->generate('submissao_imagens', $params) ?>">Imagens</a>
             </li>
             <li class="<?php echo ($step == 6 ? 'active' : ''); ?>">
-                <a href="<?php echo $view['router']->generate('submissao_maisSobreVoce', $params) ?>">Mais sobre você</a>
+                <a href="<?php echo $view['router']->generate('submissao_mais-sobre-voce', $params) ?>">Mais sobre você</a>
             </li>
         </ul>
     </div>

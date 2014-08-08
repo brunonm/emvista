@@ -37,7 +37,7 @@
                 </div>
 
                 <br>
-                <p><a href="<?php echo $view['router']->generate('usuario_esqueciMinhaSenha') ?>">Esqueci minha senha</a></p>
+                <p><a href="<?php echo $view['router']->generate('usuario_esqueci-minha-senha') ?>">Esqueci minha senha</a></p>
 
             </fieldset>
 

@@ -31,7 +31,7 @@
                 <td>
                     <?php if($submissao->getStatus()->getId() == \EmVista\EmVistaBundle\Entity\StatusSubmissao::STATUS_INICIAL): ?>
 
-                    <a href="<?php echo $view['router']->generate('submissao_dadosBasicos', array('submissaoId' => $submissao->getId())); ?>">
+                    <a href="<?php echo $view['router']->generate('submissao_dados-basicos', array('submissaoId' => $submissao->getId())); ?>">
                         <?php $nome = $projeto->getNome(); ?>
                         <?php echo empty($nome) ? 'Aguardando preenchimento' : $nome; ?>
                     <a/>
@@ -56,7 +56,7 @@
 
                 <td><?php echo 'R$ ' . number_format($projeto->getValorArrecadado(), 2, ',', '.'); ?></td>
 
-                <td><a href="<?php echo $view['router']->generate('usuario_apoiadoresProjeto', array('projetoId' => $projeto->getId())); ?>"
+                <td><a href="<?php echo $view['router']->generate('usuario_apoiadores-projeto', array('projetoId' => $projeto->getId())); ?>"
                        title="Acompanhar" alt="Acompanhar" class="btn"><i class="icon-wrench"/></a></td>
             </tr>
         <?php endforeach; ?>

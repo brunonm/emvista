@@ -2,7 +2,7 @@
 <?php $view['slots']->start('submissao-body') ?>
 
 <form class="form-horizontal" method="post"
-      action="<?php echo $view['router']->generate('submissao_salvarDescricao', array('submissaoId' => $submissao->getId())); ?>">
+      action="<?php echo $view['router']->generate('submissao_salvar-descricao', array('submissaoId' => $submissao->getId())); ?>">
 
     <input type="hidden" name="submissaoId" id="submissaoId" value="<?php echo $submissao->getId(); ?>"/>
 
@@ -28,7 +28,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <a href="<?php echo $view['router']->generate('submissao_dadosBasicos', array('submissaoId' => $submissao->getId())); ?>"
+                <a href="<?php echo $view['router']->generate('submissao_dados-basicos', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn">Voltar</a>
                 <button type="submit" class="btn">Avançar</button>
             </div>

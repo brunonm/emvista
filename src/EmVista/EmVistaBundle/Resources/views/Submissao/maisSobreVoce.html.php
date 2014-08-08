@@ -2,7 +2,7 @@
 <?php $view['slots']->start('submissao-body') ?>
 
 <form class="form-horizontal" method="post"
-      action="<?php echo $view['router']->generate('submissao_salvarMaisSobreVoce', array('submissaoId' => $submissao->getId())); ?>">
+      action="<?php echo $view['router']->generate('submissao_salvar-mais-sobre-voce', array('submissaoId' => $submissao->getId())); ?>">
 
     <?php if(empty($pessoa)): $pessoa = new \EmVista\EmVistaBundle\Entity\Pessoa(); endif; ?>
     <?php $readOnly = ($pessoa->getId() ? 'readonly' : ''); ?>

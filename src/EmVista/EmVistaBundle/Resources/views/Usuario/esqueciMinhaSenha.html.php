@@ -4,7 +4,7 @@
 
 <div class="span8 offset2">
     
-    <form action="<?php echo $view['router']->generate('usuario_enviarEsqueciMinhaSenha') ?>" method="post">
+    <form action="<?php echo $view['router']->generate('usuario_enviar-esqueci-minha-senha') ?>" method="post">
         <fieldset>
             <div class="page-header">
                 <h3>Esqueci minha senha</h3>

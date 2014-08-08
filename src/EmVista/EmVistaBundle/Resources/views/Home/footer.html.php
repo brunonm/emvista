@@ -8,7 +8,7 @@
                     <?php for($i = 0; $i < $qtdPrimeiraColuna; $i++): ?>
                         <li class="category-item">
                             <?php if($categorias[$i]->getQuantidadeProjetosPublicados() > 0): ?>
-                                <a href="<?php echo $view['router']->generate('projeto_descubraComSearch',array('search' => 'category:' . $categorias[$i]->getSlug())) ?>">
+                                <a href="<?php echo $view['router']->generate('projeto_descubra-search',array('search' => 'category:' . $categorias[$i]->getSlug())) ?>">
                                     <?php echo $categorias[$i]->getNome(); ?>
                                 </a>
                             <?php else: ?>
@@ -24,7 +24,7 @@
                     <?php for($i = $qtdPrimeiraColuna; $i < count($categorias); $i++): ?>
                         <li class="category-item">
                             <?php if($categorias[$i]->getQuantidadeProjetosPublicados() > 0): ?>
-                                <a href="<?php echo $view['router']->generate('projeto_descubraComSearch',array('search' => 'category:' . $categorias[$i]->getSlug())) ?>">
+                                <a href="<?php echo $view['router']->generate('projeto_descubra-search',array('search' => 'category:' . $categorias[$i]->getSlug())) ?>">
                                     <?php echo $categorias[$i]->getNome(); ?>
                                 </a>
                             <?php else: ?>

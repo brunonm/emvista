@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle:Usuario:base.html.php'); ?>
 <?php $view['slots']->start('usuario-body') ?>
 
-<form class="form-horizontal"  action="<?php echo $view['router']->generate('usuario_alterarDadosPessoais') ?>" method="post">
+<form class="form-horizontal"  action="<?php echo $view['router']->generate('usuario_alterar-dados-pessoais') ?>" method="post">
     <input type="hidden" name="usuario[id]" value="<?php echo $usuario->getId(); ?>"/>
     <fieldset>
         <legend>Dados Pessoais</legend>
@@ -127,7 +127,7 @@
     <div class="form-actions">
             <button type="submit" class="btn btn-large btn-success">Alterar</button>
             <div style="text-align: right">
-                <a id="inativar" href="<?php echo $view['router']->generate('usuario_confirmacaoInativarConta') ?>">Inativar Conta</a>
+                <a id="inativar" href="<?php echo $view['router']->generate('usuario_confirmacao-inativar-conta') ?>">Inativar Conta</a>
             </div>
     </div>
 </form>

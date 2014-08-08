@@ -36,7 +36,7 @@
                 foreach($categorias as $indice => $categoria):
                     ?>
                     <li  categoria="category:<?php echo $categoria->getSlug()?>">
-                        <a class="label-category" href="<?php echo $view['router']->generate('projeto_descubraComSearch',array('search' => 'category:'.$categoria->getSlug())) ?>" data-toggle="tab"><?php echo $categoria->getNome()?>
+                        <a class="label-category" href="<?php echo $view['router']->generate('projeto_descubra-search',array('search' => 'category:'.$categoria->getSlug())) ?>" data-toggle="tab"><?php echo $categoria->getNome()?>
                             <i class="icon-remove-sign icon-white pull-right active-sign"></i>
                         </a>
                     </li>

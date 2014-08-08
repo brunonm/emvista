@@ -24,7 +24,7 @@ class AdminController extends ControllerAbstract{
     }
 
     /**
-     * @Route("admin/gerenciar-administradores", name="admin_gerenciarAdministradores")
+     * @Route("admin/gerenciar-administradores", name="admin_gerenciar-administradores")
      */
     public function gerenciarAdministradoresAction(){
         $administradores = $this->get('service.usuario')->listarAdministradores();
@@ -32,7 +32,7 @@ class AdminController extends ControllerAbstract{
     }
 
     /**
-     * @Route("admin/vincular-usuario-administrador", name="admin_vincularUsuarioAdministrador")
+     * @Route("admin/vincular-usuario-administrador", name="admin_vincular-usuario-administrador")
      */
     public function vincularUsuarioAdministradorAction(){
         $usuarios = $this->get('service.usuario')->listarUsuariosAtivos();
@@ -52,11 +52,11 @@ class AdminController extends ControllerAbstract{
             $this->setWarningMessage(UsuarioMessages::ERROR_JA_POSSUI_ACESSO_ADMINISTRADOR);
         }
 
-        return $this->redirect($this->generateUrl('admin_gerenciarAdministradores'));
+        return $this->redirect($this->generateUrl('admin_gerenciar-administradores'));
     }
 
     /**
-     * @Route("admin/remover-administrador/{usuarioId}", name="admin_removerAdministrador")
+     * @Route("admin/remover-administrador/{usuarioId}", name="admin_remover-administrador")
      */
     public function removerAdministradorAction($usuarioId){
         $sd = ServiceData::build()->set('usuarioId', $usuarioId);
@@ -68,7 +68,7 @@ class AdminController extends ControllerAbstract{
             $this->setWarningMessage(UsuarioMessages::ERROR_NAO_POSSUI_ACESSO_ADMINISTRADOR);
         }
 
-        return $this->redirect($this->generateUrl('admin_gerenciarAdministradores'));
+        return $this->redirect($this->generateUrl('admin_gerenciar-administradores'));
     }
 
     /**
@@ -80,7 +80,7 @@ class AdminController extends ControllerAbstract{
     }
 
     /**
-     * @Route("/admin/informar-pagamento/projetoId/{projetoId}", name="admin_informarPagamento")
+     * @Route("/admin/informar-pagamento/projetoId/{projetoId}", name="admin_informar-pagamento")
      */
     public function informarPagamentoAction($projetoId){
         try{
@@ -94,7 +94,7 @@ class AdminController extends ControllerAbstract{
     }
 
     /**
-     * @Route("admin/registro-termo-uso", name="admin_registroTermoUso")
+     * @Route("admin/registro-termo-uso", name="admin_registro-termo-uso")
      */
     public function registroTermoUsoAction(){
         $termoUso = $this->get('service.projeto')->getTermoUsoVigente();
@@ -102,17 +102,17 @@ class AdminController extends ControllerAbstract{
     }
 
     /**
-     * @Route("admin/registrar-termo-uso", name="admin_registrarTermoUso")
+     * @Route("admin/registrar-termo-uso", name="admin_registrar-termo-uso")
      */
     public function registrarTermoUsoAction(){
         $serviceData = ServiceData::build($this->getRequest()->get('termoUso'));
         try{
             $termoUso = $this->get('service.projeto')->salvarTermoUso($serviceData);
             $this->setSuccessMessage(TermoUsoMessages::TERMO_USO_SUCESSO_ALTERADO);
-            $response = $this->redirect($this->generateUrl('admin_registroTermoUso'));
+            $response = $this->redirect($this->generateUrl('admin_registro-termo-uso'));
         } catch (ServiceValidationException $e) {
             $this->setWarningMessage(TermoUsoMessages::ERRO_VALIDACAO);
-            $response = $this->redirect($this->generateUrl('admin_registroTermoUso'));
+            $response = $this->redirect($this->generateUrl('admin_registro-termo-uso'));
         }
         return $response;
     }
@@ -126,7 +126,7 @@ class AdminController extends ControllerAbstract{
     }
 
     /**
-     * @Route("admin/salvarCategoria", name="admin_salvarCategoria")
+     * @Route("admin/salvarCategoria", name="admin_salvar-categoria")
      * @Method("post")
      */
     public function salvarCategoriaAction(){
@@ -152,7 +152,7 @@ class AdminController extends ControllerAbstract{
     }
 
     /**
-     * @Route("admin/listaAprovacaoSubmissao", name="admin_listaAprovacaoSubmissao")
+     * @Route("admin/listaAprovacaoSubmissao", name="admin_lista-aprovacao-submissao")
      */
     public function listaAprovacaoSubmissaoAction(){
         $submissoes = $this->get('service.submissao')->listarSubmissoesAguardandoAprovacao();
@@ -187,18 +187,18 @@ class AdminController extends ControllerAbstract{
         }catch(ServiceValidationException $e){
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
         }
-        return $this->redirect($this->generateUrl('admin_listaAprovacaoSubmissao'));;
+        return $this->redirect($this->generateUrl('admin_lista-aprovacao-submissao'));;
     }
 
     /**
-     * @Route("admin/publicacao-projetos", name="admin_publicacaoProjetos")
+     * @Route("admin/publicacao-projetos", name="admin_publicacao-projetos")
      */
     public function publicacaoProjetosAction(){
         return $this->render('EmVistaBundle:Admin:publicacaoProjetos.html.php');
     }
 
     /**
-     * @Route("admin/publicarProjetos", name="admin_publicarProjetos")
+     * @Route("admin/publicarProjetos", name="admin_publicar-projetos")
      */
     public function publicarProjetosAction(){
         try{

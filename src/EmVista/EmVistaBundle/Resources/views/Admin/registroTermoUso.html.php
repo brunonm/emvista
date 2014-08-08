@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle:Admin:index.html.php'); ?>
 <?php $view['slots']->start('admin-body') ?>
 <link rel="stylesheet" href="/bundles/emvista/css/rte.css" />
-<form class="form-horizontal" action="<?php echo $view['router']->generate('admin_registrarTermoUso') ?>" method="post">
+<form class="form-horizontal" action="<?php echo $view['router']->generate('admin_registrar-termo-uso') ?>" method="post">
     <fieldset>
         <legend>Termos de uso</legend>
         <div class="control-group">

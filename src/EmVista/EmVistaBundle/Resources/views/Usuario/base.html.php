@@ -18,10 +18,10 @@
             <div class="span2">
                 <ul class="nav nav-pills nav-stacked">
                     <li class="<?php echo ($active == 'dadosPessoais')?'active':'';?>">
-                        <a href="<?php echo $view['router']->generate('usuario_dadosPessoais') ?>">Dados Pessoais</a>
+                        <a href="<?php echo $view['router']->generate('usuario_dados-pessoais') ?>">Dados Pessoais</a>
                     </li>
                     <li  class="<?php echo ($active == 'meusProjetos')?'active':'';?>">
-                        <a href="<?php echo $view['router']->generate('usuario_meusProjetos') ?>">Meus Projetos</a>
+                        <a href="<?php echo $view['router']->generate('usuario_meus-projetos') ?>">Meus Projetos</a>
                     </li>
                     <li  class="<?php echo ($active == 'contribuicoes')?'active':'';?>"">
                         <a href="<?php echo $view['router']->generate('usuario_contribuicoes') ?>">Contribuições</a>
@@ -42,8 +42,8 @@
         <div class="modal-body">
 
 
-            <form action="<?php echo $view['router']->generate('usuario_salvarImagemTemporariaProfile') ?>"
-                  data-url="<?php echo $view['router']->generate('usuario_salvarImagemTemporariaProfile') ?>" class="uploadImageField" >
+            <form action="<?php echo $view['router']->generate('usuario_salvar-imagem-temporaria-profile') ?>"
+                  data-url="<?php echo $view['router']->generate('usuario_salvar-imagem-temporaria-profile') ?>" class="uploadImageField" >
 
                  <div class="uploadImagemOver" style="display: none">
                     <h4>Pode largar aqui! ;)</h4>
