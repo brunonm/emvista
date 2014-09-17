@@ -145,7 +145,7 @@ class UsuarioController extends ControllerAbstract{
             $token = new UsernamePasswordToken($usuario, $sd->get('senha'), 'main', $usuario->getRoles());
             $this->get('security.context')->setToken($token);
 
-            $response = $this->redirect($this->generateUrl('usuario_registroSucesso'));
+            $response = $this->redirect($this->generateUrl('usuario_registro-sucesso'));
         }catch(ServiceValidationException $e){
             $this->setNoticeMessage(UsuarioMessages::ERRO_VALIDACAO);
             $response = $this->redirect($this->generateUrl('usuario_registro'));
