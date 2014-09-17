@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Core\Exceptions;
 
-class MailerException extends \Exception{
-
+class MailerException extends \Exception
+{
 }

@@ -2,15 +2,14 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\StatusSubmissao
  *
  */
-class StatusSubmissao extends EntityAbstract{
-
+class StatusSubmissao extends EntityAbstract
+{
     const STATUS_INICIAL              = 1;
     const STATUS_AGUARDANDO_APROVACAO = 2;
     const STATUS_APROVADO             = 3;
@@ -39,7 +38,8 @@ class StatusSubmissao extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -48,8 +48,10 @@ class StatusSubmissao extends EntityAbstract{
      *
      * @param string $nome
      */
-    public function setNome($nome){
+    public function setNome($nome)
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -58,7 +60,8 @@ class StatusSubmissao extends EntityAbstract{
      *
      * @return string
      */
-    public function getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 
@@ -67,8 +70,10 @@ class StatusSubmissao extends EntityAbstract{
      *
      * @param string $descricao
      */
-    public function setDescricao($descricao){
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
+
         return $this;
     }
 
@@ -77,7 +82,8 @@ class StatusSubmissao extends EntityAbstract{
      *
      * @return string
      */
-    public function getDescricao(){
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 

@@ -2,10 +2,8 @@
 
 namespace EmVista\EmVistaBundle\Messages;
 
-use EmVista\EmVistaBundle\Messages\BaseMessages;
-
-class SubmissaoMessages extends BaseMessages{
-
+class SubmissaoMessages extends BaseMessages
+{
     const DADOS_BASICOS_SALVO_SUCESSO = 'Dados básicos salvos com sucesso.';
     const DESCRICAO_SALVA_SUCESSO     = 'Descrição salva com sucesso.';
     const RECOMPENSAS_SALVA_SUCESSO   = 'Recompensas salvas com sucesso.';

@@ -49,7 +49,7 @@
                     <?php $class = ''; ?>
                     <?php foreach($view['session']->getFlashes() as $type => $messages): ?>
                         <?php
-                            switch($type){
+                            switch ($type) {
                                 case 'notice' : $class = 'alert-info';    break;
                                 case 'warning': $class = '';              break;
                                 case 'error'  : $class = 'alert-error';   break;

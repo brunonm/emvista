@@ -2,39 +2,33 @@
 
 namespace EmVista\EmVistaBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use JMS\SecurityExtraBundle\Annotation\Secure;
 use EmVista\EmVistaBundle\Messages\ProjetoMessages;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use EmVista\EmVistaBundle\Core\Controller\ControllerAbstract;
-use EmVista\EmVistaBundle\Core\Exceptions\ServiceValidationException;
 use EmVista\EmVistaBundle\Services\Exceptions\ProjetoNaoPublicadoException;
 use EmVista\EmVistaBundle\Services\Exceptions\ProjetoNaoEncontradoException;
-use EmVista\EmVistaBundle\Services\Exceptions\SubmissaoJaRespondidaException;
 
-class ProjetoController extends ControllerAbstract{
-
+class ProjetoController extends ControllerAbstract
+{
     /**
      * A rota dessa action foi definida no routing.yml
      */
-    public function visualizarAction($projetoSlug){
-
+    public function visualizarAction($projetoSlug)
+    {
         // para visualizar, precisar estar publicado
 
-        try{
+        try {
             $usuario = $this->getUser();
 
             $service = $this->get('service.projeto');
-
 
             $sd = ServiceData::build(array('slug' => $projetoSlug))->setUser($usuario);
 
             $projeto = $service->getProjetoBySlug($sd);
 
-            if(false == $projeto->getPublicado()){
+            if (false == $projeto->getPublicado()) {
                 throw new ProjetoNaoPublicadoException();
             }
 
@@ -52,11 +46,12 @@ class ProjetoController extends ControllerAbstract{
                     'hasUsuarioDoacao' => $hasUsuarioDoacao,
                     'atualizacoes' => $atualizacoes));
 
-        }catch(ProjetoNaoEncontradoException $e){
+        } catch (ProjetoNaoEncontradoException $e) {
             $this->setWarningMessage(ProjetoMessages::PROJETO_NAO_ENCONTRADO);
+
             return $this->redirect($this->generateUrl('home_index'));
 
-        }catch(ProjetoNaoPublicadoException $e){
+        } catch (ProjetoNaoPublicadoException $e) {
             return $this->redirect($this->generateUrl('home_index'));
         }
     }
@@ -64,10 +59,12 @@ class ProjetoController extends ControllerAbstract{
     /**
      * @Route("/projeto/salvar-atualizacao", name="projeto_salvarAtualizacao")
      */
-    public function salvarAtualizacaoAction(){
+    public function salvarAtualizacaoAction()
+    {
         $sd = ServiceData::build($this->getRequest()->get('atualizacao'));
         $projeto = $this->get('service.projeto')->salvarAtualizacao($sd);
         $this->setSuccessMessage(ProjetoMessages::ATUALIZACAO_INSERIDA_SUCESSO);
+
         return $this->redirect($this->generateUrl('projeto_visualizar', array('projetoSlug' => $projeto->getSlug())));
     }
 
@@ -76,18 +73,19 @@ class ProjetoController extends ControllerAbstract{
      * @Route("/descubra/", defaults={"search" = ""}, name="projeto_descubra")
      * @Route("/descubra/{search}", name="projeto_descubraComSearch")
      */
-    public function descubraAction($search){
-
+    public function descubraAction($search)
+    {
         $sd = ServiceData::build(array('search' => $search));
         $projetoService = $this->get('service.projeto');
 
         $categorias     = $projetoService->listarCategorias();
 
-        if($search != ''){
+        if ($search != '') {
             $projetos       = $projetoService->search($sd);
-        }else{
+        } else {
             $projetos       = $projetoService->listarProjetosPublicados();
         }
+
         return $this->render('EmVistaBundle:Projeto:listaProjeto.html.php', array(
                    'categorias' => $categorias,
                    'projetos' => $projetos,
@@ -97,28 +95,32 @@ class ProjetoController extends ControllerAbstract{
     /**
      * @Route("/projeto/search/{search}", name="projeto_search")
      */
-    public function searchAction($search){
+    public function searchAction($search)
+    {
         $sd = ServiceData::build(array('search' => $search));
         $projetoService = $this->get('service.projeto');
         $projetos       = $projetoService->search($sd);
         $retorno = array();
-        foreach($projetos as $indice =>$projeto){
+        foreach ($projetos as $indice =>$projeto) {
             $retorno[$indice] = $projeto->toArray();
         }
         $response = new Response(json_encode($retorno));
+
         return $response;
     }
 
     /**
      * @Route("/projeto/listar-json", name="projeto_listarJson")
      */
-    public function listarJsonAction(){
+    public function listarJsonAction()
+    {
         $projetoService = $this->get('service.projeto');
         $projetos = $projetoService->listarProjetosPublicados();
-        foreach($projetos as $indice =>$projeto){
+        foreach ($projetos as $indice =>$projeto) {
             $retorno[$indice] = $projeto->toArray();
         }
         $response = new Response(json_encode($retorno));
+
         return $response;
     }
 

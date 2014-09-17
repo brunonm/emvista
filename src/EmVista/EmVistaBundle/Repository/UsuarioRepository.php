@@ -2,7 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Repository;
 
-use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
 use EmVista\EmVistaBundle\Entity\Role;
 use EmVista\EmVistaBundle\Entity\Projeto;
@@ -12,13 +11,14 @@ use EmVista\EmVistaBundle\Entity\StatusDoacao;
 /**
  * UsuarioRepository
  */
-class UsuarioRepository extends EntityRepository{
-
+class UsuarioRepository extends EntityRepository
+{
     /**
      * Lista todos os usuários que possuem a ROLE_ADMIN
      * @return Usuario[]
      */
-    public function listarAdministradores(){
+    public function listarAdministradores()
+    {
         $qb = $this->createQueryBuilder('u')
                    ->join('u.userRoles', 'r')
                    ->where('r.id = :role')
@@ -31,10 +31,11 @@ class UsuarioRepository extends EntityRepository{
 
     /**
      * Lista todos os apoiadores de um projeto com pagamento aprovado
-     * @param Projeto $projeto
+     * @param  Projeto   $projeto
      * @return Usuario[]
      */
-    public function listarApoiadoresByProjeto(Projeto $projeto){
+    public function listarApoiadoresByProjeto(Projeto $projeto)
+    {
         $qb = $this->createQueryBuilder('u')
                    ->select('u')
                    ->distinct()

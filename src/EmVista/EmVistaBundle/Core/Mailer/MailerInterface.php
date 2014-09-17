@@ -2,10 +2,10 @@
 
 namespace EmVista\EmVistaBundle\Core\Mailer;
 
-interface MailerInterface{
-
+interface MailerInterface
+{
     /**
-     * @param Message $message
+     * @param  Message $message
      * @return integer
      */
     public function send(Message $message);

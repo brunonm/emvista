@@ -17,13 +17,13 @@
         <div class="row">
             <div class="span2">
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="<?php echo ($active == 'dadosPessoais')?'active':'';?>">
+                    <li class="<?php echo ($active == 'dadosPessoais') ? 'active' : '';?>">
                         <a href="<?php echo $view['router']->generate('usuario_dados-pessoais') ?>">Dados Pessoais</a>
                     </li>
-                    <li  class="<?php echo ($active == 'meusProjetos')?'active':'';?>">
+                    <li  class="<?php echo ($active == 'meusProjetos') ? 'active' : '';?>">
                         <a href="<?php echo $view['router']->generate('usuario_meus-projetos') ?>">Meus Projetos</a>
                     </li>
-                    <li  class="<?php echo ($active == 'contribuicoes')?'active':'';?>"">
+                    <li  class="<?php echo ($active == 'contribuicoes') ? 'active' : '';?>"">
                         <a href="<?php echo $view['router']->generate('usuario_contribuicoes') ?>">Contribuições</a>
                     </li>
                 </ul>

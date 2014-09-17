@@ -3,7 +3,7 @@
         <p class="brand">O que é EmVista e Crowdfunding? <a href="<?php echo $view['router']->generate('home_crowdfunding'); ?>">Saiba mais</a></p>
         <ul class="nav secondary-nav account-menu pull-right">
             <li class="menu-item last-item item-search">
-                <form method="post" action="<?php echo $view['router']->generate('projeto_descubra')?>" 
+                <form method="post" action="<?php echo $view['router']->generate('projeto_descubra')?>"
                       realAction="<?php echo $view['router']->generate('projeto_descubra')?>" class="form-search" autocomplete="off">
                     <input type="text" class="input-search" name="input[search]" />
                     <input type="submit" class="hidden-accessible"/>

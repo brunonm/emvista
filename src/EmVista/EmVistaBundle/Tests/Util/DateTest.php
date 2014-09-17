@@ -3,15 +3,15 @@
 namespace EmVista\EmVistaBundle\Tests\Util;
 
 use EmVista\EmVistaBundle\Tests\TestCase;
-use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
 use EmVista\EmVistaBundle\Util\Date;
 
-class DateTest extends TestCase{
-
+class DateTest extends TestCase
+{
     /**
      * @test
      */
-    public function deveFormatarDataAPartirDeUmaStringComSucesso(){
+    public function deveFormatarDataAPartirDeUmaStringComSucesso()
+    {
         $date = '2011-12-30';
         $formattedDate = Date::formatdmY($date);
         $this->assertEquals('30/12/2011', $formattedDate);
@@ -20,7 +20,8 @@ class DateTest extends TestCase{
     /**
      * @test
      */
-    public function deveFormatarDataAPartirDeUmDateTimeComSucesso(){
+    public function deveFormatarDataAPartirDeUmDateTimeComSucesso()
+    {
         $date = new \DateTime('2011-12-30');
         $formattedDate = Date::formatdmY($date);
         $this->assertEquals('30/12/2011', $formattedDate);
@@ -29,7 +30,8 @@ class DateTest extends TestCase{
     /**
      * @test
      */
-    public function deveCriarDateTimeComSucesso(){
+    public function deveCriarDateTimeComSucesso()
+    {
         $date = '10/11/2011';
         $datetime = Date::buildDateTime($date);
         $this->assertInstanceOf('\DateTime', $datetime);

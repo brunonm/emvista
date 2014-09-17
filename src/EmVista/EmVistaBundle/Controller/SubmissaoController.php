@@ -2,7 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Controller;
 
-use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Response;
 use EmVista\EmVistaBundle\Messages\SubmissaoMessages;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
@@ -19,10 +18,10 @@ use EmVista\EmVistaBundle\Services\Exceptions\Submissao\RecompensasErrorExceptio
 use EmVista\EmVistaBundle\Services\Exceptions\Submissao\DadosBasicosErrorException;
 use EmVista\EmVistaBundle\Services\Exceptions\Submissao\MaisSobreVoceErrorException;
 
-class SubmissaoController extends ControllerAbstract{
-
-
-    private function verifyPermission($submissaoId){
+class SubmissaoController extends ControllerAbstract
+{
+    private function verifyPermission($submissaoId)
+    {
         $sd = ServiceData::build()->setUser($this->getUser())
                                   ->set('submissaoId', $submissaoId);
 
@@ -32,8 +31,10 @@ class SubmissaoController extends ControllerAbstract{
     /**
      * @Route("/submissao/termosUso", name="submissao_termosUso")
      */
-    public function termosUsoAction(){
+    public function termosUsoAction()
+    {
         $termosUso = $this->get('service.projeto')->getTermoUsoVigente();
+
         return $this->render('EmVistaBundle:Submissao:termosUso.html.php', array('termosUso' => $termosUso));
     }
 
@@ -41,25 +42,29 @@ class SubmissaoController extends ControllerAbstract{
      * @Route("/submissao/iniciar", name="submissao_iniciar")
      * @Method("post")
      */
-    public function iniciarAction(){
+    public function iniciarAction()
+    {
         $sd = ServiceData::build()->setUser($this->getUser());
         $submissao = $this->get('service.submissao')->iniciar($sd);
+
         return $this->redirect($this->generateUrl('submissao_dados-basicos', array('submissaoId' => $submissao->getId())));
     }
 
     /**
      * @Route("/submissao/{submissaoId}/dadosBasicos", name="submissao_dados-basicos")
      */
-    public function dadosBasicosAction($submissaoId){
-        try{
+    public function dadosBasicosAction($submissaoId)
+    {
+        try {
             $this->verifyPermission($submissaoId);
 
             $sd = ServiceData::build()->set('submissaoId', $submissaoId);
             $dados = $this->get('service.submissao')->dadosBasicos();
             $dados['submissao'] = $this->get('service.submissao')->getSubmissao($sd);
             $dados['step']      = 1;
+
             return $this->render('EmVistaBundle:Submissao:dadosBasicos.html.php', $dados);
-        }catch(PermissaoNegadaException $e){
+        } catch (PermissaoNegadaException $e) {
             return $this->redirect($this->generateUrl('home_index'));
         }
     }
@@ -68,31 +73,35 @@ class SubmissaoController extends ControllerAbstract{
      * @Route("/submissao/{submissaoId}/salvarDadosBasicos", name="submissao_salvar-dados-basicos")
      * @Method("post")
      */
-    public function salvarDadosBasicosAction($submissaoId){
-        try{
+    public function salvarDadosBasicosAction($submissaoId)
+    {
+        try {
             $sd = ServiceData::build($this->getRequest()->request->all());
             $this->get('service.submissao')->salvarDadosBasicos($sd);
             $response = $this->redirect($this->generateUrl('submissao_descricao', array('submissaoId' => $submissaoId)));
             $this->setSuccessMessage(SubmissaoMessages::DADOS_BASICOS_SALVO_SUCESSO);
-        }catch(ServiceValidationException $e){
+        } catch (ServiceValidationException $e) {
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
             $response = $this->redirect($this->generateUrl('submissao_dados-basicos', array('submissaoId' => $submissaoId)));
         }
+
         return $response;
     }
 
     /**
      * @Route("/submissao/{submissaoId}/descricao", name="submissao_descricao")
      */
-    public function descricaoAction($submissaoId){
-        try{
+    public function descricaoAction($submissaoId)
+    {
+        try {
             $this->verifyPermission($submissaoId);
 
             $sd = ServiceData::build()->set('submissaoId', $submissaoId);
             $params['submissao'] = $this->get('service.submissao')->getSubmissao($sd);
             $params['step']      = 2;
+
             return $this->render('EmVistaBundle:Submissao:descricao.html.php', $params);
-        }catch(PermissaoNegadaException $e){
+        } catch (PermissaoNegadaException $e) {
             return $this->redirect($this->generateUrl('home_index'));
         }
     }
@@ -101,31 +110,35 @@ class SubmissaoController extends ControllerAbstract{
      * @Route("/submissao/{submissaoId}/salvarDescricao", name="submissao_salvar-descricao")
      * @Method("post")
      */
-    public function salvarDescricaoAction($submissaoId){
-        try{
+    public function salvarDescricaoAction($submissaoId)
+    {
+        try {
             $sd = ServiceData::build($this->getRequest()->request->all());
             $this->get('service.submissao')->salvarDescricao($sd);
             $response = $this->redirect($this->generateUrl('submissao_recompensas', array('submissaoId' => $submissaoId)));
             $this->setSuccessMessage(SubmissaoMessages::DESCRICAO_SALVA_SUCESSO);
-        }catch(ServiceValidationException $e){
+        } catch (ServiceValidationException $e) {
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
             $response = $this->redirect($this->generateUrl('submissao_descricao', array('submissaoId' => $submissaoId)));
         }
+
         return $response;
     }
 
     /**
      * @Route("/submissao/{submissaoId}/recompensas", name="submissao_recompensas")
      */
-    public function recompensasAction($submissaoId){
-        try{
+    public function recompensasAction($submissaoId)
+    {
+        try {
             $this->verifyPermission($submissaoId);
 
             $sd = ServiceData::build()->set('submissaoId', $submissaoId);
             $params['submissao'] = $this->get('service.submissao')->getSubmissao($sd);
             $params['step']      = 3;
+
             return $this->render('EmVistaBundle:Submissao:recompensas.html.php', $params);
-        }catch(PermissaoNegadaException $e){
+        } catch (PermissaoNegadaException $e) {
             return $this->redirect($this->generateUrl('home_index'));
         }
     }
@@ -134,24 +147,27 @@ class SubmissaoController extends ControllerAbstract{
      * @Route("/submissao/{submissaoId}/salvarRecompensas", name="submissao_salvar-recompensas")
      * @Method("post")
      */
-    public function salvarRecompensasAction($submissaoId){
-        try{
+    public function salvarRecompensasAction($submissaoId)
+    {
+        try {
             $sd = ServiceData::build($this->getRequest()->request->all());
             $this->get('service.submissao')->salvarRecompensas($sd);
             $response = $this->redirect($this->generateUrl('submissao_video', array('submissaoId' => $submissaoId)));
             $this->setSuccessMessage(SubmissaoMessages::RECOMPENSAS_SALVA_SUCESSO);
-        }catch(ServiceValidationException $e){
+        } catch (ServiceValidationException $e) {
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
             $response = $this->redirect($this->generateUrl('submissao_recompensas', array('submissaoId' => $submissaoId)));
         }
+
         return $response;
     }
 
     /**
      * @Route("/submissao/{submissaoId}/video", name="submissao_video")
      */
-    public function videoAction($submissaoId){
-        try{
+    public function videoAction($submissaoId)
+    {
+        try {
             $this->verifyPermission($submissaoId);
 
             $sd = ServiceData::build()->set('submissaoId', $submissaoId);
@@ -159,8 +175,9 @@ class SubmissaoController extends ControllerAbstract{
             $params['submissao']  = $service->getSubmissao($sd);
             $params['sitesVideo'] = $service->getSitesVideo();
             $params['step']       = 4;
+
             return $this->render('EmVistaBundle:Submissao:video.html.php', $params);
-        }catch(PermissaoNegadaException $e){
+        } catch (PermissaoNegadaException $e) {
             return $this->redirect($this->generateUrl('home_index'));
         }
     }
@@ -169,27 +186,30 @@ class SubmissaoController extends ControllerAbstract{
      * @Route("/submissao/{submissaoId}/salvarVideo", name="submissao_salvar-video")
      * @Method("post")
      */
-    public function salvarVideoAction($submissaoId){
-        try{
+    public function salvarVideoAction($submissaoId)
+    {
+        try {
             $sd = ServiceData::build($this->getRequest()->request->all());
             $this->get('service.submissao')->salvarVideo($sd);
             $response = $this->redirect($this->generateUrl('submissao_imagens', array('submissaoId' => $submissaoId)));
             $this->setSuccessMessage(SubmissaoMessages::VIDEO_SALVO_SUCESSO);
-        }catch(ServiceValidationException $e){
+        } catch (ServiceValidationException $e) {
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
             $response = $this->redirect($this->generateUrl('submissao_video', array('submissaoId' => $submissaoId)));
-        }catch(VideoInvalidoException $e){
+        } catch (VideoInvalidoException $e) {
             $this->setWarningMessage($e->getMessage());
             $response = $this->redirect($this->generateUrl('submissao_video', array('submissaoId' => $submissaoId)));
         }
+
         return $response;
     }
 
     /**
      * @Route("/submissao/{submissaoId}/imagens", name="submissao_imagens")
      */
-    public function imagensAction($submissaoId){
-        try{
+    public function imagensAction($submissaoId)
+    {
+        try {
             $this->verifyPermission($submissaoId);
 
             $sd = ServiceData::build()->set('submissaoId', $submissaoId);
@@ -201,7 +221,7 @@ class SubmissaoController extends ControllerAbstract{
             $params['step'] = 5;
 
             return $this->render('EmVistaBundle:Submissao:imagens.html.php', $params);
-        }catch(PermissaoNegadaException $e){
+        } catch (PermissaoNegadaException $e) {
             return $this->redirect($this->generateUrl('home_index'));
         }
     }
@@ -209,8 +229,10 @@ class SubmissaoController extends ControllerAbstract{
     /**
      * @Route("/submissao/getCropParams", name="submissao_getCropParams")
      */
-    public function getCropParamsAction(){
+    public function getCropParamsAction()
+    {
         $result = $this->get('service.submissao')->getCropParams();
+
         return new Response(json_encode($result), 200, array('Content-Type' => 'application/json'));
     }
 
@@ -218,8 +240,9 @@ class SubmissaoController extends ControllerAbstract{
      * @Route("/submissao/{submissaoId}/salvarImagemOriginal", name="submissao_salvar-imagem-original")
      * @Method("post")
      */
-    public function salvarImagemOriginalAction($submissaoId){
-        try{
+    public function salvarImagemOriginalAction($submissaoId)
+    {
+        try {
             $request = $this->getRequest();
 
             $sd = ServiceData::build();
@@ -235,7 +258,7 @@ class SubmissaoController extends ControllerAbstract{
                 'status'  => true
             );
 
-        }catch(ServiceValidationException $e){
+        } catch (ServiceValidationException $e) {
             $return = array(
                 'message' => $e->getMessage(),
                 'status'  => false
@@ -249,12 +272,13 @@ class SubmissaoController extends ControllerAbstract{
      * @Route("/submissao/{submissaoId}/salvarCrop", name="submissao_salvarCrop")
      * @Method("post")
      */
-    public function salvarCropAction($submissaoId){
-        try{
+    public function salvarCropAction($submissaoId)
+    {
+        try {
             $sd = ServiceData::build($this->getRequest()->request->all());
             $this->get('service.submissao')->cropDestaque($sd);
             $return = array('status'  => true);
-        }catch(ServiceValidationException $e){
+        } catch (ServiceValidationException $e) {
             $return = array(
                 'message' => $e->getMessage(),
                 'status'  => false
@@ -267,8 +291,9 @@ class SubmissaoController extends ControllerAbstract{
     /**
      * @Route("/submissao/{submissaoId}/maisSobreVoce", name="submissao_mais-sobre-voce")
      */
-    public function maisSobreVoceAction($submissaoId){
-        try{
+    public function maisSobreVoceAction($submissaoId)
+    {
+        try {
             $this->verifyPermission($submissaoId);
 
             $sd = ServiceData::build()->set('submissaoId', $submissaoId);
@@ -278,8 +303,9 @@ class SubmissaoController extends ControllerAbstract{
             $params['user']       = $user;
             $params['pessoa']     = $this->get('service.usuario')->getPessoa(ServiceData::build()->setUser($user));
             $params['step']       = 6;
+
             return $this->render('EmVistaBundle:Submissao:maisSobreVoce.html.php', $params);
-        }catch(PermissaoNegadaException $e){
+        } catch (PermissaoNegadaException $e) {
             return $this->redirect($this->generateUrl('home_index'));
         }
     }
@@ -288,49 +314,52 @@ class SubmissaoController extends ControllerAbstract{
      * @Route("/submissao/{submissaoId}/salvarMaisSobreVoce", name="submissao_salvar-mais-sobre-voce")
      * @Method("post")
      */
-    public function salvarMaisSobreVoceAction($submissaoId){
-        try{
+    public function salvarMaisSobreVoceAction($submissaoId)
+    {
+        try {
             $sd = ServiceData::build($this->getRequest()->request->all())->setUser($this->getUser());
             $this->get('service.submissao')->salvarMaisSobreVoce($sd);
             $response = $this->forward('EmVistaBundle:Submissao:concluir', array('submissaoId' => $submissaoId));
-        }catch(ServiceValidationException $e){
+        } catch (ServiceValidationException $e) {
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
             $response = $this->redirect($this->generateUrl('submissao_mais-sobre-voce', array('submissaoId' => $submissaoId)));
         }
+
         return $response;
     }
 
     /**
      * @Route("/submissao/{submissaoId}/concluir", name="submissao_concluir")
      */
-    public function concluirAction($submissaoId){
+    public function concluirAction($submissaoId)
+    {
         $param = array('submissaoId' => $submissaoId);
 
-        try{
+        try {
             $sd = ServiceData::build(array('submissaoId' => $submissaoId));
             $this->get('service.submissao')->concluir($sd);
             $response = $this->redirect($this->generateUrl('submissao_sucesso', $param));
-        }catch(ServiceValidationException $e){
+        } catch (ServiceValidationException $e) {
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);
             $response = $this->redirect($this->generateUrl('submissao_mais-sobre-voce', $param));
 
         # SE DEU ERRO EM ALGUMA ETAPA, REDIRECIONA
-        }catch(DadosBasicosErrorException $e){
+        } catch (DadosBasicosErrorException $e) {
             $this->setWarningMessage($e->getMessage());
             $response = $this->redirect($this->generateUrl('submissao_dados-basicos', $param));
-        }catch(DescricaoErrorException $e){
+        } catch (DescricaoErrorException $e) {
             $this->setWarningMessage($e->getMessage());
             $response = $this->redirect($this->generateUrl('submissao_descricao', $param));
-        }catch(RecompensasErrorException $e){
+        } catch (RecompensasErrorException $e) {
             $this->setWarningMessage($e->getMessage());
             $response = $this->redirect($this->generateUrl('submissao_recompensas', $param));
-        }catch(VideoErrorException $e){
+        } catch (VideoErrorException $e) {
             $this->setWarningMessage($e->getMessage());
             $response = $this->redirect($this->generateUrl('submissao_video', $param));
-        }catch(ImagensErrorException $e){
+        } catch (ImagensErrorException $e) {
             $this->setWarningMessage($e->getMessage());
             $response = $this->redirect($this->generateUrl('submissao_imagens', $param));
-        }catch(MaisSobreVoceErrorException $e){
+        } catch (MaisSobreVoceErrorException $e) {
             $this->setWarningMessage($e->getMessage());
             $response = $this->redirect($this->generateUrl('submissao_mais-sobre-voce', $param));
         }
@@ -341,7 +370,8 @@ class SubmissaoController extends ControllerAbstract{
     /**
      * @Route("/submissao/{submissaoId}/sucesso", name="submissao_sucesso")
      */
-    public function sucessoAction($submissaoId){
+    public function sucessoAction($submissaoId)
+    {
         return $this->render('EmVistaBundle:Submissao:sucesso.html.php');
     }
 }

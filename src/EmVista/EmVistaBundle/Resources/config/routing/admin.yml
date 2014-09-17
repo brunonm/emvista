@@ -62,6 +62,3 @@ admin_estornos:
 admin_estornos_projeto:
     pattern: /admin/estornos/{projetoId}
     defaults: { _controller: EmVistaBundle:Admin:estornosProjeto }
-
-
-

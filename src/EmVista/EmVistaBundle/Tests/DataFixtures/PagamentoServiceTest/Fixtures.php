@@ -3,24 +3,22 @@
 namespace EmVista\EmVistaBundle\Tests\DataFixtures\PagamentoServiceTest;
 
 use EmVista\EmVistaBundle\Entity\Role;
-use EmVista\EmVistaBundle\Entity\Imagem;
 use EmVista\EmVistaBundle\Entity\Usuario;
 use EmVista\EmVistaBundle\Entity\Projeto;
 use EmVista\EmVistaBundle\Entity\Submissao;
 use EmVista\EmVistaBundle\Entity\Recompensa;
 use Doctrine\Common\Persistence\ObjectManager;
-use EmVista\EmVistaBundle\Entity\ProjetoImagem;
 use EmVista\EmVistaBundle\Entity\StatusSubmissao;
 use Doctrine\Common\DataFixtures\FixtureInterface;
-use EmVista\EmVistaBundle\Entity\TipoProjetoImagem;
 
-class Fixtures implements FixtureInterface{
-
+class Fixtures implements FixtureInterface
+{
     /**
      * Depende de Domain Fixtures
      * @param ObjectManager $em
      */
-    public function load(ObjectManager $em){
+    public function load(ObjectManager $em)
+    {
         //insert usuario
         $usuario = new Usuario();
         $usuario->setEmail('usuario@emvista.me')

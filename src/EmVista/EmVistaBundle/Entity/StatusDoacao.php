@@ -2,14 +2,12 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * EmVista\EmVistaBundle\Entity\StatusDoacao
  *
  */
-class StatusDoacao{
-
+class StatusDoacao
+{
     const APROVADO   = 1;
     const PENDENTE   = 2;
     const CANCELADO  = 3;
@@ -40,7 +38,8 @@ class StatusDoacao{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -49,8 +48,10 @@ class StatusDoacao{
      *
      * @param string $nome
      */
-    public function setNome($nome){
+    public function setNome($nome)
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -59,22 +60,26 @@ class StatusDoacao{
      *
      * @return string
      */
-    public function getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 
     /**
      * @param string $descricao
      */
-    public function setDescricao($descricao){
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
+
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getDescricao(){
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 }

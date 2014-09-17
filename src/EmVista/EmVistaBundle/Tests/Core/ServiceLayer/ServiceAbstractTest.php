@@ -6,14 +6,15 @@ use EmVista\EmVistaBundle\Tests\TestCase;
 use EmVista\EmVistaBundle\Tests\Core\Mailer\MockMailer;
 use EmVista\EmVistaBundle\Core\Mailer\Swift;
 
-class ServiceAbstractTest extends TestCase{
-
+class ServiceAbstractTest extends TestCase
+{
     /**
      * @var \EmVista\EmVistaBundle\Core\ServiceLayer\ServiceAbstract
      */
     private $stubServiceAbstract = null;
 
-    protected function setUp(){
+    protected function setUp()
+    {
         parent::setUp();
 
         $this->stubServiceAbstract = $this->getMockForAbstractClass(
@@ -24,7 +25,8 @@ class ServiceAbstractTest extends TestCase{
     /**
      * @test
      */
-    public function deveSetarERetornarEntityManagerComSucesso(){
+    public function deveSetarERetornarEntityManagerComSucesso()
+    {
         $this->stubServiceAbstract->setEntityManager('entityManager');
         $this->assertEquals('entityManager', $this->stubServiceAbstract->getEntityManager());
     }
@@ -32,7 +34,8 @@ class ServiceAbstractTest extends TestCase{
     /**
      * @test
      */
-    public function deveSetarERetornarValidatorComSucesso(){
+    public function deveSetarERetornarValidatorComSucesso()
+    {
         $this->stubServiceAbstract->setValidator('validator');
         $this->assertEquals('validator', $this->stubServiceAbstract->getValidator());
     }
@@ -40,7 +43,8 @@ class ServiceAbstractTest extends TestCase{
     /**
      * @test
      */
-    public function deveSetarERetornarMailerComSucesso(){
+    public function deveSetarERetornarMailerComSucesso()
+    {
         $this->stubServiceAbstract->setMailer(new Swift(new MockMailer()));
         $this->assertInstanceOf(
                 'EmVista\EmVistaBundle\Core\Mailer\MailerInterface',

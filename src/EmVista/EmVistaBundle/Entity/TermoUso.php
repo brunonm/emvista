@@ -2,16 +2,14 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-
-use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\TermoUso
  *
  */
-class TermoUso extends EntityAbstract{
-
+class TermoUso extends EntityAbstract
+{
     /**
      * @var integer $id
      *
@@ -42,7 +40,8 @@ class TermoUso extends EntityAbstract{
      */
     private $ativo;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setAtivo(true);
         $this->setDataCadastro(new \DateTime('now'));
@@ -53,7 +52,8 @@ class TermoUso extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -62,8 +62,10 @@ class TermoUso extends EntityAbstract{
      *
      * @param text $termoUso
      */
-    public function setTermoUso($termoUso) {
+    public function setTermoUso($termoUso)
+    {
         $this->termoUso = $termoUso;
+
         return $this;
     }
 
@@ -72,14 +74,16 @@ class TermoUso extends EntityAbstract{
      *
      * @return text
      */
-    public function getTermoUso() {
+    public function getTermoUso()
+    {
         return $this->termoUso;
     }
 
     /**
      * @return text
      */
-    public function getTermoUsoFormatado() {
+    public function getTermoUsoFormatado()
+    {
         return nl2br($this->termoUso);
     }
 
@@ -88,8 +92,10 @@ class TermoUso extends EntityAbstract{
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro($dataCadastro) {
+    public function setDataCadastro($dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
+
         return $this;
     }
 
@@ -98,7 +104,8 @@ class TermoUso extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataCadastro() {
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 
@@ -107,8 +114,10 @@ class TermoUso extends EntityAbstract{
      *
      * @param datetime $dataFim
      */
-    public function setDataFim($dataFim) {
+    public function setDataFim($dataFim)
+    {
         $this->dataFim = $dataFim;
+
         return $this;
     }
 
@@ -117,7 +126,8 @@ class TermoUso extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataFim() {
+    public function getDataFim()
+    {
         return $this->dataFim;
     }
 
@@ -126,8 +136,10 @@ class TermoUso extends EntityAbstract{
      *
      * @param boolean $ativo
      */
-    public function setAtivo($ativo) {
+    public function setAtivo($ativo)
+    {
         $this->ativo = $ativo;
+
         return $this;
     }
 
@@ -136,7 +148,8 @@ class TermoUso extends EntityAbstract{
      *
      * @return boolean
      */
-    public function getAtivo() {
+    public function getAtivo()
+    {
         return $this->ativo;
     }
 

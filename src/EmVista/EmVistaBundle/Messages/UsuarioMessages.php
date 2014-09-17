@@ -2,10 +2,8 @@
 
 namespace EmVista\EmVistaBundle\Messages;
 
-use EmVista\EmVistaBundle\Messages\BaseMessages;
-
-class UsuarioMessages extends BaseMessages{
-
+class UsuarioMessages extends BaseMessages
+{
     const ERRO_EMAIL_OUTRA_CONTA = 'O email informado já existe no EmVista e pertence a outra conta.';
     const SUCESSO_DADOS_ALTERADOS = 'Dados alterados com sucesso.';
     const SUCESSO_CONTA_INATIVADA = 'Conta inativada com sucesso.';

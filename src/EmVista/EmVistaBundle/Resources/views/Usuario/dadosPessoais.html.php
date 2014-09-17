@@ -44,7 +44,7 @@
             <div class="controls">
                 <input type="text" class="span2 input-medium validate[custom[onlyNumberSp,minSize[8],maxSize[8]]]"
                         id="usuario-senha" name="usuario[endereco][cep]" placeholder=""
-                        value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL?$endereco->getCep():'';  ?>">
+                        value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL ? $endereco->getCep() : '';  ?>">
             </div>
         </div>
         <div class="control-group">
@@ -99,7 +99,7 @@
             </label>
             <div class="controls">
                 <input type="text" class="span3" id="usuario-endereco-cidade" name="usuario[endereco][cidade]" placeholder=""
-                        value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL?$endereco->getCidade():'';  ?>">
+                        value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL ? $endereco->getCidade() : '';  ?>">
             </div>
         </div>
 
@@ -110,7 +110,7 @@
             </label>
             <div class="controls">
                 <input type="text" class="span3" id="usuario-endereco-bairro" name="usuario[endereco][bairro]" placeholder=""
-                        value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL?$endereco->getBairro():'';  ?>">
+                        value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL ? $endereco->getBairro() : '';  ?>">
             </div>
         </div>
         <div class="control-group">
@@ -119,7 +119,7 @@
             </label>
             <div class="controls">
                 <input type="text" class="span5" id="usuario-endereco-endereco" name="usuario[endereco][endereco]" placeholder=""
-                        value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL?$endereco->getEndereco():'';  ?>">
+                        value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL ? $endereco->getEndereco() : '';  ?>">
             </div>
         </div>
 

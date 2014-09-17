@@ -2,8 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * EmVista\EmVistaBundle\Entity\TipoMovimentacaoFinanceira
  *
@@ -25,7 +23,6 @@ class TipoMovimentacaoFinanceira
      */
     private $nome;
 
-
     /**
      * Get id
      *
@@ -44,6 +41,7 @@ class TipoMovimentacaoFinanceira
     public function setNome($nome)
     {
         $this->nome = $nome;
+
         return $this;
     }
 

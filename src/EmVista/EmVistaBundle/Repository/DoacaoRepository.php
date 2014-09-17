@@ -2,18 +2,17 @@
 
 namespace EmVista\EmVistaBundle\Repository;
 
-use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
-use EmVista\EmVistaBundle\Util\Date;
 use EmVista\EmVistaBundle\Entity\StatusDoacao;
 
-class DoacaoRepository extends EntityRepository{
-
+class DoacaoRepository extends EntityRepository
+{
     /**
-     * @param integer $projetoId
+     * @param  integer  $projetoId
      * @return Doacao[]
      */
-    public function listarDoacoesAprovadasByProjetoId($projetoId){
+    public function listarDoacoesAprovadasByProjetoId($projetoId)
+    {
         $qb = $this->createQueryBuilder('d')
                    ->join('d.recompensa', 'r')
                    ->join('r.projeto', 'p')
@@ -25,12 +24,12 @@ class DoacaoRepository extends EntityRepository{
         return $qb->getQuery()->getResult();
     }
 
-
     /**
      * Retorna a quantidade de doações realizadas
      * @param integer $projetoId
      */
-    public function countDoacoesAprovadasByProjetoId($projetoId){
+    public function countDoacoesAprovadasByProjetoId($projetoId)
+    {
         $em = $this->getEntityManager();
 
         $query = $em->createQuery('
@@ -45,13 +44,13 @@ class DoacaoRepository extends EntityRepository{
 
         return $query->getSingleScalarResult();
     }
-    
 
     /**
      * Retorna a quantidade de doações realizadas
      * @param integer $projetoId
      */
-    public function countDoacoesAprovadasEEstornadasByProjetoId($projetoId){
+    public function countDoacoesAprovadasEEstornadasByProjetoId($projetoId)
+    {
         $em = $this->getEntityManager();
 
         $query = $em->createQuery('
@@ -68,13 +67,13 @@ class DoacaoRepository extends EntityRepository{
         return $query->getSingleScalarResult();
     }
 
-
     /**
-     * @param Usuario $usuario
-     * @param Projeto $projeto
+     * @param  Usuario  $usuario
+     * @param  Projeto  $projeto
      * @return Doacao[]
      */
-    public function listarDoacoesUsuarioProjeto($usuario, $projeto){
+    public function listarDoacoesUsuarioProjeto($usuario, $projeto)
+    {
         $qb = $this->createQueryBuilder('d')
                    ->join('d.recompensa', 'r')
                    ->join('r.projeto', 'p')

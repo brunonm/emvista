@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand;
 use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
 
-require_once(__DIR__ . "/../../../../app/AppKernel.php");
+require_once __DIR__ . "/../../../../app/AppKernel.php";
 
-class TestCase extends \PHPUnit_Framework_TestCase{
-
+class TestCase extends \PHPUnit_Framework_TestCase
+{
     /**
      * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
@@ -30,7 +30,8 @@ class TestCase extends \PHPUnit_Framework_TestCase{
     /**
      * metodo executado antes de todos os testes
      */
-    protected function setUp(){
+    protected function setUp()
+    {
         $this->kernel = new \AppKernel("test", true);
         $this->kernel->boot();
         $this->container   = $this->kernel->getContainer();
@@ -40,17 +41,19 @@ class TestCase extends \PHPUnit_Framework_TestCase{
     }
 
     /**
-     * @param string $service
+     * @param  string $service
      * @return mixed
      */
-    protected function get($service){
+    protected function get($service)
+    {
         return $this->container->get($service);
     }
 
     /**
      * @return \Doctrine\ORM\EntityManager
      */
-    protected function getEntityManager(){
+    protected function getEntityManager()
+    {
         return $this->container->get('doctrine')->getEntityManager();
     }
 
@@ -58,7 +61,8 @@ class TestCase extends \PHPUnit_Framework_TestCase{
      * constrói o database
      * por os testes rodarem com sqlite em memória, não é necessário fazer o drop antes
      */
-    protected function buildDatabase(){
+    protected function buildDatabase()
+    {
         $command = new CreateSchemaDoctrineCommand();
         $this->application->add($command);
         $input = new ArrayInput(array(
@@ -72,7 +76,8 @@ class TestCase extends \PHPUnit_Framework_TestCase{
      * Deve ser informado o diretorio respectivo dentro de EmVistaBundle/Tests/DataFixtures/
      * @param string $fixture
      */
-    protected function loadTestFixtures($fixture){
+    protected function loadTestFixtures($fixture)
+    {
         $fixtureDir = __DIR__ . '/DataFixtures';
         $fixture = $fixtureDir . DIRECTORY_SEPARATOR . ucfirst($fixture);
         $command = new LoadDataFixturesDoctrineCommand();

@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle::base.html.php'); ?>
 <?php $view['slots']->start('body') ?>
 <style>
-   
+
 </style>
 
 <form class="form-horizontal" method="post" id="form-checkout"
@@ -27,7 +27,7 @@
                     ?>
 
                     <label class="recompensa">
-                        
+
                         <?php if(!$recompensaValida): ?>
                         <div class="disabled_box">
                             <div class="disabled_box_text">
@@ -38,9 +38,9 @@
                         endif;
                         ?>
                         <div class="row">
-                            <div class="span2 block_pledge <?php echo $recompensaValida?'':'block_pledge_disabled'?>">
+                            <div class="span2 block_pledge <?php echo $recompensaValida ? '' : 'block_pledge_disabled'?>">
                                 R$ <?php echo $valor?>
-                                <input type="radio" style="display:none" <?php echo $recompensaValida?'':'disabled="disabled"'?> name="apoio[recompensaId]" 
+                                <input type="radio" style="display:none" <?php echo $recompensaValida ? '' : 'disabled="disabled"'?> name="apoio[recompensaId]"
                                        valor="<?php echo $valor;?>" class="checkbox-recompensa" value="<?php echo $recompensa->getId() ?>"><br>
                             </div>
                             <div class="span6 descricao">

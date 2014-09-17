@@ -3,8 +3,8 @@
 namespace EmVista\EmVistaBundle\Core\Mailer;
 use EmVista\EmVistaBundle\Core\Exceptions\MailerException;
 
-class Swift implements MailerInterface{
-
+class Swift implements MailerInterface
+{
     /**
      * @var \Swift_Mailer
      */
@@ -15,21 +15,23 @@ class Swift implements MailerInterface{
     /**
      * @param \Swift_Mailer $mailer
      */
-    public function __construct($mailer){
+    public function __construct($mailer)
+    {
         $this->mailer = $mailer;
     }
 
     /**
-     * @param Message $message
+     * @param  Message $message
      * @return integer - número de emails enviados com sucesso
      */
-    public function send(Message $message){
-        try{
+    public function send(Message $message)
+    {
+        try {
             $email = \Swift_Message::newInstance();
 
             $from = $message->getFrom();
 
-            if(empty($from)){
+            if (empty($from)) {
                 $from = $this->defaultFrom;
             }
 
@@ -43,9 +45,9 @@ class Swift implements MailerInterface{
 
             return $this->mailer->send($email);
 
-        }catch(\Swift_TransportException $e){
+        } catch (\Swift_TransportException $e) {
             throw new MailerException($e->getMessage());
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             throw $e;
         }
 
@@ -54,14 +56,16 @@ class Swift implements MailerInterface{
     /**
      * @return Message
      */
-    public function newMessage(){
+    public function newMessage()
+    {
         return new Message($this);
     }
 
     /**
      * @param string $from
      */
-    public function setDefaultFrom($from){
+    public function setDefaultFrom($from)
+    {
         $this->defaultFrom = $from;
     }
 }

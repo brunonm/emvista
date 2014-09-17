@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services\Exceptions;
 
-class VideoInvalidoException extends \Exception{
-
+class VideoInvalidoException extends \Exception
+{
 }

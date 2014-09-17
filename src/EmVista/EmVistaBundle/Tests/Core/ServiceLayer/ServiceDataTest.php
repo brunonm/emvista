@@ -4,21 +4,22 @@ namespace EmVista\EmVistaBundle\Tests\Core\ServiceLayer;
 
 use EmVista\EmVistaBundle\Tests\TestCase;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
-use EmVista\EmVistaBundle\Entity\Usuario;
 
-class ServiceDataTest extends TestCase{
-
+class ServiceDataTest extends TestCase
+{
     /**
      * @var ServiceData
      */
     private $sd;
 
-    protected function setUp(){
+    protected function setUp()
+    {
         parent::setUp();
         $this->sd = ServiceData::build();
     }
 
-    protected function tearDown(){
+    protected function tearDown()
+    {
         $this->sd = ServiceData::build();
         parent::tearDown();
     }
@@ -26,7 +27,8 @@ class ServiceDataTest extends TestCase{
    /**
     * @test
     */
-    public function deveCarregarDadosComSucesso(){
+    public function deveCarregarDadosComSucesso()
+    {
         $data = array('nome' => 'Bruno', 'idade' => 22);
         $this->sd->load($data);
         $this->assertEquals('Bruno', $this->sd->get('nome'));
@@ -38,7 +40,8 @@ class ServiceDataTest extends TestCase{
    /**
     * @test
     */
-    public function deveCriarUmaNovaInstancia(){
+    public function deveCriarUmaNovaInstancia()
+    {
         $sd = ServiceData::build();
         $this->assertInstanceOf('EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData', $sd);
     }
@@ -46,7 +49,8 @@ class ServiceDataTest extends TestCase{
    /**
     * @test
     */
-    public function deveCriarUmaNovaInstanciaCarregandoDados(){
+    public function deveCriarUmaNovaInstanciaCarregandoDados()
+    {
         $data = array('nome' => 'Leonn', 'idade' => 22);
         $sd = ServiceData::build($data);
         $this->assertInstanceOf('EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData', $sd);
@@ -59,7 +63,8 @@ class ServiceDataTest extends TestCase{
    /**
     * @test
     */
-    public function deveSetarERetornarPropriedadeComSucesso(){
+    public function deveSetarERetornarPropriedadeComSucesso()
+    {
         $this->sd->set('teste1', 123);
         $this->sd->set('teste2', 321);
         $this->assertEquals(123, $this->sd->get('teste1'));
@@ -71,7 +76,8 @@ class ServiceDataTest extends TestCase{
    /**
     * @test
     */
-    public function deveRetornarPropriedadeComSucesso2(){
+    public function deveRetornarPropriedadeComSucesso2()
+    {
         $this->sd->offsetSet('teste1', 123);
         $this->sd->offsetSet('teste2', 321);
         $this->assertEquals(123, $this->sd->offsetGet('teste1'));
@@ -82,7 +88,8 @@ class ServiceDataTest extends TestCase{
      * @test
      * @expectedException \InvalidArgumentException
      */
-    public function deveLancarExceptionSePropriedadeNaoExistir(){
+    public function deveLancarExceptionSePropriedadeNaoExistir()
+    {
         $this->sd->offsetGet('propriedadeinexistente');
     }
 
@@ -90,14 +97,16 @@ class ServiceDataTest extends TestCase{
      * @test
      * @expectedException \InvalidArgumentException
      */
-    public function deveLancarExceptionSePropriedadeNaoExistir2(){
+    public function deveLancarExceptionSePropriedadeNaoExistir2()
+    {
         $this->sd->get('propriedadeinexistente');
     }
 
     /**
      * @test
      */
-    public function deveVerificarPropriedadeComSucesso(){
+    public function deveVerificarPropriedadeComSucesso()
+    {
         $this->assertFalse($this->sd->offsetExists('propriedadeinexistente'));
         $this->sd->set('propriedadeinexistente', 'agoraexiste');
         $this->assertTrue($this->sd->offsetExists('propriedadeinexistente'));
@@ -106,7 +115,8 @@ class ServiceDataTest extends TestCase{
     /**
      * @test
      */
-    public function deveDestruirPropriedadeComSucesso(){
+    public function deveDestruirPropriedadeComSucesso()
+    {
         $this->sd->set('propriedadeinexistente', 'agoraexiste');
         $this->assertTrue($this->sd->offsetExists('propriedadeinexistente'));
         $this->sd->offsetUnset('propriedadeinexistente');
@@ -116,7 +126,8 @@ class ServiceDataTest extends TestCase{
     /**
      * @test
      */
-    public function deveRetornarObjetoInteiroComSucesso(){
+    public function deveRetornarObjetoInteiroComSucesso()
+    {
         $this->sd->load(array('nome' => 'bruno', 'idade' => 22));
         $data = $this->sd->get();
         $this->assertArrayHasKey('nome', $data);
@@ -129,7 +140,8 @@ class ServiceDataTest extends TestCase{
      * @test
      * @expectedException EmVista\EmVistaBundle\Core\Exceptions\ServiceDataException
      */
-    public function deveLancarExceptionSeTentarRetornarQuandoAindaNaoTiverCarregado(){
+    public function deveLancarExceptionSeTentarRetornarQuandoAindaNaoTiverCarregado()
+    {
         $this->sd->get();
     }
 
@@ -137,14 +149,16 @@ class ServiceDataTest extends TestCase{
      * @test
      * @expectedException \ErrorException
      */
-    public function deveDarErroSeCarregarAlgumDadoQueNaoSejaArray(){
+    public function deveDarErroSeCarregarAlgumDadoQueNaoSejaArray()
+    {
         $this->sd->load('asdasd');
     }
 
     /**
      * @test
      */
-    public function deveSetarUsuarioComSucesso(){
+    public function deveSetarUsuarioComSucesso()
+    {
         $this->sd->setUser('User Test');
         $this->assertEquals('User Test', $this->sd->get('user'));
     }
@@ -152,7 +166,8 @@ class ServiceDataTest extends TestCase{
     /**
      * @test
      */
-    public function deveRetornarUsuarioComSucesso(){
+    public function deveRetornarUsuarioComSucesso()
+    {
         $this->sd->setUser('User Test');
         $this->assertEquals('User Test', $this->sd->getUser());
     }
