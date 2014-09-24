@@ -5,7 +5,7 @@
 </style>
 
 <form class="form-horizontal" method="post" id="form-checkout"
-        action="<?php echo $view['router']->generate('pagamento_continueCheckout'); ?>">
+        action="<?php echo $view['router']->generate('pagamento_continue-checkout'); ?>">
     <div class="row">
         <div class="span8">
             <h3 class="titulo">Estamos quase lá!</h3>

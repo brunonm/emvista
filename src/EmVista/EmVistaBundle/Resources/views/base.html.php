@@ -23,13 +23,6 @@
             <link rel="stylesheet" href="<?php echo $view->escape($url) ?>" />
         <?php endforeach; ?>
 
-        <!--[if lt IE 8]>
-        <link type="text/css" rel="stylesheet" href="/bundles/emvista/css/ie.css"/>
-        <![endif]-->
-        <!--[if IE 8]>
-        <link type="text/css" rel="stylesheet" href="/bundles/emvista/css/ie-8.css"/>
-        <![endif]-->
-
         <?php $view['slots']->output('css'); ?>
 
         <link rel="shortcut icon" href="<?php $view['slots']->output('title', 'favicon.ico'); ?>" />
