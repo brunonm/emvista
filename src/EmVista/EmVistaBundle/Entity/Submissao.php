@@ -3,17 +3,14 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\OneToOne;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\JoinColumn;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\Submissao
  *
  */
-class Submissao extends EntityAbstract{
-
+class Submissao extends EntityAbstract
+{
     /**
      * @var integer $id
      *
@@ -56,7 +53,8 @@ class Submissao extends EntityAbstract{
      */
     private $dataResposta;
 
-    function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setDataCadastro(new \DateTime('now'));
     }
@@ -65,7 +63,8 @@ class Submissao extends EntityAbstract{
      *
      * @return Projeto
      */
-    public function getProjeto(){
+    public function getProjeto()
+    {
         return $this->projeto;
     }
 
@@ -73,8 +72,10 @@ class Submissao extends EntityAbstract{
      *
      * @param Projeto $projeto
      */
-    public function setProjeto(Projeto $projeto){
+    public function setProjeto(Projeto $projeto)
+    {
         $this->projeto = $projeto;
+
         return $this;
     }
 
@@ -83,7 +84,8 @@ class Submissao extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -92,8 +94,10 @@ class Submissao extends EntityAbstract{
      *
      * @param StatusSubmissao $status
      */
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
+
         return $this;
     }
 
@@ -102,7 +106,8 @@ class Submissao extends EntityAbstract{
      *
      * @return boolean
      */
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
@@ -111,8 +116,10 @@ class Submissao extends EntityAbstract{
      *
      * @param text $observacaoResposta
      */
-    public function setObservacaoResposta($observacaoResposta){
+    public function setObservacaoResposta($observacaoResposta)
+    {
         $this->observacaoResposta = $observacaoResposta;
+
         return $this;
     }
 
@@ -121,7 +128,8 @@ class Submissao extends EntityAbstract{
      *
      * @return text
      */
-    public function getObservacaoResposta(){
+    public function getObservacaoResposta()
+    {
         return $this->observacaoResposta;
     }
 
@@ -130,8 +138,10 @@ class Submissao extends EntityAbstract{
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro($dataCadastro){
+    public function setDataCadastro($dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
+
         return $this;
     }
 
@@ -140,7 +150,8 @@ class Submissao extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataCadastro(){
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 
@@ -149,8 +160,10 @@ class Submissao extends EntityAbstract{
      *
      * @param datetime $dataResposta
      */
-    public function setDataResposta($dataResposta){
+    public function setDataResposta($dataResposta)
+    {
         $this->dataResposta = $dataResposta;
+
         return $this;
     }
 
@@ -159,7 +172,8 @@ class Submissao extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataResposta(){
+    public function getDataResposta()
+    {
         return $this->dataResposta;
     }
 
@@ -168,8 +182,10 @@ class Submissao extends EntityAbstract{
      *
      * @param datetime $dataEnvio
      */
-    public function setDataEnvio($dataEnvio){
+    public function setDataEnvio($dataEnvio)
+    {
         $this->dataEnvio = $dataEnvio;
+
         return $this;
     }
 
@@ -178,7 +194,8 @@ class Submissao extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataEnvio(){
+    public function getDataEnvio()
+    {
         return $this->dataEnvio;
     }
 }

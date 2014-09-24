@@ -2,14 +2,12 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * EmVista\EmVistaBundle\Entity\TipoDestaque
  *
  */
-class TipoDestaque{
-
+class TipoDestaque
+{
     const HOME_PRIMARIO   = 1;
     const HOME_SECUNDARIO = 2;
 
@@ -30,7 +28,8 @@ class TipoDestaque{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -39,8 +38,10 @@ class TipoDestaque{
      *
      * @param string $nome
      */
-    public function setNome($nome){
+    public function setNome($nome)
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -49,7 +50,8 @@ class TipoDestaque{
      *
      * @return string
      */
-    public function getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 

@@ -3,18 +3,15 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\JoinColumn;
 use EmVista\EmVistaBundle\Util\Date;
-use EmVista\EmVistaBundle\Entity\Usuario;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * TokenSenha
  *
  */
-class TokenSenha extends EntityAbstract{
-
+class TokenSenha extends EntityAbstract
+{
     /**
      * @var integer
      *
@@ -51,7 +48,8 @@ class TokenSenha extends EntityAbstract{
      */
     private $ativo;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setAtivo(true)
              ->setDataCadastro(new Date("now"))
@@ -63,17 +61,19 @@ class TokenSenha extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * Set token
      *
-     * @param string $token
+     * @param  string     $token
      * @return TokenSenha
      */
-    public function setToken($token){
+    public function setToken($token)
+    {
         $this->token = $token;
 
         return $this;
@@ -84,17 +84,19 @@ class TokenSenha extends EntityAbstract{
      *
      * @return string
      */
-    public function getToken(){
+    public function getToken()
+    {
         return $this->token;
     }
 
     /**
      * Set usuario
      *
-     * @param integer $usuario
+     * @param  integer    $usuario
      * @return TokenSenha
      */
-    public function setUsuario($usuario){
+    public function setUsuario($usuario)
+    {
         $this->usuario = $usuario;
 
         return $this;
@@ -105,17 +107,19 @@ class TokenSenha extends EntityAbstract{
      *
      * @return integer
      */
-    public function getUsuario(){
+    public function getUsuario()
+    {
         return $this->usuario;
     }
 
     /**
      * Set dataCadastro
      *
-     * @param \DateTime $dataCadastro
+     * @param  \DateTime  $dataCadastro
      * @return TokenSenha
      */
-    public function setDataCadastro($dataCadastro){
+    public function setDataCadastro($dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
 
         return $this;
@@ -126,17 +130,19 @@ class TokenSenha extends EntityAbstract{
      *
      * @return \DateTime
      */
-    public function getDataExpiracao(){
+    public function getDataExpiracao()
+    {
         return $this->dataExpiracao;
     }
 
     /**
      * Set dataExpiracao
      *
-     * @param \DateTime $dataExpiracao
+     * @param  \DateTime  $dataExpiracao
      * @return TokenSenha
      */
-    public function setDataExpiracao($dataExpiracao){
+    public function setDataExpiracao($dataExpiracao)
+    {
         $this->dataExpiracao = $dataExpiracao;
 
         return $this;
@@ -147,17 +153,19 @@ class TokenSenha extends EntityAbstract{
      *
      * @return \DateTime
      */
-    public function getDataCadastro(){
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 
     /**
      * Set ativo
      *
-     * @param boolean $ativo
+     * @param  boolean    $ativo
      * @return TokenSenha
      */
-    public function setAtivo($ativo){
+    public function setAtivo($ativo)
+    {
         $this->ativo = $ativo;
 
         return $this;
@@ -168,7 +176,8 @@ class TokenSenha extends EntityAbstract{
      *
      * @return boolean
      */
-    public function getAtivo(){
+    public function getAtivo()
+    {
         return $this->ativo;
     }
 

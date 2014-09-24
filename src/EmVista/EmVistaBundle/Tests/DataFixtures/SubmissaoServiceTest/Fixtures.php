@@ -13,13 +13,14 @@ use EmVista\EmVistaBundle\Entity\StatusSubmissao;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use EmVista\EmVistaBundle\Entity\TipoProjetoImagem;
 
-class Fixtures implements FixtureInterface{
-
+class Fixtures implements FixtureInterface
+{
     /**
      * Depende de Domain Fixtures
      * @param ObjectManager $em
      */
-    public function load(ObjectManager $em){
+    public function load(ObjectManager $em)
+    {
         //insert usuario
         $usuario = new Usuario();
         $usuario->setEmail('usuario@emvista.me')

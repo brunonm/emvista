@@ -3,15 +3,14 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\JoinColumn;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * StatusPagamento
  *
  */
-class StatusPagamento extends EntityAbstract{
+class StatusPagamento extends EntityAbstract
+{
     /**
      * @var integer
      *
@@ -47,115 +46,124 @@ class StatusPagamento extends EntityAbstract{
      */
     private $statusDoacao;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      *
-     * @param GatewayPagamento $gatewayPagamento
-     * @return StatusPagamento 
+     * @param  GatewayPagamento $gatewayPagamento
+     * @return StatusPagamento
      */
-    public function setGatewayPagamento(GatewayPagamento $gatewayPagamento){
+    public function setGatewayPagamento(GatewayPagamento $gatewayPagamento)
+    {
         $this->gatewayPagamento = $gatewayPagamento;
-    
+
         return $this;
     }
 
     /**
      * Get gatewayPagamento
      *
-     * @return GatewayPagamento 
+     * @return GatewayPagamento
      */
-    public function getGatewayPagamento(){
+    public function getGatewayPagamento()
+    {
         return $this->gatewayPagamento;
     }
 
     /**
      * Set gatewayStatus
      *
-     * @param string $gatewayStatus
+     * @param  string          $gatewayStatus
      * @return StatusPagamento
      */
-    public function setGatewayStatus($gatewayStatus){
+    public function setGatewayStatus($gatewayStatus)
+    {
         $this->gatewayStatus = $gatewayStatus;
-    
+
         return $this;
     }
 
     /**
      * Get gatewayStatus
      *
-     * @return string 
+     * @return string
      */
-    public function getGatewayStatus(){
+    public function getGatewayStatus()
+    {
         return $this->gatewayStatus;
     }
 
     /**
      * Set descricaoGatewayStatus
      *
-     * @param string $descricaoGatewayStatus
+     * @param  string          $descricaoGatewayStatus
      * @return StatusPagamento
      */
-    public function setDescricaoGatewayStatus($descricaoGatewayStatus){
+    public function setDescricaoGatewayStatus($descricaoGatewayStatus)
+    {
         $this->descricaoGatewayStatus = $descricaoGatewayStatus;
-    
+
         return $this;
     }
 
     /**
      * Get descricaoGatewayStatus
      *
-     * @return string 
+     * @return string
      */
-    public function getDescricaoGatewayStatus(){
+    public function getDescricaoGatewayStatus()
+    {
         return $this->descricaoGatewayStatus;
     }
 
     /**
      * Set statusDoacao
      *
-     * @param StatusDoacao $statusDoacao
+     * @param  StatusDoacao    $statusDoacao
      * @return StatusPagamento
      */
-    public function setStatusDoacao(StatusDoacao $statusDoacao){
+    public function setStatusDoacao(StatusDoacao $statusDoacao)
+    {
         $this->statusDoacao = $statusDoacao;
-    
+
         return $this;
     }
 
     /**
      * Get statusDoacao
      *
-     * @return StatusDoacao 
+     * @return StatusDoacao
      */
-    public function getStatusDoacao(){
+    public function getStatusDoacao()
+    {
         return $this->statusDoacao;
     }
-    
+
     /**
-     * @return string 
+     * @return string
      */
-    public function getValorGatewayStatus() {
+    public function getValorGatewayStatus()
+    {
         return $this->valorGatewayStatus;
     }
 
     /**
-     * @param string $valorGatewayStatus
-     * @return StatusPagamento 
+     * @param  string          $valorGatewayStatus
+     * @return StatusPagamento
      */
-    public function setValorGatewayStatus($valorGatewayStatus) {
+    public function setValorGatewayStatus($valorGatewayStatus)
+    {
         $this->valorGatewayStatus = $valorGatewayStatus;
-        
+
         return $this;
     }
-
 
 }

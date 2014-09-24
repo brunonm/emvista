@@ -5,7 +5,7 @@
 
 <div class="span8 offset2">
     <form action="<?php echo $view['router']->generate('usuario_alterarSenha') ?>" method="post">
-        
+
         <input type="hidden" name="usuarioId" value="<?php echo $usuario->getId(); ?>"/>
         <input type="hidden" name="token" value="<?php echo $token->getToken(); ?>"/>
 

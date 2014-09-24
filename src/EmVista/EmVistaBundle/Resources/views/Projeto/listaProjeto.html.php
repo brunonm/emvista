@@ -8,13 +8,13 @@
                     <input type="text" id="inputSearch" placeholder="Pesquise ..." class="span8"/>
                     <button type="submit" class="btn">Pesquisar</button>
                 </div>
-                
+
             </form>
             <div class="row">
-            
+
                 <div class="project-listing">
                     <div class="span9">&nbsp;</div>
-                <?php 
+                <?php
                 foreach($projetos as $i => $projeto):
                 ?>
                 <div class="span3">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="span3">    
+        <div class="span3">
             <ul class="rightBarDiscovery nav">
                 <ol><i class="icon icon-th-large"></i> Categorias</ol>
                 <?php
@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <?php
-                endforeach;                
+                endforeach;
                 ?>
             </ul>
         </div>
@@ -53,5 +53,5 @@
     foreach($view['assetic']->javascripts(
         array('@EmVistaBundle/Resources/public/js/emvista/projeto/listaProjeto.js',)) as $url): ?>
     <script type="text/javascript" src="<?php echo $view->escape($url) ?>"></script>
-<?php endforeach; 
+<?php endforeach;
 $view['slots']->stop(); ?>

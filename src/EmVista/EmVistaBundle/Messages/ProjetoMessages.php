@@ -2,10 +2,8 @@
 
 namespace EmVista\EmVistaBundle\Messages;
 
-use EmVista\EmVistaBundle\Messages\BaseMessages;
-
-class ProjetoMessages extends BaseMessages{
-
+class ProjetoMessages extends BaseMessages
+{
     const MOTIVO_REJEICAO_SUCESSO_CADASTRO = 'É nóis, motivo inseriu bacana!';
     const MOTIVO_REJEICAO_SUCESSO_EDICAO = 'Motivo alterado! :)';
 

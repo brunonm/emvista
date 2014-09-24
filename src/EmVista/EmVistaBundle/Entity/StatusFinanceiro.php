@@ -2,15 +2,14 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\StatusFinanceiro
  *
  */
-class StatusFinanceiro extends EntityAbstract{
-
+class StatusFinanceiro extends EntityAbstract
+{
     const STATUS_PAGO      = 1;
     const STATUS_ESTORNADO = 2;
 
@@ -37,7 +36,8 @@ class StatusFinanceiro extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -46,8 +46,10 @@ class StatusFinanceiro extends EntityAbstract{
      *
      * @param string $nome
      */
-    public function setNome($nome){
+    public function setNome($nome)
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -56,7 +58,8 @@ class StatusFinanceiro extends EntityAbstract{
      *
      * @return string
      */
-    public function getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 
@@ -65,8 +68,10 @@ class StatusFinanceiro extends EntityAbstract{
      *
      * @param string $descricao
      */
-    public function setDescricao($descricao){
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
+
         return $this;
     }
 
@@ -75,7 +80,8 @@ class StatusFinanceiro extends EntityAbstract{
      *
      * @return string
      */
-    public function getDescricao(){
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 

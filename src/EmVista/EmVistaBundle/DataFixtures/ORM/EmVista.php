@@ -19,10 +19,10 @@ use EmVista\EmVistaBundle\Entity\StatusArrecadacao;
 use EmVista\EmVistaBundle\Entity\TipoProjetoImagem;
 use EmVista\EmVistaBundle\Entity\TipoMovimentacaoFinanceira;
 
-class EmVista implements FixtureInterface{
-
-    public function load(ObjectManager $em){
-
+class EmVista implements FixtureInterface
+{
+    public function load(ObjectManager $em)
+    {
         //CATEGORIAS
 
         $categoriaArte = new Categoria();
@@ -217,8 +217,6 @@ class EmVista implements FixtureInterface{
                 ->addUserRole($roleAdmin);
         $em->persist($usuario);
 
-
-
         //STATUS DOACAO
 
         $statusDoacaoAprovada = new StatusDoacao();
@@ -256,7 +254,6 @@ class EmVista implements FixtureInterface{
         $statusDoacaoAguardando->setDescricao('Aguardando pagamento.');
 
         $em->persist($statusDoacaoAguardando);
-
 
         //GATEWAYS DE PAGAMENTOS
 
@@ -338,7 +335,6 @@ class EmVista implements FixtureInterface{
         $statusMoipReembolsado->setStatusDoacao($statusDoacaoEstornado);
 
         $em->persist($statusMoipReembolsado);
-
 
         //TIPO MOVIMENTACAO FINANCEIRA
 
@@ -432,7 +428,6 @@ class EmVista implements FixtureInterface{
 
         $em->persist($fpMoipPaggo);
 
-
         $fpMoipBanrisul = new FormaPagamento();
         $fpMoipBanrisul->setGatewayPagamento($moipGateway);
         $fpMoipBanrisul->setCodigo(88);
@@ -440,9 +435,6 @@ class EmVista implements FixtureInterface{
         $fpMoipBanrisul->setDescricao('Débito em conta banco Banrisul');
 
         $em->persist($fpMoipBanrisul);
-
-
-
 
         $em->flush();
     }

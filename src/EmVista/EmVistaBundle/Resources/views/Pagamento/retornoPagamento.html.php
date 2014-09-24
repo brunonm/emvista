@@ -6,6 +6,6 @@
         São pessoas como você que fomentam a criatividade e estão impulsionando o futuro.<br>
         Você poderá acompanhar o projeto apoiado dentro da sua conta.
     </p>
-    
+
 </div>
 <?php $view['slots']->stop(); ?>

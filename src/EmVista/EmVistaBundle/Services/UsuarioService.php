@@ -22,8 +22,8 @@ use EmVista\EmVistaBundle\Services\Exceptions\EmailDeOutroUsuarioException;
 use EmVista\EmVistaBundle\Services\Exceptions\UsuarioJaPossuiAcessoAdministrativoException;
 use EmVista\EmVistaBundle\Services\Exceptions\UsuarioNaoPossuiAcessoAdministrativoException;
 
-class UsuarioService extends ServiceAbstract{
-    
+class UsuarioService extends ServiceAbstract
+{
     /**
      * @var ImagineInterface
      */
@@ -31,110 +31,125 @@ class UsuarioService extends ServiceAbstract{
 
     /**
      *
-     * @var String 
+     * @var String
      */
     private $profileDir;
-    
+
     /**
-     * @var String 
+     * @var String
      */
     private $profileTempDir;
-    
+
     /**
      *
      * @var String
      */
     private $profileWebPath;
-    
+
     /**
      *
      * @var int
      */
     private $profileHeight;
-    
+
     /**
      *
-     * @var int 
+     * @var int
      */
     private $profileWidth;
-    
+
     /**
      *
      * @var String
      */
     private $profileWebTempPath;
-    
+
     /**
      * @var Symfony\Component\Security\Core\Encoder\EncoderFactory
      */
     private $encoderFactory;
-    
-    
+
     /**
-     * @param ImagineInterface $imagine
+     * @param  ImagineInterface $imagine
      * @return SubmissaoService
      */
-    public function setImagine(ImagineInterface $imagine){
+    public function setImagine(ImagineInterface $imagine)
+    {
         $this->imagine = $imagine;
+
         return $this;
     }
 
     /**
      * @param Symfony\Component\Security\Core\Encoder\EncoderFactory
      */
-    public function setEncoderFactory($encoderFactory){
+    public function setEncoderFactory($encoderFactory)
+    {
         $this->encoderFactory = $encoderFactory;
+
         return $this;
     }
-    
-    public function setProfileDir($profileDir) {
+
+    public function setProfileDir($profileDir)
+    {
         $this->profileDir = $profileDir;
+
         return $this;
     }
 
-    public function setProfileTempDir($profileTempDir) {
+    public function setProfileTempDir($profileTempDir)
+    {
         $this->profileTempDir = $profileTempDir;
+
         return $this;
     }
 
-    public function setProfileWebPath($profileWebPath) {
+    public function setProfileWebPath($profileWebPath)
+    {
         $this->profileWebPath = $profileWebPath;
+
         return $this;
     }
 
-    public function setProfileWebTempPath($profileWebTempPath) {
+    public function setProfileWebTempPath($profileWebTempPath)
+    {
         $this->profileWebTempPath = $profileWebTempPath;
+
         return $this;
     }
-    
-    public function setProfileHeight($profileHeight) {
+
+    public function setProfileHeight($profileHeight)
+    {
         $this->profileHeight = $profileHeight;
+
         return $this;
     }
 
-    public function setProfileWidth($profileWidth) {
+    public function setProfileWidth($profileWidth)
+    {
         $this->profileWidth = $profileWidth;
+
         return $this;
     }
 
-    
-    
     /**
      *
-     * @param integer $id
+     * @param  integer $id
      * @return Usuario
      */
-    public function getUsuario($id){
+    public function getUsuario($id)
+    {
         return $this->getEntityManager()->getRepository('EmVistaBundle:Usuario')->find($id);
     }
 
     /**
      * Altera os dados pessoais de um usuário
-     * @param ServiceData $sd
+     * @param  ServiceData                $sd
      * @throws ServiceValidationException
      */
-    public function alterarDados(ServiceData $sd){
-        try{
+    public function alterarDados(ServiceData $sd)
+    {
+        try {
             $em = $this->getEntityManager();
 
             $this->validarAlteracaoDadosPessoais($sd->get());
@@ -144,13 +159,13 @@ class UsuarioService extends ServiceAbstract{
             $usuario->setNome($sd->get('nome'));
 
             $senha = $sd->get('senha');
-            if(!empty($senha)){
+            if (!empty($senha)) {
                 $password = $this->codificarSenha(ServiceData::build()->setUser($usuario)->set('senha', $senha));
 
                 $usuario->setSenha($password);
             }
             $endereco = $usuario->getEndereco();
-            if($endereco == NULL){
+            if ($endereco == NULL) {
                 $endereco = new Endereco();
                 $endereco->setUsuario($usuario);
             }
@@ -160,9 +175,9 @@ class UsuarioService extends ServiceAbstract{
             $endereco->setEndereco($enderecoData['endereco']);
             $endereco->setBairro($enderecoData['bairro']);
             $endereco->setUf($enderecoData['uf']);
-            
+
             $usuario->setEndereco($endereco);
-            
+
             $this->validarEmailUnico($sd->get('email'), $usuario);
 
             $em->beginTransaction();
@@ -170,11 +185,12 @@ class UsuarioService extends ServiceAbstract{
             $em->persist($usuario);
             $em->flush();
             $em->commit();
+
             return $usuario;
 
-        }catch(\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             throw new ServiceValidationException($e->getMessage());
-        }catch(Exception $e){
+        } catch (Exception $e) {
             $this->getEntityManager()->rollback();
             throw $e;
         }
@@ -184,7 +200,8 @@ class UsuarioService extends ServiceAbstract{
      * valida os dados de alteração
      * @param string[] $data
      */
-    private function validarAlteracaoDadosPessoais($data){
+    private function validarAlteracaoDadosPessoais($data)
+    {
         $validator = $this->getValidator();
         $isValid = $validator::arr()->key('id', $validator::positive()->int())
                                     ->key('nome', $validator::string()->length(2, 100))
@@ -198,7 +215,7 @@ class UsuarioService extends ServiceAbstract{
                                             ->key('endereco',$validator::string(),false)
                                         );
 
-        if(!empty($data['senha'])){
+        if (!empty($data['senha'])) {
             $isValid->key('senha', $validator::alnum()->length(6,50)->noWhitespace())
                     ->key('confirmaSenha',$validator::equals($data['senha']));
         }
@@ -208,15 +225,16 @@ class UsuarioService extends ServiceAbstract{
 
     /**
      * verifica se o email vai ser único no banco
-     * @param type $email
-     * @param Usuario $usuario
+     * @param  type                         $email
+     * @param  Usuario                      $usuario
      * @throws EmailDeOutroUsuarioException
      */
-    private function validarEmailUnico($email, Usuario $usuario){
+    private function validarEmailUnico($email, Usuario $usuario)
+    {
         $em = $this->getEntityManager();
         $usuariosEmail = $em->getRepository('EmVistaBundle:Usuario')->findBy(array('email' => $email));
-        foreach($usuariosEmail as $item){
-            if($item->getId() == $usuario->getId()){
+        foreach ($usuariosEmail as $item) {
+            if ($item->getId() == $usuario->getId()) {
                 continue;
             }
             throw new EmailDeOutroUsuarioException();
@@ -227,7 +245,8 @@ class UsuarioService extends ServiceAbstract{
      * Inativa a conta de um usuário
      * @param ServiceData $sd
      */
-    public function inativarConta(ServiceData $sd){
+    public function inativarConta(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
         $usuario = $sd->getUser();
         $usuario->setStatus(false);
@@ -239,7 +258,8 @@ class UsuarioService extends ServiceAbstract{
      * Lista os administradores do sistema
      * @return Usuario[]
      */
-    public function listarAdministradores(){
+    public function listarAdministradores()
+    {
         return $this->getEntityManager()
                     ->getRepository('EmVistaBundle:Usuario')
                     ->listarAdministradores();
@@ -249,7 +269,8 @@ class UsuarioService extends ServiceAbstract{
      * Lista os usuários ativos do sistema
      * @return Usuario[]
      */
-    public function listarUsuariosAtivos(){
+    public function listarUsuariosAtivos()
+    {
         return $this->getEntityManager()
                     ->getRepository('EmVistaBundle:Usuario')
                     ->findBy(array('status' => true), array('nome' => 'ASC'));
@@ -259,12 +280,13 @@ class UsuarioService extends ServiceAbstract{
      * Concede acesso administrativo a um usuário especifico
      * @param ServiceData $sd
      */
-    public function concederAcessoAdministrativo(ServiceData $sd){
+    public function concederAcessoAdministrativo(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
 
         $usuario = $em->find('EmVistaBundle:Usuario', $sd->get('usuarioId'));
 
-        if($usuario->isAdmin()){
+        if ($usuario->isAdmin()) {
             throw new UsuarioJaPossuiAcessoAdministrativoException();
         }
 
@@ -278,12 +300,13 @@ class UsuarioService extends ServiceAbstract{
      * Remove acesso administrativo de um usuário especifico
      * @param ServiceData $sd
      */
-    public function removerAcessoAdministrativo(ServiceData $sd){
+    public function removerAcessoAdministrativo(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
 
         $usuario = $em->find('EmVistaBundle:Usuario', $sd->get('usuarioId'));
 
-        if(!$usuario->isAdmin()){
+        if (!$usuario->isAdmin()) {
             throw new UsuarioNaoPossuiAcessoAdministrativoException();
         }
 
@@ -294,14 +317,15 @@ class UsuarioService extends ServiceAbstract{
     }
 
     /**
-     * @param ServiceData $data
-     * @param string $data['nome']
-     * @param string $data['email']
-     * @param string $data['senha']
+     * @param  ServiceData $data
+     * @param  string      $data['nome']
+     * @param  string      $data['email']
+     * @param  string      $data['senha']
      * @return Usuario
      */
-    public function registrar(ServiceData $data){
-        try{
+    public function registrar(ServiceData $data)
+    {
+        try {
             $data = $data->get();
             $validator = $this->getValidator();
             $em = $this->getEntityManager();
@@ -315,7 +339,7 @@ class UsuarioService extends ServiceAbstract{
 
             $usuario = $em->getRepository('EmVistaBundle:Usuario')->findOneBy(array('email' => $data['email']));
 
-            if(!empty($usuario)){
+            if (!empty($usuario)) {
                 throw new UsuarioJaExisteException();
             }
 
@@ -335,9 +359,9 @@ class UsuarioService extends ServiceAbstract{
 
             return $usuario;
 
-        }catch(\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             throw new ServiceValidationException($e->getMessage());
-        }catch(Exception $e){
+        } catch (Exception $e) {
             $em->rollback();
             throw $e;
         }
@@ -345,14 +369,16 @@ class UsuarioService extends ServiceAbstract{
 
     /**
      * Codifica a senha
-     * @param ServiceData $sd
-     * @param string  $sd['senha']
-     * @param Usuario $sd['user']
+     * @param  ServiceData $sd
+     * @param  string      $sd['senha']
+     * @param  Usuario     $sd['user']
      * @return string
      */
-    public function codificarSenha(ServiceData $sd){
+    public function codificarSenha(ServiceData $sd)
+    {
         $usuario = $sd->getUser();
         $encoder = $this->encoderFactory->getEncoder($usuario);
+
         return $encoder->encodePassword($sd->get('senha'), $usuario->getSalt());
     }
 
@@ -360,23 +386,25 @@ class UsuarioService extends ServiceAbstract{
      * @param ServiceData $sd
      * @param ServiceData $sd['user']
      */
-    public function getPessoa(ServiceData $sd){
+    public function getPessoa(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
+
         return $em->getRepository('EmVistaBundle:Pessoa')->findOneBy(array('usuario' => $sd->getUser()->getId()));
     }
 
-
     /**
-     * @param ServiceData $sd
+     * @param  ServiceData                $sd
      * @throws ServiceValidationException
      * @throws InvalidArgumentException
      * @throws UsuarioNaoExisteException
      */
-    public function esqueciMinhaSenha(ServiceData $sd){
+    public function esqueciMinhaSenha(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
         $em->beginTransaction();
 
-        try{
+        try {
             $v = $this->getValidator();
             $v::arr()->key('email', $v::email())
                      ->key('link', $v::string())
@@ -388,13 +416,13 @@ class UsuarioService extends ServiceAbstract{
                                                     'status' => true));
 
             # verifica se foi encontrado usuario com o email informado
-            if(empty($usuario)){
+            if (empty($usuario)) {
                 throw new UsuarioNaoExisteException('Email não encontrado.');
             }
 
             # se existir tokens abertos pra este usuário, inativa
             $tokens = $em->getRepository('EmVistaBundle:TokenSenha')->findBy(array('usuario' => $usuario->getId()));
-            foreach($tokens as $token){
+            foreach ($tokens as $token) {
                 $token->setAtivo(false);
                 $em->persist($token);
             }
@@ -414,9 +442,9 @@ class UsuarioService extends ServiceAbstract{
             $em->flush();
             $em->commit();
 
-        }catch(\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             throw new ServiceValidationException($e->getMessage());
-        }catch(Exception $e){
+        } catch (Exception $e) {
             $em->rollback();
             throw $e;
         }
@@ -424,9 +452,10 @@ class UsuarioService extends ServiceAbstract{
 
     /**
      * @param TokenSenha $token
-     * @param string $link
+     * @param string     $link
      */
-    public function sendEmailEsqueciMinhaSenha(TokenSenha $token, $link){
+    public function sendEmailEsqueciMinhaSenha(TokenSenha $token, $link)
+    {
         $emailTemplate = $this->getEntityManager()->find('EmVistaBundle:Email', Email::USUARIO_ALTERACAO_SENHA);
         $text = str_replace('{LINK}', $link, $emailTemplate->getTexto());
 
@@ -440,15 +469,16 @@ class UsuarioService extends ServiceAbstract{
     }
 
     /**
-     * @param ServiceData $sd
+     * @param  ServiceData                $sd
      * @return TokenSenha
      * @throws ServiceValidationException
      * @throws TokenInvalidoException
      */
-    public function validarTokenSenha(ServiceData $sd){
+    public function validarTokenSenha(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
 
-        try{
+        try {
             $v = $this->getValidator();
             $v::arr()->key('token', $v::string())
                      ->check($sd->get());
@@ -459,34 +489,35 @@ class UsuarioService extends ServiceAbstract{
 
             $now = new \DateTime('now');
 
-            if(!empty($token) && $now > $token->getDataExpiracao()){
+            if (!empty($token) && $now > $token->getDataExpiracao()) {
                 $token->setAtivo(false);
                 $em->persist($token);
                 $em->flush();
             }
 
-            if(empty($token) || !$token->getAtivo()){
+            if (empty($token) || !$token->getAtivo()) {
                 throw new TokenInvalidoException('Token inválido.');
             }
 
             return $token;
 
-        }catch(\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             throw new ServiceValidationException($e->getMessage());
         }
     }
 
     /**
-     * @param ServiceData $sd
+     * @param  ServiceData                $sd
      * @throws ServiceValidationException
      * @throws InvalidArgumentException
      * @throws TokenInvalidoException
      */
-    public function alterarSenha(ServiceData $sd){
+    public function alterarSenha(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
         $em->beginTransaction();
 
-        try{
+        try {
             $v = $this->getValidator();
             $v::arr()->key('usuarioId', $v::positive()->int())
                      ->key('token', $v::string())
@@ -496,7 +527,7 @@ class UsuarioService extends ServiceAbstract{
 
             $token = $em->getRepository('EmVistaBundle:TokenSenha')->findOneBy(array('token' => $sd->get('token')));
 
-            if(false === $token->getAtivo()){
+            if (false === $token->getAtivo()) {
                 throw new TokenInvalidoException('Token inválido.');
             }
 
@@ -508,85 +539,84 @@ class UsuarioService extends ServiceAbstract{
             $usuario->setSenha($password);
             $em->persist($usuario);
 
-
             $em->flush();
             $em->commit();
 
-        }catch(\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             $em->rollback();
             throw new ServiceValidationException($e->getMessage());
-        }catch(Exception $e){
+        } catch (Exception $e) {
             $em->rollback();
             throw $e;
         }
     }
-    
-    public function salvarImagemProfile(ServiceData $sd){
+
+    public function salvarImagemProfile(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
         $em->beginTransaction();
 
-        try{
+        try {
             $v = $this->getValidator();
             $v::arr()->key('file', $v::instance('Symfony\Component\HttpFoundation\File\UploadedFile'))
                      ->key('user', $v::instance('EmVista\EmVistaBundle\Entity\Usuario'))
                      ->check($sd->get());
-            
+
             $file = $sd->get('file');
-            
-            if(false === file_exists($this->profileDir)){
-                if(false === mkdir($this->profileDir, 0777)){
+
+            if (false === file_exists($this->profileDir)) {
+                if (false === mkdir($this->profileDir, 0777)) {
                     throw new \Exception('Permissão negada.');
                 }
             }
-            
-            if(false === file_exists($this->profileTempDir)){
-                if(false === mkdir($this->profileTempDir,0777)){
+
+            if (false === file_exists($this->profileTempDir)) {
+                if (false === mkdir($this->profileTempDir,0777)) {
                     throw new \Exception('Permissão negada.');
                 }
             }
 
             $mimeType = exif_imagetype($file->getRealPath());
-            if(false === $file->isValid() || false === in_array($mimeType, array(IMAGETYPE_JPEG, IMAGETYPE_PNG))){
+            if (false === $file->isValid() || false === in_array($mimeType, array(IMAGETYPE_JPEG, IMAGETYPE_PNG))) {
                 throw new ServiceValidationException('Imagem ou formato inválido.');
             }
-            
-            
+
             $size = getimagesize($file->getRealPath());
             $originalWidth = $size[0];
             $originalHeight = $size[1];
             $height = $originalHeight;
             $width = $originalWidth;
-            
-            
+
             $filePath = $this->profileTempDir . md5($sd->getUser()->getId() . 'EmVista') . '.png';
             $webPath = $this->profileWebTempPath . md5($sd->getUser()->getId() . 'EmVista') . '.png';
-            
+
             $file->move( $this->profileTempDir,md5($sd->getUser()->getId() . 'EmVista') . '.png');
-            
+
             $returnFile = new \stdClass();
             $returnFile->webPath = $webPath;
             $returnFile->filePath = $filePath;
             $returnFile->width = $width;
             $returnFile->height = $height;
             $returnFile->originalName = $file->getClientOriginalName();
-            
+
             return $returnFile;
-            
-        }catch(\InvalidArgumentException $e){
+
+        } catch (\InvalidArgumentException $e) {
             $em->rollback();
             throw new ServiceValidationException($e->getMessage());
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             $em->rollback();
             throw $e;
         }
-        
+
     }
-    
-    public function recortaImagemProfile(ServiceData $sd){
+
+    public function recortaImagemProfile(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
         $em->beginTransaction();
 
-        try{
+        try {
             $v = $this->getValidator();
             $v::arr()->key('user', $v::instance('EmVista\EmVistaBundle\Entity\Usuario'))
                      ->key('x', $v::numeric())
@@ -597,69 +627,65 @@ class UsuarioService extends ServiceAbstract{
                      ->key('escW', $v::numeric())
                      ->key('name', $v::string()->length(0,255))
                      ->check($sd->get());
-            
+
             $escW = $sd->get('escW');
             $escH = $sd->get('escH');
             $w = round($sd->get('w')/$escW,0);
             $h = round($sd->geT('h')/$escH,0);
-            
+
             $x = round($sd->get('x') * $h / $sd->get('h'),0);
             $y = round($sd->get('y') * $w / $sd->get('w'),0);
-            
-            
+
             $imagem = new Imagem();
-            
-            $imagem ->setAltura($this->profileHeight)
+
+            $imagem->setAltura($this->profileHeight)
                     ->setLargura($this->profileWidth)
                     ->setOriginalFilename($sd->get('name'))
                     ->setSize(0)
                     ->setExtensao('png')
                     ->setUsuario($sd->getUser());;
-            if($sd->getUser()->getImagemProfile()){
+            if ($sd->getUser()->getImagemProfile()) {
                 $em->remove($sd->getUser()->getImagemProfile());
-                if(file_exists($this->profileDir . $sd->getUser()->getImagemProfile()->getFilename())){
+                if (file_exists($this->profileDir . $sd->getUser()->getImagemProfile()->getFilename())) {
                     unlink($this->profileDir . $sd->getUser()->getImagemProfile()->getFilename());
                 }
             }
-            
+
             $usuario = $sd->getUser()->setImagemProfile($imagem);
-            
+
             $em->persist($imagem);
             $em->persist($usuario);
             $em->flush();
 
             $filePath = $this->profileTempDir . md5($sd->getUser()->getId() . 'EmVista') . '.png';
-            
+
             $newFilename = $this->profileDir . md5($imagem->getId()) . '.png';
-            
-            
-            
+
             $imagine = $this->imagine->open($filePath)
                             ->crop(new Point($x, $y), new Box($w, $h))
                             ->save($newFilename);
-            
+
             $filePath = $this->profileTempDir . md5($sd->getUser()->getId() . 'EmVista') . '.png';
             unlink($filePath);
-            
+
             $imagine = $this->imagine->open($newFilename)
                             ->thumbnail(new Box($this->profileWidth,$this->profileHeight))
                             ->save($newFilename);
-            
+
             $imagem->setWebPath($this->profileWebPath . $imagem->getFilename());
             $em->persist($imagem);
-            
+
             $em->flush();
             $em->commit();
 
             return $usuario;
-        }catch(\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             $em->rollback();
             throw new ServiceValidationException($e->getMessage());
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             $em->rollback();
             throw $e;
         }
-        
-        
+
     }
 }

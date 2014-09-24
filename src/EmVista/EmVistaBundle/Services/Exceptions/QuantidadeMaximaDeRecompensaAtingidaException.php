@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services\Exceptions;
 
-class QuantidadeMaximaDeRecompensaAtingidaException extends \Exception{
-
+class QuantidadeMaximaDeRecompensaAtingidaException extends \Exception
+{
 }

@@ -19,10 +19,10 @@ use EmVista\EmVistaBundle\Entity\StatusArrecadacao;
 use EmVista\EmVistaBundle\Entity\TipoProjetoImagem;
 use EmVista\EmVistaBundle\Entity\TipoMovimentacaoFinanceira;
 
-class Fixtures implements FixtureInterface{
-
-    public function load(ObjectManager $em){
-
+class Fixtures implements FixtureInterface
+{
+    public function load(ObjectManager $em)
+    {
         //CATEGORIAS
 
         $categoriaArte = new Categoria();
@@ -194,7 +194,6 @@ class Fixtures implements FixtureInterface{
 
         $em->persist($statusDoacaoAguardando);
 
-
         //GATEWAYS DE PAGAMENTOS
 
         $moipGateway = new GatewayPagamento();
@@ -275,7 +274,6 @@ class Fixtures implements FixtureInterface{
         $statusMoipReembolsado->setStatusDoacao($statusDoacaoEstornado);
 
         $em->persist($statusMoipReembolsado);
-
 
         //TIPO MOVIMENTACAO FINANCEIRA
 
@@ -369,7 +367,6 @@ class Fixtures implements FixtureInterface{
 
         $em->persist($fpMoipPaggo);
 
-
         $fpMoipBanrisul = new FormaPagamento();
         $fpMoipBanrisul->setGatewayPagamento($moipGateway);
         $fpMoipBanrisul->setCodigo(88);
@@ -377,8 +374,6 @@ class Fixtures implements FixtureInterface{
         $fpMoipBanrisul->setDescricao('Débito em conta banco Banrisul');
 
         $em->persist($fpMoipBanrisul);
-
-
 
         //TIPO PROJETO IMAGEM
 
@@ -451,8 +446,6 @@ TEXTO;
 
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
 <p>Informamos que o pagamento da sua contribui&ccedil;&atilde;o para o projeto {PROJETO} foi confirmado.</p>
@@ -469,8 +462,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Confirmação de pagamento');
         $em->persist($email);
-
-
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
@@ -489,8 +480,6 @@ TEXTO;
               ->setTitulo('EmVista - Analisamos o seu projeto');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
 <p>O seu projeto foi recebido com sucesso por nossa equipe e em breve o analisaremos.</p>
@@ -506,8 +495,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Recebemos o seu projeto');
         $em->persist($email);
-
-
 
 $texto = <<<TEXTO
 <p>Parab&eacute;ns,</p>
@@ -527,8 +514,6 @@ TEXTO;
               ->setTitulo('EmVista - Seu projeto foi aprovado!');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute; {NOME},</p>
 <p>Seja bem-vindo,</p>
@@ -546,8 +531,6 @@ TEXTO;
               ->setTitulo('EmVista - Seja bem-vindo');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Parab&eacute;ns,</p>
 <p>O seu projeto acabou de atingir a meta estipulada. Continue trabalhando firme para atingir objetivos ainda maiores.</p>
@@ -562,8 +545,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Meta alcançada');
         $em->persist($email);
-
-
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
@@ -583,8 +564,6 @@ TEXTO;
               ->setTitulo('EmVista - Sentiremos sua falta');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
 <p>Foi confirmada pela institui&ccedil;&atilde;o financeira uma contribui&ccedil;&atilde;o do usu&aacute;rio {NOME} ({EMAIL}), de valor R$ {VALOR}, para o projeto {PROJETO}.</p>
@@ -600,8 +579,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Contribuição recebida');
         $em->persist($email);
-
-
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
@@ -622,8 +599,6 @@ TEXTO;
               ->setTitulo('EmVista - O seu projeto foi financiado');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>&nbsp;</p>
 <p>Ol&aacute;,</p>
@@ -643,8 +618,6 @@ TEXTO;
               ->setTitulo('EmVista - Prazo finalizado');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>&nbsp;</p>
 <p>Ol&aacute;,</p>
@@ -662,7 +635,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Estorno');
         $em->persist($email);
-
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>

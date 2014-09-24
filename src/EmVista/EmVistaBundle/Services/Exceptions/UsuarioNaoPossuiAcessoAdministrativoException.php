@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services\Exceptions;
 
-class UsuarioNaoPossuiAcessoAdministrativoException extends \Exception{
-
+class UsuarioNaoPossuiAcessoAdministrativoException extends \Exception
+{
 }

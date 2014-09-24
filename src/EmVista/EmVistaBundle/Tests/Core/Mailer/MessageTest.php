@@ -5,14 +5,15 @@ namespace EmVista\EmVistaBundle\Tests\Core\Mailer;
 use EmVista\EmVistaBundle\Tests\TestCase;
 use EmVista\EmVistaBundle\Core\Mailer\Message;
 
-class MessageTest extends TestCase{
-
+class MessageTest extends TestCase
+{
     /**
      * @var Message
      */
     private $message;
 
-    protected function setUp(){
+    protected function setUp()
+    {
         parent::setUp();
 
         $stub = $this->getMock('EmVista\EmVistaBundle\Core\Mailer\MailerInterface');
@@ -27,14 +28,16 @@ class MessageTest extends TestCase{
     /**
      * @test
      */
-    public function deveEnviarComSucesso(){
+    public function deveEnviarComSucesso()
+    {
         $this->assertEquals(1, $this->message->send());
     }
 
     /**
      * @test
      */
-    public function to(){
+    public function to()
+    {
         $this->message->to('leonn@emvista.me');
         $this->assertEquals('leonn@emvista.me', $this->message->getTo());
     }
@@ -42,7 +45,8 @@ class MessageTest extends TestCase{
     /**
      * @test
      */
-    public function from(){
+    public function from()
+    {
         $this->message->from('leonn@emvista.me');
         $this->assertEquals('leonn@emvista.me', $this->message->getFrom());
     }
@@ -50,7 +54,8 @@ class MessageTest extends TestCase{
     /**
      * @test
      */
-    public function subject(){
+    public function subject()
+    {
         $this->message->subject('assunto do emvista');
         $this->assertEquals('assunto do emvista', $this->message->getSubject());
     }
@@ -58,7 +63,8 @@ class MessageTest extends TestCase{
     /**
      * @test
      */
-    public function message(){
+    public function message()
+    {
         $this->message->message('mensagem radical do papai');
         $this->assertEquals('mensagem radical do papai', $this->message->getMessage());
     }
@@ -66,7 +72,8 @@ class MessageTest extends TestCase{
     /**
      * @test
      */
-    public function cc(){
+    public function cc()
+    {
         $this->message->cc(array('bruno@emvista.me', 'raphael@emvista.me'));
         $cc = $this->message->getCc();
         $this->assertInternalType('array', $cc);
@@ -77,7 +84,8 @@ class MessageTest extends TestCase{
     /**
      * @test
      */
-    public function bcc(){
+    public function bcc()
+    {
         $this->message->bcc(array('bruno@emvista.me', 'raphael@emvista.me'));
         $bcc = $this->message->getBcc();
         $this->assertInternalType('array', $bcc);

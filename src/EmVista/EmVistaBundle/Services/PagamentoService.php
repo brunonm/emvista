@@ -2,7 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services;
 
-use EmVista\EmVistaBundle\Util\Date;
 use EmVista\EmVistaBundle\Entity\Email;
 use EmVista\EmVistaBundle\Entity\Doacao;
 use EmVista\EmVistaBundle\Entity\LogPagamento;
@@ -20,30 +19,31 @@ use EmVista\EmVistaBundle\Core\Exceptions\ServiceValidationException;
 use EmVista\EmVistaBundle\Services\Exceptions\RepasseNaoPermitidoException;
 use EmVista\EmVistaBundle\Services\Exceptions\QuantidadeMaximaDeRecompensaAtingidaException;
 
-class PagamentoService extends ServiceAbstract{
-
+class PagamentoService extends ServiceAbstract
+{
     /**
      * @var \Tear\MoipBundle\Services\Moip
      */
     private $paymentGateway;
 
     /**
-     * @param ServiceData $sd
+     * @param  ServiceData $sd
      * @throws Exception
      */
-    public function atualizarValorArrecadado(ServiceData $sd){
+    public function atualizarValorArrecadado(ServiceData $sd)
+    {
         $em      = $this->getEntityManager();
         $projeto = $em->find('EmVistaBundle:Projeto', $sd->get('projetoId'));
 
         $em->beginTransaction();
 
-        try{
+        try {
             $valorArrecadado = (float) $em->getRepository('EmVistaBundle:Projeto')->calcularValorArrecadado($projeto->getId());
             $projeto->setValorArrecadado($valorArrecadado);
             $em->persist($projeto);
             $em->flush();
             $em->commit();
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             $em->rollback();
             throw $e;
         }
@@ -52,19 +52,20 @@ class PagamentoService extends ServiceAbstract{
     /**
      * @param ServiceData $sd
      */
-    public function atualizaQuantidadeApoiadores(ServiceData $sd){
-
+    public function atualizaQuantidadeApoiadores(ServiceData $sd)
+    {
     }
 
     /**
-     * @param ServiceData $sd
+     * @param  ServiceData $sd
      * @throws Exception
      */
-    public function cancel(ServiceData $sd){
+    public function cancel(ServiceData $sd)
+    {
         $em            = $this->getEntityManager();
         $movFinanceira = $em->find('EmVistaBundle:MovimentacaoFinanceira', $sd->get('movFinanceiraId'));
 
-        try{
+        try {
             $em->beginTransaction();
 
             $status = $em->find('EmVistaBundle:StatusDoacao', StatusDoacao::CANCELADO);
@@ -76,7 +77,7 @@ class PagamentoService extends ServiceAbstract{
             $em->flush();
             $em->commit();
 
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             $em->rollback();
             throw $e;
         }
@@ -85,14 +86,15 @@ class PagamentoService extends ServiceAbstract{
     /**
      * @param ServiceData $sd
      */
-    public function informarPagamento(ServiceData $sd){
+    public function informarPagamento(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
 
         $status = $em->find('EmVistaBundle:StatusFinanceiro', StatusFinanceiro::STATUS_PAGO);
 
         $projeto = $em->find('EmVistaBundle:Projeto', $sd->get('projetoId'));
 
-        if($projeto->getStatusFinanceiro() != null){
+        if ($projeto->getStatusFinanceiro() != null) {
             throw new RepasseNaoPermitidoException();
         }
 
@@ -104,22 +106,24 @@ class PagamentoService extends ServiceAbstract{
     /**
      * @param \Tear\MoipBundle\Services\Moip $gateway
      */
-    public function setPaymentGateway($gateway){
+    public function setPaymentGateway($gateway)
+    {
         $this->paymentGateway = $gateway;
     }
 
     /**
-     * @param ServiceData $sd
+     * @param  ServiceData                                   $sd
      * @return string
      * @throws Exception
      * @throws ServiceValidationException
      * @throws QuantidadeMaximaDeRecompensaAtingidaException
      */
-    public function checkout(ServiceData $sd){
+    public function checkout(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
         $em->beginTransaction();
 
-        try{
+        try {
             $v = $this->getValidator();
             $v::arr()->key('valor',$v::float()->min(0))
                      ->key('recompensaId',$v::int()->min(0))
@@ -132,12 +136,12 @@ class PagamentoService extends ServiceAbstract{
             $status     = $em->find('EmVistaBundle:StatusDoacao', StatusDoacao::AGUARDANDO);
             $gateway    = $em->find('EmVistaBundle:GatewayPagamento',  GatewayPagamento::MOIP);
 
-            if($valor < $recompensa->getValorMinimo()){
+            if ($valor < $recompensa->getValorMinimo()) {
                 throw new ServiceValidationException('Valor inválido para a recompensa escolhida.');
             }
 
-            if($recompensa->getQuantidadeMaximaApoiadores() > 0){
-                if($recompensa->getQuantidadeMaximaApoiadores() <= $recompensa->getQuantidadeApoiadores()){
+            if ($recompensa->getQuantidadeMaximaApoiadores() > 0) {
+                if ($recompensa->getQuantidadeMaximaApoiadores() <= $recompensa->getQuantidadeApoiadores()) {
                     throw new QuantidadeMaximaDeRecompensaAtingidaException('Quantidade maxima de apoiadores para essa recompensa alcançada.');
                 }
             }
@@ -192,33 +196,34 @@ class PagamentoService extends ServiceAbstract{
 
             return $response->payment_url;
 
-        }catch(\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             $em->rollback();
             throw new ServiceValidationException();
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             $em->rollback();
             throw $e;
         }
     }
 
     /**
-     * @param ServiceData $sd
+     * @param  ServiceData                $sd
      * @return MovimentacaoFinanceira
      * @throws ServiceValidationException
      * @throws InvalidArgumentException
      * @throws InvalidTokenException
      */
-    public function review(ServiceData $sd){
+    public function review(ServiceData $sd)
+    {
         $em = $this->getEntityManager();
         $em->beginTransaction();
 
-        try{
+        try {
             $this->validaReview($sd->get());
 
             $movFinanceiraId = $sd->get('movFinanceiraId');
             $movFinanceira   = $em->getRepository('EmVistaBundle:MovimentacaoFinanceira')->find($movFinanceiraId);
 
-            if(empty($movFinanceira)){
+            if (empty($movFinanceira)) {
                 throw new InvalidTokenException('Token inválido');
             }
 
@@ -246,12 +251,12 @@ class PagamentoService extends ServiceAbstract{
                                      ->findOneBy(array('usuario' => $usuario->getId(),
                                                        'gatewayPagamento' => $gateway->getId()));
 
-            if(empty($usuarioDetalhesPag)){
+            if (empty($usuarioDetalhesPag)) {
                 $usuarioDetalhesPag = new UsuarioDetalhesPagamento();
                 $usuarioDetalhesPag->setGateway($gateway);
             }
 
-            if($response->pagador){
+            if ($response->pagador) {
                 $usuarioDetalhesPag->setUsuario($usuario)
                                    ->setGatewayId($response->pagador->Email)
                                    ->setGatewayEmail($response->pagador->Email)
@@ -260,7 +265,7 @@ class PagamentoService extends ServiceAbstract{
             }
 
             //verifico se o status atual é diferente do ultimo status dele
-            if($response->pagamento){
+            if ($response->pagamento) {
                 $arrayPagamento = $response->pagamento;
                 $pagamento = current($arrayPagamento);
                 $doacao = $movFinanceira->getDoacao();
@@ -271,11 +276,11 @@ class PagamentoService extends ServiceAbstract{
                                     ->findOneBy(array('gatewayPagamento' => $gateway->getId(),
                                                       'gatewayStatus' => $statusPagamentoGateway));
 
-                if($statusDoacao->getId() != $statusGateway->getStatusDoacao()->getId()){
+                if ($statusDoacao->getId() != $statusGateway->getStatusDoacao()->getId()) {
                     $doacao->setStatus($statusGateway->getStatusDoacao());
                     $em->persist($doacao);
 
-                    if($statusGateway->getStatusDoacao()->getId() == StatusDoacao::APROVADO ){
+                    if ($statusGateway->getStatusDoacao()->getId() == StatusDoacao::APROVADO ) {
                         $recompensa = $doacao->getRecompensa();
                         $qtApoiadores = $recompensa->getQuantidadeApoiadores() + 1;
                         $recompensa->setQuantidadeApoiadores($qtApoiadores);
@@ -305,9 +310,9 @@ class PagamentoService extends ServiceAbstract{
 
             return $movFinanceira;
 
-        }catch(\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             throw new ServiceValidationException($e);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             $em->rollback();
             throw $e;
         }
@@ -316,7 +321,8 @@ class PagamentoService extends ServiceAbstract{
     /**
      * @param type $data
      */
-    public function validaReview($data){
+    public function validaReview($data)
+    {
         $r = $this->getValidator();
         $r::arr()->key('movFinanceiraId',$r::int()->min(0))
                  ->key('ip',$r::ip())
@@ -327,7 +333,8 @@ class PagamentoService extends ServiceAbstract{
     /**
      * @param Doacao $doacao
      */
-    private function sendEmailCheckout($doacao){
+    private function sendEmailCheckout($doacao)
+    {
         $emailRepository = $this->getEntityManager()->getRepository('EmVistaBundle:Email');
         $mailer = $this->getMailer();
 
@@ -352,7 +359,8 @@ class PagamentoService extends ServiceAbstract{
     /**
      * @param Doacao $doacao
      */
-    private function sendEmailConfirmacaoPagamento($doacao){
+    private function sendEmailConfirmacaoPagamento($doacao)
+    {
         $emailRepository = $this->getEntityManager()->getRepository('EmVistaBundle:Email');
         $mailer = $this->getMailer();
 

@@ -2,15 +2,14 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * Email
  *
  */
-class Email extends EntityAbstract{
-
+class Email extends EntityAbstract
+{
     # TIPO USUARIO DESTINO _ TITULO
 
     const APOIADOR_RECEMOS_SUA_CONTRIBUICAO = 1;
@@ -52,17 +51,19 @@ class Email extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * Set titulo
      *
-     * @param string $titulo
+     * @param  string $titulo
      * @return Email
      */
-    public function setTitulo($titulo){
+    public function setTitulo($titulo)
+    {
         $this->titulo = $titulo;
 
         return $this;
@@ -73,17 +74,19 @@ class Email extends EntityAbstract{
      *
      * @return string
      */
-    public function getTitulo(){
+    public function getTitulo()
+    {
         return $this->titulo;
     }
 
     /**
      * Set texto
      *
-     * @param string $texto
+     * @param  string $texto
      * @return Email
      */
-    public function setTexto($texto){
+    public function setTexto($texto)
+    {
         $this->texto = $texto;
 
         return $this;
@@ -94,7 +97,8 @@ class Email extends EntityAbstract{
      *
      * @return string
      */
-    public function getTexto(){
+    public function getTexto()
+    {
         return $this->texto;
     }
 }

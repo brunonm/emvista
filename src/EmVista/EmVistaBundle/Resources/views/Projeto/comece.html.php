@@ -2,21 +2,22 @@
 <?php $view['slots']->start('js') ?>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#aceitarTermoUso').change(function(){
-            if($(this).is(':checked')){
+    $(document).ready(function () {
+        $('#aceitarTermoUso').change(function () {
+            if ($(this).is(':checked')) {
                 $(this).parents('.btn:first').addClass('disabled');
                 $('.btn-sucesso').removeClass('disabled');
-            }else{
+            } else {
                 $(this).parents('.btn:first').removeClass('disabled')
                 $('.btn-sucesso').addClass('disabled');
             }
         })
-        $('.btn-sucesso').click(function(){
-            if($(this).hasClass('disabled')){
+        $('.btn-sucesso').click(function () {
+            if ($(this).hasClass('disabled')) {
                 return false;
             }
             $('form#form').submit();
+
             return true;
         })
     })

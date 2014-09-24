@@ -49,7 +49,7 @@
                 <div class="control-group">
                     <label class="control-label" for="descricao">Descrição</label>
                     <div class="controls">
-                        <input type="text" name="recompensas[<?php echo $key; ?>][descricao]" 
+                        <input type="text" name="recompensas[<?php echo $key; ?>][descricao]"
                                class="input-xxlarge" value="<?php echo $recompensa->getDescricao(); ?>"/>
                     </div>
                 </div>

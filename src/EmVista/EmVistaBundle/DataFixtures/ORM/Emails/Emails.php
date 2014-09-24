@@ -6,10 +6,10 @@ use EmVista\EmVistaBundle\Entity\Email;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 
-class Emails implements FixtureInterface{
-
-    public function load(ObjectManager $em){
-
+class Emails implements FixtureInterface
+{
+    public function load(ObjectManager $em)
+    {
 $texto = <<<TEXTO
 <p>Obrigado,&nbsp;</p>
 <p>A sua contribui&ccedil;&atilde;o para o projeto {PROJETO} foi registrada no EmVista e aguardamos a confirma&ccedil;&atilde;o da institui&ccedil;&atilde;o financeira sobre o pagamento.</p>
@@ -29,8 +29,6 @@ TEXTO;
 
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
 <p>Informamos que o pagamento da sua contribui&ccedil;&atilde;o para o projeto {PROJETO} foi confirmado.</p>
@@ -47,8 +45,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Confirmação de pagamento');
         $em->persist($email);
-
-
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
@@ -67,8 +63,6 @@ TEXTO;
               ->setTitulo('EmVista - Analisamos o seu projeto');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
 <p>O seu projeto foi recebido com sucesso por nossa equipe e em breve o analisaremos.</p>
@@ -84,8 +78,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Recebemos o seu projeto');
         $em->persist($email);
-
-
 
 $texto = <<<TEXTO
 <p>Parab&eacute;ns,</p>
@@ -105,8 +97,6 @@ TEXTO;
               ->setTitulo('EmVista - Seu projeto foi aprovado!');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute; {NOME},</p>
 <p>Seja bem-vindo,</p>
@@ -124,8 +114,6 @@ TEXTO;
               ->setTitulo('EmVista - Seja bem-vindo');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Parab&eacute;ns,</p>
 <p>O seu projeto acabou de atingir a meta estipulada. Continue trabalhando firme para atingir objetivos ainda maiores.</p>
@@ -140,8 +128,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Meta alcançada');
         $em->persist($email);
-
-
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
@@ -161,8 +147,6 @@ TEXTO;
               ->setTitulo('EmVista - Sentiremos sua falta');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
 <p>Foi confirmada pela institui&ccedil;&atilde;o financeira uma contribui&ccedil;&atilde;o do usu&aacute;rio {NOME} ({EMAIL}), de valor R$ {VALOR}, para o projeto {PROJETO}.</p>
@@ -178,8 +162,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('EmVista - Contribuição recebida');
         $em->persist($email);
-
-
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
@@ -200,8 +182,6 @@ TEXTO;
               ->setTitulo('EmVista - O seu projeto foi financiado');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>&nbsp;</p>
 <p>Ol&aacute;,</p>
@@ -221,8 +201,6 @@ TEXTO;
               ->setTitulo('EmVista - Prazo finalizado');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>&nbsp;</p>
 <p>Ol&aacute;,</p>
@@ -241,8 +219,6 @@ TEXTO;
               ->setTitulo('EmVista - Estorno');
         $em->persist($email);
 
-
-
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
 <p>Para alterar sua senha, clique no link abaixo:</p>
@@ -260,9 +236,7 @@ TEXTO;
               ->setTitulo('EmVista - Alteração de senha');
         $em->persist($email);
 
-
         $em->flush();
-
 
 $texto = <<<TEXTO
 <p>Ol&aacute;, {NOME}</p>
@@ -281,9 +255,7 @@ TEXTO;
               ->setTitulo('EmVista - Confirmação de pré-cadastro');
         $em->persist($email);
 
-
         $em->flush();
-
 
 $texto = <<<TEXTO
 <p><strong>Nome completo:</strong> {NOME}</p>
@@ -300,7 +272,6 @@ TEXTO;
         $email->setTexto($texto)
               ->setTitulo('Cadastro de pré-projeto');
         $em->persist($email);
-
 
         $em->flush();
     }

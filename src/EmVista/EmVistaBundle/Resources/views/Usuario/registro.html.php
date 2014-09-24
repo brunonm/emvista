@@ -3,7 +3,7 @@
 
 
 <div class="row signUpOrLogIn" >
-    <div class="span4 offset1 agrupador <?php echo $focado == 'login'?'focado':'';?>">
+    <div class="span4 offset1 agrupador <?php echo $focado == 'login' ? 'focado' : '';?>">
 
         <form action="<?php echo $view['router']->generate('login_check') ?>" method="post" id="loginForm">
             <fieldset>
@@ -43,7 +43,7 @@
 
         </form>
     </div>
-    <div class="span4 offset1 agrupador <?php echo $focado == 'registro'?'focado':'';?>">
+    <div class="span4 offset1 agrupador <?php echo $focado == 'registro' ? 'focado' : '';?>">
         <form  action="<?php echo $view['router']->generate('usuario_registrar') ?>" method="post">
             <fieldset>
                 <div class="page-header">
@@ -92,7 +92,6 @@
 </div>
 
 <?php $view['slots']->stop();
-
 
 $view['slots']->start('js');
 foreach($view['assetic']->javascripts(array(
