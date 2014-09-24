@@ -3,7 +3,6 @@
 namespace EmVista\EmVistaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use EmVista\EmVistaBundle\Entity\TipoDestaque;
 use Symfony\Component\HttpFoundation\Response;
 use EmVista\EmVistaBundle\Messages\SubmissaoMessages;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
@@ -22,9 +21,7 @@ class HomeController extends ControllerAbstract
 //        $destaques = $this->get('service.projeto')->listarProjetosDestaqueHome();
 //        $novos     = $this->get('service.projeto')->listarProjetosNovos();
 //        $retaFinal = $this->get('service.projeto')->listarProjetosRetaFinal();
-//
-//        $secundario = isset($destaques[TipoDestaque::HOME_SECUNDARIO]) ? $destaques[TipoDestaque::HOME_SECUNDARIO] : array();
-//        $primario   = isset($destaques[TipoDestaque::HOME_PRIMARIO])   ? $destaques[TipoDestaque::HOME_PRIMARIO]   : null;
+
         $destaques = array();
         $novos     = array();
         $retaFinal = array();

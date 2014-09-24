@@ -10,7 +10,7 @@
             <p>Selecione uma imagem ilustrativa do seu projeto. O tamanho máximo permitido é de 2MB e são aceitos os formatos JPG e PNG. </p>
 
             <input id="fileupload" type="file" name="imagem"
-                    data-url="<?php echo $view['router']->generate('submissao_salvar-imagem-original', array('submissaoId' => $submissao->getId())); ?>">
+                   data-url="<?php echo $view['router']->generate('submissao_salvar-imagem-original', array('submissaoId' => $submissao->getId())); ?>">
         </div>
 
         <div id="crop-controls" style="display: none;">
@@ -21,7 +21,7 @@
         <div class="row">
             <input type="hidden" id="projetoImagemId" name="projetoImagemId"
                    value="<?php echo ($imagemOriginal ? $imagemOriginal->getId() : ''); ?>"/>
-            <input type="hidden" id="tipoProjetoImagemId" name="tipoProjetoImagemId" value="4"/>
+            <input type="hidden" id="tipoProjetoImagemId" name="tipoProjetoImagemId" value="2"/>
             <div class="span10" id="preview">
                 <?php if($imagemOriginal): ?>
                 <img src="<?php echo $imagemOriginal->getWebPath(); ?>"/>
@@ -35,7 +35,7 @@
                    id="button-new-upload"><i class="icon-arrow-up icon-white"></i> Novo upload</a>
 
                 <a href="javascript:;" style="display: none;" class="btn btn-success" disabled
-                   id="button-next-crop"><i class="icon-arrow-right icon-white"></i> Próxima imagem</a>
+                   id="button-next-crop"><i class="icon-arrow-right icon-white"></i> Recortar!</a>
             </div>
         </div>
 

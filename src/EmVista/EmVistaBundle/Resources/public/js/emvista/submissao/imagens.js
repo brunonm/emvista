@@ -39,7 +39,7 @@ var imagens = {
                     $('#projetoImagemId').val(data.result.result.projetoImagemId);
                     $('#preview').html(img);
                     $('#preview').show();
-                    $('#tipoProjetoImagemId').val(3);
+                    $('#tipoProjetoImagemId').val(1);
                     imagens.startCrop();
                 }
             },
@@ -74,8 +74,8 @@ var imagens = {
             onSelect:    imagens.handleCropEventSelect,
             onRelease:   imagens.handleCropEventRelease,
             aspectRatio: imagens.cropParams[tipo].aspectRatio,
-            minSize:    [imagens.cropParams[tipo].largura / 2, imagens.cropParams[tipo].altura / 2],
-            maxSize:    [imagens.cropParams[tipo].largura * 2, imagens.cropParams[tipo].altura * 2]
+            minSize:    [imagens.cropParams[tipo].largura, imagens.cropParams[tipo].altura],
+            maxSize:    [0, 0]
         }, function(){
             imagens.jcropApi = this;
         });
@@ -94,18 +94,8 @@ var imagens = {
     },
 
     messagesThumb: function(){
-        $('#crop-controls p:first').html('<strong>1° Recorte - Miniatura</strong>');
+        $('#crop-controls p:first').html('<strong>Recorte de miniatura</strong>');
         $('#crop-controls p:last').html('Selecione a área da imagem que deseja utilizar para as miniaturas do site.');
-    },
-
-    messagesDestaque: function(){
-        $('#crop-controls p:first').html('<strong>2° Recorte - Destaque</strong>');
-        $('#crop-controls p:last').html('Selecione a área da imagem que deseja utilizar quando o seu projeto aparecer como destaque principal no EmVista.');
-    },
-
-    messagesDestaqueSecundario: function(){
-        $('#crop-controls p:first').html('<strong>3° Recorte - Destaque secundário</strong>');
-        $('#crop-controls p:last').html('Selecione a área da imagem que deseja utilizar quando o seu projeto aparecer como destaque secundário no EmVista.');
     },
 
     messagesFinal: function(){
@@ -124,23 +114,11 @@ var imagens = {
             w: imagens.w,
             h: imagens.h
         }
-        $.post('/submissao/' + submissaoId + '/salvarCrop', params, function(data){
+        $.post('/submissao/' + submissaoId + '/salvar-crop', params, function(data){
             if(data.status){
                 $('#button-next-crop').attr('disabled', true);
-                imagens.jcropApi.release();
-                var nextTipo;
-                if(params.tipoProjetoImagemId == 3){
-                    imagens.messagesDestaque();
-                    nextTipo = 1;
-                }else if(params.tipoProjetoImagemId == 1){
-                    imagens.messagesDestaqueSecundario();
-                    nextTipo = 2;
-                }else if(params.tipoProjetoImagemId == 2){
-                    imagens.finishCrop();
-                    return;
-                }
-                $('#tipoProjetoImagemId').val(nextTipo);
-                imagens.crop();
+                imagens.finishCrop();
+                return;
             }else{
                 alert(status.message);
             }

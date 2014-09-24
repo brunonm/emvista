@@ -52,6 +52,10 @@ submissao_salvar-crop:
     defaults: { _controller: EmVistaBundle:Submissao:salvarCrop }
     methods: [POST]
 
+submissao_get-crop-params:
+    pattern: /submissao/getCropParams
+    defaults: { _controller: EmVistaBundle:Submissao:getCropParams }
+
 submissao_mais-sobre-voce:
     pattern: /submissao/{submissaoId}/mais-sobre-voce
     defaults: { _controller: EmVistaBundle:Submissao:maisSobreVoce }

@@ -604,30 +604,6 @@ class Projeto extends EntityAbstract
     /**
      * @return ProjetoImagem
      */
-    public function getImagemDestaque()
-    {
-        foreach ($this->getImagens() as $imagem) {
-            if ($imagem->getTipoProjetoImagem()->getId() == TipoProjetoImagem::TIPO_DESTAQUE) {
-                return $imagem;
-            }
-        }
-    }
-
-    /**
-     * @return ProjetoImagem
-     */
-    public function getImagemDestaqueSecundario()
-    {
-        foreach ($this->getImagens() as $imagem) {
-            if ($imagem->getTipoProjetoImagem()->getId() == TipoProjetoImagem::TIPO_DESTAQUE_SECUNDARIO) {
-                return $imagem;
-            }
-        }
-    }
-
-    /**
-     * @return ProjetoImagem
-     */
     public function getImagemThumb()
     {
         foreach ($this->getImagens() as $imagem) {

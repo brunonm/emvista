@@ -10,10 +10,8 @@ use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
  */
 class TipoProjetoImagem extends EntityAbstract
 {
-    const TIPO_DESTAQUE            = 1;
-    const TIPO_DESTAQUE_SECUNDARIO = 2;
-    const TIPO_THUMB               = 3;
-    const TIPO_ORIGINAL            = 4;
+    const TIPO_THUMB               = 1;
+    const TIPO_ORIGINAL            = 2;
 
     /**
      * @var integer $id

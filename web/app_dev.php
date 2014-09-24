@@ -28,3 +28,10 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+function dump($var, $die = true)
+{
+    echo '<pre>';
+    print_r($var);
+    if ($die) die;
+}

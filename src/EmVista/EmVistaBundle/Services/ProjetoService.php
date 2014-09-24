@@ -9,7 +9,6 @@ use EmVista\EmVistaBundle\Entity\Categoria;
 use EmVista\EmVistaBundle\Entity\Recompensa;
 use Symfony\Component\Serializer\Serializer;
 use EmVista\EmVistaBundle\Entity\Atualizacao;
-use EmVista\EmVistaBundle\Entity\TipoDestaque;
 use EmVista\EmVistaBundle\Entity\TipoProjetoImagem;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceAbstract;
@@ -142,28 +141,6 @@ class ProjetoService extends ServiceAbstract
     public function listarCategoriasComProjetos()
     {
         return $this->getEntityManager()->getRepository('EmVistaBundle:Categoria')->listarCategoriasComProjetos();
-    }
-
-    /**
-    * @return [int]Projeto[]
-    */
-    public function listarProjetosDestaqueHome()
-    {
-        $em = $this->getEntityManager();
-        $homePrimario   = $em->getRepository('EmVistaBundle:Projeto')->findOneBy(array('tipoDestaque' => TipoDestaque::HOME_PRIMARIO));
-        $homeSecundaria = $em->getRepository('EmVistaBundle:Projeto')->findBy(array('tipoDestaque' => TipoDestaque::HOME_SECUNDARIO));
-
-        $res = array();
-
-        if (!empty($homePrimario)) {
-            $res[TipoDestaque::HOME_PRIMARIO] = $homePrimario;
-        }
-
-        if (!empty($homeSecundaria)) {
-            $res[TipoDestaque::HOME_SECUNDARIO] = $homeSecundaria;
-        }
-
-        return $res;
     }
 
     /**
@@ -399,7 +376,7 @@ class ProjetoService extends ServiceAbstract
             $repository = $em->getRepository('EmVistaBundle:ProjetoImagem');
 
             // se retornar a imagem original se todas as imagens e crops foram feitos com sucesso
-            if (count($repository->findBy(array('projeto' => $sd->get('projetoId')))) == 4) {
+            if (count($repository->findBy(array('projeto' => $sd->get('projetoId')))) == 2) {
                 return $repository->findOneBy(array('projeto' => $sd->get('projetoId'),
                                                     'tipoProjetoImagem' => TipoProjetoImagem::TIPO_ORIGINAL));
             }

@@ -217,7 +217,7 @@ class SubmissaoController extends ControllerAbstract
 
             $sd = ServiceData::build(array('projetoId' => $params['submissao']->getProjeto()->getId()));
             $params['imagemOriginal'] = $this->get('service.projeto')->getImagemOriginal($sd);
-
+            
             $params['step'] = 5;
 
             return $this->render('EmVistaBundle:Submissao:imagens.html.php', $params);
@@ -226,9 +226,6 @@ class SubmissaoController extends ControllerAbstract
         }
     }
 
-    /**
-     * @Route("/submissao/getCropParams", name="submissao_getCropParams")
-     */
     public function getCropParamsAction()
     {
         $result = $this->get('service.submissao')->getCropParams();
@@ -236,10 +233,6 @@ class SubmissaoController extends ControllerAbstract
         return new Response(json_encode($result), 200, array('Content-Type' => 'application/json'));
     }
 
-    /**
-     * @Route("/submissao/{submissaoId}/salvarImagemOriginal", name="submissao_salvar-imagem-original")
-     * @Method("post")
-     */
     public function salvarImagemOriginalAction($submissaoId)
     {
         try {
@@ -276,7 +269,7 @@ class SubmissaoController extends ControllerAbstract
     {
         try {
             $sd = ServiceData::build($this->getRequest()->request->all());
-            $this->get('service.submissao')->cropDestaque($sd);
+            $this->get('service.submissao')->crop($sd);
             $return = array('status'  => true);
         } catch (ServiceValidationException $e) {
             $return = array(

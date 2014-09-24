@@ -600,7 +600,7 @@ class SubmissaoService extends ServiceAbstract
      *
      * @return ProjetoImagem
      */
-    public function cropDestaque(ServiceData $sd)
+    public function crop(ServiceData $sd)
     {
         $em = $this->getEntityManager();
         $em->beginTransaction();

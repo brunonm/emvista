@@ -158,27 +158,11 @@ class EmVista implements FixtureInterface
 
         //TIPO PROJETO IMAGEM
 
-        $tipoProjetoImagemDestaque = new TipoProjetoImagem();
-        $tipoProjetoImagemDestaque->setNome('DESTAQUE')
-                                  ->setAspectRatio(860 / 200)
-                                  ->setLargura(860)
-                                  ->setAltura(200);
-
-        $em->persist($tipoProjetoImagemDestaque);
-
-        $tipoProjetoImagemDestaqueSecundario = new TipoProjetoImagem();
-        $tipoProjetoImagemDestaqueSecundario->setNome('DESTAQUE_SECUNDARIO')
-                                            ->setAspectRatio(360 / 200)
-                                            ->setLargura(360)
-                                            ->setAltura(200);
-
-        $em->persist($tipoProjetoImagemDestaqueSecundario);
-
         $tipoProjetoImagemThumb = new TipoProjetoImagem();
         $tipoProjetoImagemThumb->setNome('THUMB')
-                               ->setAspectRatio(220 / 300)
-                               ->setLargura(220)
-                               ->setAltura(300);
+                               ->setAspectRatio(360 / 360)
+                               ->setLargura(360)
+                               ->setAltura(360);
 
         $em->persist($tipoProjetoImagemThumb);
 
