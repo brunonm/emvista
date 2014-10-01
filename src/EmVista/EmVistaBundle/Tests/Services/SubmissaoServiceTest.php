@@ -724,7 +724,7 @@ class SubmissaoServiceTest extends TestCase
     {
         $params = $this->getCropParams();
 
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
 
         $em = $this->getEntityManager();
 
@@ -736,7 +736,7 @@ class SubmissaoServiceTest extends TestCase
 
         $this->assertEquals(2, $projetoImagem->getId());
         $this->assertEquals(1, $projetoImagem->getProjeto()->getId());
-        $this->assertEquals(TipoProjetoImagem::TIPO_DESTAQUE, $projetoImagem->getTipoProjetoImagem()->getId());
+        $this->assertEquals(TipoProjetoImagem::TIPO_THUMB, $projetoImagem->getTipoProjetoImagem()->getId());
 
         $imagem = $projetoImagem->getImagem();
 
@@ -764,7 +764,7 @@ class SubmissaoServiceTest extends TestCase
     {
         $params = $this->getCropParams();
         $params['h'] = null;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
     }
 
     /**
@@ -775,7 +775,7 @@ class SubmissaoServiceTest extends TestCase
     {
         $params = $this->getCropParams();
         $params['w'] = null;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
     }
 
     /**
@@ -786,7 +786,7 @@ class SubmissaoServiceTest extends TestCase
     {
         $params = $this->getCropParams();
         $params['x'] = null;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
     }
 
     /**
@@ -797,7 +797,7 @@ class SubmissaoServiceTest extends TestCase
     {
         $params = $this->getCropParams();
         $params['y'] = null;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
     }
 
     /**
@@ -808,7 +808,7 @@ class SubmissaoServiceTest extends TestCase
     {
         $params = $this->getCropParams();
         $params['projetoImagemId'] = null;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
     }
 
     /**
@@ -819,7 +819,7 @@ class SubmissaoServiceTest extends TestCase
     {
         $params = $this->getCropParams();
         $params['tipoProjetoImagemId'] = null;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
     }
 
     /**
@@ -831,7 +831,7 @@ class SubmissaoServiceTest extends TestCase
         $params = $this->getCropParams();
         $params['w'] = 50;
         $params['h'] = 400;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
     }
 
     /**
@@ -860,7 +860,7 @@ class SubmissaoServiceTest extends TestCase
         # crop
         $cropParams = $this->getCropParams();
         $cropParams['projetoImagemId'] = $projetoImagem->getId();
-        $projetoImagem = $this->service->cropDestaque(ServiceData::build($cropParams));
+        $projetoImagem = $this->service->crop(ServiceData::build($cropParams));
         $idNotExistsCrop = $projetoImagem->getImagem()->getId();
 
         # segundo upload
@@ -1159,19 +1159,19 @@ class SubmissaoServiceTest extends TestCase
 
         $params = $this->getCropParams();
         $params['projetoImagemId'] = $projetoImagem->getId();
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
 
         $params['tipoProjetoImagemId'] = 2;
         $params['h']  = 200;
         $params['w']  = 360;
         $params['x']  = 0;
         $params['y']  = 0;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
 
         $params['tipoProjetoImagemId'] = 3;
         $params['h']  = 300;
         $params['w']  = 220;
-        $this->service->cropDestaque(ServiceData::build($params));
+        $this->service->crop(ServiceData::build($params));
     }
 
     private function executeMaisSobreVoce()

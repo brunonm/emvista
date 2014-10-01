@@ -36,8 +36,9 @@ submissao_video:
     defaults: { _controller: EmVistaBundle:Submissao:video }
 
 submissao_salvar-video:
-    pattern: /submissao/{submissaoId}/video
+    pattern: /submissao/{submissaoId}/salvarVideo
     defaults: { _controller: EmVistaBundle:Submissao:salvarVideo }
+    methods: [POST]
 
 submissao_imagens:
     pattern: /submissao/{submissaoId}/imagens
@@ -51,6 +52,10 @@ submissao_salvar-crop:
     pattern: /submissao/{submissaoId}/salvar-crop
     defaults: { _controller: EmVistaBundle:Submissao:salvarCrop }
     methods: [POST]
+
+submissao_get-crop-params:
+    pattern: /submissao/getCropParams
+    defaults: { _controller: EmVistaBundle:Submissao:getCropParams }
 
 submissao_mais-sobre-voce:
     pattern: /submissao/{submissaoId}/mais-sobre-voce

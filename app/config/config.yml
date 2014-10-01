@@ -83,10 +83,28 @@ stof_doctrine_extensions:
         default: 
             sluggable: true
             
-            
-            
 moip:
   credential:
     token: DWKHPDVCBMF4X1PJVHJU297E0Z4CWVN9
     key: TYHI5PMAETB1YZBEQX7E1B9060ZOCLEAJ6QIAI3B 
   environment: test
+  
+fos_elastica:
+    clients:
+        default: { host: 192.168.33.10, port: 9200 }
+    indexes:
+        emvista:
+            types:
+                projeto:
+                    indexable_callback: 'isIndexable'
+                    mappings:
+                        nome: ~
+                        descricao: ~
+                        descricaoCurta: ~
+                    persistence:
+                        driver: orm
+                        model: EmVista\EmVistaBundle\Entity\Projeto
+                        provider: ~
+                        listener: ~
+                        finder: ~
+#                        ignore_missing: true

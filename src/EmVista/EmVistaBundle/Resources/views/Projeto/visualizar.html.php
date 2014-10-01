@@ -6,7 +6,7 @@
 <?php echo $projeto->getNome(); ?> | Cultura Crowdfunding <?php $view['slots']->stop(); ?>
 
 <?php $view['slots']->start('image') ?>
-<?php echo $app->getRequest()->getUriForPath($projeto->getImagemDestaqueSecundario()->getWebPath())?>
+<?php ?>
 <?php $view['slots']->stop(); ?>
 
 <?php $view['slots']->start('description') ?>

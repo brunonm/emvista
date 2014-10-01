@@ -3,7 +3,6 @@
 namespace EmVista\EmVistaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use EmVista\EmVistaBundle\Entity\TipoDestaque;
 use Symfony\Component\HttpFoundation\Response;
 use EmVista\EmVistaBundle\Messages\SubmissaoMessages;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
@@ -27,7 +26,6 @@ class HomeController extends ControllerAbstract
             $this->get('service.projeto')->getProjeto(1),
             $this->get('service.projeto')->getProjeto(1),
         );
-
         return $this->render(
             'EmVistaBundle:Home:index.html.php',
             array(

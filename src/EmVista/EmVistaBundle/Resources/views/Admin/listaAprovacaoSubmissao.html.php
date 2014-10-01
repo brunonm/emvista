@@ -20,7 +20,7 @@
             <tr>
                 <td><?php echo $submissao->getDataEnvio()->format('d/m/Y'); ?></td>
                 <td>
-                    <a href="<?php echo $view['router']->generate('admin_aprovacaoSubmissao', array('submissaoId' => $submissao->getId())); ?>"><?php echo $submissao->getProjeto()->getNome(); ?></a>
+                    <a href="<?php echo $view['router']->generate('admin_aprovacao-submissao', array('submissaoId' => $submissao->getId())); ?>"><?php echo $submissao->getProjeto()->getNome(); ?></a>
                 </td>
                 <td>R$ <?php echo number_format($submissao->getProjeto()->getValor(), 2, ',', '.'); ?></td>
                 <td><?php echo $submissao->getProjeto()->getUsuario()->getNome(); ?></td>

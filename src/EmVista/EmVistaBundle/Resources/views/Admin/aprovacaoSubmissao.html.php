@@ -6,7 +6,7 @@
 <?php $projeto = $submissao->getProjeto(); ?>
 
 <form class="form-horizontal" method="post"
-      action="<?php echo $view['router']->generate('admin_salvarAprovacaoSubmissao'); ?>">
+      action="<?php echo $view['router']->generate('admin_salvar-aprovacao-submissao'); ?>">
 
     <input type="hidden" name="submissaoId" value="<?php echo $submissao->getId(); ?>"/>
 
@@ -133,6 +133,7 @@
                 value="<?php echo $pessoa->getDocumento(); ?>"/>
         </div>
     </div>
+    <hr/>
 
     <p><strong>Imagem original</strong></p>
     <div class="col-sm-9">

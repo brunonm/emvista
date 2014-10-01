@@ -5,6 +5,6 @@
 <p>Todos os projetos aprovados e ainda não publicados serão publicados.</p>
 <p>Esta funionalidade deverá ser executada por uma TASK / CRON. Disponibilizada por aqui temporariamente.</p>
 
-<a class="btn btn-success" href="<?php echo $view['router']->generate('admin_publicacao-projetos') ?>">Publicar!</a>
+<a class="btn btn-success" href="<?php echo $view['router']->generate('admin_publicar-projetos') ?>">Publicar!</a>
 
 <?php $view['slots']->stop(); ?>
