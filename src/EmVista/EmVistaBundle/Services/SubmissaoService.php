@@ -858,7 +858,7 @@ class SubmissaoService extends ServiceAbstract
 
         $imagens = $em->getRepository('EmVistaBundle:ProjetoImagem')->findBy(array('projeto' => $projeto->getId()));
 
-        if (count($imagens) != 4) {
+        if (count($imagens) != 2) {
             throw new ImagensErrorException(SubmissaoMessages::IMAGENS_INVALIDO);
         }
     }

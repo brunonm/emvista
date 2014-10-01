@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use EmVista\EmVistaBundle\Core\Controller\ControllerAbstract;
 use EmVista\EmVistaBundle\Services\Exceptions\ProjetoNaoPublicadoException;
 use EmVista\EmVistaBundle\Services\Exceptions\ProjetoNaoEncontradoException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ProjetoController extends ControllerAbstract
 {
@@ -98,15 +99,12 @@ class ProjetoController extends ControllerAbstract
     public function searchAction($search)
     {
         $sd = ServiceData::build(array('search' => $search));
-        $projetoService = $this->get('service.projeto');
-        $projetos       = $projetoService->search($sd);
+        $projetos = $this->get('service.projeto')->search($sd);
         $retorno = array();
         foreach ($projetos as $indice =>$projeto) {
             $retorno[$indice] = $projeto->toArray();
         }
-        $response = new Response(json_encode($retorno));
-
-        return $response;
+        return new JsonResponse($retorno);
     }
 
     /**

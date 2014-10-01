@@ -580,8 +580,6 @@ class Projeto extends EntityAbstract
             'autor' => $this->getUsuario()->getNome(),
             'descricaoCurta' => $this->getDescricaoCurta(),
             'urlImagemThumb' => $this->getImagemThumb()->getWebPath(),
-            'urlImagemDestaque' => $this->getImagemDestaque()->getWebPath(),
-            'urlImagemDestaqueSecundario' => $this->getImagemDestaqueSecundario()->getWebPath(),
             'urlImagemOriginal' => $this->getImagemOriginal()->getWebPath(),
             'valorArrecadado' => $this->getValorArrecadado(),
             'valorArrecadadoFormatado' => $this->getValorArrecadadoFormatado(),
@@ -674,4 +672,11 @@ class Projeto extends EntityAbstract
         return $retorno;
     }
 
+    /**
+     * @return boolean
+     */
+    public function isIndexable()
+    {
+        return $this->publicado == true;
+    }
 }

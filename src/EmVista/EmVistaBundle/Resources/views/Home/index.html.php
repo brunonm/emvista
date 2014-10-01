@@ -28,7 +28,7 @@
                         <div class="entry-content">
                             <div class="project-thumb">
                                 <a href="<?php echo $view['router']->generate('projeto_visualizar', array('projetoSlug' => $primario->getSlug())); ?>">
-                                    <img src="<?php echo $primario->getImagemDestaque()->getWebPath(); ?>"/>
+                                    <img src="<?php ?>"/>
                                 </a>
                             </div>
                             <div class="project-description">
@@ -96,7 +96,7 @@
                         <div class="entry-content">
                             <div class="project-thumb">
                                 <a href="<?php echo $view['router']->generate('projeto_visualizar', array('projetoSlug' => $projeto->getSlug())); ?>">
-                                    <img src="<?php echo $projeto->getImagemDestaqueSecundario()->getWebPath(); ?>"/>
+                                    <img src="<?php ?>"/>
                                 </a>
                             </div>
                             <div class="project-description">

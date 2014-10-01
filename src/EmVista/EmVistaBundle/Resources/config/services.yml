@@ -29,7 +29,7 @@ services:
             - [setEntityManager, ['@doctrine.orm.default_entity_manager']]
             - [setValidator, ['@respect.validator']]
             - [setMailer, ['@core.mailer']]
-            - [setSearchEngine, ['@search.sphinxsearch.search']]
+            - [setSearchEngine, ['@fos_elastica.finder.emvista.projeto']]
             - [setPercentualPlataforma, ['%percentual_plataforma%']]
 
     service.submissao:

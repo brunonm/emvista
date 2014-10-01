@@ -36,8 +36,9 @@ submissao_video:
     defaults: { _controller: EmVistaBundle:Submissao:video }
 
 submissao_salvar-video:
-    pattern: /submissao/{submissaoId}/video
+    pattern: /submissao/{submissaoId}/salvarVideo
     defaults: { _controller: EmVistaBundle:Submissao:salvarVideo }
+    methods: [POST]
 
 submissao_imagens:
     pattern: /submissao/{submissaoId}/imagens

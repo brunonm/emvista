@@ -51,9 +51,18 @@ admin_aprovacao-submissao:
     pattern: /admin/aprovacao-submissao/{submissaoId}
     defaults: { _controller: EmVistaBundle:Admin:aprovacaoSubmissao }
 
+admin_salvar-aprovacao-submissao:
+    pattern: /admin/salvar-aprovacao-submissao
+    defaults: { _controller: EmVistaBundle:Admin:salvarAprovacaoSubmissao }
+    methods: [POST]
+
 admin_publicacao-projetos:
     pattern: /admin/publicacao-projetos
     defaults: { _controller: EmVistaBundle:Admin:publicacaoProjetos }
+    
+admin_publicar-projetos:
+    pattern: /admin/publicar-projetos
+    defaults: { _controller: EmVistaBundle:Admin:publicarProjetos }
 
 admin_estornos:
     pattern: /admin/estornos

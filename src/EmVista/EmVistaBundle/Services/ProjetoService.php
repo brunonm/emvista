@@ -395,43 +395,9 @@ class ProjetoService extends ServiceAbstract
      */
     public function search(ServiceData $data)
     {
-        $privates = $this->getPrivateWords();
-
-        //prepare search string
-        $searchArray = explode('+',$data->get('search'));
-        foreach ($searchArray as $indexSearch => $searchString) {
-            $containsPrivate = false;
-            foreach ($privates as $private) {
-                if (strpos($searchString,$private.':') !== FALSE) {
-                    $containsPrivate = true;
-                }
-            }
-            if (!$containsPrivate) {
-                $searchArray[$indexSearch] = '*'.$searchString.'*';
-            }
-        }
-        $search = implode(' ', $searchArray);
-        //fim
-
-        $seachResults = $this->getSearchEngine()->search($search,array('posts' => array()));
-        $projetos = array();
-        if (isset($seachResults['matches'])) {
-            foreach ($seachResults['matches'] as $projetoId => $matches) {
-                $projeto = $this->getProjeto($projetoId);
-                $projetos[] = $this->getProjeto($projetoId);
-            }
-        }
-
-        return $projetos;
-
-    }
-
-    /**
-     * @return String[]
-     */
-    public function getPrivateWords()
-    {
-        return array('category');
+        $q = $data->get('search');
+        $q = filter_var($q, FILTER_SANITIZE_STRING);
+        return $this->getSearchEngine()->find($q, 15);
     }
 
     /**

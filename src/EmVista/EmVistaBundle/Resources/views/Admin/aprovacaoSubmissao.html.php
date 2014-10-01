@@ -6,7 +6,7 @@
 <?php $projeto = $submissao->getProjeto(); ?>
 
 <form class="form-horizontal" method="post"
-      action="<?php echo $view['router']->generate('admin_salvarAprovacaoSubmissao'); ?>">
+      action="<?php echo $view['router']->generate('admin_salvar-aprovacao-submissao'); ?>">
 
     <input type="hidden" name="submissaoId" value="<?php echo $submissao->getId(); ?>"/>
 
@@ -133,28 +133,17 @@
                 value="<?php echo $pessoa->getDocumento(); ?>"/>
         </div>
     </div>
+    <hr/>
 
     <p><strong>Imagem original</strong></p>
-    <div class="span9">
+    <div class="span12">
         <img src="<?php echo $projeto->getImagemOriginal()->getWebPath(); ?>"/>
     </div>
     <hr/>
 
     <p><strong>Imagem thumb</strong></p>
-    <div class="span9">
+    <div class="span12">
         <img src="<?php echo $projeto->getImagemThumb()->getWebPath(); ?>"/>
-    </div>
-    <hr/>
-
-    <p><strong>Imagem destaque</strong></p>
-    <div class="span9">
-        <img src="<?php echo $projeto->getImagemDestaque()->getWebPath(); ?>"/>
-    </div>
-    <hr/>
-
-    <p><strong>Imagem destaque secundário</strong></p>
-    <div class="span9">
-        <img src="<?php echo $projeto->getImagemDestaqueSecundario()->getWebPath(); ?>"/>
     </div>
     <hr/>
 
