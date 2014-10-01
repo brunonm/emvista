@@ -7,7 +7,7 @@
 <form class="form-horizontal" method="post" id="form-checkout"
         action="<?php echo $view['router']->generate('pagamento_continue-checkout'); ?>">
     <div class="row">
-        <div class="span8">
+        <div class="col-sm-8">
             <h3 class="titulo">Estamos quase lá!</h3>
             <div class="voceIraApoiar">
                 Você irá apoiar o projeto: <span class="nomeDoProjeto"><?php echo $projeto->getNome() ?></span>
@@ -38,12 +38,12 @@
                         endif;
                         ?>
                         <div class="row">
-                            <div class="span2 block_pledge <?php echo $recompensaValida ? '' : 'block_pledge_disabled'?>">
+                            <div class="col-sm-2 block_pledge <?php echo $recompensaValida ? '' : 'block_pledge_disabled'?>">
                                 R$ <?php echo $valor?>
                                 <input type="radio" style="display:none" <?php echo $recompensaValida ? '' : 'disabled="disabled"'?> name="apoio[recompensaId]"
                                        valor="<?php echo $valor;?>" class="checkbox-recompensa" value="<?php echo $recompensa->getId() ?>"><br>
                             </div>
-                            <div class="span6 descricao">
+                            <div class="col-sm-6 descricao">
                                 <div class="tituloRecompensa"><?php echo $recompensa->getTitulo()?></div>
                                 <?php echo $recompensa->getDescricao();?>
                             </div>
@@ -60,12 +60,12 @@
             <div class="row">
                 <div class="input-prepend valorPago">
                     <span class="add-on">R$</span>
-                    <input class="span3 input-white" id="input-valor" name="apoio[valor]" type="text">
+                    <input class="col-sm-3 input-white" id="input-valor" name="apoio[valor]" type="text">
                 </div>
             </div>
 
         </div>
-        <div class="span4 col_lateral_checkout" >
+        <div class="col-sm-4 col_lateral_checkout" >
             <div class="lateral_content">
                 <h2 class="titulo">MUITO IMPORTANTE</h2>
                 <div>

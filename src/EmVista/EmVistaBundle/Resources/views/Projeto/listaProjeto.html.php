@@ -2,34 +2,22 @@
 <?php $view['slots']->start('body') ?>
 <div class="container">
     <div class="row">
-        <div class="span9" >
-            <form class="form-search" style="display: none" method="post">
-                <div class="input-append" style="margin-bottom: 20px;">
-                    <input type="text" id="inputSearch" placeholder="Pesquise ..." class="span8"/>
-                    <button type="submit" class="btn">Pesquisar</button>
-                </div>
-
-            </form>
+        <div class="col-sm-9" >
             <div class="row">
 
-                <div class="project-listing">
-                    <div class="span9">&nbsp;</div>
                 <?php
                 foreach($projetos as $i => $projeto):
                 ?>
-                <div class="span3">
                     <?php echo $view->render('EmVistaBundle:Home:thumbProjeto.html.php',
-                                array('projeto' => $projeto)
+                                array('projeto' => $projeto, 'smSize' => '6', 'lgSize' => '4')
                             );
                     ?>
-                </div>
                 <?php
                 endforeach;
                 ?>
-                </div>
             </div>
         </div>
-        <div class="span3">
+        <div class="col-sm-3">
             <ul class="rightBarDiscovery nav">
                 <ol><i class="icon icon-th-large"></i> Categorias</ol>
                 <?php

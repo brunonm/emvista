@@ -5,7 +5,7 @@
     <fieldset>
         <legend>Termos de uso</legend>
         <div class="control-group">
-            <textarea class="span9" rows="20" id="termoUso[termoUso]" name="termoUso[termoUso]"><?php
+            <textarea class="col-sm-9" rows="20" id="termoUso[termoUso]" name="termoUso[termoUso]"><?php
                     if(isset($termoUso) && !empty($termoUso)):
                         echo $termoUso->getTermoUso();
                     endif;

@@ -11,7 +11,7 @@
 <?php else: ?>
 
 <p>Você pode continuar a submissão de um projeto que não concluiu selecionando o seu título.</p>
-<p>Para obter mais detalhes de quem apoiou o seu projeto, ou mesmo informações gerenciais sobre a arrecadação, clique no botão <i class="icon-wrench"></i> a direita dos projetos.</p>
+<p>Para obter mais detalhes de quem apoiou o seu projeto, ou mesmo informações gerenciais sobre a arrecadação, clique no botão <i class="fa fa-wrench"></i> a direita dos projetos.</p>
 
 <table class="table table-striped">
     <thead>
@@ -52,12 +52,12 @@
 
                 <td><?php echo Date::formatdmY($projeto->getDataCadastro()); ?></td>
 
-                <td><?php echo $projeto->getPublicado() ? '<i class="icon-ok"></i>' : '<i class="icon-remove"></i>'; ?></td>
+                <td><?php echo $projeto->getPublicado() ? '<i class="fa fa-check"></i>' : '<i class="fa fa-remove"></i>'; ?></td>
 
                 <td><?php echo 'R$ ' . number_format($projeto->getValorArrecadado(), 2, ',', '.'); ?></td>
 
                 <td><a href="<?php echo $view['router']->generate('usuario_apoiadores-projeto', array('projetoId' => $projeto->getId())); ?>"
-                       title="Acompanhar" alt="Acompanhar" class="btn"><i class="icon-wrench"/></a></td>
+                       title="Acompanhar" alt="Acompanhar" class="btn"><i class="fa-wrench fa"/></a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

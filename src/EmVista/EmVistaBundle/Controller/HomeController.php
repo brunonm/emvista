@@ -19,35 +19,19 @@ class HomeController extends ControllerAbstract
      */
     public function indexAction()
     {
-//        $destaques = $this->get('service.projeto')->listarProjetosDestaqueHome();
-//        $novos     = $this->get('service.projeto')->listarProjetosNovos();
-//        $retaFinal = $this->get('service.projeto')->listarProjetosRetaFinal();
-//
-//        $secundario = isset($destaques[TipoDestaque::HOME_SECUNDARIO]) ? $destaques[TipoDestaque::HOME_SECUNDARIO] : array();
-//        $primario   = isset($destaques[TipoDestaque::HOME_PRIMARIO])   ? $destaques[TipoDestaque::HOME_PRIMARIO]   : null;
-        $destaques = array();
-        $novos     = array();
-        $retaFinal = array();
-        $finalizados = array();
+        $projetos = array(
+            $this->get('service.projeto')->getProjeto(1),
+            $this->get('service.projeto')->getProjeto(1),
+            $this->get('service.projeto')->getProjeto(1),
+            $this->get('service.projeto')->getProjeto(1),
+            $this->get('service.projeto')->getProjeto(1),
+            $this->get('service.projeto')->getProjeto(1),
+        );
 
-//        $secundario = array(
-//            $this->get('service.projeto')->getProjeto(34),
-//            $this->get('service.projeto')->getProjeto(32),
-//        );
-//        $primario   = array(
-//            $this->get('service.projeto')->getProjeto(1),
-//            );
-//
-//        $finalizados = array(
-//            $this->get('service.projeto')->getProjeto(30),
-//            $this->get('service.projeto')->getProjeto(19),
-//            $this->get('service.projeto')->getProjeto(1),
-//            $this->get('service.projeto')->getProjeto(2),
-//        );
         return $this->render(
             'EmVistaBundle:Home:index.html.php',
             array(
-//                'primario'   => $primario,
+                'projetos'   => $projetos,
             ));
     }
 

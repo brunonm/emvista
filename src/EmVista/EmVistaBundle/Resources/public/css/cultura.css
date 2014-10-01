@@ -21,8 +21,10 @@ img {
     max-width: 100%;
     height: auto;
 }
-
-a {
+a{
+    color: #16a9bd;
+}
+#footer a {
     color: #fcb03c;
 }
 
@@ -153,14 +155,14 @@ a,
  * Custom button style
 /* ---------------------------------------------- */
 
-.btn {
+.my-btn {
     font-weight: 700;
     font-size: 14px;
     padding: 17px 27px;
     border: 0;
 }
 
-.btn:hover, .btn:focus, .btn:active, .btn.active {
+.my-btn:hover, .my-btn:focus, .my-btn:active, .my-btn.active {
     outline: inherit !important;
 }
 
@@ -222,6 +224,12 @@ a,
     background: #222;
     border: 2px solid #222;
     color: #FFF;
+}
+
+
+.btn-special-apoiar.btn-lg{
+    padding: 22px 24px;
+    font-size: 36px
 }
 
 .btn-special-apoiar,
@@ -687,6 +695,7 @@ h3 > .fa {
 #footer {
     background: #16a9bd;
     padding: 30px 0;
+    margin-top: 30px;
     color: #FFF;
 }
 
@@ -801,6 +810,7 @@ h3 > .fa {
 #project-title{
     text-align: center;
     padding-bottom: 20px;
+    padding-top: 10px;
 }
 #project-title p {
     color: #C4C4C4;
@@ -839,11 +849,28 @@ h3 > .fa {
 {
     background: #e8eaee;
 }
+
+.project-container .project-funded,
+.project-container .project-pleged,
+.project-container .project-togo{
+    height: 74px;
+
+}
+
+
+.project-container .project-funded,
+.project-container .project-pleged,
+.project-container .project-togo,
+.project-container .project-content h5
+{
+    text-align: center;
+}
 .project-container .project-content {
     height: 140px;
     color: #444d4e;
     overflow: hidden;
     padding: 20px;
+    padding-top: 5px;
     font-size: 13px;
 }
 .project-container .project-content legend {
@@ -899,7 +926,7 @@ object {
 }
 .project-image-content .mask {
     opacity: 0;
-    background-image: url("../images/background-apoiar.png");
+    background-image: url("/bundles/emvista/images/background-apoiar.png");
     height: 100%;
     width: 100%;
     position: absolute;
@@ -993,4 +1020,54 @@ object {
 }
 .apoiar-projeto-field {
     margin-top: 20px;
+}
+#masthead{
+    padding-top: 50px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+#content {
+    padding-top: 70px;
+
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    background-color: #16a9bd;
+    border-radius: 0;
+}
+
+
+label.radio{
+    font-weight: 400px
+}
+
+.form-actions{
+    padding-top: 10px;
+}
+
+.btn-success{
+    background-color: #16a9bd;
+    border-color: #1298b0;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
+    background: #1298b0;
+    border-color: #16a9bd;
+}
+
+.formError{
+    background: #EF4836;
+    color: #ffffff;
+}
+.signUpOrLogIn{
+    padding-bottom: 100px;
+}
+.button-field{
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.row-comece{
+    text-align: center;
 }

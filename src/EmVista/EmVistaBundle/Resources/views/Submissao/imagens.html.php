@@ -22,7 +22,7 @@
             <input type="hidden" id="projetoImagemId" name="projetoImagemId"
                    value="<?php echo ($imagemOriginal ? $imagemOriginal->getId() : ''); ?>"/>
             <input type="hidden" id="tipoProjetoImagemId" name="tipoProjetoImagemId" value="4"/>
-            <div class="span10" id="preview">
+            <div class="col-sm-10" id="preview">
                 <?php if($imagemOriginal): ?>
                 <img src="<?php echo $imagemOriginal->getWebPath(); ?>"/>
                 <?php endif; ?>

@@ -37,24 +37,28 @@
             </div>
         </div>
     </fieldset>
+    <br />
+    <br />
+    <br />
     <fieldset>
         <legend>Endereço</legend>
+
         <div class="control-group">
             <label class="control-label"  for="usuario-endereco-cep">CEP</label>
             <div class="controls">
-                <input type="text" class="span2 input-medium validate[custom[onlyNumberSp,minSize[8],maxSize[8]]]"
+                <input type="text" class=" input-medium validate[custom[onlyNumberSp,minSize[8],maxSize[8]]]"
                         id="usuario-senha" name="usuario[endereco][cep]" placeholder=""
                         value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL ? $endereco->getCep() : '';  ?>">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">
-                    UF
+                UF
             </label>
             <?php
             ?>
             <div class="controls">
-                <select class="span1" id="usuario-endereco-uf" name="usuario[endereco][uf]">
+                <select class="" id="usuario-endereco-uf" name="usuario[endereco][uf]">
                     <?php
 
                         $endereco = $usuario->getEndereco();
@@ -98,7 +102,7 @@
                 Cidade
             </label>
             <div class="controls">
-                <input type="text" class="span3" id="usuario-endereco-cidade" name="usuario[endereco][cidade]" placeholder=""
+                <input type="text" class="" id="usuario-endereco-cidade" name="usuario[endereco][cidade]" placeholder=""
                         value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL ? $endereco->getCidade() : '';  ?>">
             </div>
         </div>
@@ -109,7 +113,7 @@
                 Bairro
             </label>
             <div class="controls">
-                <input type="text" class="span3" id="usuario-endereco-bairro" name="usuario[endereco][bairro]" placeholder=""
+                <input type="text" class="" id="usuario-endereco-bairro" name="usuario[endereco][bairro]" placeholder=""
                         value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL ? $endereco->getBairro() : '';  ?>">
             </div>
         </div>
@@ -118,7 +122,7 @@
                 Endereço
             </label>
             <div class="controls">
-                <input type="text" class="span5" id="usuario-endereco-endereco" name="usuario[endereco][endereco]" placeholder=""
+                <input type="text" class="" id="usuario-endereco-endereco" name="usuario[endereco][endereco]" placeholder=""
                         value="<?php $endereco = $usuario->getEndereco(); echo $endereco !== NULL ? $endereco->getEndereco() : '';  ?>">
             </div>
         </div>

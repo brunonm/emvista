@@ -2,7 +2,7 @@
 <?php $view['slots']->start('body') ?>
 
 <div class="row">
-    <div class="span2">
+    <div class="col-sm-2">
         <ul class="nav nav-pills nav-stacked">
             <li>
                 <a href="<?php echo $view['router']->generate('admin_categorias') ?>">Categorias</a>
@@ -30,7 +30,7 @@
             </li>-->
         </ul>
     </div>
-    <div class="span10">
+    <div class="col-sm-10">
         <?php $view['slots']->output('admin-body', 'Selecione uma opção ao lado.'); ?>
     </div>
 </div>

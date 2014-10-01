@@ -61,10 +61,10 @@
 </style>
 <section id="featureds" class="project-listing">
     <div class="row">
-        <div class="span6 col">
+        <div class="col-sm-6 col">
             <h1>Registro de Projeto</h1>
         </div>
-        <div class="span6 col">
+        <div class="col-sm-6 col">
             <span>
                 <a href="#" class="pull-right disabled" style="padding: 4px 10px 4px">
                     <i class="icon-trash "></i>
@@ -80,7 +80,7 @@
         </div>
     </div>
     <div class="row">
-        <div id="menu" class="span3 col">
+        <div id="menu" class="col-sm-3 col">
             <div class="well" style="padding: 6px 0">
                 <ul class="nav nav-list">
                     <li class="nav-header">
@@ -124,7 +124,7 @@
 
             </div>
         </div>
-        <form id="form" class="span9 col form-horizontal" method="post" action="<?php echo $view['router']->generate('_projeto_registrar') ?>">
+        <form id="form" class="col-sm-9 col form-horizontal" method="post" action="<?php echo $view['router']->generate('_projeto_registrar') ?>">
             <div class="carousel-inner">
                 <div class="active item">
                     <fieldset>
@@ -139,7 +139,7 @@
         </form>
     </div>
     <div class="row">
-        <div class="span7 offset4">
+        <div class="col-sm-7 col-sm-offset-4">
             <label href="#" class="btn btn-large btn-checkbox">
                 <div class="checkbox" style="font-size: 13px;font-weight: normal;line-height: 18px">
                     <input type="checkbox" id="aceitarTermoUso" name="aceitarTermoUso" value="1">

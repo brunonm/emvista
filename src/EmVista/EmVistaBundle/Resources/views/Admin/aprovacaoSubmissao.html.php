@@ -57,13 +57,13 @@
     <div class="control-group">
         <label class="control-label">Descrição Curta</label>
         <div class="controls">
-            <textarea class="span6" readonly><?php echo $projeto->getDescricaoCurta(); ?></textarea>
+            <textarea class="col-sm-6" readonly><?php echo $projeto->getDescricaoCurta(); ?></textarea>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">Descrição</label>
         <div class="controls">
-            <textarea class="span6" readonly rows="6"><?php echo $projeto->getDescricao(); ?></textarea>
+            <textarea class="col-sm-6" readonly rows="6"><?php echo $projeto->getDescricao(); ?></textarea>
         </div>
     </div>
 
@@ -96,7 +96,7 @@
         <div class="control-group">
             <label class="control-label">Descrição</label>
             <div class="controls">
-                <textarea class="span6" readonly><?php echo $recompensa->getDescricao(); ?></textarea>
+                <textarea class="col-sm-6" readonly><?php echo $recompensa->getDescricao(); ?></textarea>
             </div>
         </div>
 
@@ -135,25 +135,25 @@
     </div>
 
     <p><strong>Imagem original</strong></p>
-    <div class="span9">
+    <div class="col-sm-9">
         <img src="<?php echo $projeto->getImagemOriginal()->getWebPath(); ?>"/>
     </div>
     <hr/>
 
     <p><strong>Imagem thumb</strong></p>
-    <div class="span9">
+    <div class="col-sm-9">
         <img src="<?php echo $projeto->getImagemThumb()->getWebPath(); ?>"/>
     </div>
     <hr/>
 
     <p><strong>Imagem destaque</strong></p>
-    <div class="span9">
+    <div class="col-sm-9">
         <img src="<?php echo $projeto->getImagemDestaque()->getWebPath(); ?>"/>
     </div>
     <hr/>
 
     <p><strong>Imagem destaque secundário</strong></p>
-    <div class="span9">
+    <div class="col-sm-9">
         <img src="<?php echo $projeto->getImagemDestaqueSecundario()->getWebPath(); ?>"/>
     </div>
     <hr/>
@@ -173,7 +173,7 @@
     <div class="control-group">
         <label class="control-label">Observação</label>
         <div class="controls">
-            <textarea name="observacaoResposta" class="span6" placeholder="Se for aprovado, não inserir observação"></textarea>
+            <textarea name="observacaoResposta" class="col-sm-6" placeholder="Se for aprovado, não inserir observação"></textarea>
         </div>
     </div>
 
