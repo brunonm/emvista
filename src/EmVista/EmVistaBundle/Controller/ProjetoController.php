@@ -70,27 +70,29 @@ class ProjetoController extends ControllerAbstract
     }
 
     /**
-     * @Route("/descubra", defaults={"search" = ""}, name="projeto_descubra")
-     * @Route("/descubra/", defaults={"search" = ""}, name="projeto_descubra")
-     * @Route("/descubra/{search}", name="projeto_descubraComSearch")
+     * @return Response
      */
     public function descubraAction($search)
     {
         $sd = ServiceData::build(array('search' => $search));
+        
         $projetoService = $this->get('service.projeto');
 
-        $categorias     = $projetoService->listarCategorias();
+        $categorias = $projetoService->listarCategorias();
 
         if ($search != '') {
-            $projetos       = $projetoService->search($sd);
+            $projetos = $projetoService->search($sd);
         } else {
-            $projetos       = $projetoService->listarProjetosPublicados();
+            $projetos = $projetoService->listarProjetosPublicados();
         }
 
-        return $this->render('EmVistaBundle:Projeto:listaProjeto.html.php', array(
-                   'categorias' => $categorias,
-                   'projetos' => $projetos,
-               ));
+        return $this->render(
+            'EmVistaBundle:Projeto:listaProjeto.html.php', 
+            array(
+                'categorias' => $categorias,
+                'projetos' => $projetos,
+            )
+        );
     }
 
     /**
@@ -106,20 +108,4 @@ class ProjetoController extends ControllerAbstract
         }
         return new JsonResponse($retorno);
     }
-
-    /**
-     * @Route("/projeto/listar-json", name="projeto_listarJson")
-     */
-    public function listarJsonAction()
-    {
-        $projetoService = $this->get('service.projeto');
-        $projetos = $projetoService->listarProjetosPublicados();
-        foreach ($projetos as $indice =>$projeto) {
-            $retorno[$indice] = $projeto->toArray();
-        }
-        $response = new Response(json_encode($retorno));
-
-        return $response;
-    }
-
 }
