@@ -949,13 +949,18 @@ class SubmissaoService extends ServiceAbstract
             $submissao->setStatus($status);
 
             if ($status->getId() == StatusSubmissao::STATUS_APROVADO) {
-                $dataInicio    = Date::buildDateInFuture(1)->setTime(0, 0, 0);
-                $dataFim       = Date::buildDateInFuture($projeto->getQuantidadeDias() + 1)->setTime(23, 59, 59);
                 $dataAprovacao = new Date('now');
+                $dataInicio = new Date('now');
+                $dataFim = Date::buildDateInFuture($projeto->getQuantidadeDias())->setTime(23, 59, 59);
 
+                $statusArrecadacao = $em->find('EmVistaBundle:StatusArrecadacao', StatusArrecadacao::STATUS_EM_ANDAMENTO);
+                
+                # APROVA, PUBLICA E INICIA O PROJETO
                 $projeto->setDataInicio($dataInicio)
                         ->setDataFim($dataFim)
-                        ->setDataAprovacao($dataAprovacao);
+                        ->setDataAprovacao($dataAprovacao)
+                        ->setPublicado(true)
+                        ->setStatusArrecadacao($statusArrecadacao);
 
             } elseif ($status->getId() == StatusSubmissao::STATUS_REJEITADO) {
                 $submissao->setObservacaoResposta($sd->get('observacaoResposta'))
@@ -995,38 +1000,6 @@ class SubmissaoService extends ServiceAbstract
 
         } catch (\InvalidArgumentException $e) {
             throw new ServiceValidationException($e->getMessage());
-        }
-    }
-
-    /**
-     * publica os projetos que já foram aprovados mas ainda não foram publicados.
-     */
-    public function publicarProjetosAprovadosNaoPublicados()
-    {
-        $em = $this->getEntityManager();
-        $em->beginTransaction();
-
-        try {
-            // pesquisa projetos com dt_aprovacao != null, publicado = 0, statusArrecadacao = null
-            // seta a data, publicado e statusArrecadacao = EM_ANDAMENTO em todos eles
-
-            $projetos = $em->getRepository('EmVistaBundle:Projeto')->listarProjetosAprovadosNaoPublicados();
-
-            foreach ($projetos as $projeto) {
-                $statusArrecadacao = $em->find('EmVistaBundle:StatusArrecadacao', StatusArrecadacao::STATUS_EM_ANDAMENTO);
-
-                $projeto->setPublicado(true)
-                        ->setStatusArrecadacao($statusArrecadacao);
-
-                $em->persist($projeto);
-            }
-
-            $em->flush();
-            $em->commit();
-
-        } catch (\Exception $e) {
-            $em->rollback();
-            throw $e;
         }
     }
 
