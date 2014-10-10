@@ -91,7 +91,7 @@ moip:
   
 fos_elastica:
     clients:
-        default: { host: 192.168.33.10, port: 9200 }
+        default: { host: %elastic_search_host%, port: 9200 }
     indexes:
         emvista:
             types:
@@ -108,3 +108,26 @@ fos_elastica:
                         listener: ~
                         finder: ~
 #                        ignore_missing: true
+
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           %facebook_client_id%
+            client_secret:       %facebook_client_secret%
+            scope:               %facebook_scope%
+        google:
+            type:                google
+            client_id:           %google_client_id%
+            client_secret:       %google_client_secret%
+            scope:               %google_scope%    
+        twitter:
+            type:                twitter
+            client_id:           %twitter_client_id%
+            client_secret:       %twitter_client_secret%
+            
+services:
+    oauth_provider:
+        class: EmVista\EmVistaBundle\OAuth\Provider
+        arguments: ["@service_container"]

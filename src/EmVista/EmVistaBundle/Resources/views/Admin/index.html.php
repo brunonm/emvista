@@ -17,9 +17,6 @@
                 <a href="<?php echo $view['router']->generate('admin_lista-aprovacao-submissao') ?>">Aprovação de submissões</a>
             </li>
             <li>
-                <a href="<?php echo $view['router']->generate('admin_publicacao-projetos') ?>">Publicação de projetos</a>
-            </li>
-            <li>
                 <a href="<?php echo $view['router']->generate('admin_estornos') ?>">Estornos</a>
             </li>
             <li>

@@ -44,8 +44,9 @@ EmVista\EmVistaBundle\Entity\Categoria:
             unique: false
             nullable: true
             precision: 0
-            slug:
-                fields:
-                    - nome
-                update: true
+            gedmo:
+              slug:
+                  fields:
+                      - nome
+                  update: true
     lifecycleCallbacks: {  }

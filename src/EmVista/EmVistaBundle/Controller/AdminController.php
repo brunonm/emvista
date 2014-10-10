@@ -214,29 +214,6 @@ class AdminController extends ControllerAbstract
     }
 
     /**
-     * @Route("admin/publicacao-projetos", name="admin_publicacao-projetos")
-     */
-    public function publicacaoProjetosAction()
-    {
-        return $this->render('EmVistaBundle:Admin:publicacaoProjetos.html.php');
-    }
-
-    /**
-     * @Route("admin/publicarProjetos", name="admin_publicar-projetos")
-     */
-    public function publicarProjetosAction()
-    {
-        try {
-            $this->get('service.submissao')->publicarProjetosAprovadosNaoPublicados();
-            $this->setSuccessMessage(SubmissaoMessages::PUBLICACAO_PROJETOS_SUCESSO);
-        } catch (\Exception $e) {
-            $this->setWarningMessage($e->getMessage());
-        }
-
-        return $this->redirect($this->generateUrl('admin_index'));;
-    }
-
-    /**
      * @Route("admin/estornos", name="admin_estornos")
      */
     public function estornosAction()

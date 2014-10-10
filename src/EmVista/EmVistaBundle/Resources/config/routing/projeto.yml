@@ -15,7 +15,3 @@ projeto_descubra-search:
 projeto_search:
     pattern: /projeto/search/{search}
     defaults: { _controller: EmVistaBundle:Projeto:search }
-
-projeto_listar-json:
-    pattern: /projeto/listar-json
-    defaults: { _controller: EmVistaBundle:Projeto:listarJson }

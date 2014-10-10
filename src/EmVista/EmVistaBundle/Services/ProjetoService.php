@@ -418,7 +418,17 @@ class ProjetoService extends ServiceAbstract
     public function search(ServiceData $data)
     {
         $q = $data->get('search');
-        $q = filter_var($q, FILTER_SANITIZE_STRING);
+        $q = filter_var(trim($q), FILTER_SANITIZE_STRING);
+        
+        $em = $this->getEntityManager();
+        
+        $categoria = $em->getRepository('EmVistaBundle:Categoria')->findOneBy(array('slug' => $q));
+        
+        if ($categoria) { 
+            return $em->getRepository('EmVistaBundle:Projeto')
+                      ->findBy(array('categoria' => $categoria->getId(), 'publicado' => true));
+        }
+       
         return $this->getSearchEngine()->find($q, 15);
     }
 
