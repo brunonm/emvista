@@ -8,17 +8,18 @@
 
     <fieldset>
         <legend>Dados Básicos</legend>
-        <div class="control-group">
-            <label class="control-label" for="nome">Título do projeto</label>
-            <div class="controls">
-                <input type="text" name="nome" class="input-xlarge" minlength="2" maxlength="100"
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="nome">Título do projeto</label>
+            <div class="col-sm-9">
+                <input type="text" name="nome" class="form-control" minlength="2" maxlength="100"
                        value="<?php echo $submissao->getProjeto()->getNome(); ?>"/>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="categoria">Categoria</label>
-            <div class="controls">
-                <select type="text" name="categoriaId" class="input-xlarge">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="categoria">Categoria</label>
+            <div class="col-sm-9">
+                <select type="text" name="categoriaId" class="form-control">
                     <option></option>
                     <?php foreach($categorias as $categoria): ?>
                         <?php $categoriaProjetoId = ($submissao->getProjeto() && $submissao->getProjeto()->getCategoria() ? $submissao->getProjeto()->getCategoria()->getId() : null); ?>
@@ -28,28 +29,28 @@
                 </select>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="quantidadeDias">Quantidade de dias</label>
-            <div class="controls">
-                <div class="input-append">
-                    <input name="quantidadeDias" type="text" class="input-small"
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="quantidadeDias">Quantidade de dias</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input name="quantidadeDias" type="text" class="form-control "
                            value="<?php echo $submissao->getProjeto()->getQuantidadeDias(); ?>"/>
-                    <span class="add-on"><?php echo "{$quantidadeDiasMinimo} a {$quantidadeDiasMaximo} dias"; ?></span>
+                    <span class="input-group-addon"><?php echo "{$quantidadeDiasMinimo} a {$quantidadeDiasMaximo} dias"; ?></span>
                 </div>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="valor">Valor desejado</label>
-            <div class="controls">
-                <div class="input-prepend">
-                    <span class="add-on">R$</span>
-                    <input name="valor" type="text" class="input-small"
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="valor">Valor desejado</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <span class="input-group-addon">R$</span>
+                    <input name="valor" type="text" class="form-control "
                            value="<?php echo $submissao->getProjeto()->getValor(); ?>"/>
                 </div>
             </div>
         </div>
-        <div class="control-group">
-            <div class="controls">
+        <div class="form-group">
+            <div class="col-sm-9">
                 <button type="submit" class="btn">Avançar</button>
             </div>
         </div>

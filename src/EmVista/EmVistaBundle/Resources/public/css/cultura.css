@@ -132,8 +132,7 @@ a,
 /* ---------------------------------------------- /*
  * Inputs styles
 /* ---------------------------------------------- */
-
-.form-control {
+.btn-special-apoiar.form-control, .btn-special.form-control {
     background: #FFF;
     border: 2px solid #C4C4C4;
     height: 58px;

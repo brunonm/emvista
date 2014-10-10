@@ -25,6 +25,8 @@ class HomeController extends ControllerAbstract
             $this->get('service.projeto')->getProjeto(1),
             $this->get('service.projeto')->getProjeto(1),
             $this->get('service.projeto')->getProjeto(1),
+            $this->get('service.projeto')->getProjeto(1),
+            $this->get('service.projeto')->getProjeto(1),
         );
         return $this->render(
             'EmVistaBundle:Home:index.html.php',

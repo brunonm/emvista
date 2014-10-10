@@ -388,6 +388,28 @@ class ProjetoService extends ServiceAbstract
         }
     }
 
+    public function getImagemThumb(ServiceData $sd)
+    {
+        try {
+            $v = $this->getValidator();
+            $v::arr()->key('projetoId', $v::int())->check($sd->get());
+
+            $em = $this->getEntityManager();
+            $repository = $em->getRepository('EmVistaBundle:ProjetoImagem');
+
+            // se retornar a imagem original se todas as imagens e crops foram feitos com sucesso
+            if (count($repository->findBy(array('projeto' => $sd->get('projetoId')))) == 2) {
+                return $repository->findOneBy(array('projeto' => $sd->get('projetoId'),
+                    'tipoProjetoImagem' => TipoProjetoImagem::TIPO_THUMB));
+            }
+
+            return null;
+
+        } catch (\InvalidArgumentException $e) {
+            throw new ServiceValidationException($e->getMessage());
+        }
+    }
+
     /**
      * @param  ServiceData $data
      * @param  String      $data['search]

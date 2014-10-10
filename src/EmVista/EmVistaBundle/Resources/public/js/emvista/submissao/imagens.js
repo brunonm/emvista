@@ -2,6 +2,10 @@ var imagens = {
 
     cropParams: null,
 
+    realHeight: 0,
+
+    realWidth: 0,
+
     x: null,
 
     y: null,
@@ -31,16 +35,24 @@ var imagens = {
                 submissaoId: $('#submissaoId').val()
             },
             done: function(e, data) {
-                
+
                 $('#upload-controls').removeLoading();
                 alert(data.result.message);
                 if (data.result.status) {
-                    var img = $('<img>').attr({src: data.result.result.webPath, id: 'img-upload'});
+                    var sourceImage = new Image();
+                    sourceImage.onload = function(){
+                        imagens.startCrop();
+                    }
+                    sourceImage.src = data.result.result.webPath;
+                    imagens.realHeight = data.result.result.altura;
+                    imagens.realWidth = data.result.result.largura;
+                    var img = $(sourceImage).attr({id: 'img-upload'});
                     $('#projetoImagemId').val(data.result.result.projetoImagemId);
                     $('#preview').html(img);
                     $('#preview').show();
                     $('#tipoProjetoImagemId').val(1);
-                    imagens.startCrop();
+
+
                 }
             },
             send: function(){
@@ -58,6 +70,9 @@ var imagens = {
         $('#crop-controls').show();
         $('#button-next-crop').show();
         $('#button-new-upload').show();
+
+        $('#thumb').hide();
+        $('#preview').show();
         imagens.messagesThumb();
         imagens.crop();
     },
@@ -70,12 +85,16 @@ var imagens = {
 
     crop: function(){
         var tipo = $('#tipoProjetoImagemId').val();
+        console.log($('#img-upload')[0].height);
+        console.log(imagens.realHeight);
+        var ratio = $('#img-upload')[0].height / imagens.realHeight;
         $('#img-upload').Jcrop({
             onSelect:    imagens.handleCropEventSelect,
             onRelease:   imagens.handleCropEventRelease,
             aspectRatio: imagens.cropParams[tipo].aspectRatio,
-            minSize:    [imagens.cropParams[tipo].largura, imagens.cropParams[tipo].altura],
-            maxSize:    [0, 0]
+            minSize:    [imagens.cropParams[tipo].altura * ratio, imagens.cropParams[tipo].largura * ratio],
+            maxSize:    [0, 0],
+            setSelect: [0, 0, imagens.cropParams[tipo].altura * ratio, imagens.cropParams[tipo].largura * ratio]
         }, function(){
             imagens.jcropApi = this;
         });
@@ -112,11 +131,15 @@ var imagens = {
             x: imagens.x,
             y: imagens.y,
             w: imagens.w,
-            h: imagens.h
+            h: imagens.h,
+            imageH: imagens.jcropApi.getWidgetSize()[1],
+            imageW: imagens.jcropApi.getWidgetSize()[0]
         }
         $.post('/submissao/' + submissaoId + '/salvar-crop', params, function(data){
             if(data.status){
                 $('#button-next-crop').attr('disabled', true);
+                var img = $('<img />').attr({src: data.webPath});
+                $('#thumb').html('').append(img);
                 imagens.finishCrop();
                 return;
             }else{
@@ -141,6 +164,8 @@ var imagens = {
         $('#button-next-crop').hide();
         $('#button-new-upload').show();
         $('#navigate-buttons').show();
+        $('#thumb').show();
+        $('#preview').hide();
         $('#button-avancar').attr('disabled', false);
         if(imagens.jcropApi != null){
             imagens.jcropApi.release();

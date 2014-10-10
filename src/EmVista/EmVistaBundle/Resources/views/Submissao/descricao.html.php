@@ -13,9 +13,9 @@
             </div>
         </legend>
         <div class="row">
-            <div class="control-group col-sm-12">
-                <label class="control-label" for="descricaoCurta">Descrição curta</label>
-                <div class="controls ">
+            <div class="form-group">
+                <label class="control-label  col-sm-2" for="descricaoCurta">Descrição curta</label>
+                <div class="col-sm-9">
                     <span class="help-block">
                         <small>A descrição curta é utilizada quando a miniatura do seu projeto for exibida na busca ou na página inicial do EmVista.</small>
                     </span>
@@ -24,12 +24,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="control-group col-sm-12">
-                <label class="control-label" for="descricao">Descrição completa</label>
-                <div class="controls">
-                <span class="help-block">
-                    <small>Descreva quem é você, o objetivo do projeto, as pessoas envolvidas, como o dinheiro vai ser utilizado, riscos que podem impedir a execução, prazos, recompensas e etc. Seja criativo, venda o seu peixe. :-)</small>
-                </span>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="descricao">Descrição completa</label>
+                <div class="col-sm-9">
+                    <span class="help-block">
+                        <small>Descreva quem é você, o objetivo do projeto, as pessoas envolvidas, como o dinheiro vai ser utilizado, riscos que podem impedir a execução, prazos, recompensas e etc. Seja criativo, venda o seu peixe. :-)</small>
+                    </span>
                     <textarea rows="20" class="col-sm-7" name="descricao"><?php echo $submissao->getProjeto()->getDescricao(); ?></textarea>
                 </div>
             </div>
@@ -37,8 +37,8 @@
         <br />
         <br />
         <div class="row">
-            <div class="control-group col-sm-12">
-                <div class="controls">
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-2">
                     <a href="<?php echo $view['router']->generate('submissao_dados-basicos', array('submissaoId' => $submissao->getId())); ?>"
                        class="btn">Voltar</a>
                     <button type="submit" class="btn btn-primary">Avançar</button>
