@@ -54,5 +54,18 @@
         <?php endif; ?>
     </div>
 </section>
+<div id="postsWrapper">
+    <div id="loadMoreAjaxLoader" style="display:none;text-align: center">Aguarde...</div>
+</div>
+
+
+<?php $view['slots']->stop(); ?>
+
+<?php $view['slots']->start('js') ?>
+
+<?php foreach($view['assetic']->javascripts(
+    array('@EmVistaBundle/Resources/public/js/emvista/home/index.js')) as $url): ?>
+    <script type="text/javascript" src="<?php echo $view->escape($url) ?>"></script>
+<?php endforeach; ?>
 
 <?php $view['slots']->stop(); ?>

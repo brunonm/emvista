@@ -13,7 +13,7 @@ if (!isset($xsSize)) {
     $xsSize = 12;
 }
 ?>
-<div class="col-sm-<?php echo $smSize?> col-lg-<?php echo $lgSize?> col-xs-<?php echo $xsSize?> project-container">
+<div class="col-sm-<?php echo $smSize?> col-lg-<?php echo $lgSize?> col-xs-<?php echo $xsSize?> project-container" project-id="<?php echo $projeto->getId()?>">
     <div class="project-image-content">
 
         <div class="mask">
