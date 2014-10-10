@@ -2,6 +2,8 @@
 
 namespace EmVista\EmVistaBundle\Controller;
 
+use EmVista\EmVistaBundle\Entity\Imagem;
+use EmVista\EmVistaBundle\Entity\ProjetoImagem;
 use Symfony\Component\HttpFoundation\Response;
 use EmVista\EmVistaBundle\Messages\SubmissaoMessages;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
@@ -217,6 +219,7 @@ class SubmissaoController extends ControllerAbstract
 
             $sd = ServiceData::build(array('projetoId' => $params['submissao']->getProjeto()->getId()));
             $params['imagemOriginal'] = $this->get('service.projeto')->getImagemOriginal($sd);
+            $params['imagemThumb'] = $this->get('service.projeto')->getImagemThumb($sd);
             
             $params['step'] = 5;
 
@@ -233,28 +236,35 @@ class SubmissaoController extends ControllerAbstract
         return new Response(json_encode($result), 200, array('Content-Type' => 'application/json'));
     }
 
-    public function salvarImagemOriginalAction($submissaoId)
+    public function salvarImagemOriginalAction ($submissaoId)
     {
         try {
             $request = $this->getRequest();
 
             $sd = ServiceData::build();
             $sd->set('submissaoId', $request->get('submissaoId'))
-               ->set('file', $request->files->get('imagem'))
-               ->setUser($this->getUser());
-
+                ->set('file', $request->files->get('imagem'))
+                ->setUser($this->getUser());
+            /**
+             * @var ProjetoImagem $projetoImagem
+             */
             $projetoImagem = $this->get('service.submissao')->salvarImagemOriginal($sd);
 
             $return = array(
-                'result'  => array('webPath' => $projetoImagem->getWebPath(), 'projetoImagemId' => $projetoImagem->getId()),
+                'result' => array(
+                    'webPath' => $projetoImagem->getWebPath(),
+                    'projetoImagemId' => $projetoImagem->getId(),
+                    'altura' => $projetoImagem->getImagem()->getAltura(),
+                    'largura' => $projetoImagem->getImagem()->getLargura()
+                ),
                 'message' => SubmissaoMessages::IMAGEM_UPLOAD_SUCESSO,
-                'status'  => true
+                'status' => true
             );
 
         } catch (ServiceValidationException $e) {
             $return = array(
                 'message' => $e->getMessage(),
-                'status'  => false
+                'status' => false
             );
         }
 
@@ -269,8 +279,13 @@ class SubmissaoController extends ControllerAbstract
     {
         try {
             $sd = ServiceData::build($this->getRequest()->request->all());
-            $this->get('service.submissao')->crop($sd);
-            $return = array('status'  => true);
+            /**
+             * @var ProjetoImagem $pi
+             */
+            $pi = $this->get('service.submissao')->crop($sd);
+            $return = array('status'  => true,
+                'image' => $pi->getImagem()->getId(),
+                'webPath' => $pi->getWebPath());
         } catch (ServiceValidationException $e) {
             $return = array(
                 'message' => $e->getMessage(),

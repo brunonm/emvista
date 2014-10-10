@@ -2,7 +2,7 @@
 <?php $view['slots']->start('body') ?>
 
 
-<div class="span8 offset2">
+<div class="col-sm-8 col-sm-offset-2">
 
     <form action="<?php echo $view['router']->generate('usuario_enviar-esqueci-minha-senha') ?>" method="post">
         <fieldset>

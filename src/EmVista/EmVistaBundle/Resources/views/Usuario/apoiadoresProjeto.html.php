@@ -4,7 +4,7 @@
 
 <?php if(count($apoiadores) == 0): ?>
     <div class="row">
-        <div class="span12">
+        <div class="col-sm-12">
             <p>Nenhum apoiador para este projeto.</p>
         </div>
     </div>
@@ -12,10 +12,10 @@
 
 <?php foreach($apoiadores as $apoiador): ?>
     <div class="row">
-        <div class="span2">
+        <div class="col-sm-2">
             <img src="<?php echo $apoiador->getImageProfileWebPath(); ?>"/>
         </div>
-        <div class="span3">
+        <div class="col-sm-3">
             <h4><?php echo $apoiador->getNome(); ?></h4>
             <p><?php echo $apoiador->getEmail(); ?></p>
             <p>
@@ -30,13 +30,13 @@
                 <?php endif; ?>
             </p>
         </div>
-        <div class="span7">
+        <div class="col-sm-7">
             <table class="table table-ondensed">
                 <thead>
                     <tr>
-                        <th class="span4">Recompensa escolhida</th>
-                        <th class="span1">Data</th>
-                        <th class="span2">Valor pago</th>
+                        <th class="col-sm-4">Recompensa escolhida</th>
+                        <th class="col-sm-1">Data</th>
+                        <th class="col-sm-2">Valor pago</th>
                     </tr>
                 </thead>
                 <tbody>

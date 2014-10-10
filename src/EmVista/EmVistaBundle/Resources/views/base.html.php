@@ -16,100 +16,68 @@
         <title><?php $view['slots']->output('title', 'EmVista | Crowdfunding no Brasil'); ?></title>
 
         <?php foreach($view['assetic']->stylesheets(array(
-            '@EmVistaBundle/Resources/public/css/bootstrap/css/bootstrap.min.css',
-            '@EmVistaBundle/Resources/public/css/reset.css',
-            '@EmVistaBundle/Resources/public/css/main.css')) as $url): ?>
+            '@EmVistaBundle/Resources/public/vendor/css/bootstrap/bootstrap.min.css',
+            '@EmVistaBundle/Resources/public/vendor/css/font-awesome/css/font-awesome.min.css',
+            '@EmVistaBundle/Resources/public/css/cultura.css')) as $url): ?>
 
             <link rel="stylesheet" href="<?php echo $view->escape($url) ?>" />
         <?php endforeach; ?>
-
-        <!--[if lt IE 8]>
-        <link type="text/css" rel="stylesheet" href="/bundles/emvista/css/ie.css"/>
-        <![endif]-->
-        <!--[if IE 8]>
-        <link type="text/css" rel="stylesheet" href="/bundles/emvista/css/ie-8.css"/>
-        <![endif]-->
 
         <?php $view['slots']->output('css'); ?>
 
         <link rel="shortcut icon" href="<?php $view['slots']->output('title', 'favicon.ico'); ?>" />
     </head>
 
-    <body>
-        <div id="fb-root"></div>
+    <body cz-shortcut-listen="true">
+        <div class="wrapper">
+            <div id="fb-root"></div>
 
-        <div class="topbar navbar" id="topbar">
             <?php echo $view['actions']->render(new \Symfony\Component\HttpKernel\Controller\ControllerReference('EmVistaBundle:Home:topbar')); ?>
-        </div>
+            <?php if($fm = $view['session']->getFlashes()): ?>
+                <header id="masthead">
+                    <div class="inner">
 
-        <header id="masthead">
-            <div class="inner">
-
-                <div class="subnav subnav-fixed flash-message-container">
-                    <?php $class = ''; ?>
-                    <?php foreach($view['session']->getFlashes() as $type => $messages): ?>
-                        <?php
-                            switch ($type) {
-                                case 'notice' : $class = 'alert-info';    break;
-                                case 'warning': $class = '';              break;
-                                case 'error'  : $class = 'alert-error';   break;
-                                case 'success': $class = 'alert-success'; break;
-                            }
-                        ?>
-                        <?php foreach($messages as $message): ?>
-                                <div class="flash-message alert <?php echo $class; ?>">
-                                <button class="close" data-dismiss="alert">×</button>
-                                <?php echo $message; ?>
-                                </div>
-                        <?php endforeach; ?>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="span6">
-                            <p class="emvista-logo"><a href="/">EmVista</a></p>
+                        <div class="subnav subnav-fixed flash-message-container">
+                            <?php $class = ''; ?>
+                            <?php foreach($fm as $type => $messages): ?>
+                                <?php
+                                    switch ($type) {
+                                        case 'notice' : $class = 'alert-info';    break;
+                                        case 'warning': $class = '';              break;
+                                        case 'error'  : $class = 'alert-error';   break;
+                                        case 'success': $class = 'alert-success'; break;
+                                    }
+                                ?>
+                                <?php foreach($messages as $message): ?>
+                                        <div class="flash-message alert <?php echo $class; ?>">
+                                        <button class="close" data-dismiss="alert">×</button>
+                                        <?php echo $message; ?>
+                                        </div>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
                         </div>
-                        <div class="span6 " style="padding-top: 10px;padding-bottom: 10px;">
-                            <div class="project-signup-menu-parent">
-                                <ul class="project-signup-menu">
-                                    <li class="menu-item first-item">
-                                        <a href="<?php echo $view['router']->generate('projeto_descubra'); ?>">Descubra <span>projetos</span></a></li>
-
-                                    <li class="menu-item last-item"><a href="<?php echo $view['router']->generate('home_cadastre'); ?>">Cadastre <span>seu projeto</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quickSearchContent" style="display: none">
-                        <div>
-                            <a class="close" href="#">×</a>
-                        </div>
-                        <ul class="row unstyled" id="quickSearch">
-
-                        </ul>
-                    </div>
-                    <?php $view['slots']->output('projectHeader'); ?>
-                </div>
+                </header>
+            <?php
+            endif;
+            ?>
+            <div  id="content">
+                <?php $view['slots']->output('body'); ?>
             </div>
-        </header>
-        <div class="container" id="content">
-            <?php $view['slots']->output('body'); ?>
+
+            <footer id="footer" class="footer">
+                <?php echo $view['actions']->render(new \Symfony\Component\HttpKernel\Controller\ControllerReference('EmVistaBundle:Home:footer')); ?>
+            </footer>
+
+            <div id="modal"><?php $view['slots']->output('modal'); ?></div>
         </div>
-
-        <footer id="footer" class="footer">
-            <?php echo $view['actions']->render(new \Symfony\Component\HttpKernel\Controller\ControllerReference('EmVistaBundle:Home:footer')); ?>
-        </footer>
-
-        <div id="modal"><?php $view['slots']->output('modal'); ?></div>
-
         <?php foreach($view['assetic']->javascripts(array(
             '@EmVistaBundle/Resources/public/js/html5.js',
-            '@EmVistaBundle/Resources/public/js/jquery-1.7.1.min.js',
+            '@EmVistaBundle/Resources/public/vendor/js/jquery-1.11.0.min.js',
+            '@EmVistaBundle/Resources/public/vendor/js/jquery.backstretch.min.js',
             '@EmVistaBundle/Resources/public/js/typing/jquery.typing-0.2.0.min.js',
-            '@EmVistaBundle/Resources/public/js/emvista/main.js',
-            '@EmVistaBundle/Resources/public/css/bootstrap/js/bootstrap.min.js',
+            '@EmVistaBundle/Resources/public/vendor/css/bootstrap/bootstrap.min.js',
             'bundles/fosjsrouting/js/router.js',
+            '@EmVistaBundle/Resources/public/js/emvista/cultura.js',
             'js/fos_js_routes.js'
             )) as $url): ?>
             <script src="<?php echo $view->escape($url) ?>" type="text/javascript"></script>

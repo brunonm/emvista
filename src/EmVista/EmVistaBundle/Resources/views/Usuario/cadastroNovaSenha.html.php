@@ -3,7 +3,7 @@
 
 <?php $usuario = $token->getUsuario(); ?>
 
-<div class="span8 offset2">
+<div class="col-sm-8 col-sm-offset-2">
     <form action="<?php echo $view['router']->generate('usuario_alterarSenha') ?>" method="post">
 
         <input type="hidden" name="usuarioId" value="<?php echo $usuario->getId(); ?>"/>

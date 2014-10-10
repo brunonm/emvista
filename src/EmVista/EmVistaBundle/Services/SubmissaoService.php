@@ -234,6 +234,7 @@ class SubmissaoService extends ServiceAbstract
             $em->flush();
             $em->commit();
 
+
         } catch (\InvalidArgumentException $e) {
             $em->rollback();
             throw new ServiceValidationException($e->getMessage());
@@ -528,7 +529,7 @@ class SubmissaoService extends ServiceAbstract
             $dir = $this->uploadDir . DIRECTORY_SEPARATOR . md5($projeto->getId());
 
             if (false === file_exists($dir)) {
-                if (false === mkdir($dir, 0777)) {
+                if (false === mkdir($dir)) {
                     throw new \Exception('Permissão negada.');
                 }
             }
@@ -613,6 +614,8 @@ class SubmissaoService extends ServiceAbstract
                      ->key('y', $v::numeric())
                      ->key('w', $v::numeric())
                      ->key('h', $v::numeric())
+                     ->key('imageH', $v::numeric())
+                     ->key('imageW', $v::numeric())
                      ->check($sd->get());
 
             $tipoProjetoImagemDestaque = $em->find('EmVistaBundle:TipoProjetoImagem', $sd->get('tipoProjetoImagemId'));
@@ -624,8 +627,13 @@ class SubmissaoService extends ServiceAbstract
             }
 
             $projetoImagem = $em->find('EmVistaBundle:ProjetoImagem', $sd->get('projetoImagemId'));
-
+            /**
+             * @var Imagem $imagem
+             */
             $imagem = $projetoImagem->getImagem();
+
+            $ratioImagem = $imagem->getLargura() / $sd->get('imageW');
+
 
             $projetoUploadDir = $this->uploadDir . '/' . md5($projetoImagem->getProjeto()->getId());
 
@@ -633,11 +641,16 @@ class SubmissaoService extends ServiceAbstract
 
             $imagine = $this->imagine->open($filename);
 
-            $imagine->crop(new Point($sd->get('x'), $sd->get('y')), new Box($sd->get('w'), $sd->get('h')));
+            $sd->set('x', round($sd->get('x') * $ratioImagem), 1);
+            $sd->set('y', round($sd->get('y') * $ratioImagem), 1);
+            $sd->set('w', round($sd->get('w') * $ratioImagem), 1);
+            $sd->set('h', round($sd->get('h') * $ratioImagem), 1);
+
+            $imagine->crop(new Point($sd->get('x') , $sd->get('y') ), new Box($sd->get('w') , $sd->get('h') ));
 
             $cropImagem = new Imagem();
-            $cropImagem->setAltura($sd->get('h'))
-                       ->setLargura($sd->get('w'))
+            $cropImagem->setAltura($sd->get('h') )
+                       ->setLargura($sd->get('w') )
                        ->setExtensao($imagem->getExtensao())
                        ->setOriginalFilename($imagem->getOriginalFilename())
                        ->setSize(100)

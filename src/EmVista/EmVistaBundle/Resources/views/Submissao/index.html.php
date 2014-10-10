@@ -4,7 +4,7 @@
 <?php $params = array('submissaoId' => $submissao->getId()); ?>
 
 <div class="row submissao">
-    <div class="span2">
+    <div class="col-sm-2">
         <ul class="nav nav-pills nav-stacked">
             <li class="<?php echo ($step == 1 ? 'active' : ''); ?>">
                 <a href="<?php echo $view['router']->generate('submissao_dados-basicos', $params) ?>">Dados básicos</a>
@@ -26,7 +26,7 @@
             </li>
         </ul>
     </div>
-    <div class="span10">
+    <div class="col-sm-10">
         <?php $view['slots']->output('submissao-body', 'Selecione uma opção ao lado.'); ?>
     </div>
 </div>

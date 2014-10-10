@@ -22,11 +22,11 @@
                 <input type="hidden" name="recompensas[<?php echo $key; ?>][recompensaId]"
                        class="recompensaId" value="<?php echo $recompensa->getId(); ?>"/>
 
-                <div class="control-group">
-                    <label class="control-label" for="titulo">Título</label>
-                    <div class="controls">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="titulo">Título</label>
+                    <div class="col-sm-9">
                         <input type="text" name="recompensas[<?php echo $key; ?>][titulo]" maxlength="100"
-                               class="input-xlarge" value="<?php echo $recompensa->getTitulo(); ?>">
+                               class="form-control" value="<?php echo $recompensa->getTitulo(); ?>">
 
                         <?php if($key > 0): ?>
                         <a href="javascript:;" class="btn btn-danger btn-excluir-recompensa"><i class="icon-trash icon-white"></i> Excluir recompensa</a>
@@ -35,27 +35,27 @@
                     </div>
                 </div>
 
-                <div class="control-group">
-                    <label class="control-label" for="valorMinimo">Valor</label>
-                    <div class="controls">
-                        <div class="input-prepend">
-                            <span class="add-on">R$</span>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="valorMinimo">Valor</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <span class="input-group-addon">R$</span>
                             <input name="recompensas[<?php echo $key; ?>][valorMinimo]" type="text"
-                                   class="input-small" value="<?php echo $recompensa->getValorMinimo(); ?>"/>
+                                   class="form-control" value="<?php echo $recompensa->getValorMinimo(); ?>"/>
                         </div>
                     </div>
                 </div>
 
-                <div class="control-group">
-                    <label class="control-label" for="descricao">Descrição</label>
-                    <div class="controls">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="descricao">Descrição</label>
+                    <div class="col-sm-9">
                         <input type="text" name="recompensas[<?php echo $key; ?>][descricao]"
-                               class="input-xxlarge" value="<?php echo $recompensa->getDescricao(); ?>"/>
+                               class="form-control" value="<?php echo $recompensa->getDescricao(); ?>"/>
                     </div>
                 </div>
 
-                <div class="control-group">
-                    <div class="controls">
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-2">
                         <label class="checkbox">
                             <?php $checked = ($recompensa->getQuantidadeMaximaApoiadores() > 0) ? '' : 'checked="checked"'; ?>
                             <input type="checkbox" <?php echo $checked; ?> class="checkbox-limite"> Sem limites
@@ -67,11 +67,11 @@
                 </div>
 
                 <?php $classOculto = ($recompensa->getQuantidadeMaximaApoiadores() > 0) ? '' : 'oculto'; ?>
-                <div class="control-group div-limite-recompensa <?php echo $classOculto; ?>">
-                    <label class="control-label" for="quantidadeMaximaApoiadores">Quantidade disponível</label>
-                    <div class="controls">
+                <div class="form-group div-limite-recompensa <?php echo $classOculto; ?>">
+                    <label class="control-label col-sm-2" for="quantidadeMaximaApoiadores">Quantidade disponível</label>
+                    <div class="col-sm-9">
                         <input type="text" name="recompensas[<?php echo $key; ?>][quantidadeMaximaApoiadores]"
-                               class="input-small" value="<?php echo $recompensa->getQuantidadeMaximaApoiadores(); ?>"/>
+                               class="form-control" value="<?php echo $recompensa->getQuantidadeMaximaApoiadores(); ?>"/>
                     </div>
                 </div>
             </div>
@@ -79,14 +79,15 @@
             <?php endforeach; ?>
 
         </div>
-        <div class="control-group">
-            <div class="controls">
-                <a class="btn btn-success" id="btn-adicionar-recompensa" href="javascript:;">
-                    <i class="icon-plus-sign icon-white"> </i> Adicionar recompensa</a>
-            </div>
+        <br />
+        <br />
+        <div class="row">
+                <a class="btn btn-success col-sm-4 col-sm-offset-4" id="btn-adicionar-recompensa" href="javascript:;">
+                    <i class="fa-plus-circle fa"> </i> Adicionar recompensa
+                </a>
         </div>
-        <div class="control-group">
-            <div class="controls">
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-2">
                 <a href="<?php echo $view['router']->generate('submissao_descricao', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn">Voltar</a>
                 <input type="submit" class="btn" value="Avançar"/>

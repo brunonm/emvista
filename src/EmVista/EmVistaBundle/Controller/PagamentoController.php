@@ -28,7 +28,7 @@ class PagamentoController extends ControllerAbstract
     }
 
     /**
-     * @Route("/pagamento/continue-checkout", name="pagamento_continueCheckout")
+     * @Route("/pagamento/continue-checkout", name="pagamento_continue-checkout")
      */
     public function continueCheckoutAction()
     {

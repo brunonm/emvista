@@ -1,51 +1,49 @@
-<div class="topbar-inner">
+<nav class="navbar navbar-custom navbar-fixed-top navbar-color" role="navigation">
     <div class="container">
-        <p class="brand">O que é EmVista e Crowdfunding? <a href="<?php echo $view['router']->generate('home_crowdfunding'); ?>">Saiba mais</a></p>
-        <ul class="nav secondary-nav account-menu pull-right">
-            <li class="menu-item last-item item-search">
-                <form method="post" action="<?php echo $view['router']->generate('projeto_descubra')?>"
-                      realAction="<?php echo $view['router']->generate('projeto_descubra')?>" class="form-search" autocomplete="off">
-                    <input type="text" class="input-search" name="input[search]" />
-                    <input type="submit" class="hidden-accessible"/>
-                </form>
-            </li>
-            <li class="menu-item first-item item-join">
-                <?php if(!$view['security']->isGranted('IS_AUTHENTICATED_FULLY')): ?>
-                    <a href="<?php echo $view['router']->generate('usuario_registro') ?>">Criar conta</a>
-                <?php endif; ?>
-            </li>
-            <li class="menu-item item-login">
-                <?php if($view['security']->isGranted('IS_AUTHENTICATED_FULLY')): ?>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eu<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo $view['router']->generate('usuario_dados-pessoais') ?>">
-                                    <div class="pull-left img-profile">
-                                        <img src="<?php echo $user->getImageProfileWebPath()?>" >
-                                    </div>
-                                    <div class="profile-name">
-                                        <b >
-                                            <?php echo $user->getNome()?>
-                                        </b>
 
-                                    </div>
-                                    <div style="font-size:10px;text-align: right">
-                                        <small>Minha conta</small>
-                                    </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<?php echo $view['router']->generate('home_index') ?>">
+                <img src="<?php echo $view['assets']->getUrl('bundles/emvista/images/logomarca-culturacf.png')?>" alt="Cultura Crowdfunding" />
+            </a>
+        </div>
 
-
-                                </a></li>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#intro">home</a></li>
+                <li><a href="#contact">Crowdfunding Festival</a></li>
+                <?php
+                if($view['security']->isGranted('IS_AUTHENTICATED_FULLY')): ?>
+                    <li class="invert image-profile-content">
+                        <a href="#entrar" data-toggle="dropdown">
+                            <?php echo $user->getNome()?>&nbsp;<img src="<?php echo $user->getImageProfileWebPath()?>" class="img-circle profile-image" >
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="<?php echo $view['router']->generate('usuario_dados-pessoais') ?>">Minha conta</a></li>
                             <li class="divider"></li>
                             <?php if($view['security']->isGranted('ROLE_ADMIN')): ?>
                                 <li><a href="<?php echo $view['router']->generate('admin_index') ?>">Administração</a></li>
+                                <li class="divider"></li>
                             <?php endif; ?>
-                            <li><a href="<?php echo $view['router']->generate('logout') ?>">Sair</a></li>
+                            <li><a href="<?php echo $view['router']->generate('logout') ?>">Logout</a></li>
                         </ul>
                     </li>
-                <?php else: ?>
-                    <a href="<?php echo $view['router']->generate('usuario_login') ?>">Entrar</a>
-                <?php endif; ?>
-            </li>
-        </ul>
+                <?php
+                else:
+                    ?>
+                    <li class="invert"><a href="<?php echo $view['router']->generate('usuario_login') ?>">Entrar</a></li>
+                <?php
+                endif;
+                ?>
+            </ul>
+        </div>
+
     </div>
-</div>
+</nav>

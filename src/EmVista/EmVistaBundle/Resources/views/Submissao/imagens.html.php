@@ -20,31 +20,43 @@
 
         <div class="row">
             <input type="hidden" id="projetoImagemId" name="projetoImagemId"
-                   value="<?php echo ($imagemOriginal ? $imagemOriginal->getId() : ''); ?>"/>
+                   value="<?php echo ($imagemThumb ? $imagemThumb->getId() : ''); ?>"/>
             <input type="hidden" id="tipoProjetoImagemId" name="tipoProjetoImagemId" value="2"/>
-            <div class="span10" id="preview">
-                <?php if($imagemOriginal): ?>
-                <img src="<?php echo $imagemOriginal->getWebPath(); ?>"/>
-                <?php endif; ?>
+            <div class="col-sm-10">
+                <div  id="preview">
+                    <?php if(isset($imagemThumb)): ?>
+                        <img src="<?php echo $imagemThumb->getWebPath(); ?>"/>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <div  id="thumb">
+                    <?php if(isset($imagemThumb)): ?>
+                        <img src="<?php echo $imagemThumb->getWebPath(); ?>"/>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
-
-        <div class="control-group" id="crop-buttons">
-            <div class="controls">
+        <br />
+        <br />
+        <div class="form-group" id="crop-buttons">
+            <div class="col-sm-4 col-sm-offset-4">
                 <a href="javascript:;" style="display: none;" class="btn btn-inverse"
-                   id="button-new-upload"><i class="icon-arrow-up icon-white"></i> Novo upload</a>
+                   id="button-new-upload"><i class="fa-arrow-up fa"></i> Novo upload</a>
 
                 <a href="javascript:;" style="display: none;" class="btn btn-success" disabled
-                   id="button-next-crop"><i class="icon-arrow-right icon-white"></i> Recortar!</a>
+                   id="button-next-crop"><i class="fa-cut fa"></i> Recortar!</a>
             </div>
         </div>
+        <br />
+        <br />
 
-        <div class="control-group" id="navigate-buttons">
-            <div class="controls">
+        <div class="form-group" id="navigate-buttons">
+            <div class="col-sm-4 col-sm-offset-4">
                 <a href="<?php echo $view['router']->generate('submissao_video', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn">Voltar</a>
                 <a href="<?php echo $view['router']->generate('submissao_mais-sobre-voce', array('submissaoId' => $submissao->getId())); ?>"
-                   class="btn" id="button-avancar" disabled>Avançar</a>
+                   class="btn btn-primary" id="button-avancar" disabled>Avançar</a>
             </div>
         </div>
     </fieldset>

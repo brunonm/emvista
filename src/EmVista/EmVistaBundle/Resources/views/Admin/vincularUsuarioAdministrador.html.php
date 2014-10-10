@@ -21,7 +21,7 @@
                     <?php if($usuario->isAdmin()): ?>
                         <a href="<?php echo $view['router']->generate('admin_remover-administrador', array('usuarioId' => $usuario->getId())); ?>">Remover acesso</a>
                     <?php else: ?>
-                        <a href="<?php echo $view['router']->generate('admin_adicionarAdministrador', array('usuarioId' => $usuario->getId())); ?>">Adicionar acesso</a>
+                        <a href="<?php echo $view['router']->generate('admin_adicionar-administrador', array('usuarioId' => $usuario->getId())); ?>">Adicionar acesso</a>
                     <?php endif; ?>
                 </td>
             </tr>

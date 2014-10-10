@@ -2,9 +2,9 @@
 <?php $view['slots']->start('body') ?>
 
 <div class="row">
-    <div class="span2">
+    <div class="col-sm-2">
         <div class="row">
-            <div class="span2 userImageProfile">
+            <div class="col-sm-2 userImageProfile">
                 <a href="#" >
                     <img src="<?php echo $usuario->getImageProfileWebPath()?>" alt="<?php echo $usuario->getNome()?>">
 
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="span2">
+            <div class="col-sm-12">
                 <ul class="nav nav-pills nav-stacked">
                     <li class="<?php echo ($active == 'dadosPessoais') ? 'active' : '';?>">
                         <a href="<?php echo $view['router']->generate('usuario_dados-pessoais') ?>">Dados Pessoais</a>
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="span10">
+    <div class="col-sm-10">
         <?php $view['slots']->output('usuario-body', 'Selecione uma opção ao lado.'); ?>
     </div>
 
