@@ -11,7 +11,6 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * EmVista\EmVistaBundle\Entity\Usuario
- *
  */
 class Usuario extends EntityAbstract implements UserInterface, AdvancedUserInterface, \Serializable
 {
@@ -76,17 +75,30 @@ class Usuario extends EntityAbstract implements UserInterface, AdvancedUserInter
     private $userRoles;
 
     /**
-     *
-     *@OneToOne(targetEntity="Endereco", mappedBy="usuario")
+     * @var Endereco
      */
     private $endereco;
 
     /**
      * @var Doacao[]
-
      */
     private $doacoes;
-
+    
+    /**
+     * @var string
+     */
+    private $facebookId;
+    
+    /**
+     * @var string
+     */
+    private $googleId;
+    
+    /**
+     * @var string
+     */
+    private $twitterId;
+    
     public function __construct()
     {
         parent::__construct();
@@ -455,5 +467,59 @@ class Usuario extends EntityAbstract implements UserInterface, AdvancedUserInter
         } else {
             return $this->getImagemProfile()->getWebPath();
         }
+    }
+    
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param string $facebookId
+     * @return \EmVista\EmVistaBundle\Entity\Usuario
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param string $googleId
+     * @return \EmVista\EmVistaBundle\Entity\Usuario
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitterId()
+    {
+        return $this->twitterId;
+    }
+
+    /**
+     * @param string $twitterId
+     * @return \EmVista\EmVistaBundle\Entity\Usuario
+     */
+    public function setTwitterId($twitterId)
+    {
+        $this->twitterId = $twitterId;
+        return $this;
     }
 }

@@ -5,58 +5,57 @@ EmVista\EmVistaBundle\Entity\Usuario:
     id:
         id:
             type: integer
-            scale: 0
             length: null
             unique: false
             nullable: false
-            precision: 0
             id: true
             generator:
                 strategy: AUTO
     fields:
         nome:
             type: string
-            scale: 0
             length: 255
             unique: false
             nullable: false
-            precision: 0
         email:
             type: string
-            scale: 0
             length: 255
             unique: false
             nullable: false
-            precision: 0
         senha:
             type: string
-            scale: 0
             length: 255
             unique: false
-            nullable: false
-            precision: 0
+            nullable: true
         salt:
             type: string
-            scale: 0
             length: 40
             unique: false
             nullable: false
-            precision: 0
         dataCadastro:
             type: datetime
-            scale: 0
             length: null
             unique: false
             nullable: false
-            precision: 0
             column: data_cadastro
         status:
             type: boolean
-            scale: 0
             length: null
             unique: false
             nullable: false
-            precision: 0
+        facebookId:
+            type: string
+            length: 255
+            nullable: true
+        googleId:
+            type: string
+            length: 255
+            nullable: true
+        twitterId:
+            type: string
+            length: 255
+            nullable: true
+            
     oneToMany:
         projetos:
             targetEntity: EmVista\EmVistaBundle\Entity\Projeto

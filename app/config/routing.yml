@@ -1,9 +1,20 @@
-#EmVistaBundle:
-#    resource: "@EmVistaBundle/Controller/"
-#    type:     annotation
-#    prefix:   /
-#    options:
-#        expose: true
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+    
+facebook_login:
+    pattern: /login/check-facebook
+
+google_login:
+    pattern: /login/check-google    
+
+twitter_login:
+    pattern: /login/check-twitter
+
 emvista:
     resource: "@EmVistaBundle/Resources/config/routing.yml"
     prefix:   /
