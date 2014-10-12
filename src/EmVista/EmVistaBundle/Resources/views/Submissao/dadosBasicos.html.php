@@ -11,14 +11,14 @@
 
         <div class="form-group">
             <label class="control-label col-sm-2" for="nome">Título do projeto</label>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
                 <input type="text" name="nome" class="form-control" minlength="2" maxlength="100"
                        value="<?php echo $submissao->getProjeto()->getNome(); ?>"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="categoria">Categoria</label>
-            <div class="col-sm-9">
+            <div class="col-sm-3">
                 <select type="text" name="categoriaId" class="form-control">
                     <option></option>
                     <?php foreach($categorias as $categoria): ?>
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="quantidadeDias">Quantidade de dias</label>
-            <div class="col-sm-9">
+            <div class="col-sm-2">
                 <div class="input-group">
                     <input name="quantidadeDias" type="text" class="form-control "
                            value="<?php echo $submissao->getProjeto()->getQuantidadeDias(); ?>"/>
@@ -41,17 +41,17 @@
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="valor">Valor desejado</label>
-            <div class="col-sm-9">
+            <div class="col-sm-2">
                 <div class="input-group">
                     <span class="input-group-addon">R$</span>
-                    <input name="valor" type="text" class="form-control "
+                    <input name="valor" type="text" class="form-control money"
                            value="<?php echo $submissao->getProjeto()->getValor(); ?>"/>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-9">
-                <button type="submit" class="btn">Avançar</button>
+            <div class="col-sm-9 col-sm-offset-2">
+                <button type="submit" class="btn btn-success">Avançar</button>
             </div>
         </div>
     </fieldset>

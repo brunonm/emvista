@@ -39,9 +39,11 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-9 col-sm-offset-2">
+                    <?php if (!$submissao->getProjeto()->isArrecadando()): ?>
                     <a href="<?php echo $view['router']->generate('submissao_dados-basicos', array('submissaoId' => $submissao->getId())); ?>"
                        class="btn">Voltar</a>
-                    <button type="submit" class="btn btn-primary">Avançar</button>
+                    <?php endif; ?>
+                    <button type="submit" class="btn btn-success">Avançar</button>
                 </div>
             </div>
         </div>

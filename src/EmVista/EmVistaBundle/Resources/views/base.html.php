@@ -78,7 +78,8 @@
             '@EmVistaBundle/Resources/public/vendor/css/bootstrap/bootstrap.min.js',
             'bundles/fosjsrouting/js/router.js',
             '@EmVistaBundle/Resources/public/js/emvista/cultura.js',
-            'js/fos_js_routes.js'
+            'js/fos_js_routes.js',
+            '@EmVistaBundle/Resources/public/vendor/js/jquery.maskMoney.min.js',
             )) as $url): ?>
             <script src="<?php echo $view->escape($url) ?>" type="text/javascript"></script>
         <?php endforeach; ?>
