@@ -151,9 +151,9 @@ class UsuarioService extends ServiceAbstract
     {
         try {
             $em = $this->getEntityManager();
-
+            
             $this->validarAlteracaoDadosPessoais($sd->get());
-
+            
             $usuario = $em->find('EmVistaBundle:Usuario', $sd->get('id'));
             $usuario->setEmail($sd->get('email'));
             $usuario->setNome($sd->get('nome'));

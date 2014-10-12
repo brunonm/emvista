@@ -60,7 +60,7 @@ class UsuarioController extends ControllerAbstract
             $this->setErrorMessage(UsuarioMessages::ERRO_EMAIL_OUTRA_CONTA);
         }
 
-        return $this->redirect($this->generateUrl('usuario_dadosPessoais'));
+        return $this->redirect($this->generateUrl('usuario_dados-pessoais'));
     }
 
     public function confirmacaoInativarContaAction()
