@@ -21,7 +21,7 @@ EmVista\EmVistaBundle\Entity\Usuario:
             type: string
             length: 255
             unique: false
-            nullable: false
+            nullable: true
         senha:
             type: string
             length: 255

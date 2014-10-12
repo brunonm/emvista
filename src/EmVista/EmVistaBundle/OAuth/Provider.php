@@ -39,20 +39,29 @@ class Provider implements OAuthAwareUserProviderInterface
     {
         $em = $this->getEntityManager();
         
-        $usuario = $em->getRepository("EmVistaBundle:Usuario")->findOneby(array('email' => $response->getEmail()));
+        $resource = $response->getResourceOwner()->getName();
+        
+        $usuario = $em->getRepository("EmVistaBundle:Usuario")
+                      ->findOneby(array($resource . 'Id' => $response->getUsername()));
         
         if (!$usuario instanceof Usuario) {
             
             $role = $em->find('EmVistaBundle:Role', Role::ROLE_USER);
                     
+            $setter = 'set' . ucfirst($resource) . 'Id';
+            
             $usuario = new Usuario();
-            $usuario->setEmail($response->getEmail())
-                    ->setNome($response->getRealName())
+            $usuario->$setter($response->getUsername())
                     ->addUserRole($role);
+            
+            if (null != $response->getEmail()) {
+                $usuario->setEmail($response->getEmail());
+            }
+            
+            if (null != $response->getRealName()) {
+                $usuario->setNome($response->getRealName());
+            }
         }
-        
-        $setter = 'set' . ucfirst($response->getResourceOwner()->getName()) . 'Id';
-        $usuario->$setter($response->getUsername());
         
         $em->persist($usuario);
         $em->flush();
