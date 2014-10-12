@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-sm-12" style="height: 300px;overflow: auto;    ">
-                <?php echo $termosUso->getTermoUsoFormatado(); ?>
+                <?php echo $termosUso->getTermoUso(); ?>
             </div>
         </div>
 
