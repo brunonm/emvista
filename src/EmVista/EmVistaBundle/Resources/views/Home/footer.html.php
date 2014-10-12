@@ -11,6 +11,7 @@
                     <li class="logo-content no-after"><img src="<?php echo $view['assets']->getUrl('bundles/emvista/images/logomarca2.png') ?>" alt="Logomarca" /></li>
                     <li><a href="<?php echo $view['router']->generate('home_termos-uso'); ?>">TERMOS DE USO</a></li>
                     <li><a href="<?php echo $view['router']->generate('home_ajuda'); ?>">FAQ</a></li>
+                    <li><a href="<?php echo $view['router']->generate('home_contato'); ?>">CONTATO</a></li>
                     <li class="no-after"><a href="<?php echo $view['router']->generate('home_crowdfunding'); ?>">O QUE É CROWDFUNDING?</a></li>
                 </ul>
             </div>

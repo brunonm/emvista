@@ -1,22 +1,22 @@
 <?php $view->extend('EmVistaBundle::base.html.php'); ?>
 <?php $view['slots']->start('body') ?>
 
+<div class="container">
 <div class="row">
-
     <h1 class="col-sm-12 helpTitle">Ajuda</h1>
 </div>
 <div class="row">
     <div class="col-sm-4">
-        <h4 class="helpTopicTitle">O que é o EmVista?</h4>
+        <h4 class="helpTopicTitle">O que é o Cultura Crowdfunding?</h4>
         <div>
-            O EmVista é uma plataforma de Crowdfunding ou, em português, Financiamento Coletivo. Tem o objetivo de aproximar pessoas com uma finalidade comum: gerar projetos bem sucedidos.<br><br>
+            O Cultura Crowdfunding é uma plataforma de Crowdfunding ou, em português, Financiamento Coletivo. Tem o objetivo de aproximar pessoas com uma finalidade comum: gerar projetos bem sucedidos.<br><br>
             Nos dias de hoje uma variedade de ideias não conseguem sair do papel pelas dificuldades em captar recursos. Por meio da plataforma, seu projeto terá visibilidade e as pessoas que acreditam nele terão a oportunidade de divulgá-lo, fazendo assim com que outros também contribuam para o seu sucesso.
         </div>
     </div>
     <div class="col-sm-4 ">
-        <h4 class="helpTopicTitle">Como funciona o EmVista e o Crowdfunding?</h4>
+        <h4 class="helpTopicTitle">Como funciona o Cultura Crowdfunding?</h4>
         <div>
-            O projeto é enviado para a nossa avaliação. Esta etapa não visa julgar ou qualificar a sua ideia, mas sim filtrar apenas os que se enquadram na proposta do EmVista e da estrutura Crowdfunding.
+            O projeto é enviado para a nossa avaliação. Esta etapa não visa julgar ou qualificar a sua ideia, mas sim filtrar apenas os que se enquadram na proposta do Cultura Crowdfunding.
             <br><br>
             Os projetos publicados irão iniciar o período de arrecadação. Acabando o prazo, existem duas situações:
             <br><br>
@@ -38,7 +38,7 @@
     <div class="col-sm-4">
         <h4 class="helpTopicTitle">Como eu posso apoiar um projeto?</h4>
         <div>
-            Na página do projeto que você deseja contribuir tem um botão chamado "apoiar", selecionando ele você poderá escolher a recompensa que deseja. No próximo passo você será transferido para o Moip, onde deverá logar-se, ou criar uma nova conta, escolher a forma de pagamento e confirmar a operação. Em alguns minutos sua contribuição já será contabilizada.
+            Na página do projeto que você deseja contr`ibuir tem um botão chamado "apoiar", selecionando ele você poderá escolher a recompensa que deseja. No próximo passo você será transferido para o Moip, onde deverá logar-se, ou criar uma nova conta, escolher a forma de pagamento e confirmar a operação. Em alguns minutos sua contribuição já será contabilizada.
             <Br>
             <Br>
             Como funciona a devolução do dinheiro para os apoiadores e o repasse de dinheiro para o autor do projeto?
@@ -81,5 +81,5 @@
         </div>
     </div>
 </div>
-
+</div>
 <?php $view['slots']->stop(); ?>

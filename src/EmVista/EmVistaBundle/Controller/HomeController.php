@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use EmVista\EmVistaBundle\Core\Controller\ControllerAbstract;
 use EmVista\EmVistaBundle\Core\Exceptions\ServiceValidationException;
+use EmVista\EmVistaBundle\Messages\UsuarioMessages;
 
 class HomeController extends ControllerAbstract
 {
@@ -71,6 +72,31 @@ class HomeController extends ControllerAbstract
         $termosUso = $this->get('service.projeto')->getTermoUsoVigente();
 
         return $this->render('EmVistaBundle:Home:termosUso.html.php', array('termosUso' => $termosUso));
+    }
+
+    /**
+     * @return Response
+     */
+    public function contatoAction()
+    {
+        return $this->render('EmVistaBundle:Home:contato.html.php');
+    }
+    
+    /**
+     * @return Response
+     */
+    public function enviarEmailAction()
+    {
+        $sd = ServiceData::build($this->getRequest()->request->all());
+        
+        try {
+            $this->get('service.usuario')->enviarEmailContato($sd);
+            $this->setSuccessMessage(UsuarioMessages::SUCESSO_EMAIL_CONTATO);
+        } catch (ServiceValidationException $e) {
+            $this->setWarningMessage(UsuarioMessages::ERRO_VALIDACAO);
+        }
+        
+        return $this->redirect($this->generateUrl('home_index'));
     }
 
     /**

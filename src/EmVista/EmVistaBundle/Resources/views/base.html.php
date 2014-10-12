@@ -60,7 +60,7 @@
             <?php
             endif;
             ?>
-            <div  id="content">
+            <div id="content">
                 <?php $view['slots']->output('body'); ?>
             </div>
 
