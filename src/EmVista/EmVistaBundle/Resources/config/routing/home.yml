@@ -33,3 +33,11 @@ home_crowdfunding:
 home_termos-uso:
     pattern: /termos-uso
     defaults: { _controller: EmVistaBundle:Home:termosUso }
+
+home_contato:
+    pattern: /contato
+    defaults: { _controller: EmVistaBundle:Home:contato }
+
+home_contato_enviar-email:
+    pattern: /contato/enviar-email
+    defaults: { _controller: EmVistaBundle:Home:enviarEmail }

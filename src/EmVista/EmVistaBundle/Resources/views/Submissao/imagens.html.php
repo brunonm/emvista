@@ -56,7 +56,7 @@
                 <a href="<?php echo $view['router']->generate('submissao_video', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn">Voltar</a>
                 <a href="<?php echo $view['router']->generate('submissao_mais-sobre-voce', array('submissaoId' => $submissao->getId())); ?>"
-                   class="btn btn-primary" id="button-avancar" disabled>Avançar</a>
+                   class="btn btn-success" id="button-avancar" disabled>Avançar</a>
             </div>
         </div>
     </fieldset>

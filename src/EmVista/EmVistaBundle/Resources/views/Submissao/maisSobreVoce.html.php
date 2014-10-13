@@ -9,9 +9,9 @@
 
     <fieldset>
         <legend>Mais sobre você</legend>
-        <div class="control-group">
-            <label class="control-label" for="tipoPessoa">Tipo de pessoa</label>
-            <div class="controls ">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="tipoPessoa">Tipo de pessoa</label>
+            <div class="col-sm-6 radio">
                 <label class="radio">
                     <?php $checked  = ($pessoa->getTipo() == 'f' ? 'checked' : ''); ?>
                     <?php $disabled = ($pessoa->getId() && $pessoa->getTipo() == 'j' ? 'disabled' : ''); ?>
@@ -26,32 +26,32 @@
                 </label>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="nome">Nome</label>
-            <div class="controls">
-                <input type="text" class="input-xlarge" id="nome" name="nome"
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="nome">Nome</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="nome" name="nome"
                        value="<?php echo $pessoa->getNome(); ?>" <?php echo $readOnly; ?>/>
                 <span class="help-block">
                     <small>Informe o nome completo verdadeiro sem abreviações. O seu usuário não precisa necessariamente ter o mesmo nome.</small>
                 </span>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="email">Email</label>
-            <div class="controls">
-                <input type="text" class="input-xlarge" id="email" readonly="readonly"
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="email">Email</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="email" readonly="readonly"
                        value="<?php echo $user->getEmail(); ?>"/>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="documento">CPF</label>
-            <div class="controls">
-                <input type="text" class="input-medium" id="documento" name="documento"
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="documento">CPF</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="documento" name="documento"
                        value="<?php echo $pessoa->getDocumento(); ?>" <?php echo $readOnly; ?>/>
             </div>
         </div>
-        <div class="control-group">
-            <div class="controls">
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-2">
                 <a href="<?php echo $view['router']->generate('submissao_imagens', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn">Voltar</a>
                 <button type="submit" class="btn btn-success">Concluir cadastro</button>

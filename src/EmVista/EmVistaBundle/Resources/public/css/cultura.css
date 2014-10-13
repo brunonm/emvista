@@ -1070,3 +1070,6 @@ label.radio{
 .row-comece{
     text-align: center;
 }
+.oculto{
+    display: none;
+}

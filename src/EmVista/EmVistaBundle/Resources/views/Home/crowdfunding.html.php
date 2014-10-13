@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-12">
             <p>
                 O Cultura Crowdfunding é uma plataforma de Crowdfunding ou, em português, Financiamento Coletivo.
                 Tem o objetivo de aproximar pessoas com uma finalidade comum: transformar ideias criativas em
@@ -25,9 +25,6 @@
             <p class="lead">
                 <strong>Assista o vídeo abaixo e entenda como funciona.</strong>
             </p>
-        </div>
-        <div class="col-sm-4">
-            <img src="/bundles/emvista/images/favicon_envista.png" />
         </div>
     </div>
     <div class="row">

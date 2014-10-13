@@ -58,3 +58,4 @@ services:
             - [setProfileWebTempPath, ['%profile_web_temp_path%']]
             - [setProfileHeight, ['%profile_height%']]
             - [setProfileWidth, ['%profile_width%']]
+            - [setContatoEmail, ['%contato_email%']]

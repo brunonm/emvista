@@ -198,4 +198,12 @@ class Submissao extends EntityAbstract
     {
         return $this->dataEnvio;
     }
+    
+    /**
+     * @return boolean
+     */
+    public function isRejeitada()
+    {
+        return $this->status != null && $this->status->getId() == StatusSubmissao::STATUS_REJEITADO;
+    }
 }

@@ -710,4 +710,13 @@ class Projeto extends EntityAbstract
     {
         return $this->publicado == true;
     }
+    
+    /**
+     * retorna a informa
+     * @return boolean 
+     */
+    public function isArrecadando()
+    {
+        return $this->statusArrecadacao != null && $this->statusArrecadacao->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO;
+    }
 }

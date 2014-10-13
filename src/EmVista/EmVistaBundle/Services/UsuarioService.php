@@ -70,6 +70,11 @@ class UsuarioService extends ServiceAbstract
     private $encoderFactory;
 
     /**
+     * @var string
+     */
+    private $contatoEmail;
+    
+    /**
      * @param  ImagineInterface $imagine
      * @return SubmissaoService
      */
@@ -78,6 +83,14 @@ class UsuarioService extends ServiceAbstract
         $this->imagine = $imagine;
 
         return $this;
+    }
+    
+    /**
+     * @param string $email
+     */
+    public function setContatoEmail($email)
+    {
+        $this->contatoEmail = $email;
     }
 
     /**
@@ -151,9 +164,9 @@ class UsuarioService extends ServiceAbstract
     {
         try {
             $em = $this->getEntityManager();
-
+            
             $this->validarAlteracaoDadosPessoais($sd->get());
-
+            
             $usuario = $em->find('EmVistaBundle:Usuario', $sd->get('id'));
             $usuario->setEmail($sd->get('email'));
             $usuario->setNome($sd->get('nome'));
@@ -686,5 +699,33 @@ class UsuarioService extends ServiceAbstract
             throw $e;
         }
 
+    }
+    
+    /**
+     * @param ServiceData $sd
+     */
+    public function enviarEmailContato(ServiceData $sd)
+    {
+        try {
+            $data = $sd->get();
+            $validator = $this->getValidator();
+
+            $validator::arr()->key('assunto', $validator::string()->notEmpty())
+                             ->key('email', $validator::email()->notEmpty())
+                             ->key('nome', $validator::string()->notEmpty())
+                             ->key('mensagem', $validator::string()->notEmpty())
+                             ->check($data);
+
+            $mailer = $this->getMailer();
+            $mailer->newMessage()
+                   ->isHtml(false)
+                   ->to($this->contatoEmail)
+                   ->subject($data['nome'] . ' : ' . $data['email'] . ' : ' . $data['assunto'])
+                   ->message($data['mensagem'])
+                   ->send();
+            
+        } catch (\InvalidArgumentException $e) {
+            throw new ServiceValidationException($e->getMessage());
+        }
     }
 }

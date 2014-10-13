@@ -294,6 +294,7 @@ class SubmissaoService extends ServiceAbstract
      * @param string      $sd['recompensas'][]['titulo']
      * @param float       $sd['recompensas'][]['valorMinimo']
      * @param int         $sd['recompensas'][]['quantidadeMaximaApoiadores']
+     * @return Submissao
      */
     public function salvarRecompensas(ServiceData $sd)
     {
@@ -352,6 +353,8 @@ class SubmissaoService extends ServiceAbstract
             $em->flush();
             $em->commit();
 
+            return $submissao;
+            
         } catch (\InvalidArgumentException $e) {
             $em->rollback();
             throw new ServiceValidationException($e->getMessage());
@@ -915,8 +918,8 @@ class SubmissaoService extends ServiceAbstract
         if ($projeto->getUsuario()->getId() != $sd->getUser()->getId()) {
             throw new PermissaoNegadaException();
         }
-
-        if ($submissao->getStatus()->getId() != StatusSubmissao::STATUS_INICIAL) {
+        
+        if ($submissao->isRejeitada() || ($projeto->getStatusArrecadacao() != null && !$projeto->isArrecadando())) {
             throw new PermissaoNegadaException();
         }
     }

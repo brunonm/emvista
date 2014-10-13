@@ -153,8 +153,15 @@ class SubmissaoController extends ControllerAbstract
     {
         try {
             $sd = ServiceData::build($this->getRequest()->request->all());
-            $this->get('service.submissao')->salvarRecompensas($sd);
-            $response = $this->redirect($this->generateUrl('submissao_video', array('submissaoId' => $submissaoId)));
+            $submissao = $this->get('service.submissao')->salvarRecompensas($sd);
+            
+            $route = 'submissao_video';
+            
+            if ($submissao->getProjeto()->isArrecadando()) {
+                $route = 'usuario_meus-projetos';
+            }
+            
+            $response = $this->redirect($this->generateUrl($route, array('submissaoId' => $submissaoId)));
             $this->setSuccessMessage(SubmissaoMessages::RECOMPENSAS_SALVA_SUCESSO);
         } catch (ServiceValidationException $e) {
             $this->setWarningMessage(SubmissaoMessages::ERRO_VALIDACAO);

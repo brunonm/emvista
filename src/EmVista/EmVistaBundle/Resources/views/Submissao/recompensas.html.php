@@ -11,11 +11,14 @@
         <div class="container-recompensas" id="submissao-container-recompensas">
 
             <?php $recompensas = $submissao->getProjeto()->getRecompensas(); ?>
+            
 
             <?php if(count($recompensas) == 0): $recompensas[] = new \EmVista\EmVistaBundle\Entity\Recompensa(); ?>
             <?php endif; ?>
 
             <?php foreach($recompensas as $key => $recompensa): ?>
+            
+            <?php $readonly = $recompensa->getQuantidadeApoiadores() > 0 ? 'readonly' : ''; ?>
 
             <div class="recompensa" count="<?php echo $key; ?>">
 
@@ -24,56 +27,61 @@
 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="titulo">Título</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-6">
                         <input type="text" name="recompensas[<?php echo $key; ?>][titulo]" maxlength="100"
-                               class="form-control" value="<?php echo $recompensa->getTitulo(); ?>">
-
-                        <?php if($key > 0): ?>
-                        <a href="javascript:;" class="btn btn-danger btn-excluir-recompensa"><i class="icon-trash icon-white"></i> Excluir recompensa</a>
-                        <?php endif; ?>
-
+                               class="form-control" <?php echo $readonly; ?> value="<?php echo $recompensa->getTitulo(); ?>">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="valorMinimo">Valor</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <span class="input-group-addon">R$</span>
                             <input name="recompensas[<?php echo $key; ?>][valorMinimo]" type="text"
-                                   class="form-control" value="<?php echo $recompensa->getValorMinimo(); ?>"/>
+                                   class="form-control money" <?php echo $readonly; ?> value="<?php echo $recompensa->getValorMinimo(); ?>"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="descricao">Descrição</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-6">
                         <input type="text" name="recompensas[<?php echo $key; ?>][descricao]"
-                               class="form-control" value="<?php echo $recompensa->getDescricao(); ?>"/>
+                               class="form-control" <?php echo $readonly; ?> value="<?php echo $recompensa->getDescricao(); ?>"/>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group <?php echo $readonly != '' ? 'oculto': '' ?>">
                     <div class="col-sm-9 col-sm-offset-2">
-                        <label class="checkbox">
+                        <div class="checkbox">
                             <?php $checked = ($recompensa->getQuantidadeMaximaApoiadores() > 0) ? '' : 'checked="checked"'; ?>
-                            <input type="checkbox" <?php echo $checked; ?> class="checkbox-limite"> Sem limites
+                            <label>
+                                <input type="checkbox" <?php echo $readonly; ?> <?php echo $checked; ?> class="checkbox-limite"> Sem limites
+                            </label>
                             <span class="help-block">
                                 <small>Esta opção permite limitar a quantidade disponível dessa recompensa.</small>
                             </span>
-                        </label>
+                        </div>
                     </div>
                 </div>
 
                 <?php $classOculto = ($recompensa->getQuantidadeMaximaApoiadores() > 0) ? '' : 'oculto'; ?>
                 <div class="form-group div-limite-recompensa <?php echo $classOculto; ?>">
-                    <label class="control-label col-sm-2" for="quantidadeMaximaApoiadores">Quantidade disponível</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="recompensas[<?php echo $key; ?>][quantidadeMaximaApoiadores]"
-                               class="form-control" value="<?php echo $recompensa->getQuantidadeMaximaApoiadores(); ?>"/>
+                    <label class="control-label col-sm-2" for="quantidadeMaximaApoiadores">Quant. disponível</label>
+                    <div class="col-sm-1">
+                        <input type="text" name="recompensas[<?php echo $key; ?>][quantidadeMaximaApoiadores]" maxlength="4"
+                               class="form-control" <?php echo $readonly; ?> value="<?php echo $recompensa->getQuantidadeMaximaApoiadores(); ?>"/>
                     </div>
                 </div>
+                
+                <?php if($key > 0 && $readonly == ''): ?>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-2">
+                        <a href="javascript:;" class="btn btn-danger btn-excluir-recompensa"><i class="fa fa-trash icon-white"></i> Excluir recompensa</a>
+                    </div>
+                </div>
+                <?php endif; ?>                
             </div>
 
             <?php endforeach; ?>
@@ -81,16 +89,16 @@
         </div>
         <br />
         <br />
-        <div class="row">
-                <a class="btn btn-success col-sm-4 col-sm-offset-4" id="btn-adicionar-recompensa" href="javascript:;">
-                    <i class="fa-plus-circle fa"> </i> Adicionar recompensa
-                </a>
+        <div class="form-group">
+            <a class="btn btn-success col-sm-offset-2" id="btn-adicionar-recompensa" href="javascript:;">
+                <i class="fa-plus-circle fa"> </i> Adicionar recompensa
+            </a>
         </div>
         <div class="form-group">
             <div class="col-sm-9 col-sm-offset-2">
                 <a href="<?php echo $view['router']->generate('submissao_descricao', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn">Voltar</a>
-                <input type="submit" class="btn" value="Avançar"/>
+                <input type="submit" class="btn btn-success" value="<?php echo $submissao->getProjeto()->isArrecadando() ? 'Salvar' : 'Avançar'; ?>"/>
             </div>
         </div>
     </fieldset>

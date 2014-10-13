@@ -19,4 +19,6 @@ class UsuarioMessages extends BaseMessages
     const SUCESSO_ENVIO_ESQUECI_MINHA_SENHA = 'Email enviado com sucesso. Verifique sua caixa de entrada.';
     const SUCESSO_ALTERAÇÃO_SENHA = 'Senha alterada com sucesso.';
     const ERRO_ALTERAÇÃO_SENHA = 'Senha inválida. Tente novamente.';
+    
+    const SUCESSO_EMAIL_CONTATO = 'Mensagem enviada com sucesso';
 }

@@ -12,6 +12,8 @@ parameters:
     mailer_password:    '3mv!st4.me'
     mailer_default_from: emvista@emvista.me
 
+    contato_email: brunonm@gmail.com
+
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
 

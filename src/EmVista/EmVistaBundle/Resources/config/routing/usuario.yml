@@ -13,6 +13,7 @@ usuario_dados-pessoais:
 usuario_alterar-dados-pessoais:
     pattern: /usuario/alterar-dados-pessoais
     defaults: { _controller: EmVistaBundle:Usuario:alterarDadosPessoais }
+    methods: [POST]
 
 usuario_confirmacao-inativar-conta:
     pattern: /usuario/confirmacao-inativar-conta
