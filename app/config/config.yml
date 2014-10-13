@@ -85,10 +85,10 @@ stof_doctrine_extensions:
             
 moip:
   credential:
-    token: DWKHPDVCBMF4X1PJVHJU297E0Z4CWVN9
-    key: TYHI5PMAETB1YZBEQX7E1B9060ZOCLEAJ6QIAI3B 
+    token: %moip_token%
+    key: %moip_key%
   environment: test
-  
+
 fos_elastica:
     clients:
         default: { host: %elastic_search_host%, port: 9200 }
