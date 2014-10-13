@@ -38,7 +38,7 @@
     <div class="col-sm-4">
         <h4 class="helpTopicTitle">Como eu posso apoiar um projeto?</h4>
         <div>
-            Na página do projeto que você deseja contr`ibuir tem um botão chamado "apoiar", selecionando ele você poderá escolher a recompensa que deseja. No próximo passo você será transferido para o Moip, onde deverá logar-se, ou criar uma nova conta, escolher a forma de pagamento e confirmar a operação. Em alguns minutos sua contribuição já será contabilizada.
+            Na página do projeto que você deseja contribuir tem um botão chamado "apoiar", selecionando ele você poderá escolher a recompensa que deseja. No próximo passo você será transferido para o Moip, onde deverá logar-se, ou criar uma nova conta, escolher a forma de pagamento e confirmar a operação. Em alguns minutos sua contribuição já será contabilizada.
             <Br>
             <Br>
             Como funciona a devolução do dinheiro para os apoiadores e o repasse de dinheiro para o autor do projeto?
