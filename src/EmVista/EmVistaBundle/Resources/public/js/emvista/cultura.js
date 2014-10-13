@@ -18,10 +18,12 @@
 
         jQuery('a[href*=#]').bind("click", function(e){
             var anchor = jQuery(this);
-            jQuery('html, body').stop().animate({
-                scrollTop: jQuery(anchor.attr('href')).offset().top
-            }, 1000);
-            e.preventDefault();
+            if (jQuery(anchor.attr('href')).offset()) {
+                jQuery('html, body').stop().animate({
+                    scrollTop: jQuery(anchor.attr('href')).offset().top
+                }, 1000);
+                e.preventDefault();
+            }
         });
 
         /* ---------------------------------------------- /*
@@ -65,6 +67,7 @@
         });
 
     });
+
 
 })(jQuery);
 
@@ -148,4 +151,118 @@ jQuery.fn.extend({
         this.parents('.control-group:first').removeClass('error');
         this.parents('.control-group:first').find('span.help-inline').remove();
     }
+});
+
+
+
+
+$.fn.extend({
+    generateThumbs : function(data, config){
+
+        if(data.length){
+            for(var i in data){
+                var thumbProjeto = $.thumbProjeto(data[i], config)
+                var li = $('<li/>').append(thumbProjeto).addClass('span3');
+                $(this).append(li);
+            }
+        } else {
+            var h4 = $('<h4>Nenhum projeto encontrado</h4>').addClass('noProjectFound');
+            var li = $('<li/>').addClass('span12').append(h4);
+            var content = li;
+            console.log($(this).get(0).tagName);
+            if($(this).get(0).tagName.toLowerCase() != 'ul'){
+                content = $('<ul/>').addClass('unstyled');
+                content.append(li);
+                li.removeClass('span12').addClass('span9');
+            }
+            $(this).append(content);
+        }
+        return this;
+    }
 })
+
+$.extend({
+    thumbProjeto: function(data, config) {
+
+        console.log(data);
+        var defaultConfig = {
+            smSize: 4,
+            lgSize: 3,
+            xsSize: 12
+        };
+
+
+        config = $.extend(defaultConfig, config);
+        var thumb = '' +
+        '<div class="col-sm-' + config.smSize + ' col-lg-' + config.lgSize + ' col-xs-' + config.xsSize + ' project-container" project-id="' + data.id + '"> ' +
+            '<div class="project-image-content">' +
+                '<div class="mask">' +
+                    '<div class="content-btn-apoiar">' +
+                        '<a href="' + data.urlProjeto + '" class="btn-special-apoiar col-md-12 btn my-btn" >APOIAR</a>' +
+                    '</div>' +
+                '</div>' +
+                '<img class="avatar" src="' + data.urlImagemThumb + '" alt="Projeto">' +
+            '</div>' +
+            '<div class="project-content">' +
+                '<h5>' + data.titulo + '</h5>' +
+                '<legend>por ' + data.autor + '</legend>' +
+                data.descricaoCurta +
+            '</div>' +
+            '<div class="project-group">' +
+                '<div class="col-sm-4 project-funded">' +
+                    '<div class="value">' + data.percentual + '%</div>' +
+                    '<div class="label">Meta</div>' +
+                '</div>' +
+                '<div class="col-sm-4 project-pleged">' +
+                    '<div class="value">R$</span> ' + data.valorArrecadadoFormatado + '</div>' +
+                '<div class="label">valor</div>' +
+            '</div>' +
+            '<div class="col-sm-4 project-togo">';
+
+            if (data.tempo) {
+                thumb += '' +
+                '<div class="value"> <span class="time-left-days">' + data.tempo.numero + '</span> ' + data.tempo.tempo + '</div>' +
+                '<div class="label">' + data.tempo.faltam + '</div>'
+            } else {
+                thumb += '' +
+                '<div class="label"> -- </div>';
+            }
+        thumb += '' +
+            '</div>' +
+        '</div>'+
+        '</div>';
+        return $(thumb);
+
+    }
+});
+
+
+$(document).ready(function(){
+    if ($.validationEngine){
+        $.validationEngine.defaults.showPrompts = false;
+        $.validationEngine.defaults.showOneMessage = true;
+        $.validationEngine.defaults.validationEventTrigger = "submit";
+        $.fn.extend({
+            showMyValidationEngineMessages : function(){
+                $(this).bind("jqv.field.result",
+                    function(event, field, errorFound, prompText) {
+                        var parent = $(field).parents('.control-group');
+                        if(parent.size() == 0){
+                            parent = $(field).parent();
+                        }
+                        if(errorFound){
+                            parent.addClass('error');
+                            prompText = prompText.replace(/\*/g,'').split('<br/>')[0];
+                            $('.flash-message.alert[typeField="validationEngine"] button').click();
+                            $.flashMessage(prompText,'error').attr('typeField','validationEngine');
+                        }else{
+                            parent.removeClass('error');
+                            $('.flash-message.alert[typeField="validationEngine"] button').click();
+                        }
+                    }
+                )
+                return this;
+            }
+        })
+    };
+});

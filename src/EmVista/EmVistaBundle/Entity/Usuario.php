@@ -458,11 +458,12 @@ class Usuario extends EntityAbstract implements UserInterface, AdvancedUserInter
     }
 
     /**
-     * @return string
+     * @return stri
      */
     public function getImageProfileWebPath()
     {
-        if ($this->getImagemProfile() == NULL) {
+        $imagemProfile = $this->getImagemProfile();
+        if ($imagemProfile == NULL || !$imagemProfile->getWebPath()) {
             return '/bundles/emvista/images/usuario_padrao_emvista.jpg';
         } else {
             return $this->getImagemProfile()->getWebPath();

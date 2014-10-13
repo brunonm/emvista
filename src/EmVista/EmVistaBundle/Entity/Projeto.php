@@ -587,7 +587,8 @@ class Projeto extends EntityAbstract
             'diasRestantes' => $this->getDiasRestantes(),
             'urlProjeto' => '/'.$this->getSlug(),
             'labelTempoRestante' => $this->getLabelTempoRestante(),
-            'statusArrecadacao' => $this->getStatusArrecadacao()->getId()
+            'statusArrecadacao' => $this->getStatusArrecadacao()->getId(),
+            'tempo' => $this->getValorTempoRestante(),
         );
     }
 
@@ -669,6 +670,36 @@ class Projeto extends EntityAbstract
             $retorno = '<span class="time-left project-time-left">Finalizado</span>';
         };
 
+        return $retorno;
+    }
+
+    public function getValorTempoRestante()
+    {
+        if ($this->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO) {
+
+            $date = Date::getDateDiff($this);
+            if ($date->days == 0) {
+                if($date->h > 0):
+                    $numero = $date->h;
+                    $tempo = ($numero == 1 ? 'hora' : 'horas');
+                else:
+                    $numero = $date->i;
+                    $tempo = ($numero == 1 ? 'minuto' : 'minutos');
+                endif;
+            } else {
+                $numero = $date->days;
+                $tempo = ($numero == 1 ? 'dia' : 'dias');
+            }
+            $faltam = ($numero == 1 ? 'Falta' : 'Faltam');
+            $retorno = array(
+                'faltam' => $faltam,
+                'tempo' => $tempo,
+                'numero' => $numero
+            );
+
+        } else {
+            $retorno = null;
+        };
         return $retorno;
     }
 

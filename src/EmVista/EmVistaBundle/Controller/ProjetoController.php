@@ -2,6 +2,7 @@
 
 namespace EmVista\EmVistaBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use EmVista\EmVistaBundle\Messages\ProjetoMessages;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
@@ -40,12 +41,20 @@ class ProjetoController extends ControllerAbstract
             $hasUsuarioDoacao = $service->hasDoacaoUsuarioProjeto(ServiceData::build()->set('projetoId', $projeto->getId())
                                                                                       ->setUser($usuario));
 
-            return $this->render('EmVistaBundle:Projeto:visualizar.html.php', array(
+
+            $sd = ServiceData::build(array('projetoId' => $projeto->getId()));
+            $apoiadores = $this->get('service.projeto')->listApoiadoresProjeto($sd);
+
+            return $this->render('EmVistaBundle:Projeto:visualizar.html.php',
+                array(
                     'projeto' => $projeto,
                     'usuario' => $usuario,
                     'countDoacoes' => $countDoacoes,
                     'hasUsuarioDoacao' => $hasUsuarioDoacao,
-                    'atualizacoes' => $atualizacoes));
+                    'atualizacoes' => $atualizacoes,
+                    'apoiadores' => $apoiadores
+                )
+            );
 
         } catch (ProjetoNaoEncontradoException $e) {
             $this->setWarningMessage(ProjetoMessages::PROJETO_NAO_ENCONTRADO);
@@ -102,6 +111,17 @@ class ProjetoController extends ControllerAbstract
     {
         $sd = ServiceData::build(array('search' => $search));
         $projetos = $this->get('service.projeto')->search($sd);
+        $retorno = array();
+        foreach ($projetos as $indice =>$projeto) {
+            $retorno[$indice] = $projeto->toArray();
+        }
+        return new JsonResponse($retorno);
+    }
+
+    public function getMoreAction(Request $request)
+    {
+        $sd = ServiceData::build($request->request->all());
+        $projetos = $this->get('service.projeto')->getMore($sd);
         $retorno = array();
         foreach ($projetos as $indice =>$projeto) {
             $retorno[$indice] = $projeto->toArray();

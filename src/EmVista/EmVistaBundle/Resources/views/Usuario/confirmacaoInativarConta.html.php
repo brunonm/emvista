@@ -2,7 +2,7 @@
 <?php $view['slots']->start('usuario-body') ?>
 
 <legend>Atenção!</legend>
-<p>Após essa operação você perderá acesso ao EmVista e só poderá recuperar sua conta caso solicite.</p>
+<p>Após essa operação você perderá acesso ao cultura crowdfunding e só poderá recuperar sua conta caso solicite.</p>
 <p>Se você tiver apoiado algum projeto que ainda não foi concluído, o resultado será informado por email.<p>
 <p>Deseja confirmar a inativação da conta?</p>
 

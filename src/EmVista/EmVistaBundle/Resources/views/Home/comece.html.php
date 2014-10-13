@@ -75,7 +75,7 @@
                     <div>
                         Não. Primeiramente, seu projeto será submetido a nossa avaliação. Esta etapa não visa
                         julgar ou qualificar a sua ideia, mas sim filtrar aqueles que se enquadram
-                        na proposta de um <strong>Financiamento Coletivo</strong> no EmVista.
+                        na proposta de um <strong>Financiamento Coletivo</strong> no cultura crowdfunding.
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -128,7 +128,7 @@
                         Recebo 100% do dinheiro arrecadado?
                     </div>
                     <div>
-                        Não. O EmVista desconta uma taxa fixa de 6,5% para custear a manutenção e
+                        Não. O cultura crowdfunding desconta uma taxa fixa de 5,0% para custear a manutenção e
                         administração da plataforma. Também serão descontados os encargos das
                         operações financeiras cobradas pelo Moip.
                     </div>
@@ -192,8 +192,8 @@
                         Ainda tem duvidas?
                     </div>
                     <div>
-                         Entre em <a href="mailto:contato@emvista.me" target="_blank">contato</a> conosco caso ainda tenha
-                         dúvidas a respeito de <strong>Crowdfunding</strong>, do EmVista ou qualquer outro assunto relacionado.
+                         Entre em <a href="mailto:produtoraculturaoff@gmail.com" target="_blank">contato</a> conosco caso ainda tenha
+                         dúvidas a respeito de <strong>Crowdfunding</strong>, do cultura crowdfunding ou qualquer outro assunto relacionado.
                     </div>
                 </div>
             </div>

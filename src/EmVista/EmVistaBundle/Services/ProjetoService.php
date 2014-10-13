@@ -498,4 +498,13 @@ class ProjetoService extends ServiceAbstract
 
         return $em->getRepository('EmVistaBundle:Usuario')->listarApoiadoresByProjeto($projeto);
     }
+
+
+    public function getMore(ServiceData $sd)
+    {
+        $em = $this->getEntityManager();
+        $projetos = $em->getRepository('EmVistaBundle:Projeto')->getMore($sd->get('lastProjectId'), $sd->get('count'));
+        return $projetos;
+
+    }
 }

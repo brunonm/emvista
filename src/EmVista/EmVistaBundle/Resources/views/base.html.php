@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php $description = 'Conheça o EmVista, a plataforma de Crowdfunding no Brasil. Com o financiamento colaborativo, é possível solucionar o velho problema de investimento em boas ideias e talentos. Isto é o EmVista, a evolução da vaquinha através do Crowdfunding.'; ?>
+        <?php $description = 'Conheça o cultura crowdfunding, a plataforma de Crowdfunding no Brasil.'; ?>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="description" content="<?php echo $description?>" />
         <meta property="og:description" content="<?php $view['slots']->output('description', $description); ?>" />
-        <meta property="og:title" content="<?php $view['slots']->output('title', 'EmVista | Crowdfunding no Brasil'); ?>" />
-        <meta property="og:image" content="<?php $view['slots']->output('image', $app->getRequest()->getUriForPath("/bundles/emvista/images/emvista-logo.png")); ?>" />
+        <meta property="og:title" content="<?php $view['slots']->output('title', 'cultura crowdfunding'); ?>" />
+        <meta property="og:image" content="<?php $view['slots']->output('image', $app->getRequest()->getUriForPath("/bundles/emvista/images/logomarca-culturacf.png")); ?>" />
         <meta property="og:url" content="<?php echo $app->getRequest()->getUri() ?>">
-        <meta property="og:site_name" content="EmVista">
-        <meta name="keywords" content="EmVista, Crowdfunding, Vaquinha, Crowdfunding no Brasil, Financiamento Coletivo, Financiamento Colaborativo"/>
+        <meta property="og:site_name" content="cultura crowdfunding">
+        <meta name="keywords" content="Cultura Crowdfunding, Crowdfunding, Vaquinha, Crowdfunding no Brasil, Financiamento Coletivo, Financiamento Colaborativo"/>
         <meta name="robots" content="index,follow,noodp,noydir" />
         <link rel="canonical" href="<?php echo $app->getRequest()->getUri() ?>" />
-        <title><?php $view['slots']->output('title', 'EmVista | Crowdfunding no Brasil'); ?></title>
+        <title><?php $view['slots']->output('title', 'cultura crowdfunding | Crowdfunding no Brasil'); ?></title>
 
         <?php foreach($view['assetic']->stylesheets(array(
             '@EmVistaBundle/Resources/public/vendor/css/bootstrap/bootstrap.min.css',

@@ -15,3 +15,7 @@ projeto_descubra-search:
 projeto_search:
     pattern: /projeto/search/{search}
     defaults: { _controller: EmVistaBundle:Projeto:search }
+
+projeto_get-more:
+    pattern: /projeto/get-more
+    defaults: { _controller: EmVistaBundle:Projeto:getMore}

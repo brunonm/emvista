@@ -1,24 +1,34 @@
+var loadingMore = true;
 $(window).scroll(function()
 {
-    if($(window).scrollTop()  >= $(document).height() - $(window).height() - $('#footer').height() - 100)
+    if($(window).scrollTop()  >= $(document).height() - $(window).height() - $('#footer').height() - 100 && loadingMore)
     {
+        loadingMore = false;
         $('div#loadMoreAjaxLoader').show();
         $.ajax({
-            url: Routing.generate('ge'),
+            url: Routing.generate('projeto_get-more'),
             data: {
-                quantidadeProjetos: 8,
-                ultimoProjeto: $('.project-container:last').attr('project-id')
+                count: 8,
+                lastProjectId: $('.project-container:last').attr('project-id')
             },
-            success: function(html)
+            method: 'post',
+            type: 'json',
+            success: function(data)
             {
-                if(html)
-                {
-                    $("#postswrapper").append(html);
-                    $('div#loadmoreajaxloader').hide();
-                }else
-                {
-                    $('div#loadmoreajaxloader').html('<center>No more posts to show.</center>');
+
+                if(data) {
+                    for (var i in data) {
+                        var projeto = data[i];
+                        $('#projects .container .row').append($.thumbProjeto(projeto));
+                    }
                 }
+                $('div#loadMoreAjaxLoader').hide();
+                if (data.length == 8) {
+                    loadingMore = true;
+                } else {
+
+                }
+
             }
         });
     }

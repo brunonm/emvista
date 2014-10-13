@@ -1,7 +1,7 @@
  .block_pledge{
     height: 70px;
-    background-color: #00A19C;
-    margin: 6px 6px 6px 26px;
+    background-color: #16A9BD;
+    margin: 6px 0 6px 0;
     color: #FFF;
     font-size: 18px;
     line-height: 70px;
@@ -100,10 +100,6 @@ input.input-white:focus{
     color: #00A09B;
     font-size: 18px;
     font-weight: bold;
-}
-.valorPago{
-    border: 1px solid #EBEBEB;
-    margin-left: 20px;
 }
 .nomeDoProjeto{
     font-weight: bold;

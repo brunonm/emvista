@@ -4,6 +4,8 @@ namespace EmVista\EmVistaBundle\Repository;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Internal\Hydration\HydrationException;
+use Doctrine\ORM\Query;
 use EmVista\EmVistaBundle\Util\Date;
 use EmVista\EmVistaBundle\Entity\Projeto;
 use EmVista\EmVistaBundle\Entity\StatusDoacao;
@@ -180,5 +182,20 @@ class ProjetoRepository extends EntityRepository
               ->setParameter('id', $projeto->getId());
 
         return $query->getSingleResult();
+    }
+
+    public function getMore($lastProjectId, $count)
+    {
+
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->where('p.publicado = :publicado')
+            ->andWhere('p.id > :lastId')
+            ->setParameter('publicado', true, Type::BOOLEAN)
+            ->setParameter('lastId', $lastProjectId)
+            ->setMaxResults($count)
+            ->orderBy('p.id');
+        return $qb->getQuery()->getResult();
+
     }
 }

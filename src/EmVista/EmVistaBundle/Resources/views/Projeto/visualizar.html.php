@@ -44,13 +44,13 @@
         </div>
     </div>
 </section>
-<section id="tabs" class="section" >
+<section id="tabs" class="section " >
     <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
         <div class="container">
-            <ul class="nav nav-pills navbar-left" >
-                <li class="invert"><a href="#">Home</a></li>
-                <li><a href="#">Apoiadores</a></li>
-                <li><a href="#">Comentários</a></li>
+            <ul class="nav nav-pills navbar-left my-tabs" >
+                <li class="invert"><a href="#home" data-target="#project">Home</a></li>
+                <li><a href="#apoiadores" data-target="#apoiadores">Apoiadores</a></li>
+                <li><a href="#comentarios" data-target="#comentarios">Comentários</a></li>
             </ul>
             <ul class="nav nav-pills navbar-right">
                 <?php
@@ -70,7 +70,7 @@
     </div>
 
 </section>
-<section id="project" class="section">
+<section id="project" class="section my-tab-content">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-12">
@@ -150,7 +150,9 @@
                     </div>
                 </div>
                 <div class="row apoiar-projeto-field">
-                    <a class="btn btn-special col-sm-8 col-sm-offset-2 my-btn">APOIAR PROJETO</a>
+                    <a href="<?php echo $view['router']->generate('pagamento_checkout', array('projetoId' => $projeto->getId())); ?>"
+                       class="btn btn-special col-sm-8 col-sm-offset-2 my-btn">APOIAR PROJETO
+                    </a>
                 </div>
 
                 <div class="recompensas">
@@ -188,7 +190,7 @@
 
                 <div class="row created-by">
                     <div class="col-sm-4 col-sm-offset-1">
-                        <img src="<?php echo $projeto->getUsuario()->getImagemProfile()->getWebPath()?>" class="img-circle"/>
+                        <img src="<?php echo $projeto->getUsuario()->getImageProfileWebPath()?>" class="img-circle"/>
                     </div>
                     <div class="col-sm-6">
                         <div>Projetado por</div>
@@ -206,6 +208,36 @@
                 </div>
             </div>
         </div>
+    </div>
+</section>
+<section id="apoiadores" class="section my-tab-content" style="display: none">
+    <div class="container">
+        <div class="row">
+        <?php
+        foreach ($apoiadores as $apoiador):
+            ?>
+            <div class="col-sm-6">
+                <div class="row" style="border: 1px solid #eee; margin-top: 2px">
+                    <div class="col-sm-2">
+                            <img src="<?php echo $apoiador->getImageProfileWebPath()?>" class="img-circle" />
+                        </div>
+                        <div class="col-sm-10">
+                            <?php echo $apoiador->getNome()?>
+                            <?php echo $apoiador->getEndereco() ? ', ' .$apoiador->getEndereco()->getCidade() . ' - ' . $apoiador->getEndereco()->getUf() : ''?>
+                        </div>
+                    </div>
+                </div>
+            <?php
+        endforeach;
+        ?>
+        </div>
+
+    </div>
+</section>
+
+<section  id="comentarios" class="section my-tab-content" style="display: none">
+    <div class="container">
+        <div class="fb-comments" data-href="http://<?php echo $app->getRequest()->getHttpHost() . $app->getRequest()->getRequestUri(); ?>" data-num-posts="10"></div>
     </div>
 </section>
 

@@ -12,20 +12,20 @@
             <div class="col-md-12">
 
                 <div class="hello wow bounceInDown animated" style="visibility: visible; -webkit-animation: bounceInDown;">
-                    <h1>Aô, vamos criar projetos criativos</h1>
+                    <h1>A capital de projetos criativos</h1>
                 </div>
 
-                <a href="#profile">
+                <span href="javascript:;" data-toggle="modal" data-target="#myVideo" style="cursor: pointer">
                     <img src="<?php echo $view['assets']->getUrl('bundles/emvista/images/play.png') ?>">
-                </a>
+                </span>
                 <div class="saibaMais">
                     <span class="text">SAIBA MAIS SOBRE CROWDFUNDING</span>
                 </div>
             </div>
             <div class="col-md-offset-3 col-md-6">
                 <div class="row">
-                    <a class="btn btn-special col-md-6 col-md-offset-3 my-btn" href="<?php echo $view['router']->generate('usuario_registro'); ?>">
-                        REGISTRE-SE
+                    <a class="btn btn-special col-md-6 col-md-offset-3 my-btn" href="<?php echo $view['router']->generate('home_cadastre'); ?>">
+                        ENVIE SEU PROJETO
                     </a>
                 </div>
             </div>
@@ -57,7 +57,15 @@
 <div id="postsWrapper">
     <div id="loadMoreAjaxLoader" style="display:none;text-align: center">Aguarde...</div>
 </div>
-
+<?php $view['slots']->start('modal') ?>
+<div class="modal fade" id="myVideo">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: transparent">
+            <iframe width="600" height="338" src="//www.youtube.com/embed/D1MStXYieBc?rel=0&amp;&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php $view['slots']->stop(); ?>
 
 <?php $view['slots']->stop(); ?>
 

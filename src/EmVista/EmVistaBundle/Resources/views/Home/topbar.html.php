@@ -17,7 +17,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#intro">home</a></li>
+                <li class="active"><a href="<?php echo $view['router']->generate('home_index') ?>">home</a></li>
                 <li><a href="#contact">Crowdfunding Festival</a></li>
                 <?php
                 if($view['security']->isGranted('IS_AUTHENTICATED_FULLY')): ?>

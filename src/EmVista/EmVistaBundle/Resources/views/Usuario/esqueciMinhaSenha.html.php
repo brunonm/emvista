@@ -9,7 +9,7 @@
             <div class="page-header">
                 <h3>Esqueci minha senha</h3>
                 <small>
-                    <p>Insira abaixo o email da sua conta cadastrada no EmVista para alterar sua senha.</p>
+                    <p>Insira abaixo o email da sua conta cadastrada no cultura crowdfunding para alterar sua senha.</p>
                     <p>Você será notificado no endereço informado com os procedimentos necessários.</p>
                 </small>
             </div>

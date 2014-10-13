@@ -7,16 +7,16 @@
 </div>
 <div class="row">
     <div class="col-sm-4">
-        <h4 class="helpTopicTitle">O que é o EmVista?</h4>
+        <h4 class="helpTopicTitle">O que é o Cultura Crowdfunding?</h4>
         <div>
-            O EmVista é uma plataforma de Crowdfunding ou, em português, Financiamento Coletivo. Tem o objetivo de aproximar pessoas com uma finalidade comum: gerar projetos bem sucedidos.<br><br>
+            O cultura crowdfunding é uma plataforma de Crowdfunding ou, em português, Financiamento Coletivo. Tem o objetivo de aproximar pessoas com uma finalidade comum: gerar projetos bem sucedidos.<br><br>
             Nos dias de hoje uma variedade de ideias não conseguem sair do papel pelas dificuldades em captar recursos. Por meio da plataforma, seu projeto terá visibilidade e as pessoas que acreditam nele terão a oportunidade de divulgá-lo, fazendo assim com que outros também contribuam para o seu sucesso.
         </div>
     </div>
     <div class="col-sm-4 ">
-        <h4 class="helpTopicTitle">Como funciona o EmVista e o Crowdfunding?</h4>
+        <h4 class="helpTopicTitle">Como funciona o o Crowdfunding?</h4>
         <div>
-            O projeto é enviado para a nossa avaliação. Esta etapa não visa julgar ou qualificar a sua ideia, mas sim filtrar apenas os que se enquadram na proposta do EmVista e da estrutura Crowdfunding.
+            O projeto é enviado para a nossa avaliação. Esta etapa não visa julgar ou qualificar a sua ideia, mas sim filtrar apenas os que se enquadram na proposta do cultura crowdfunding e da estrutura Crowdfunding.
             <br><br>
             Os projetos publicados irão iniciar o período de arrecadação. Acabando o prazo, existem duas situações:
             <br><br>

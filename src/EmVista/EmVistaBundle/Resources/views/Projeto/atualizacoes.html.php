@@ -1,5 +1,3 @@
-<?php use EmVista\EmVistaBundle\Util\Date ?>
-
 <?php if($view['security']->isGranted('IS_AUTHENTICATED_FULLY') && $usuario->getId() == $projeto->getUsuario()->getId()): ?>
 <?php echo $view->render('EmVistaBundle:Projeto:formAtualizacao.html.php', array('projeto' => $projeto)); ?>
 <?php endif; ?>

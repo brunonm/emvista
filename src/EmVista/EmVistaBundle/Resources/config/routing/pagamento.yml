@@ -11,5 +11,5 @@ pagamento_review:
     defaults: { _controller: EmVistaBundle:Pagamento:review }
 
 pagamento_retorno-pagamento:
-    pattern: /pagamento/retorno-pagamento
+    pattern: /pagamento/retorno-pagamento/{movFinanceiraId}
     defaults: { _controller: EmVistaBundle:Pagamento:retornoPagamento }

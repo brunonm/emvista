@@ -637,7 +637,6 @@ class UsuarioService extends ServiceAbstract
             $y = round($sd->get('y') * $w / $sd->get('w'),0);
 
             $imagem = new Imagem();
-
             $imagem->setAltura($this->profileHeight)
                     ->setLargura($this->profileWidth)
                     ->setOriginalFilename($sd->get('name'))

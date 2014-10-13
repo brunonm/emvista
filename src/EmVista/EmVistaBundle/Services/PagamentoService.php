@@ -35,16 +35,13 @@ class PagamentoService extends ServiceAbstract
         $em      = $this->getEntityManager();
         $projeto = $em->find('EmVistaBundle:Projeto', $sd->get('projetoId'));
 
-        $em->beginTransaction();
 
         try {
             $valorArrecadado = (float) $em->getRepository('EmVistaBundle:Projeto')->calcularValorArrecadado($projeto->getId());
             $projeto->setValorArrecadado($valorArrecadado);
             $em->persist($projeto);
             $em->flush();
-            $em->commit();
         } catch (\Exception $e) {
-            $em->rollback();
             throw $e;
         }
     }
@@ -170,7 +167,7 @@ class PagamentoService extends ServiceAbstract
             $this->paymentGateway->setValue($valor)
                                  ->setReason(utf8_decode($descricao))
                                  ->setUniqueID($movFinanceira->getId())
-                                 ->setReturnURL('http://emvista.me/pagamento/retorno-pagamento/' . $movFinanceira->getId())
+                                 ->setReturnURL('http://culturacrowd.capital/pagamento/retorno-pagamento/' . $movFinanceira->getId())
                                  ->send();
 
             $response = $this->paymentGateway->getAnswer(false);
@@ -215,13 +212,13 @@ class PagamentoService extends ServiceAbstract
     public function review(ServiceData $sd)
     {
         $em = $this->getEntityManager();
-        $em->beginTransaction();
 
         try {
             $this->validaReview($sd->get());
 
             $movFinanceiraId = $sd->get('movFinanceiraId');
             $movFinanceira   = $em->getRepository('EmVistaBundle:MovimentacaoFinanceira')->find($movFinanceiraId);
+
 
             if (empty($movFinanceira)) {
                 throw new InvalidTokenException('Token inválido');
@@ -230,8 +227,8 @@ class PagamentoService extends ServiceAbstract
             $token = $movFinanceira->getToken();
 
             $this->paymentGateway->getDetails($token);
-
             $xml = $this->paymentGateway->getDetailsAnswer(true);
+
 
             // log
             $encoder = new JsonEncoder();
@@ -242,11 +239,12 @@ class PagamentoService extends ServiceAbstract
 
             $em->persist($log);
 
-            $response = $this->paymentGateway->getDetailsAnswer();
 
+            $response = $this->paymentGateway->getDetailsAnswer();
             //pego as informações do gateway e informo no sistema
             $usuario = $movFinanceira->getDoacao()->getUsuario();
             $gateway = $movFinanceira->getGatewayPagamento();
+
             $usuarioDetalhesPag = $em->getRepository('EmVistaBundle:UsuarioDetalhesPagamento')
                                      ->findOneBy(array('usuario' => $usuario->getId(),
                                                        'gatewayPagamento' => $gateway->getId()));
@@ -263,7 +261,6 @@ class PagamentoService extends ServiceAbstract
                                    ->setPrimeiroNome($response->pagador->Nome)
                                    ->setPais($response->enderecoCobranca->Pais);
             }
-
             //verifico se o status atual é diferente do ultimo status dele
             if ($response->pagamento) {
                 $arrayPagamento = $response->pagamento;
@@ -272,11 +269,13 @@ class PagamentoService extends ServiceAbstract
                 $statusDoacao = $doacao->getStatus();
                 $statusPagamentoGateway = $pagamento->Status['Tipo'];
 
+
                 $statusGateway = $em->getRepository('EmVistaBundle:StatusPagamento')
                                     ->findOneBy(array('gatewayPagamento' => $gateway->getId(),
                                                       'gatewayStatus' => $statusPagamentoGateway));
 
                 if ($statusDoacao->getId() != $statusGateway->getStatusDoacao()->getId()) {
+
                     $doacao->setStatus($statusGateway->getStatusDoacao());
                     $em->persist($doacao);
 
@@ -297,15 +296,15 @@ class PagamentoService extends ServiceAbstract
 
             $em->persist($usuarioDetalhesPag);
             $em->flush();
-            $em->commit();
 
-            if($doacao->getStatus()->getId() == StatusDoacao::APROVADO  &&
-                    $doacao->getStatus()->getId() != $statusDoacao->getId()){
+
+
+            if($doacao->getStatus()->getId() == StatusDoacao::APROVADO) {
 
                 $this->atualizarValorArrecadado(ServiceData::build(array(
                     'projetoId' => $doacao->getRecompensa()->getProjeto()->getId())));
 
-                $this->sendEmailConfirmacaoPagamento($doacao);
+                //$this->sendEmailConfirmacaoPagamento($doacao);
             }
 
             return $movFinanceira;
@@ -313,7 +312,6 @@ class PagamentoService extends ServiceAbstract
         } catch (\InvalidArgumentException $e) {
             throw new ServiceValidationException($e);
         } catch (\Exception $e) {
-            $em->rollback();
             throw $e;
         }
     }

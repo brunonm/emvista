@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3>Termos de uso</h3>
-                <p class="text-info">Antes de continuar, é necessário que leia e concorde com os termos de uso do EmVista.</p>
+                <p class="text-info">Antes de continuar, é necessário que leia e concorde com os termos de uso do cultura crowdfunding.</p>
             </div>
         </div>
 

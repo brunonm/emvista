@@ -17,7 +17,7 @@
                 <label class="control-label  col-sm-2" for="descricaoCurta">Descrição curta</label>
                 <div class="col-sm-9">
                     <span class="help-block">
-                        <small>A descrição curta é utilizada quando a miniatura do seu projeto for exibida na busca ou na página inicial do EmVista.</small>
+                        <small>A descrição curta é utilizada quando a miniatura do seu projeto for exibida na busca ou na página inicial do cultura crowdfunding.</small>
                     </span>
                     <textarea  name="descricaoCurta" class="col-sm-7" maxlength="130"><?php echo $submissao->getProjeto()->getDescricaoCurta(); ?></textarea>
                 </div>
