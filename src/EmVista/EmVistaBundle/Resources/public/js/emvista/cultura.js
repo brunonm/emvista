@@ -212,11 +212,11 @@ $.extend({
                 data.descricaoCurta +
             '</div>' +
             '<div class="project-group">' +
-                '<div class="col-sm-4 project-funded">' +
+                '<div class="col-sm-3 project-funded">' +
                     '<div class="value">' + data.percentual + '%</div>' +
                     '<div class="label">Meta</div>' +
                 '</div>' +
-                '<div class="col-sm-4 project-pleged">' +
+                '<div class="col-sm-5 project-pleged">' +
                     '<div class="value">R$</span> ' + data.valorArrecadadoFormatado + '</div>' +
                 '<div class="label">valor</div>' +
             '</div>' +

@@ -30,11 +30,11 @@ if (!isset($xsSize)) {
         <?php echo $projeto->getDescricaoCurta(); ?>
     </div>
     <div class="project-group">
-        <div class="col-sm-4 project-funded">
+        <div class="col-sm-3 project-funded">
             <div class="value"><?php echo $projeto->getPercentualArrecadado()?>%</div>
             <div class="label">Meta</div>
         </div>
-        <div class="col-sm-4 project-pleged">
+        <div class="col-sm-5 project-pleged">
             <div class="value">R$</span> <?php echo number_format($projeto->getValorArrecadado(), 2, ',', '.'); ?> </div>
             <div class="label">valor</div>
         </div>
@@ -58,7 +58,7 @@ if (!isset($xsSize)) {
                 <div class="value"> <span class="time-left-days"><?php echo $numero; ?></span> <?php echo $tempo; ?></div>
                 <div class="label"><?php echo $faltam; ?></div>
             <?php else:?>
-                <div class="label"> -- </div>
+                <div class="label"> Finalizado </div>
             <?php endif;?>
         </div>
     </div>

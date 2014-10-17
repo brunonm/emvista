@@ -2,6 +2,8 @@
 
 namespace EmVista\EmVistaBundle\Services;
 
+use EmVista\EmVistaBundle\Entity\StatusArrecadacao;
+use EmVista\EmVistaBundle\Entity\StatusDoacao;
 use EmVista\EmVistaBundle\Entity\Usuario;
 use EmVista\EmVistaBundle\Entity\Projeto;
 use EmVista\EmVistaBundle\Entity\TermoUso;
@@ -505,6 +507,44 @@ class ProjetoService extends ServiceAbstract
         $em = $this->getEntityManager();
         $projetos = $em->getRepository('EmVistaBundle:Projeto')->getMore($sd->get('lastProjectId'), $sd->get('count'));
         return $projetos;
+    }
+
+
+    public function finalizaProjetosAbertosQueFinalizamHoje(ServiceData $sd)
+    {
+        $em = $this->getEntityManager();
+
+
+        $date = new \DateTime($sd->get('date'));
+        $projetos = $em->getRepository('EmVistaBundle:Projeto')->listaProjetosPublicadosNaoFinalizadosByData($date);
+        //$projetos = $em->getRepository('EmVistaBundle:Projeto')->findBy(array('publicado' => true));
+
+        foreach ($projetos as $projeto){
+            /**
+             * @var Projeto $projeto
+             */
+            $hasPendente = false;
+            foreach ($projeto->getRecompensas() as $recompensa) {
+                foreach ($recompensa->getDoacoes() as $doacao) {
+                    if ($doacao->getStatus()->getId() == StatusDoacao::PENDENTE ||
+                        $doacao->getStatus()->getId() == StatusDoacao::AGUARDANDO) {
+                        $hasPendente = true;
+                    }
+                }
+            }
+
+            if ($hasPendente) {
+                $projeto->setStatusArrecadacao($em->getRepository('EmVistaBundle:StatusArrecadacao')->find(StatusArrecadacao::STATUS_AGUARDANDO_BOLETO));
+            } else {
+                if ($projeto->getValorArrecadado() >= $projeto->getValor()) {
+                    $projeto->setStatusArrecadacao($em->getRepository('EmVistaBundle:StatusArrecadacao')->find(StatusArrecadacao::STATUS_SUCESSO));
+                } else {
+                    $projeto->setStatusArrecadacao($em->getRepository('EmVistaBundle:StatusArrecadacao')->find(StatusArrecadacao::STATUS_INSUCESSO));
+                }
+            }
+            $em->persist($projeto);
+            $em->flush();
+        }
 
     }
 }

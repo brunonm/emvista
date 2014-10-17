@@ -42,7 +42,7 @@ EmVista\EmVistaBundle\Entity\Doacao:
             targetEntity: EmVista\EmVistaBundle\Entity\Recompensa
             cascade: {  }
             mappedBy: null
-            inversedBy: null
+            inversedBy: doacoes
             joinColumns:
                 recompensa_id:
                     referencedColumnName: id

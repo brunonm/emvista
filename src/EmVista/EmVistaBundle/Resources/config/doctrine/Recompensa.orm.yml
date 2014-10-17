@@ -69,5 +69,13 @@ EmVista\EmVistaBundle\Entity\Recompensa:
             joinColumns:
                 projeto_id:
                     referencedColumnName: id
+
+    oneToMany:
+        doacoes:
+            targetEntity: EmVista\EmVistaBundle\Entity\Doacao
+            cascade: {  }
+            mappedBy: recompensa
+            inversedBy: null
             orphanRemoval: false
+            orderBy: null
     lifecycleCallbacks: {  }

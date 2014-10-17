@@ -149,11 +149,15 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="row apoiar-projeto-field">
-                    <a href="<?php echo $view['router']->generate('pagamento_checkout', array('projetoId' => $projeto->getId())); ?>"
-                       class="btn btn-special col-sm-8 col-sm-offset-2 my-btn">APOIAR PROJETO
-                    </a>
-                </div>
+                <?php if ($projeto->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO): ?>
+                    <div class="row apoiar-projeto-field">
+                        <a href="<?php echo $view['router']->generate('pagamento_checkout', array('projetoId' => $projeto->getId())); ?>"
+                           class="btn btn-special col-sm-8 col-sm-offset-2 my-btn">APOIAR PROJETO
+                        </a>
+                    </div>
+                <?php
+                endif;
+                ?>
 
                 <div class="recompensas">
                     <?php foreach ($projeto->getRecompensas() as $indice => $recompensa): ?>
@@ -199,11 +203,10 @@
                         <?php
                         if ($projeto->getUsuario()->getEndereco()) :
                         ?>
-                        <div><i class="fa fa-map-marker"></i> Brasília, DF</div>
+                        <div><i class="fa fa-map-marker"></i> <?php echo $projeto->getUsuario()->getEndereco()->getCidade() ?>, <?php echo $projeto->getUsuario()->getEndereco()->getUf() ?></div>
                         <?php
                         endif;
                         ?>
-                        <div><i class="fa fa-heart"></i> apoiou 2 Projetos</div>
                     </div>
                 </div>
             </div>
