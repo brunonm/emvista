@@ -4,10 +4,10 @@ namespace EmVista\EmVistaBundle\Messages;
 
 class ProjetoMessages extends BaseMessages
 {
-    const MOTIVO_REJEICAO_SUCESSO_CADASTRO = 'É nóis, motivo inseriu bacana!';
-    const MOTIVO_REJEICAO_SUCESSO_EDICAO = 'Motivo alterado! :)';
+    const MOTIVO_REJEICAO_SUCESSO_CADASTRO = 'Motivo inserido com sucesso!';
+    const MOTIVO_REJEICAO_SUCESSO_EDICAO = 'Motivo alterado!';
 
-    const CATEGORIA_SUCESSO_CADASTRO = 'Categoria inserida com sucesso, chefe!';
+    const CATEGORIA_SUCESSO_CADASTRO = 'Categoria inserida com sucesso!';
     const CATEGORIA_SUCESSO_EDICAO = 'Categoria alterada!';
 
     const SUBMISSAO_ERRO_JA_SUBMETIDA = 'Vixi, deu errado... Acho que já fizeram isso';

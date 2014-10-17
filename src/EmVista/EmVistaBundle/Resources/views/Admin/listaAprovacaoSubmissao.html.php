@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle:Admin:index.html.php'); ?>
 <?php $view['slots']->start('admin-body') ?>
 
-<p><strong>Submissões aguardando aprovação</strong></p>
+<legend>Submissões aguardando aprovação</legend>
 
 <?php if(count($submissoes) > 0): ?>
 

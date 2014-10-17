@@ -1,42 +1,48 @@
 <?php $view->extend('EmVistaBundle:Admin:index.html.php'); ?>
 <?php $view['slots']->start('admin-body') ?>
 
-<form class="form-horizontal" method="post" action="<?php echo $view['router']->generate('admin_salvar-categoria'); ?>">
-    <div class="control-group">
-        <label class="control-label">Nova categoria</label>
-        <div class="controls">
-            <input type="text" name="categoria[nome]"/>
+<legend>Categorias</legend>
+
+<div class="col-md-12">
+    <form class="form-horizontal" method="post" action="<?php echo $view['router']->generate('admin_salvar-categoria'); ?>">
+        <div class="form-group col-md-7">
+            <label>Nova categoria</label>
+            <input class="form-control" type="text" name="categoria[nome]"/>
+        </div>
+        <div class="form-group col-md-7">
             <input class="btn btn-success" type="submit" value="Inserir"/>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 
+<div class="col-md-12">
 <?php if(count($categorias) > 0): ?>
 
     <form class="form-horizontal" method="post" action="<?php echo $view['router']->generate('admin_salvar-categoria'); ?>">
-
-        <div class="control-group">
-            <label class="control-label">Categorias</label>
-            <div class="controls">
-                <?php foreach($categorias as $categoria): ?>
-                    <label class="radio">
-                        <input type="radio" name="categoria[id]" value="<?php echo $categoria->getId(); ?>">
-                        <?php echo $categoria->getNome().' - '.$categoria->getSlug(); ?>
-                    </label>
-                <?php endforeach; ?>
-            </div>
+        
+        <?php foreach($categorias as $categoria): ?>
+        <div class="radio">
+            <label>
+                <input type="radio" name="categoria[id]" value="<?php echo $categoria->getId(); ?>">
+                <?php echo $categoria->getNome(); ?>
+            </label>
         </div>
-
-        <div class="control-group">
-            <label class="control-label">Novo nome</label>
-            <div class="controls">
-                <input type="text" name="categoria[nome]"/>
-                <input class="btn btn-success" type="submit" value="Alterar"/>
-            </div>
+        <?php endforeach; ?>
+ 
+        <br>
+        
+        <div class="form-group col-md-7">
+            <label>Novo nome</label>
+            <input class="form-control" type="text" name="categoria[nome]"/>
+        </div>        
+        
+        <div class="form-group col-md-7">
+            <input class="btn btn-success" type="submit" value="Alterar"/>
         </div>
-
+        
     </form>
 
 <?php endif; ?>
+</div>
 
 <?php $view['slots']->stop(); ?>
