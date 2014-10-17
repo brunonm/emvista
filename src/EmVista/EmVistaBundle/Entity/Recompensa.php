@@ -59,6 +59,11 @@ class Recompensa extends EntityAbstract
      */
     private $projeto;
 
+    /**
+     * @var Doacao[]
+     */
+    private $doacoes;
+
     public function __construct()
     {
         parent::__construct();
@@ -234,5 +239,25 @@ class Recompensa extends EntityAbstract
 
         return $this;
     }
+
+    /**
+     * @return Doacao[]
+     */
+    public function getDoacoes()
+    {
+        return $this->doacoes;
+    }
+
+    /**
+     * @param Doacao $doacoes
+     */
+    public function setDoacoes($doacoes)
+    {
+        $this->doacoes = $doacoes;
+    }
+
+
+
+
 
 }

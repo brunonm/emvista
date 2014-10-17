@@ -10,6 +10,7 @@ use EmVista\EmVistaBundle\Util\Date;
 use EmVista\EmVistaBundle\Entity\Projeto;
 use EmVista\EmVistaBundle\Entity\StatusDoacao;
 use EmVista\EmVistaBundle\Entity\StatusArrecadacao;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * ProjetoRepository
@@ -198,4 +199,31 @@ class ProjetoRepository extends EntityRepository
         return $qb->getQuery()->getResult();
 
     }
+
+    public function listaProjetosPublicadosNaoFinalizadosByData(\DateTime $data)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery('
+            SELECT p,r,d,s
+            FROM
+              EmVistaBundle:Projeto p
+              JOIN p.recompensas r
+              JOIN r.doacoes d
+              JOIN d.status s
+            WHERE p.publicado = :publicado
+            AND p.dataFim >= :dataFimInicial
+            and p.dataFim < :dataFimFinal
+            ');
+
+        $dataFim = new \DateTime($data->format('Y-m-d') . ' + 1 day');
+        $query->setParameter('dataFimInicial', $data->format('Y-m-d H:i:s'))
+            ->setParameter('dataFimFinal', $dataFim->format('Y-m-d H:i:s'))
+            ->setParameter('publicado', true);
+
+
+
+        return $query->getResult();
+    }
+
 }

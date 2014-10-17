@@ -19,16 +19,8 @@ class HomeController extends ControllerAbstract
      */
     public function indexAction()
     {
-        $projetos = array(
-            $this->get('service.projeto')->getProjeto(1),
-            $this->get('service.projeto')->getProjeto(1),
-            $this->get('service.projeto')->getProjeto(1),
-            $this->get('service.projeto')->getProjeto(1),
-            $this->get('service.projeto')->getProjeto(1),
-            $this->get('service.projeto')->getProjeto(1),
-            $this->get('service.projeto')->getProjeto(1),
-            $this->get('service.projeto')->getProjeto(1),
-        );
+        $projetos = $this->get('service.projeto')->getMore(ServiceData::build(array('lastProjectId' => 0, 'count' => 8)));
+        
         return $this->render(
             'EmVistaBundle:Home:index.html.php',
             array(
