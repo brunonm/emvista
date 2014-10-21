@@ -86,4 +86,22 @@ class DoacaoRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * @param integer $projetoId
+     * @return Doacao[]
+     */
+    public function listarDoacoesParaEstorno($projetoId)
+    {
+        $qb = $this->createQueryBuilder('d');
+        $qb->join('d.recompensa', 'r')
+           ->join('r.projeto', 'p')
+           ->where('d.status = :status')
+           ->andWhere('p.id = :projeto' )
+           ->setParameter('status', StatusDoacao::APROVADO)
+           ->setParameter('projeto', $projetoId)
+           ->orderBy('d.dataCadastro');
+        
+        return $qb->getQuery()->getResult();
+    }
 }

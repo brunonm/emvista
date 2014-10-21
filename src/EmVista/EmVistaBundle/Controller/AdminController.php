@@ -224,13 +224,44 @@ class AdminController extends ControllerAbstract
     }
 
     /**
-     * @Route("admin/estornos/projeto/{projetoId}", name="admin_estornosProjeto")
+     * @param integer $projetoId
+     * @return Response
      */
     public function estornosProjetoAction($projetoId)
     {
-        $projetos = $this->get('service.projeto')->listarProjetosFinalizadosSemSucessoNaoEstornados();
-
-        return $this->render('EmVistaBundle:Admin:estornos.html.php', array('projetos' => $projetos));
+        $sd = ServiceData::build(array('projetoId' => $projetoId));
+        
+        $service = $this->get('service.projeto');
+        
+        $projeto = $service->getProjeto($projetoId);
+        
+        $doacoes = $service->listarDoacoesParaEstorno($sd);
+        
+        if (empty($doacoes)) {
+            return $this->redirect($this->generateUrl('admin_estornos'));
+        }
+        
+        return $this->render(
+            'EmVistaBundle:Admin:estornosProjeto.html.php', 
+            array('doacoes' => $doacoes, 'projeto' => $projeto)
+        );
     }
-
+    
+    /**
+     * @param integer $doacaoId
+     * @return Response
+     */
+    public function estornarDoacaoAction($doacaoId)
+    {
+        $sd = ServiceData::build(array('doacaoId' => $doacaoId));
+        
+        $doacao = $this->get('service.projeto')->estornarDoacao($sd);
+        
+        $this->setSuccessMessage('Contribuição estornada com sucesso.');
+        
+        return $this->redirect(
+            'admin_estornos-projeto', 
+            array('projetoId' => $doacao->getRecompensa()->getProjeto()->getId())
+        );
+    }
 }
