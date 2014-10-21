@@ -2,6 +2,7 @@
 
 namespace EmVista\EmVistaBundle\Controller;
 
+use EmVista\EmVistaBundle\Entity\SiteVideo;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use EmVista\EmVistaBundle\Messages\SubmissaoMessages;
@@ -20,7 +21,7 @@ class HomeController extends ControllerAbstract
     public function indexAction()
     {
         $projetos = $this->get('service.projeto')->getMore(ServiceData::build(array('lastProjectId' => 0, 'count' => 8)));
-        
+
         return $this->render(
             'EmVistaBundle:Home:index.html.php',
             array(
@@ -135,5 +136,41 @@ class HomeController extends ControllerAbstract
     public function crowdfundingAction()
     {
         return $this->render('EmVistaBundle:Home:crowdfunding.html.php');
+    }
+    /**
+     * @Route("/crowdfunding-festival", name="home_crowdfunding-Festival")
+     */
+    public function crowdfundingFestivalAction()
+    {
+        $siteVideo = $this->get('doctrine')->getRepository('EmVistaBundle:SiteVideo')->find(SiteVideo::VIMEO);
+        return $this->render('EmVistaBundle:Home:festival.html.php', array(
+            'siteVideo' => $siteVideo,
+            'videos' => array(
+                array('unique' => 70583304),
+                array('unique' => 68496010),
+                array('unique' => 68492930),
+                array('unique' => 67839064),
+                array('unique' => 67835997),
+                array('unique' => 67779634),
+                array('unique' => 67275161),
+                array('unique' => 67275160),
+                array('unique' => 67275159),
+                array('unique' => 66444100),
+                array('unique' => 66444099),
+                array('unique' => 66444097),
+                array('unique' => 66444096),
+                array('unique' => 66444095),
+                array('unique' => 55512008),
+                array('unique' => 55147771),
+                array('unique' => 54894389),
+                array('unique' => 54673534),
+                array('unique' => 54571608),
+                array('unique' => 54335782),
+                array('unique' => 54064573),
+                array('unique' => 52188952),
+                array('unique' => 51800999),
+                array('unique' => 50813014),
+            )
+        ));
     }
 }

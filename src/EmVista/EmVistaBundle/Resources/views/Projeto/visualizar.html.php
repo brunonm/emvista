@@ -220,7 +220,7 @@
         foreach ($apoiadores as $apoiador):
             ?>
             <div class="col-sm-6">
-                <div class="row" style="border: 1px solid #eee; margin-top: 2px">
+                <div class="row" style="border-top: 1px solid #eee; margin-top: 2px">
                     <div class="col-sm-2">
                             <img src="<?php echo $apoiador->getImageProfileWebPath()?>" class="img-circle" />
                         </div>

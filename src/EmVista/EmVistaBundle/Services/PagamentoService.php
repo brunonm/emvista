@@ -392,4 +392,22 @@ class PagamentoService extends ServiceAbstract
                ->isHtml(true)
                ->send();
     }
+
+    public function cancelaDoacoesAbertasExpiradas()
+    {
+        $em = $this->getEntityManager();
+        $doacoesRepository = $this->getEntityManager()->getRepository('EmVistaBundle:Doacao');
+        $doacoes = $doacoesRepository->getDoacoesExpirados();
+
+        foreach ($doacoes as $doacao) {
+            $doacao->setStatus($em->getRepository('EmVistaBundle:StatusDoacao')->find(StatusDoacao::CANCELADO));
+            foreach ($doacao->getMovimentacoesFinanceiras() as $mf) {
+                $mf->setStatus('Cancelado');
+                $em->persist($mf);
+            }
+            $em->persist($doacao);
+        }
+        $em->flush();
+    }
+
 }
