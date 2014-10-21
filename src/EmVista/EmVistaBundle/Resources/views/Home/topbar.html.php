@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="<?php echo $view['router']->generate('home_index') ?>">home</a></li>
-                <li><a href="#contact">Crowdfunding Festival</a></li>
+                <li><a href="<?php echo $view['router']->generate('home_crowdfunding-festival') ?>">Crowdfunding Festival</a></li>
                 <?php
                 if($view['security']->isGranted('IS_AUTHENTICATED_FULLY')): ?>
                     <li class="invert image-profile-content">
