@@ -41,3 +41,7 @@ home_contato:
 home_contato_enviar-email:
     pattern: /contato/enviar-email
     defaults: { _controller: EmVistaBundle:Home:enviarEmail }
+
+home_crowdfunding-festival:
+    pattern: /crowdfunding-festival
+    defaults: { _controller: EmVistaBundle:Home:crowdfundingFestival }

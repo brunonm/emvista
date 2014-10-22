@@ -86,6 +86,26 @@ class DoacaoRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+<<<<<<< HEAD
+
+    public function getDoacoesExpirados()
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery('
+            SELECT d, mf
+            FROM EmVistaBundle:Doacao d
+            JOIN d.movimentacoesFinanceiras mf
+            WHERE d.dataCadastro <= :dataInicial AND d.status not in (:status)');
+
+        $date = new \DateTime();
+        $date->sub(new \DateInterval('P3D'));
+
+        $query->setParameter('dataInicial', $date)
+            ->setParameter('status', array(StatusDoacao::APROVADO, StatusDoacao::CANCELADO, StatusDoacao::ESTORNADO));
+        return $query->getResult();
+
+=======
     
     /**
      * @param integer $projetoId
@@ -103,5 +123,6 @@ class DoacaoRepository extends EntityRepository
            ->orderBy('d.dataCadastro');
         
         return $qb->getQuery()->getResult();
+>>>>>>> fd6e6106566f1395638bddfdbbe79c36d3325222
     }
 }
