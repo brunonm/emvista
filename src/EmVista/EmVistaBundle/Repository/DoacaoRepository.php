@@ -86,6 +86,7 @@ class DoacaoRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+<<<<<<< HEAD
 
     public function getDoacoesExpirados()
     {
@@ -104,5 +105,24 @@ class DoacaoRepository extends EntityRepository
             ->setParameter('status', array(StatusDoacao::APROVADO, StatusDoacao::CANCELADO, StatusDoacao::ESTORNADO));
         return $query->getResult();
 
+=======
+    
+    /**
+     * @param integer $projetoId
+     * @return Doacao[]
+     */
+    public function listarDoacoesParaEstorno($projetoId)
+    {
+        $qb = $this->createQueryBuilder('d');
+        $qb->join('d.recompensa', 'r')
+           ->join('r.projeto', 'p')
+           ->where('d.status = :status')
+           ->andWhere('p.id = :projeto' )
+           ->setParameter('status', StatusDoacao::APROVADO)
+           ->setParameter('projeto', $projetoId)
+           ->orderBy('d.dataCadastro');
+        
+        return $qb->getQuery()->getResult();
+>>>>>>> fd6e6106566f1395638bddfdbbe79c36d3325222
     }
 }

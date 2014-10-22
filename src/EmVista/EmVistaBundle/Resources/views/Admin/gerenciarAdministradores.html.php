@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle:Admin:index.html.php'); ?>
 <?php $view['slots']->start('admin-body') ?>
 
-<p><strong>Administradores</strong></p>
+<legend>Administradores</legend>
 <p>As alterações terão efeito no próximo login.</p>
 
 <table class="table table-striped">

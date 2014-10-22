@@ -12,6 +12,7 @@ use EmVista\EmVistaBundle\Entity\Categoria;
 use EmVista\EmVistaBundle\Entity\Recompensa;
 use Symfony\Component\Serializer\Serializer;
 use EmVista\EmVistaBundle\Entity\Atualizacao;
+use EmVista\EmVistaBundle\Entity\StatusFinanceiro;
 use EmVista\EmVistaBundle\Entity\TipoProjetoImagem;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceAbstract;
@@ -551,6 +552,7 @@ class ProjetoService extends ServiceAbstract
             $em->flush();
         }
     }
+<<<<<<< HEAD
 
     public function pagamentoNaoConfirmadoExpirados()
     {
@@ -581,5 +583,61 @@ class ProjetoService extends ServiceAbstract
             $em->persist($projeto);
             $em->flush();
         }
+=======
+    
+    /**
+     * @param ServiceData $sd
+     * @return Doacao[]
+     */
+    public function listarDoacoesParaEstorno(ServiceData $sd)
+    {
+        $em = $this->getEntityManager();
+        
+        $doacoes = $em->getRepository('EmVistaBundle:Doacao')
+                      ->listarDoacoesParaEstorno($sd->get('projetoId'));
+        
+        return $doacoes;
+    }
+    
+    /**
+     * @param ServiceData $sd
+     * @return Doacao
+     */
+    public function estornarDoacao(ServiceData $sd)
+    {
+        $em = $this->getEntityManager();
+        
+        $status = $em->find('EmVistaBundle:StatusDoacao', StatusDoacao::ESTORNADO);
+        
+        $doacao = $em->find('EmVistaBundle:Doacao', $sd->get('doacaoId'));
+        $doacao->setStatus($status);
+        
+        $em->persist($doacao);
+        $em->flush();
+        
+        $doacoesRestantes = $em->getRepository('EmVistaBundle:Doacao')
+                               ->listarDoacoesParaEstorno($doacao->getRecompensa()->getProjeto()->getId());
+        
+        if (empty($doacoesRestantes)) {
+            $this->estornarProjeto($doacao->getRecompensa()->getProjeto());
+        }
+        
+        return $doacao;
+    }
+    
+    /**
+     * @param Projeto $projeto
+     */
+    private function estornarProjeto(Projeto $projeto)
+    {
+        $em = $this->getEntityManager();
+        
+        $status = $em->find('EmVistaBundle:StatusFinanceiro', StatusFinanceiro::STATUS_ESTORNADO);
+        
+        $projeto->setStatusFinanceiro($status);
+        
+        $em->persist($projeto);
+        $em->flush();
+>>>>>>> fd6e6106566f1395638bddfdbbe79c36d3325222
     }
 }

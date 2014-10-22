@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle:Admin:index.html.php'); ?>
 <?php $view['slots']->start('admin-body') ?>
 
-<p><strong>Aprovação de submissão</strong></p>
+<legend>Aprovação de submissão</legend>
 
 <?php $projeto = $submissao->getProjeto(); ?>
 

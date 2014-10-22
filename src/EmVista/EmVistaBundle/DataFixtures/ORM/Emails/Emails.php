@@ -12,20 +12,20 @@ class Emails implements FixtureInterface
     {
 $texto = <<<TEXTO
 <p>Obrigado,&nbsp;</p>
-<p>A sua contribui&ccedil;&atilde;o para o projeto {PROJETO} foi registrada no EmVista e aguardamos a confirma&ccedil;&atilde;o da institui&ccedil;&atilde;o financeira sobre o pagamento.</p>
+<p>A sua contribui&ccedil;&atilde;o para o projeto {PROJETO} foi registrada no Cultura Crowdfunding e aguardamos a confirma&ccedil;&atilde;o da institui&ccedil;&atilde;o financeira sobre o pagamento.</p>
 <p>Boletos banc&aacute;rios podem levar at&eacute; 4 dias &uacute;teis para processamento.</p>
 <p>Voc&ecirc; contribuiu com R$ {VALOR} e escolheu a recompensa: {RECOMPENSA}.</p>
 <p>Avisaremos quando o seu pagamento for confirmado.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Recebemos sua contribuição');
+              ->setTitulo('Cultura Crowdfunding - Recebemos sua contribuição');
 
         $em->persist($email);
 
@@ -36,31 +36,31 @@ $texto = <<<TEXTO
 <p>Agora voc&ecirc; faz parte disso! Continue impulsionando novas ideias criativas.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Confirmação de pagamento');
+              ->setTitulo('Cultura Crowdfunding - Confirmação de pagamento');
         $em->persist($email);
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
-<p>Agradecemos por seu interesse em participar do EmVista mas infelizmente o seu projeto n&atilde;o se enquadra na proposta do site.</p>
+<p>Agradecemos por seu interesse em participar do Cultura Crowdfunding mas infelizmente o seu projeto n&atilde;o se enquadra na proposta do site.</p>
 <p>{DESCRICAO}</p>
 <p>Qualquer d&uacute;vida estamos a disposi&ccedil;&atilde;o.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Analisamos o seu projeto');
+              ->setTitulo('Cultura Crowdfunding - Analisamos o seu projeto');
         $em->persist($email);
 
 $texto = <<<TEXTO
@@ -69,14 +69,14 @@ $texto = <<<TEXTO
 <p>Estamos entusiasmados com a oportunidade de tirar sua ideia do papel e esperamos que esse seja o start que ela precisa.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Recebemos o seu projeto');
+              ->setTitulo('Cultura Crowdfunding - Recebemos o seu projeto');
         $em->persist($email);
 
 $texto = <<<TEXTO
@@ -87,31 +87,31 @@ $texto = <<<TEXTO
 <p>Divulgue, curta, compartilhe, fa&ccedil;a barulho, agora &eacute; a sua hora.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Seu projeto foi aprovado!');
+              ->setTitulo('Cultura Crowdfunding - Seu projeto foi aprovado!');
         $em->persist($email);
 
 $texto = <<<TEXTO
 <p>Ol&aacute; {NOME},</p>
 <p>Seja bem-vindo,</p>
-<p>Seu registro no EmVista foi feito com sucesso.</p>
+<p>Seu registro no Cultura Crowdfunding foi feito com sucesso.</p>
 <p>N&atilde;o perca tempo, descubra agora mesmo os projetos incr&iacute;veis que reunimos pra voc&ecirc;.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Seja bem-vindo');
+              ->setTitulo('Cultura Crowdfunding - Seja bem-vindo');
         $em->persist($email);
 
 $texto = <<<TEXTO
@@ -119,32 +119,31 @@ $texto = <<<TEXTO
 <p>O seu projeto acabou de atingir a meta estipulada. Continue trabalhando firme para atingir objetivos ainda maiores.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Meta alcançada');
+              ->setTitulo('Cultura Crowdfunding - Meta alcançada');
         $em->persist($email);
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
-<p>Sua conta no EmVista foi inativada com sucesso.</p>
+<p>Sua conta no Cultura Crowdfunding foi inativada com sucesso.</p>
 <p>As contribui&ccedil;&otilde;es realizadas para projetos ainda n&atilde;o finalizados continuar&atilde;o sendo contabilizadas normalmente. Voc&ecirc; ser&aacute; informado da conclus&atilde;o que o projeto ter&aacute;.</p>
-<p>Se for poss&iacute;vel, nos envie um depoimento para contato@emvista.me explicando o motivo do desligamento.</p>
 <p>Caso mude de ideia, as portas estar&atilde;o abertas. N&atilde;o hesite em nos avisar.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Sentiremos sua falta');
+              ->setTitulo('Cultura Crowdfunding - Sentiremos sua falta');
         $em->persist($email);
 
 $texto = <<<TEXTO
@@ -153,33 +152,33 @@ $texto = <<<TEXTO
 <p>Recompensa escolhida: {RECOMPENSA}.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Contribuição recebida');
+              ->setTitulo('Cultura Crowdfunding - Contribuição recebida');
         $em->persist($email);
 
 $texto = <<<TEXTO
 <p>Ol&aacute;,</p>
 <p>&Eacute; com grande prazer que informamos que o seu projeto foi financiado!</p>
 <p>Fazer parte dessa hist&oacute;ria foi muito gratificante para n&oacute;s. Desejamos sucesso nas pr&oacute;ximas etapas.</p>
-<p>N&atilde;o deixe de honrar as contribui&ccedil;&otilde;es recebidas enviando as recompensas, al&eacute;m de atualizar a p&aacute;gina do projeto no EmVista com as &uacute;ltimas novidades.</p>
+<p>N&atilde;o deixe de honrar as contribui&ccedil;&otilde;es recebidas enviando as recompensas, al&eacute;m de atualizar a p&aacute;gina do projeto no Cultura Crowdfunding com as &uacute;ltimas novidades.</p>
 <p>Cadastre a sua conta Moip em &quot;Minha conta&quot; para que possamos transferir o seu dinheiro.</p>
 <p>Obrigado novamente.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - O seu projeto foi financiado');
+              ->setTitulo('Cultura Crowdfunding - O seu projeto foi financiado');
         $em->persist($email);
 
 $texto = <<<TEXTO
@@ -190,7 +189,7 @@ $texto = <<<TEXTO
 <p>Conte conosco para novas ideias.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 <p>&nbsp;</p>
@@ -198,7 +197,7 @@ TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Prazo finalizado');
+              ->setTitulo('Cultura Crowdfunding - Prazo finalizado');
         $em->persist($email);
 
 $texto = <<<TEXTO
@@ -208,7 +207,7 @@ $texto = <<<TEXTO
 <p>Obrigado.</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 <p>&nbsp;</p>
@@ -216,7 +215,7 @@ TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Estorno');
+              ->setTitulo('Cultura Crowdfunding - Estorno');
         $em->persist($email);
 
 $texto = <<<TEXTO
@@ -226,33 +225,33 @@ $texto = <<<TEXTO
 <p>Se voc&ecirc; n&atilde;o tiver solicitado altera&ccedil;&atilde;o de senha, favor desconsiderar esta mensagem.&nbsp;</p>
 <p>&nbsp;</p>
 <p>Atenciosamente,</p>
-<p>Equipe EmVista</p>
+<p>Equipe Cultura Crowdfunding</p>
 <p>&nbsp;</p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Alteração de senha');
+              ->setTitulo('Cultura Crowdfunding - Alteração de senha');
         $em->persist($email);
 
         $em->flush();
 
 $texto = <<<TEXTO
 <p>Ol&aacute;, {NOME}</p>
-<p>Este email &eacute; a confirma&ccedil;&atilde;o do pr&eacute;-cadastro do seu projeto no EmVista.</p>
+<p>Este email &eacute; a confirma&ccedil;&atilde;o do pr&eacute;-cadastro do seu projeto no Cultura Crowdfunding.</p>
 <p>Estamos entusiasmados com a oportunidade de tirar sua ideia do papel e esperamos que esse seja o start que ela precisa.</p>
 <p>Nos pr&oacute;ximos dias avaliaremos as informa&ccedil;&otilde;es que voc&ecirc; nos enviou e entraremos em contato.</p>
 <p>Enquanto isso, continue fomentando suas ideias.</p>
 <p>Seja bem vindo!</p>
 <p>Atenciosamente,</p>
-<p><strong>Equipe EmVista</strong></p>
+<p><strong>Equipe Cultura Crowdfunding</strong></p>
 <p>*** Este &eacute; um email autom&aacute;tico.</p>
 TEXTO;
 
         $email = new Email();
         $email->setTexto($texto)
-              ->setTitulo('EmVista - Confirmação de pré-cadastro');
+              ->setTitulo('Cultura Crowdfunding - Confirmação de pré-cadastro');
         $em->persist($email);
 
         $em->flush();

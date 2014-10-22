@@ -10,9 +10,8 @@
                         <h4>Login</h4>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-default" href="<?php echo $view['router']->generate('hwi_oauth_service_redirect', array('service' => 'facebook')); ?>"><span class="fa fa-facebook fa-2x"></span></a>
                         <a class="btn btn-default" href="<?php echo $view['router']->generate('hwi_oauth_service_redirect', array('service' => 'twitter')); ?>"><span class="fa fa-twitter fa-2x"></span></a>
-                        <a class="btn btn-default" href="<?php echo $view['router']->generate('hwi_oauth_service_redirect', array('service' => 'google')); ?>"><span class="fa fa-google-plus fa-2x"></span></a>
+                        <p>Twitter</p>
                     </div>                    
                     <p class="lead">OU</p>
                     <div class="form-group">
@@ -43,9 +42,8 @@
                         <h4>Registre-se</h4>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-default" href="<?php echo $view['router']->generate('hwi_oauth_service_redirect', array('service' => 'facebook')); ?>"><span class="fa fa-facebook fa-2x"></span></a>
                         <a class="btn btn-default" href="<?php echo $view['router']->generate('hwi_oauth_service_redirect', array('service' => 'twitter')); ?>"><span class="fa fa-twitter fa-2x"></span></a>
-                        <a class="btn btn-default" href="<?php echo $view['router']->generate('hwi_oauth_service_redirect', array('service' => 'google')); ?>"><span class="fa fa-google-plus fa-2x"></span></a>
+                        <p>Twitter</p>
                     </div>                    
                     <p class="lead">OU</p>                    
                     <div class="form-group">

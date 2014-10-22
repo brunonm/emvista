@@ -60,6 +60,10 @@ admin_estornos:
     pattern: /admin/estornos
     defaults: { _controller: EmVistaBundle:Admin:estornos }
 
-admin_estornos_projeto:
+admin_estornos-projeto:
     pattern: /admin/estornos/{projetoId}
     defaults: { _controller: EmVistaBundle:Admin:estornosProjeto }
+
+admin_estornar-doacao:
+    pattern: /admin/estornos/estornar-doacao/{doacaoId}
+    defaults: { _controller: EmVistaBundle:Admin:estornarDoacao }

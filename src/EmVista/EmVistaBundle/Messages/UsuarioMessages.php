@@ -14,7 +14,7 @@ class UsuarioMessages extends BaseMessages
 
     const ERROR_LOGIN = 'Credenciais incorretas. Por favor, verifique novamente o email e senha informados.';
 
-    const ERRO_USUARIO_JA_EXISTE = 'Este email já foi cadastrado no EmVista.';
+    const ERRO_USUARIO_JA_EXISTE = 'Este email já foi cadastrado no Cultura Crowdfunding.';
 
     const SUCESSO_ENVIO_ESQUECI_MINHA_SENHA = 'Email enviado com sucesso. Verifique sua caixa de entrada.';
     const SUCESSO_ALTERAÇÃO_SENHA = 'Senha alterada com sucesso.';
