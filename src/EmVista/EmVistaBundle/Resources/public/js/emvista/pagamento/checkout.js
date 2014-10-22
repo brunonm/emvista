@@ -71,7 +71,7 @@ var checkout = {
     ativaRecompensaChecked: function(){
         
         $('.block_pledge_active').removeClass('block_pledge_active');
-        $('#form-checkout input:radio:checked').parents('label').find('.block_pledge').addClass('block_pledge_active');
+        $('#form-checkout input:radio:checked').parents('div.recompensa').find('.block_pledge').addClass('block_pledge_active');
     },
 
     getValorRecompensaChecked: function(){

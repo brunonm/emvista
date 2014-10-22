@@ -135,27 +135,10 @@
     </div>
     <hr/>
 
-    <p><strong>Imagem original</strong></p>
-    <div class="col-sm-9">
-        <img src="<?php echo $projeto->getImagemOriginal()->getWebPath(); ?>"/>
-    </div>
-    <hr/>
 
     <p><strong>Imagem thumb</strong></p>
     <div class="col-sm-9">
         <img src="<?php echo $projeto->getImagemThumb()->getWebPath(); ?>"/>
-    </div>
-    <hr/>
-
-    <p><strong>Imagem destaque</strong></p>
-    <div class="col-sm-9">
-        <img src="<?php echo $projeto->getImagemDestaque()->getWebPath(); ?>"/>
-    </div>
-    <hr/>
-
-    <p><strong>Imagem destaque secundário</strong></p>
-    <div class="col-sm-9">
-        <img src="<?php echo $projeto->getImagemDestaqueSecundario()->getWebPath(); ?>"/>
     </div>
     <hr/>
 

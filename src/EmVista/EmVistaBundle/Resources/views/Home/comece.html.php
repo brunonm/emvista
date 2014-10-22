@@ -128,7 +128,7 @@
                         Recebo 100% do dinheiro arrecadado?
                     </div>
                     <div>
-                        Não. O Cultura Crowdfunding desconta uma taxa fixa de 6,5% para custear a manutenção e
+                        Não. O Cultura Crowdfunding desconta uma taxa fixa de 5% para custear a manutenção e
                         administração da plataforma. Também serão descontados os encargos das
                         operações financeiras cobradas pelo Moip.
                     </div>

@@ -27,8 +27,8 @@
                         endif;
                         ?>
 
-                        <label class="recompensa row">
-
+                        <div class="recompensa row">
+                            <label style="width: 100%">
                             <?php if(!$recompensaValida): ?>
                             <div class="disabled_box">
                                 <div class="disabled_box_text">
@@ -48,6 +48,7 @@
                                 <?php echo $recompensa->getDescricao();?>
                             </div>
                         </label>
+                        </div>
                         <?php
                     endforeach;
                     ?>

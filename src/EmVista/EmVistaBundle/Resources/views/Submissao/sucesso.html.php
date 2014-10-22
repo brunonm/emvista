@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle::base.html.php'); ?>
 <?php $view['slots']->start('body') ?>
 
-<div class="hero-unit">
+<div class="container">
     <h1>Parabéns!</h1>
     <br/>
     <p>
