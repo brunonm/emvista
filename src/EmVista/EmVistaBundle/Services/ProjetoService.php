@@ -12,7 +12,6 @@ use EmVista\EmVistaBundle\Entity\Categoria;
 use EmVista\EmVistaBundle\Entity\Recompensa;
 use Symfony\Component\Serializer\Serializer;
 use EmVista\EmVistaBundle\Entity\Atualizacao;
-use EmVista\EmVistaBundle\Entity\StatusFinanceiro;
 use EmVista\EmVistaBundle\Entity\TipoProjetoImagem;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceAbstract;
@@ -552,7 +551,6 @@ class ProjetoService extends ServiceAbstract
             $em->flush();
         }
     }
-<<<<<<< HEAD
 
     public function pagamentoNaoConfirmadoExpirados()
     {
@@ -583,7 +581,7 @@ class ProjetoService extends ServiceAbstract
             $em->persist($projeto);
             $em->flush();
         }
-=======
+    }
     
     /**
      * @param ServiceData $sd
@@ -638,6 +636,5 @@ class ProjetoService extends ServiceAbstract
         
         $em->persist($projeto);
         $em->flush();
->>>>>>> fd6e6106566f1395638bddfdbbe79c36d3325222
     }
 }
