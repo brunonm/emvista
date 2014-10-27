@@ -7,6 +7,7 @@ var recompensas = {
         $('#btn-adicionar-recompensa').click(recompensas.handleButtonAdicionarRecompensa);
         $(document).on('click', '.btn-excluir-recompensa', recompensas.handleButtonExcluirRecompensa);
         $(document).on('change', '.checkbox-limite', recompensas.handleExibirLimite);
+        $('form').validationEngine().showMyValidationEngineMessages();
     },
 
     handleButtonAdicionarRecompensa: function(){
@@ -38,6 +39,7 @@ var recompensas = {
         conteudo.find('.form-group.oculto').removeClass('oculto');
 
         $(".container-recompensas").append(conteudo);
+        conteudo.find('.checkbox-limite').change();
     },
 
     handleButtonExcluirRecompensa: function(){

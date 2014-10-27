@@ -45,7 +45,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">R$</span>
                     <input name="valor" type="text" class="form-control money"
-                           value="<?php echo $submissao->getProjeto()->getValor(); ?>"/>
+                           value="<?php echo $submissao->getProjeto()->getValorFormatado(); ?>"/>
                 </div>
             </div>
         </div>

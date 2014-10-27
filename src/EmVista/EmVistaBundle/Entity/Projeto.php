@@ -4,6 +4,7 @@ namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Util\Date;
+use EmVista\EmVistaBundle\Util\Money;
 use Doctrine\Common\Collections\ArrayCollection;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
@@ -314,6 +315,10 @@ class Projeto extends EntityAbstract
         return $this->valor;
     }
 
+    public function getValorFormatado()
+    {
+        return Money::convert($this->valor);
+    }
     /**
      * Set valorArrecadado
      *
@@ -642,7 +647,7 @@ class Projeto extends EntityAbstract
      */
     public function getValorArrecadadoFormatado()
     {
-        return number_format($this->valorArrecadado, 2, ',', '.');
+        return Money::convert($this->valorArrecadado);
     }
 
     public function getLabelTempoRestante()

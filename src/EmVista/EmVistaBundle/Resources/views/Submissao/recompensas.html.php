@@ -29,7 +29,7 @@
                     <label class="control-label col-sm-2" for="titulo">Título</label>
                     <div class="col-sm-6">
                         <input type="text" name="recompensas[<?php echo $key; ?>][titulo]" maxlength="100"
-                               class="form-control" <?php echo $readonly; ?> value="<?php echo $recompensa->getTitulo(); ?>">
+                               class="form-control validate[required]" <?php echo $readonly; ?> value="<?php echo $recompensa->getTitulo(); ?>">
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                         <div class="input-group">
                             <span class="input-group-addon">R$</span>
                             <input name="recompensas[<?php echo $key; ?>][valorMinimo]" type="text"
-                                   class="form-control money" <?php echo $readonly; ?> value="<?php echo $recompensa->getValorMinimo(); ?>"/>
+                                   class="form-control  validate[required] money" <?php echo $readonly; ?> value="<?php echo $recompensa->getValorMinimo(); ?>"/>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                     <label class="control-label col-sm-2" for="descricao">Descrição</label>
                     <div class="col-sm-6">
                         <input type="text" name="recompensas[<?php echo $key; ?>][descricao]"
-                               class="form-control" <?php echo $readonly; ?> value="<?php echo $recompensa->getDescricao(); ?>"/>
+                               class="form-control  validate[required]" <?php echo $readonly; ?> value="<?php echo $recompensa->getDescricao(); ?>"/>
                     </div>
                 </div>
 
@@ -108,7 +108,10 @@
 
 <?php $view['slots']->start('js') ?>
 
-<?php foreach($view['assetic']->javascripts(array('@EmVistaBundle/Resources/public/js/emvista/submissao/recompensas.js')) as $url): ?>
+<?php foreach($view['assetic']->javascripts(array(
+    '@EmVistaBundle/Resources/public/js/jQueryValidationEngine/js/jquery.validationEngine.js',
+    '@EmVistaBundle/Resources/public/js/jQueryValidationEngine/js/languages/jquery.validationEngine-pt_BR.js',
+    '@EmVistaBundle/Resources/public/js/emvista/submissao/recompensas.js')) as $url): ?>
     <script type="text/javascript" src="<?php echo $view->escape($url) ?>"></script>
 <?php endforeach; ?>
 

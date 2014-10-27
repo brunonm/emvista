@@ -2,6 +2,7 @@
 
 namespace EmVista\EmVistaBundle\Services;
 
+use EmVista\EmVistaBundle\Util\Money;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
 use Imagine\Image\ImagineInterface;
@@ -207,8 +208,7 @@ class SubmissaoService extends ServiceAbstract
     public function salvarDadosBasicos(ServiceData $sd)
     {
         $em = $this->getEntityManager();
-        $em->beginTransaction();
-
+        $sd->set('valor', Money::revert($sd->get('valor')));
         try {
             $v = $this->getValidator();
             $v::arr()->key('submissaoId', $v::int()->positive())
@@ -222,6 +222,7 @@ class SubmissaoService extends ServiceAbstract
 
             $submissao = $em->find('EmVistaBundle:Submissao', $sd->get('submissaoId'));
 
+
             ##### VERIFICAR NUMBER FORMAT DO VALOR
 
             $projeto = $submissao->getProjeto()
@@ -232,14 +233,11 @@ class SubmissaoService extends ServiceAbstract
 
             $em->persist($projeto);
             $em->flush();
-            $em->commit();
 
 
         } catch (\InvalidArgumentException $e) {
-            $em->rollback();
             throw new ServiceValidationException($e->getMessage());
         } catch (\Exception $e) {
-            $em->rollback();
             throw $e;
         }
     }
@@ -303,7 +301,7 @@ class SubmissaoService extends ServiceAbstract
 
         try {
             $data = $sd->get();
-
+            $data['valorMinimo'] = Money::revert($data['valorMinimo']);
             $v = $this->getValidator();
             $v::arr()->key('submissaoId', $v::int()->positive())
                      ->key('recompensas', $v::arr()

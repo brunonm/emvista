@@ -191,11 +191,13 @@ class ProjetoRepository extends EntityRepository
         $qb = $this->createQueryBuilder('p');
 
         $qb->where('p.publicado = :publicado')
-            ->andWhere('p.id > :lastId')
+            ->andWhere('p.id < :lastId')
             ->setParameter('publicado', true, Type::BOOLEAN)
             ->setParameter('lastId', $lastProjectId)
             ->setMaxResults($count)
-            ->orderBy('p.id');
+            ->orderBy(
+                'p.id', 'DESC'
+            );
         return $qb->getQuery()->getResult();
 
     }

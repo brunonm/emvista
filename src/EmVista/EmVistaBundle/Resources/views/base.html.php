@@ -16,6 +16,7 @@
         <title><?php $view['slots']->output('title', 'cultura crowdfunding | Crowdfunding no Brasil'); ?></title>
 
         <?php foreach($view['assetic']->stylesheets(array(
+            '@EmVistaBundle/Resources/public/css/fonts.css',
             '@EmVistaBundle/Resources/public/vendor/css/bootstrap/bootstrap.min.css',
             '@EmVistaBundle/Resources/public/vendor/css/font-awesome/css/font-awesome.min.css',
             '@EmVistaBundle/Resources/public/css/cultura.css')) as $url): ?>
@@ -33,33 +34,33 @@
             <div id="fb-root"></div>
 
             <?php echo $view['actions']->render(new \Symfony\Component\HttpKernel\Controller\ControllerReference('EmVistaBundle:Home:topbar')); ?>
-            <?php if($fm = $view['session']->getFlashes()): ?>
                 <header id="masthead">
                     <div class="inner">
-
                         <div class="subnav subnav-fixed flash-message-container">
-                            <?php $class = ''; ?>
-                            <?php foreach($fm as $type => $messages): ?>
-                                <?php
-                                    switch ($type) {
-                                        case 'notice' : $class = 'alert-info';    break;
-                                        case 'warning': $class = '';              break;
-                                        case 'error'  : $class = 'alert-error';   break;
-                                        case 'success': $class = 'alert-success'; break;
-                                    }
-                                ?>
-                                <?php foreach($messages as $message): ?>
-                                        <div class="flash-message alert <?php echo $class; ?>">
-                                        <button class="close" data-dismiss="alert">×</button>
-                                        <?php echo $message; ?>
-                                        </div>
+                            <?php if($fm = $view['session']->getFlashes()): ?>
+                                <?php $class = ''; ?>
+                                <?php foreach($fm as $type => $messages): ?>
+                                    <?php
+                                        switch ($type) {
+                                            case 'notice' : $class = 'alert-info';    break;
+                                            case 'warning': $class = '';              break;
+                                            case 'error'  : $class = 'alert-danger';   break;
+                                            case 'success': $class = 'alert-success'; break;
+                                        }
+                                    ?>
+                                    <?php foreach($messages as $message): ?>
+                                            <div class="flash-message alert <?php echo $class; ?>">
+                                            <button class="close" data-dismiss="alert">×</button>
+                                            <?php echo $message; ?>
+                                            </div>
+                                    <?php endforeach; ?>
                                 <?php endforeach; ?>
-                            <?php endforeach; ?>
+                            <?php
+                            endif;
+                            ?>
                         </div>
                 </header>
-            <?php
-            endif;
-            ?>
+
             <div id="content">
                 <?php $view['slots']->output('body'); ?>
             </div>

@@ -67,7 +67,7 @@
         });
         
         $(document).on('keyup', '.money', function(){
-            $(this).attr('maxlength', 11).maskMoney({thousands:'', decimal:'.'});
+            $(this).attr('maxlength', 11).maskMoney({thousands:'.', decimal:','});
         });
     });
 
@@ -117,7 +117,6 @@ jQuery.fn.extend({
             var h4 = jQuery('<h4>Nenhum projeto encontrado</h4>').addClass('noProjectFound');
             var li = jQuery('<li/>').addClass('span12').append(h4);
             var content = li;
-            console.log(jQuery(this).get(0).tagName);
             if(jQuery(this).get(0).tagName.toLowerCase() != 'ul'){
                 content = jQuery('<ul/>').addClass('unstyled');
                 content.append(li);
@@ -172,7 +171,6 @@ $.fn.extend({
             var h4 = $('<h4>Nenhum projeto encontrado</h4>').addClass('noProjectFound');
             var li = $('<li/>').addClass('span12').append(h4);
             var content = li;
-            console.log($(this).get(0).tagName);
             if($(this).get(0).tagName.toLowerCase() != 'ul'){
                 content = $('<ul/>').addClass('unstyled');
                 content.append(li);
@@ -187,7 +185,6 @@ $.fn.extend({
 $.extend({
     thumbProjeto: function(data, config) {
 
-        console.log(data);
         var defaultConfig = {
             smSize: 4,
             lgSize: 3,
@@ -236,6 +233,24 @@ $.extend({
         '</div>';
         return $(thumb);
 
+    },
+
+    flashMessage : function(message,type){
+        if(!type){
+            type = 'warning';
+        }
+        var classe = '';
+        switch(type){
+            case 'notice' :classe = 'alert-info';break;
+            case 'error'  :classe = 'alert-danger';break;
+            case 'success':classe = 'alert-success';break;
+            case 'warning':classe = 'alert-warning';break;
+        }
+        var div = $("<div/>").addClass('flash-message alert ' + classe).html(message);
+        var buttonClose = $('<button/>').addClass('close').attr('data-dismiss','alert').html('×');
+        div.append(buttonClose);
+        $(".flash-message-container").append(div);
+        return div;
     }
 });
 
