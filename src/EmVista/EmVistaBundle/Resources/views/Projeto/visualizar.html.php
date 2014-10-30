@@ -238,9 +238,18 @@
     </div>
 </section>
 
-<section  id="comentarios" class="section my-tab-content" style="display: none">
+<section  id="comentarios" class="section my-tab-content" style="display: none;text-align: center">
     <div class="container">
-        <div class="fb-comments" data-href="http://<?php echo $app->getRequest()->getHttpHost() . $app->getRequest()->getRequestUri(); ?>" data-num-posts="10"></div>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=381701708659569&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <div class="fb-comments" data-width="780px" data-href="http://<?php echo $app->getRequest()->getHttpHost() . $app->getRequest()->getRequestUri(); ?>" data-num-posts="10" data-colorscheme="light"></div>
     </div>
 </section>
 
