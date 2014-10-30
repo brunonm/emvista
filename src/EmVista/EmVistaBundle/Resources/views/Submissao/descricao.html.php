@@ -28,7 +28,7 @@
                 <label class="control-label col-sm-2" for="descricao">Descrição completa</label>
                 <div class="col-sm-9">
                     <span class="help-block">
-                        <small>Descreva quem é você, o objetivo do projeto, as pessoas envolvidas, como o dinheiro vai ser utilizado, riscos que podem impedir a execução, prazos, recompensas e etc. Seja criativo, venda o seu peixe. :-)</small>
+                        <small>Descreva quem é você, o objetivo do projeto, as pessoas envolvidas, como o dinheiro vai ser utilizado, riscos que podem impedir a execução, prazos, recompensas e etc. É permitido inserir imagens, links e outros recursos no formato HTML. Seja criativo, venda o seu peixe. :-)</small>
                     </span>
                     <textarea rows="20" class="col-sm-7" name="descricao"><?php echo $submissao->getProjeto()->getDescricao(); ?></textarea>
                 </div>

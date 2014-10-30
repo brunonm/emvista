@@ -301,7 +301,7 @@ class SubmissaoService extends ServiceAbstract
 
         try {
             $data = $sd->get();
-            $data['valorMinimo'] = Money::revert($data['valorMinimo']);
+            
             $v = $this->getValidator();
             $v::arr()->key('submissaoId', $v::int()->positive())
                      ->key('recompensas', $v::arr()
@@ -331,7 +331,7 @@ class SubmissaoService extends ServiceAbstract
                 $recompensa->setDescricao($recompensaData['descricao'])
                            ->setTitulo($recompensaData['titulo'])
                            ->setProjeto($projeto)
-                           ->setValorMinimo($recompensaData['valorMinimo'])
+                           ->setValorMinimo(Money::revert($recompensaData['valorMinimo']))
                            ->setQuantidadeMaximaApoiadores(null);
 
                 if (array_key_exists('quantidadeMaximaApoiadores', $recompensaData) && !empty($recompensaData['quantidadeMaximaApoiadores'])) {

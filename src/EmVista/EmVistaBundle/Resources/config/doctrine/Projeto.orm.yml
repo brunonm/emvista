@@ -43,7 +43,7 @@ EmVista\EmVistaBundle\Entity\Projeto:
         descricaoCurta:
             type: string
             scale: 0
-            length: 130
+            length: 180
             unique: false
             nullable: true
             precision: 0
