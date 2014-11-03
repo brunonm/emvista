@@ -149,7 +149,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <?php if ($projeto->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO): ?>
+                <?php if ($projeto->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO && 1 == 2): ?>
                     <div class="row apoiar-projeto-field">
                         <a href="<?php echo $view['router']->generate('pagamento_checkout', array('projetoId' => $projeto->getId())); ?>"
                            class="btn btn-special col-sm-8 col-sm-offset-2 my-btn">APOIAR PROJETO
