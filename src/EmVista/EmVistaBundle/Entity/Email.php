@@ -27,6 +27,7 @@ class Email extends EntityAbstract
     const USUARIO_ALTERACAO_SENHA           = 13;
     const AUTOR_CONFIRMACAO_PRE_CADASTRO    = 14;
     const ADMIN_CADASTRO_PRE_PROJETO        = 15;
+    const ADMIN_CADASTRO_PROJETO            = 16;
 
     /**
      * @var integer

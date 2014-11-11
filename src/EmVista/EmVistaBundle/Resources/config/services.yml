@@ -43,6 +43,7 @@ services:
             - [setQuantidadeDiasMaximo, ['%projeto_quantidade_dias_maximo%']]
             - [setUploadDir, ['%upload_dir%']]
             - [setImagine, ['@imagine']]
+            - [setContatoEmail, ['%contato_email%']]
 
     service.usuario:
         class: %service.usuario.class%

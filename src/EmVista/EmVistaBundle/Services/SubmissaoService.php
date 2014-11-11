@@ -63,6 +63,29 @@ class SubmissaoService extends ServiceAbstract
     private $quantidadeDiasMaximo = 60;
 
     /**
+     * @var string
+     */
+    private $contatoEmail;
+
+    /**
+     * @return string
+     */
+    public function getContatoEmail()
+    {
+        return $this->contatoEmail;
+    }
+
+    /**
+     * @param string $contatoEmail
+     */
+    public function setContatoEmail($contatoEmail)
+    {
+        $this->contatoEmail = $contatoEmail;
+    }
+
+
+
+    /**
      * @param ProjetoService
      * @return SubmissaoService
      */
@@ -795,7 +818,7 @@ class SubmissaoService extends ServiceAbstract
             $em->persist($submissao);
             $em->flush();
             $em->commit();
-
+            $this->enviaMailConfirmacao($submissao);
         } catch (\InvalidArgumentException $e) {
             $em->rollback();
             throw new ServiceValidationException($e->getMessage());
@@ -805,6 +828,28 @@ class SubmissaoService extends ServiceAbstract
         }
     }
 
+    public function enviaMailConfirmacao(Submissao $submissao)
+    {
+
+        $emailRepository = $this->getEntityManager()->getRepository('EmVistaBundle:Email');
+        $mailer = $this->getMailer();
+
+        $usuario   = $submissao->getProjeto()->getUsuario();
+        $projeto    = $submissao->getProjeto();
+
+        $template = $emailRepository->find(Email::ADMIN_CADASTRO_PROJETO);
+
+        $text = str_replace(array('{USUARIO}', '{NOME-PROJETO}'),
+            array($usuario->getNome(), $projeto->getNome()),
+            $template->getTexto());
+
+        $mailer->newMessage()
+            ->to($this->getContatoEmail())
+            ->subject($template->getTitulo())
+            ->message($text)
+            ->isHtml(true)
+            ->send();
+    }
     /**
      * @param  Submissao                  $submissao
      * @throws DadosBasicosErrorException
