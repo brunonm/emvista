@@ -126,8 +126,8 @@
                                 <h4 class="colaboradores">para o fim</h4>
                             </h1>
                             <input type="hidden" id="dataFim"
-                                   value="<?php echo $projeto->getDataFim()->format('F d, Y H:i:s') ?>"/>
-                            <h1 class="layoutTempoParaFimDoProjeto">
+                                   value="<?php echo $projeto->getDataFim()->format('F d, Y H:i:s') ?>" />
+                            <h1 class="layoutTempoParaFimDoProjeto" style="display:none;">
                                 <div class="result-number">{hnn}:{mnn}:{snn}</div>
                                 <h4 class="colaboradores">para o fim</h4>
                             </h1>
