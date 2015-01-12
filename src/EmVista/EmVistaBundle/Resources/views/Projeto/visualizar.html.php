@@ -121,19 +121,19 @@
 
                         <?php $date = Date::getDateDiff($projeto); ?>
                         <?php if ($date->days == 0 && $date->invert == 0): ?>
-                            <h1>
+                            <h1 class="tempoParaFimDoProjeto">
                                 <div class="result-number"><?php echo $date->format('%H:%I:%S') ?></div>
                                 <h4 class="colaboradores">para o fim</h4>
                             </h1>
                             <input type="hidden" id="dataFim"
                                    value="<?php echo $projeto->getDataFim()->format('F d, Y H:i:s') ?>"/>
-                            <h1>
+                            <h1 class="layoutTempoParaFimDoProjeto">
                                 <div class="result-number">{hnn}:{mnn}:{snn}</div>
                                 <h4 class="colaboradores">para o fim</h4>
                             </h1>
 
                         <?php elseif ($date->invert == 1): ?>
-                            <h1>
+                            <h1 class="tempoParaFimDoProjeto">
                                 <div class="result-number">00:00:00</div>
                                 <h4 class="colaboradores">para o fim</h4>
                             </h1>
@@ -142,7 +142,7 @@
                             <?php $numero = $date->days; ?>
                             <?php $tempo = ($numero == 1 ? 'dia' : 'dias'); ?>
 
-                            <h1>
+                            <h1 class="tempoParaFimDoProjeto">
                                 <div class="result-number"><?php echo $numero; ?></div>
                                 <h4 class="colaboradores"><?php echo $tempo; ?> para o fim</h4>
                             </h1>
