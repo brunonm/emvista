@@ -752,7 +752,7 @@ class SubmissaoService extends ServiceAbstract
         try {
             $v = $this->getValidator();
             $v::arr()->key('tipoPessoa', $v::oneOf($v::equals('j'), $v::equals('f')))
-                     ->key('documento', $v::oneOf($v::cpf(), $v::cnpj()))
+                     ->key('documento', $v::oneOf($v::cpf(), $v::cnpj())->notEmpty())
                      ->key('nome', $v::string()->max(255))
                      ->key('user', $v::instance('EmVista\EmVistaBundle\Entity\Usuario'))
                      ->check($sd->get());
