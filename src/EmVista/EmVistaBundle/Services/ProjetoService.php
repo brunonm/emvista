@@ -21,11 +21,6 @@ use EmVista\EmVistaBundle\Services\Exceptions\ProjetoNaoEncontradoException;
 class ProjetoService extends ServiceAbstract
 {
     /**
-     * @var \Search\SphinxsearchBundle\Services\Search\Sphinxsearch
-     */
-    protected $searchEngine;
-
-    /**
      * @var float
      */
     protected $percentualPlataforma;
@@ -38,22 +33,6 @@ class ProjetoService extends ServiceAbstract
         $this->percentualPlataforma = $percentualPlataforma;
 
         return $this;
-    }
-
-    /**
-     * @return \Search\SphinxsearchBundle\Services\Search\Sphinxsearch
-     */
-    public function getSearchEngine()
-    {
-        return $this->searchEngine;
-    }
-
-    /**
-     * @param \Search\SphinxsearchBundle\Services\Search\Sphinxsearch $searchEngine
-     */
-    public function setSearchEngine($searchEngine)
-    {
-        $this->searchEngine = $searchEngine;
     }
 
     /**
@@ -432,7 +411,7 @@ class ProjetoService extends ServiceAbstract
                       ->findBy(array('categoria' => $categoria->getId(), 'publicado' => true));
         }
        
-        return $this->getSearchEngine()->find($q, 15);
+        return array();
     }
 
     /**

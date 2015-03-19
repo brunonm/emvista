@@ -36,8 +36,6 @@ parameters:
     profile_web_temp_path: /uploads/profiles/temp/
 
     percentual_plataforma: 0.05
-    
-    elastic_search_host: 192.168.33.10
 
     facebook_client_id: ??????
     facebook_client_secret: ??????

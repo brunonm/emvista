@@ -26,7 +26,6 @@
         "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
         "imagine/Imagine": "dev-develop",
         "friendsofsymfony/jsrouting-bundle": "1.1.*",
-        "friendsofsymfony/elastica-bundle": "3.0.5",
         "hwi/oauth-bundle": "0.4.*@dev"
     },
     "require-dev": {

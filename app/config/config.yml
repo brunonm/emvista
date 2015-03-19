@@ -89,26 +89,6 @@ moip:
     key: %moip_key%
   environment: test
 
-fos_elastica:
-    clients:
-        default: { host: %elastic_search_host%, port: 9200 }
-    indexes:
-        emvista:
-            types:
-                projeto:
-                    indexable_callback: 'isIndexable'
-                    mappings:
-                        nome: ~
-                        descricao: ~
-                        descricaoCurta: ~
-                    persistence:
-                        driver: orm
-                        model: EmVista\EmVistaBundle\Entity\Projeto
-                        provider: ~
-                        listener: ~
-                        finder: ~
-#                        ignore_missing: true
-
 hwi_oauth:
     firewall_name: main
     resource_owners:

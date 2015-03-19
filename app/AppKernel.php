@@ -23,7 +23,6 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new FOS\ElasticaBundle\FOSElasticaBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle()
         );
 
