@@ -225,7 +225,7 @@ $.extend({
                 '<div class="label">' + data.tempo.faltam + '</div>'
             } else {
                 thumb += '' +
-                '<div class="label"> -- </div>';
+                '<div class="label"> Finalizado </div>';
             }
         thumb += '' +
             '</div>' +
@@ -265,7 +265,7 @@ $(document).ready(function(){
                 $(this).bind("jqv.field.result",
                     function(event, field, errorFound, prompText) {
                         var parent = $(field).parents('.control-group');
-                        if(parent.size() == 0){
+                        if(parent.size() == 0){project-togo
                             parent = $(field).parent();
                         }
                         if(errorFound){
