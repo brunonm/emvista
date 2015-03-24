@@ -15,7 +15,11 @@ if (!isset($xsSize)) {
 ?>
 <div class="col-sm-<?php echo $smSize?> col-lg-<?php echo $lgSize?> col-xs-<?php echo $xsSize?> project-container" project-id="<?php echo $projeto->getId()?>">
     <div class="project-image-content">
-
+        <?php if($projeto->getPercentualArrecadado() > 100):?>
+        <div style="POSITION: ABSOLUTE;BACKGROUND-COLOR: #16BD5E;WIDTH: 100%;TEXT-ALIGN: CENTER;FONT-SIZE: 24PX;COLOR: #FFF;BOTTOM: 0;">
+            Projeto Financiado
+        </div>
+        <?php endif; ?>
         <div class="mask">
             <div class="content-btn-apoiar">
                 <a href="<?php echo $view['router']->generate('projeto_visualizar', array('projetoSlug' => $projeto->getSlug())); ?>"
