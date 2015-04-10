@@ -65,10 +65,8 @@
                 navbar.removeClass('custom-collapse');
             }
         });
-        
-        $(document).on('keyup', '.money', function(){
-            $(this).attr('maxlength', 11).maskMoney({thousands:'.', decimal:','});
-        });
+                
+        $('.money').attr('maxlength', 11).maskMoney({thousands:'.', decimal:','});
     });
 
 

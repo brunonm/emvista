@@ -40,6 +40,7 @@ var recompensas = {
 
         $(".container-recompensas").append(conteudo);
         conteudo.find('.checkbox-limite').change();
+        $('.money').attr('maxlength', 11).maskMoney({thousands:'.', decimal:','});
     },
 
     handleButtonExcluirRecompensa: function(){
