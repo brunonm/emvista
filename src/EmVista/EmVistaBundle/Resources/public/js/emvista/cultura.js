@@ -191,9 +191,13 @@ $.extend({
 
 
         config = $.extend(defaultConfig, config);
+        
+        var projetoFinanciado = data.percentual > 100?'<div style="POSITION: ABSOLUTE;BACKGROUND-COLOR: #16BD5E;WIDTH: 100%;TEXT-ALIGN: CENTER;FONT-SIZE: 24PX;COLOR: #FFF;BOTTOM: 0;">Projeto Financiado</div>': '';
+        
         var thumb = '' +
         '<div class="col-sm-' + config.smSize + ' col-lg-' + config.lgSize + ' col-xs-' + config.xsSize + ' project-container" project-id="' + data.id + '"> ' +
             '<div class="project-image-content">' +
+                projetoFinanciado +
                 '<div class="mask">' +
                     '<div class="content-btn-apoiar">' +
                         '<a href="' + data.urlProjeto + '" class="btn-special-apoiar col-md-12 btn my-btn" >APOIAR</a>' +
@@ -223,7 +227,7 @@ $.extend({
                 '<div class="label">' + data.tempo.faltam + '</div>'
             } else {
                 thumb += '' +
-                '<div class="label"> -- </div>';
+                '<div class="label"> Finalizado </div>';
             }
         thumb += '' +
             '</div>' +
@@ -263,7 +267,7 @@ $(document).ready(function(){
                 $(this).bind("jqv.field.result",
                     function(event, field, errorFound, prompText) {
                         var parent = $(field).parents('.control-group');
-                        if(parent.size() == 0){
+                        if(parent.size() == 0){project-togo
                             parent = $(field).parent();
                         }
                         if(errorFound){
