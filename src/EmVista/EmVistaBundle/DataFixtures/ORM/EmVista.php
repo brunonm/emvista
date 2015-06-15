@@ -156,6 +156,11 @@ class EmVista implements FixtureInterface
                                    ->setDescricao('Cancelado');
         $em->persist($statusArrecadacaoCancelado);
 
+        $statusArrecadacaoAguardandoInicio = new StatusArrecadacao();
+        $statusArrecadacaoAguardandoInicio->setNome('AGUARDANDO_INICIO')
+                                          ->setDescricao('Aguardando início');
+        $em->persist($statusArrecadacaoAguardandoInicio);
+
         //TIPO PROJETO IMAGEM
 
         $tipoProjetoImagemThumb = new TipoProjetoImagem();

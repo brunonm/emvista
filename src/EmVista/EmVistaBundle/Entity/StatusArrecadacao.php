@@ -15,6 +15,7 @@ class StatusArrecadacao extends EntityAbstract
     const STATUS_INSUCESSO         = 3;
     const STATUS_AGUARDANDO_BOLETO = 4;
     const STATUS_CANCELADO         = 5;
+    const STATUS_AGUARDANDO_INICIO = 6;
 
     /**
      * @var integer $id

@@ -30,40 +30,46 @@ if (!isset($xsSize)) {
     </div>
     <div class="project-content">
         <h5><?php echo $projeto->getNome(); ?></h5>
-        <legend>por <?php echo $projeto->getUsuario()->getNome(); ?></legend>
+        <legend>por <?php echo $projeto->getPreCadastro() ? $projeto->getNomeAutorPreCadastro() : $projeto->getUsuario()->getNome(); ?></legend>
         <?php echo $projeto->getDescricaoCurta(); ?>
     </div>
     <div class="project-group">
-        <div class="col-sm-3 project-funded">
-            <div class="value"><?php echo $projeto->getPercentualArrecadado()?>%</div>
-            <div class="label">Meta</div>
-        </div>
-        <div class="col-sm-5 project-pleged">
-            <div class="value">R$</span> <?php echo number_format($projeto->getValorArrecadado(), 2, ',', '.'); ?> </div>
-            <div class="label">valor</div>
-        </div>
-        <div class="col-sm-4 project-togo">
-            <?php if($projeto->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO): ?>
-
-                <?php $date = Date::getDateDiff($projeto); ?>
-                <?php if($date->days == 0): ?>
-                    <?php if($date->h > 0): ?>
-                        <?php $numero = $date->h; ?>
-                        <?php $tempo = ($numero == 1 ? 'hora' : 'horas'); ?>
+        
+        <?php if ($projeto->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_AGUARDANDO_INICIO): ?>
+            <div class="col-sm-12 project-funded">
+                <div class="label">Aguardando início </div>
+            </div>
+        <?php else:?>
+            <div class="col-sm-3 project-funded">
+                <div class="value"><?php echo $projeto->getPercentualArrecadado()?>%</div>
+                <div class="label">Meta</div>
+            </div>
+            <div class="col-sm-5 project-pleged">
+                <div class="value">R$</span> <?php echo number_format($projeto->getValorArrecadado(), 2, ',', '.'); ?> </div>
+                <div class="label">valor</div>
+            </div>
+            <div class="col-sm-4 project-togo">
+                <?php if($projeto->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO): ?>
+                    <?php $date = Date::getDateDiff($projeto); ?>
+                    <?php if($date->days == 0): ?>
+                        <?php if($date->h > 0): ?>
+                            <?php $numero = $date->h; ?>
+                            <?php $tempo = ($numero == 1 ? 'hora' : 'horas'); ?>
+                        <?php else: ?>
+                            <?php $numero = $date->i; ?>
+                            <?php $tempo = ($numero == 1 ? 'minuto' : 'minutos'); ?>
+                        <?php endif; ?>
                     <?php else: ?>
-                        <?php $numero = $date->i; ?>
-                        <?php $tempo = ($numero == 1 ? 'minuto' : 'minutos'); ?>
+                        <?php $numero = $date->days; ?>
+                        <?php $tempo = ($numero == 1 ? 'dia' : 'dias'); ?>
                     <?php endif; ?>
+                    <?php $faltam = ($numero == 1 ? 'Falta' : 'Faltam'); ?>
+                    <div class="value"> <span class="time-left-days"><?php echo $numero; ?></span> <?php echo $tempo; ?></div>
+                    <div class="label"><?php echo $faltam; ?></div>
                 <?php else: ?>
-                    <?php $numero = $date->days; ?>
-                    <?php $tempo = ($numero == 1 ? 'dia' : 'dias'); ?>
-                <?php endif; ?>
-                <?php $faltam = ($numero == 1 ? 'Falta' : 'Faltam'); ?>
-                <div class="value"> <span class="time-left-days"><?php echo $numero; ?></span> <?php echo $tempo; ?></div>
-                <div class="label"><?php echo $faltam; ?></div>
-            <?php else:?>
-                <div class="label"> Finalizado </div>
-            <?php endif;?>
-        </div>
+                    <div class="label"> Finalizado </div>
+                <?php endif;?>
+            </div>
+        <?php endif; ?>
     </div>
 </div>

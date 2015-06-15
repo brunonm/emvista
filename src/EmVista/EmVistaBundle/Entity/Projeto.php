@@ -133,6 +133,16 @@ class Projeto extends EntityAbstract
      *
      */
     private $publicado;
+    
+    /**
+     * @var boolean
+     */
+    private $preCadastro;
+    
+    /**
+     * @var string
+     */
+    private $nomeAutorPreCadastro;
 
     /**
      * @var ProjetoImagem[]
@@ -145,7 +155,8 @@ class Projeto extends EntityAbstract
         parent::__construct();
         $this->setValorArrecadado(0)
              ->setPublicado(false)
-             ->setDataCadastro(new \DateTime("now"));
+             ->setDataCadastro(new \DateTime("now"))
+             ->setPreCadastro(false);
 
         $this->recompensas = new ArrayCollection();
         $this->imagens     = new ArrayCollection();
@@ -602,6 +613,10 @@ class Projeto extends EntityAbstract
      */
     public function getPercentualArrecadado()
     {
+        if ($this->preCadastro) {
+            return 0;
+        }
+        
         return (int) floor($this->getValorArrecadado() * 100 / $this->getValor());
     }
 
@@ -723,5 +738,41 @@ class Projeto extends EntityAbstract
     public function isArrecadando()
     {
         return $this->statusArrecadacao != null && $this->statusArrecadacao->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO;
+    }
+    
+    /**
+     * @return boolean
+     */
+    function getPreCadastro()
+    {
+        return $this->preCadastro;
+    }
+
+    /**
+     * @param boolean $preCadastro
+     * @return \EmVista\EmVistaBundle\Entity\Projeto
+     */
+    function setPreCadastro($preCadastro)
+    {
+        $this->preCadastro = $preCadastro;
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    function getNomeAutorPreCadastro()
+    {
+        return $this->nomeAutorPreCadastro;
+    }
+
+    /**
+     * @param string $nomeAutorPreCadastro
+     * @return \EmVista\EmVistaBundle\Entity\Projeto
+     */
+    function setNomeAutorPreCadastro($nomeAutorPreCadastro)
+    {
+        $this->nomeAutorPreCadastro = $nomeAutorPreCadastro;
+        return $this;
     }
 }

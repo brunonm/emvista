@@ -46,7 +46,7 @@ class SubmissaoService extends ServiceAbstract
      * @var ProjetoService
      */
     private $projetoService;
-
+    
     /**
      * @var ImagineInterface
      */
@@ -231,20 +231,30 @@ class SubmissaoService extends ServiceAbstract
     public function salvarDadosBasicos(ServiceData $sd)
     {
         $em = $this->getEntityManager();
-        $sd->set('valor', Money::revert($sd->get('valor')));
+
         try {
+            
             $v = $this->getValidator();
             $v::arr()->key('submissaoId', $v::int()->positive())
                      ->key('categoriaId', $v::int()->positive())
                      ->key('nome', $v::string()->length(3, 255)->notEmpty())
                      ->key('quantidadeDias', $v::int()->min($this->quantidadeDiasMinimo, true)->max($this->quantidadeDiasMaximo, true))
-                     ->key('valor', $v::positive())
                      ->check($sd->get());
+            
+            if ($sd->offsetExists('preCadastro') && $sd->get('preCadastro')) {
+                $preCadastro = true;
+                $valor = 0;
+            } else {
+                if (!$sd->get('valor')) {
+                    throw new \InvalidArgumentException('Valor Inválido');
+                }
+                $preCadastro = false;
+                $valor = Money::revert($sd->get('valor'));
+            }
 
             $categoria = $em->find('EmVistaBundle:Categoria', $sd->get('categoriaId'));
 
             $submissao = $em->find('EmVistaBundle:Submissao', $sd->get('submissaoId'));
-
 
             ##### VERIFICAR NUMBER FORMAT DO VALOR
 
@@ -252,11 +262,11 @@ class SubmissaoService extends ServiceAbstract
                                  ->setCategoria($categoria)
                                  ->setNome(trim($sd->get('nome')))
                                  ->setQuantidadeDias($sd->get('quantidadeDias'))
-                                 ->setValor($sd->get('valor'));
-
+                                 ->setValor($valor)
+                                 ->setPreCadastro($preCadastro);
+            
             $em->persist($projeto);
             $em->flush();
-
 
         } catch (\InvalidArgumentException $e) {
             throw new ServiceValidationException($e->getMessage());
@@ -750,29 +760,47 @@ class SubmissaoService extends ServiceAbstract
         $em->beginTransaction();
 
         try {
-            $v = $this->getValidator();
-            $v::arr()->key('tipoPessoa', $v::oneOf($v::equals('j'), $v::equals('f')))
-                     ->key('documento', $v::oneOf($v::cpf(), $v::cnpj())->notEmpty())
-                     ->key('nome', $v::string()->max(255))
-                     ->key('user', $v::instance('EmVista\EmVistaBundle\Entity\Usuario'))
-                     ->check($sd->get());
 
-            $usuario = $sd->getUser();
-            $pessoa  = $em->getRepository('EmVistaBundle:Pessoa')->findOneBy(array('usuario' => $usuario->getId()));
+            $projeto = $em
+                ->find('EmVistaBundle:Submissao', $sd->get('submissaoId'))
+                ->getProjeto();
+            
+            if ($projeto->getPreCadastro()) {
+                
+                $v = $this->getValidator();
+                $v::arr()->key('nome', $v::string()->max(255))
+                         ->check($sd->get());   
+                
+               $projeto->setNomeAutorPreCadastro($sd->get('nome'));
+               
+               $em->persist($projeto);
+               
+            } else {
+                
+                $v = $this->getValidator();
+                $v::arr()->key('tipoPessoa', $v::oneOf($v::equals('j'), $v::equals('f')))
+                         ->key('documento', $v::oneOf($v::cpf(), $v::cnpj())->notEmpty())
+                         ->key('nome', $v::string()->max(255))
+                         ->key('user', $v::instance('EmVista\EmVistaBundle\Entity\Usuario'))
+                         ->check($sd->get());
+                
+                $usuario = $sd->getUser();
+                $pessoa  = $em->getRepository('EmVistaBundle:Pessoa')->findOneBy(array('usuario' => $usuario->getId()));
 
-            if (empty($pessoa)) {
-                $documento = preg_replace("/[^0-9\s]/", "", $sd->get('documento'));
+                if (empty($pessoa)) {
+                    $documento = preg_replace("/[^0-9\s]/", "", $sd->get('documento'));
 
-                $pessoa = new Pessoa();
-                $pessoa->setDocumento($documento)
-                       ->setUsuario($usuario)
-                       ->setTipo($sd->get('tipoPessoa'))
-                       ->setNome($sd->get('nome'));
+                    $pessoa = new Pessoa();
+                    $pessoa->setDocumento($documento)
+                           ->setUsuario($usuario)
+                           ->setTipo($sd->get('tipoPessoa'))
+                           ->setNome($sd->get('nome'));
 
-                $em->persist($pessoa);
-                $em->flush();
+                    $em->persist($pessoa);
+                }
             }
-
+            
+            $em->flush();
             $em->commit();
 
         } catch (\InvalidArgumentException $e) {
@@ -818,7 +846,11 @@ class SubmissaoService extends ServiceAbstract
             $em->persist($submissao);
             $em->flush();
             $em->commit();
-            $this->enviaMailConfirmacao($submissao);
+            
+            if (!$submissao->getProjeto()->getPreCadastro()) {
+                $this->enviaMailConfirmacao($submissao);
+            }
+            
         } catch (\InvalidArgumentException $e) {
             $em->rollback();
             throw new ServiceValidationException($e->getMessage());
@@ -860,8 +892,14 @@ class SubmissaoService extends ServiceAbstract
         $nome    = $projeto->getNome();
         $valor   = $projeto->getValor();
 
-        if (empty($nome) || empty($valor) || false === ($projeto->getCategoria() instanceof Categoria)) {
+        if (empty($nome) || false === ($projeto->getCategoria() instanceof Categoria)) {
             throw new DadosBasicosErrorException(SubmissaoMessages::DADOS_BASICOS_INVALIDO);
+        }
+        
+        if (!$submissao->getProjeto()->getPreCadastro()) {
+            if (empty($valor)) {
+                throw new DadosBasicosErrorException(SubmissaoMessages::DADOS_BASICOS_INVALIDO);
+            }
         }
     }
 
@@ -928,22 +966,24 @@ class SubmissaoService extends ServiceAbstract
      */
     private function validaMaisSobreVoce($submissao)
     {
-        $usuario = $submissao->getProjeto()->getUsuario();
-        $em = $this->getEntityManager();
+        if (!$submissao->getProjeto()->getPreCadastro()) {
+            $usuario = $submissao->getProjeto()->getUsuario();
+            $em = $this->getEntityManager();
 
-        $pessoa = $em->getRepository('EmVistaBundle:Pessoa')->findOneBy(array('usuario' => $usuario->getId()));
+            $pessoa = $em->getRepository('EmVistaBundle:Pessoa')->findOneBy(array('usuario' => $usuario->getId()));
 
-        $msg = SubmissaoMessages::MAIS_SOBRE_VOCE_INVALIDO;
+            $msg = SubmissaoMessages::MAIS_SOBRE_VOCE_INVALIDO;
 
-        if (empty($pessoa)) {
-            throw new MaisSobreVoceErrorException($msg);
-        }
+            if (empty($pessoa)) {
+                throw new MaisSobreVoceErrorException($msg);
+            }
 
-        $documento = $pessoa->getDocumento();
-        $nome = $pessoa->getNome();
+            $documento = $pessoa->getDocumento();
+            $nome = $pessoa->getNome();
 
-        if (empty($documento) || empty($nome)) {
-            throw new MaisSobreVoceErrorException($msg);
+            if (empty($documento) || empty($nome)) {
+                throw new MaisSobreVoceErrorException($msg);
+            }
         }
     }
 
@@ -1011,8 +1051,12 @@ class SubmissaoService extends ServiceAbstract
                 $dataAprovacao = new Date('now');
                 $dataInicio = new Date('now');
                 $dataFim = Date::buildDateInFuture($projeto->getQuantidadeDias())->setTime(23, 59, 59);
-
-                $statusArrecadacao = $em->find('EmVistaBundle:StatusArrecadacao', StatusArrecadacao::STATUS_EM_ANDAMENTO);
+                
+                if ($projeto->getPreCadastro()) {
+                    $statusArrecadacao = $em->find('EmVistaBundle:StatusArrecadacao', StatusArrecadacao::STATUS_AGUARDANDO_INICIO);
+                } else {
+                    $statusArrecadacao = $em->find('EmVistaBundle:StatusArrecadacao', StatusArrecadacao::STATUS_EM_ANDAMENTO);
+                }                
                 
                 # APROVA, PUBLICA E INICIA O PROJETO
                 $projeto->setDataInicio($dataInicio)

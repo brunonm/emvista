@@ -42,7 +42,7 @@ var imagens = {
                     var sourceImage = new Image();
                     sourceImage.onload = function(){
                         imagens.startCrop();
-                    }
+                    };
                     sourceImage.src = data.result.result.webPath;
                     imagens.realHeight = data.result.result.altura;
                     imagens.realWidth = data.result.result.largura;
@@ -85,8 +85,6 @@ var imagens = {
 
     crop: function(){
         var tipo = $('#tipoProjetoImagemId').val();
-        console.log($('#img-upload')[0].height);
-        console.log(imagens.realHeight);
         var ratio = $('#img-upload')[0].height / imagens.realHeight;
         $('#img-upload').Jcrop({
             onSelect:    imagens.handleCropEventSelect,

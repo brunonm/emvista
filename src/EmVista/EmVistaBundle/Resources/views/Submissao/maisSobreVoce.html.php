@@ -30,7 +30,7 @@
             <label class="col-sm-2 control-label" for="nome">Nome</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control" id="nome" name="nome"
-                       value="<?php echo $pessoa->getNome(); ?>" <?php echo $readOnly; ?>/>
+                       value="<?php echo $submissao->getProjeto()->getPreCadastro() ? $submissao->getProjeto()->getNomeAutorPreCadastro() : $pessoa->getNome(); ?>" <?php echo $readOnly; ?>/>
                 <span class="help-block">
                     <small>Informe o nome completo verdadeiro sem abreviações. O seu usuário não precisa necessariamente ter o mesmo nome.</small>
                 </span>
@@ -43,7 +43,7 @@
                        value="<?php echo $user->getEmail(); ?>"/>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" <?php echo $submissao->getProjeto()->getPreCadastro() ? 'style="display:none"' : ''; ?>>
             <label class="col-sm-2 control-label" for="documento">CPF</label>
             <div class="col-sm-2">
                 <input type="text" class="form-control" id="documento" name="documento"

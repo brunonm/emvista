@@ -38,7 +38,7 @@
                 <h2>
                     <?php echo $projeto->getNome(); ?>
                 </h2>
-                <p>por <?php echo $projeto->getUsuario()->getNome(); ?></p>
+                <p>por <?php echo $projeto->getPreCadastro() ? $projeto->getNomeAutorPreCadastro() : $projeto->getUsuario()->getNome(); ?></p>
 
             </div>
         </div>
@@ -103,49 +103,52 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
-
                 <div class="row">
                     <div class="col-sm-12  results-container">
-                        <h1>
-                            <div class="result-number"><?php echo $countDoacoes; ?></div>
-                            <h4>
-                                contribuições
-                            </h4>
-                        </h1>
-                        <h1>
-                            <div class="result-number"><span
-                                    style="font-size:11px">R$</span><?php echo number_format($projeto->getValorArrecadado(), 2, ',', '.'); ?>
-                            </div>
-                            <h4>da meta de R$ <?php echo number_format($projeto->getValor(), 2, ',', '.'); ?></h4>
-                        </h1>
-
-                        <?php $date = Date::getDateDiff($projeto); ?>
-                        <?php if ($date->days == 0 && $date->invert == 0): ?>
-                            <h1 class="tempoParaFimDoProjeto">
-                                <div class="result-number"><?php echo $date->format('%H:%I:%S') ?></div>
-                                <h4 class="colaboradores">para o fim</h4>
+                        <?php if ($projeto->getPreCadastro()): ?>
+                            <h2>Aguardando início</h2>
+                        <?php else: ?>
+                            <h1>
+                                <div class="result-number"><?php echo $countDoacoes; ?></div>
+                                <h4>
+                                    contribuições
+                                </h4>
                             </h1>
-                            <input type="hidden" id="dataFim"
-                                   value="<?php echo $projeto->getDataFim()->format('F d, Y H:i:s') ?>" />
-                            <h1 class="layoutTempoParaFimDoProjeto" style="display:none;">
-                                <div class="result-number">{hnn}:{mnn}:{snn}</div>
-                                <h4 class="colaboradores">para o fim</h4>
+                            <h1>
+                                <div class="result-number"><span
+                                        style="font-size:11px">R$</span><?php echo number_format($projeto->getValorArrecadado(), 2, ',', '.'); ?>
+                                </div>
+                                <h4>da meta de R$ <?php echo number_format($projeto->getValor(), 2, ',', '.'); ?></h4>
                             </h1>
 
-                        <?php elseif ($date->invert == 1): ?>
-                            <h1 class="tempoParaFimDoProjeto">
-                                <div class="result-number">00:00:00</div>
-                                <h4 class="colaboradores">para o fim</h4>
-                            </h1>
-                        <?php
-                        else: ?>
-                            <?php $numero = $date->days; ?>
-                            <?php $tempo = ($numero == 1 ? 'dia' : 'dias'); ?>
+                            <?php $date = Date::getDateDiff($projeto); ?>
+                            <?php if ($date->days == 0 && $date->invert == 0): ?>
+                                <h1 class="tempoParaFimDoProjeto">
+                                    <div class="result-number"><?php echo $date->format('%H:%I:%S') ?></div>
+                                    <h4 class="colaboradores">para o fim</h4>
+                                </h1>
+                                <input type="hidden" id="dataFim"
+                                       value="<?php echo $projeto->getDataFim()->format('F d, Y H:i:s') ?>" />
+                                <h1 class="layoutTempoParaFimDoProjeto" style="display:none;">
+                                    <div class="result-number">{hnn}:{mnn}:{snn}</div>
+                                    <h4 class="colaboradores">para o fim</h4>
+                                </h1>
 
-                            <h1 class="tempoParaFimDoProjeto">
-                                <div class="result-number"><?php echo $numero; ?></div>
-                                <h4 class="colaboradores"><?php echo $tempo; ?> para o fim</h4>
-                            </h1>
+                            <?php elseif ($date->invert == 1): ?>
+                                <h1 class="tempoParaFimDoProjeto">
+                                    <div class="result-number">00:00:00</div>
+                                    <h4 class="colaboradores">para o fim</h4>
+                                </h1>
+                            <?php
+                            else: ?>
+                                <?php $numero = $date->days; ?>
+                                <?php $tempo = ($numero == 1 ? 'dia' : 'dias'); ?>
+
+                                <h1 class="tempoParaFimDoProjeto">
+                                    <div class="result-number"><?php echo $numero; ?></div>
+                                    <h4 class="colaboradores"><?php echo $tempo; ?> para o fim</h4>
+                                </h1>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -198,7 +201,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div>Projetado por</div>
-                        <h4><?php echo $projeto->getUsuario()->getNome()?></h4>
+                        <h4><?php echo $projeto->getPreCadastro() ? $projeto->getNomeAutorPreCadastro() : $projeto->getUsuario()->getNome(); ?></h4>
 
                         <?php
                         if ($projeto->getUsuario()->getEndereco()) :

@@ -110,6 +110,13 @@ EmVista\EmVistaBundle\Entity\Projeto:
             unique: false
             nullable: false
             precision: 0
+        preCadastro:
+            type: boolean
+            nullable: true
+        nomeAutorPreCadastro:
+            type: string
+            length: 255
+            nullable: true
     manyToOne:
         usuario:
             targetEntity: EmVista\EmVistaBundle\Entity\Usuario

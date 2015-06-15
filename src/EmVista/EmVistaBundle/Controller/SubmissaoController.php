@@ -332,7 +332,10 @@ class SubmissaoController extends ControllerAbstract
     public function salvarMaisSobreVoceAction($submissaoId)
     {
         try {
-            $sd = ServiceData::build($this->getRequest()->request->all())->setUser($this->getUser());
+            $sd = ServiceData::build($this->getRequest()->request->all())
+                ->setUser($this->getUser())
+                ->set('submissaoId', $submissaoId);
+            
             $this->get('service.submissao')->salvarMaisSobreVoce($sd);
             $response = $this->forward('EmVistaBundle:Submissao:concluir', array('submissaoId' => $submissaoId));
         } catch (ServiceValidationException $e) {

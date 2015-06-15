@@ -100,34 +100,44 @@
 
     <legend>Dados pessoais</legend>
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Nome</label>
-        <div class="col-md-9">
-            <input type="text" class="form-control" readonly
-                value="<?php echo $pessoa->getNome(); ?>"/>
+    <?php if ($projeto->getPreCadastro()): ?>
+        <div class="form-group">
+            <label class="control-label col-md-2">Nome</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" readonly
+                    value="<?php echo $projeto->getNomeAutorPreCadastro(); ?>"/>
+            </div>
+        </div>    
+    <?php else: ?>
+        <div class="form-group">
+            <label class="control-label col-md-2">Nome</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" readonly
+                    value="<?php echo $pessoa->getNome(); ?>"/>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">Email</label>
-        <div class="col-md-9">
-            <input type="text" class="form-control" readonly
-                value="<?php echo $pessoa->getUsuario()->getEmail(); ?>"/>
+        <div class="form-group">
+            <label class="control-label col-md-2">Email</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" readonly
+                    value="<?php echo $pessoa->getUsuario()->getEmail(); ?>"/>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">Tipo</label>
-        <div class="col-md-3">
-            <input type="text" class="form-control" readonly
-                value="<?php echo ($pessoa->getTipo() == 'f' ? 'Física' : 'Jurídica'); ?>"/>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tipo</label>
+            <div class="col-md-3">
+                <input type="text" class="form-control" readonly
+                    value="<?php echo ($pessoa->getTipo() == 'f' ? 'Física' : 'Jurídica'); ?>"/>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">Documento</label>
-        <div class="col-md-2">
-            <input type="text" class="form-control" readonly
-                value="<?php echo $pessoa->getDocumento(); ?>"/>
+        <div class="form-group">
+            <label class="control-label col-md-2">Documento</label>
+            <div class="col-md-2">
+                <input type="text" class="form-control" readonly
+                    value="<?php echo $pessoa->getDocumento(); ?>"/>
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
 
     <legend>Imagem</legend>
     <div class="form-group col-sm-12">
