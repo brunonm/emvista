@@ -195,8 +195,9 @@ class ProjetoRepository extends EntityRepository
             ->setParameter('publicado', true, Type::BOOLEAN)
             ->setParameter('lastId', $lastProjectId)
             ->setMaxResults($count)
-            ->orderBy('p.statusArrecadacao', 'ASC')
-            ->addOrderBy('p.id', 'DESC');
+            ->orderBy(
+                'p.id', 'DESC'
+            );
         return $qb->getQuery()->getResult();
 
     }
