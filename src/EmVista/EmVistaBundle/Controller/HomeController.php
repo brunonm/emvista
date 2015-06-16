@@ -20,7 +20,7 @@ class HomeController extends ControllerAbstract
      */
     public function indexAction()
     {
-        $projetos = $this->get('service.projeto')->getMore(ServiceData::build(array('lastProjectId' => 999999, 'count' => 40  )));
+        $projetos = $this->get('service.projeto')->getMore(ServiceData::build(array('lastProjectId' => 999999, 'count' => 32  )));
 
         return $this->render(
             'EmVistaBundle:Home:index.html.php',
