@@ -593,7 +593,7 @@ class Projeto extends EntityAbstract
         return array(
             'id' => $this->getId(),
             'titulo' => $this->getNome(),
-            'autor' => $this->getUsuario()->getNome(),
+            'autor' => $this->isPreCadastro() ? $this->getNomeAutorPreCadastro() : $this->getUsuario()->getNome(),
             'descricaoCurta' => $this->getDescricaoCurta(),
             'urlImagemThumb' => $this->getImagemThumb()->getWebPath(),
             'urlImagemOriginal' => $this->getImagemOriginal()->getWebPath(),
@@ -605,6 +605,7 @@ class Projeto extends EntityAbstract
             'labelTempoRestante' => $this->getLabelTempoRestante(),
             'statusArrecadacao' => $this->getStatusArrecadacao()->getId(),
             'tempo' => $this->getValorTempoRestante(),
+            'preCadastro' => $this->isPreCadastro(),
         );
     }
 
@@ -747,6 +748,14 @@ class Projeto extends EntityAbstract
     {
         return $this->preCadastro;
     }
+    
+    /**
+     * @return boolean
+     */
+     public function isPreCadastro()
+     {
+        return $this->getPreCadastro();
+     }
 
     /**
      * @param boolean $preCadastro
