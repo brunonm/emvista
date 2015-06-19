@@ -185,14 +185,16 @@ class ProjetoRepository extends EntityRepository
         return $query->getSingleResult();
     }
 
-    public function getMore($lastProjectId, $count)
+    public function getMore($lastProjectId, $count, $preCadastro = false)
     {
 
         $qb = $this->createQueryBuilder('p');
 
         $qb->where('p.publicado = :publicado')
             ->andWhere('p.id < :lastId')
+            ->andWhere('p.preCadastro < :preCadastro')
             ->setParameter('publicado', true, Type::BOOLEAN)
+            ->setParameter('preCadastro', $preCadastro, Type::BOOLEAN)
             ->setParameter('lastId', $lastProjectId)
             ->setMaxResults($count)
             ->orderBy(
