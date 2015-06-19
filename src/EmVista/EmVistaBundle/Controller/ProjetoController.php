@@ -125,7 +125,8 @@ class ProjetoController extends ControllerAbstract
         $projetos = $this->get('service.projeto')->getMore($sd);
         $count -= count($projetos);
         if ($count > 0) {
-            $sd->set('count', $count);
+            $sd->set('count', 28);
+            $sd->set('lastProjectId', 99999);
             $sd->set('preCadastro', true);
             $projetos = array_merge($projetos, $this->get('service.projeto')->getMore($sd));
         }
