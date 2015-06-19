@@ -210,8 +210,13 @@ $.extend({
                 '<legend>por ' + data.autor + '</legend>' +
                 data.descricaoCurta +
             '</div>' +
-            '<div class="project-group">' +
-                '<div class="col-sm-3 project-funded">' +
+            '<div class="project-group">';
+            if (data.preCadastro) {
+                thumb +=    '<div class="col-sm-12 project-funded">' +
+                                '<div class="label">Aguardando início </div>' +
+                            '</div></div></div>'
+            } else {
+                thumb += '<div class="col-sm-3 project-funded">' +
                     '<div class="value">' + data.percentual + '%</div>' +
                     '<div class="label">Meta</div>' +
                 '</div>' +
@@ -229,10 +234,11 @@ $.extend({
                 thumb += '' +
                 '<div class="label"> Finalizado </div>';
             }
-        thumb += '' +
-            '</div>' +
-        '</div>'+
-        '</div>';
+            thumb += '' +
+                '</div>' +
+            '</div>'+
+            '</div>';
+        }
         return $(thumb);
 
     },
