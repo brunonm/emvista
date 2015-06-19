@@ -485,8 +485,12 @@ class ProjetoService extends ServiceAbstract
     public function getMore(ServiceData $sd)
     {
         $em = $this->getEntityManager();
+        $preCadastro = false;
+        if ($sd->offsetExists('preCadastro')) {
+            $preCadastro = $sd->get('preCadastro')
+        }
         $projetos = $em->getRepository('EmVistaBundle:Projeto')
-        ->getMore($sd->get('lastProjectId'), $sd->get('count'), $sd->get('preCadastro'));
+        ->getMore($sd->get('lastProjectId'), $sd->get('count'), $preCadastro);
         return $projetos;
     }
 
