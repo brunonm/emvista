@@ -487,7 +487,7 @@ class ProjetoService extends ServiceAbstract
         $em = $this->getEntityManager();
         $preCadastro = false;
         if ($sd->offsetExists('preCadastro')) {
-            $preCadastro = $sd->get('preCadastro')
+            $preCadastro = $sd->get('preCadastro');
         }
         $projetos = $em->getRepository('EmVistaBundle:Projeto')
         ->getMore($sd->get('lastProjectId'), $sd->get('count'), $preCadastro);
