@@ -121,7 +121,14 @@ class ProjetoController extends ControllerAbstract
     public function getMoreAction(Request $request)
     {
         $sd = ServiceData::build($request->request->all());
+        $count = $sd->get('count');
         $projetos = $this->get('service.projeto')->getMore($sd);
+        $count -= count($projetos);
+        if ($count > 0) {
+            $sd->set('count', $count);
+            $sd->set('preCadastro', true);
+            $projetos = array_merge($projetos, $this->get('service.projeto')->getMore($sd));
+        }
         $retorno = array();
         foreach ($projetos as $indice =>$projeto) {
             $retorno[$indice] = $projeto->toArray();
