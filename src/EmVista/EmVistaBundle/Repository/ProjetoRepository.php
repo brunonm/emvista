@@ -192,7 +192,7 @@ class ProjetoRepository extends EntityRepository
 
         $qb->where('p.publicado = :publicado')
             ->andWhere('p.id < :lastId')
-            ->andWhere('p.preCadastro < :preCadastro')
+            ->andWhere('p.preCadastro = :preCadastro')
             ->setParameter('publicado', true, Type::BOOLEAN)
             ->setParameter('preCadastro', $preCadastro, Type::BOOLEAN)
             ->setParameter('lastId', $lastProjectId)
