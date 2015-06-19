@@ -30,7 +30,7 @@ if (!isset($xsSize)) {
     </div>
     <div class="project-content">
         <h5><?php echo $projeto->getNome(); ?></h5>
-        <legend>por <?php echo $projeto->getPreCadastro() ? $projeto->getNomeAutorPreCadastro() : $projeto->getUsuario()->getNome(); ?></legend>
+        <legend>por <?php echo $projeto->isPreCadastro() ? $projeto->getNomeAutorPreCadastro() : $projeto->getUsuario()->getNome(); ?></legend>
         <?php echo $projeto->getDescricaoCurta(); ?>
     </div>
     <div class="project-group">
