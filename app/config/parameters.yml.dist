@@ -8,11 +8,11 @@ parameters:
 
     mailer_transport:   gmail
     mailer_host:        smtp.gmail.com
-    mailer_user:        emvista@emvista.me
-    mailer_password:    '3mv!st4.me'
-    mailer_default_from: emvista@emvista.me
+    mailer_user:        user@email.com
+    mailer_password:    '123456'
+    mailer_default_from: user@email.com
 
-    contato_email: brunonm@gmail.com
+    contato_email: contato@email.com
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
@@ -21,17 +21,16 @@ parameters:
     debug_redirects:        false
     use_assetic_controller: true
 
-
     projeto_quantidade_dias_minimo: 10
     projeto_quantidade_dias_maximo: 60
 
     profile_height: 140;
     profile_width: 140;
 
-    upload_dir: /usr/local/zend/apache2/htdocs/emvista/trunk/web/uploads
+    upload_dir: /var/www/emvista/web/uploads
 
-    upload_profile_dir: /usr/local/zend/apache2/htdocs/emvista/trunk/web/uploads/profiles/
-    upload_profile_temp_dir: /usr/local/zend/apache2/htdocs/emvista/trunk/web/uploads/profiles/temp/
+    upload_profile_dir: /var/www/emvista/web/uploads/profiles/
+    upload_profile_temp_dir: /var/www/emvista/web/uploads/profiles/temp/
     profile_web_path: /uploads/profiles/
     profile_web_temp_path: /uploads/profiles/temp/
 
