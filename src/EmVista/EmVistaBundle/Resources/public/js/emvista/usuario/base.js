@@ -86,7 +86,7 @@ $(document).ready(function(){
     });
     $('#salvarImagem').click(function(){
         $('#cropForm').loading();
-        $.post(Routing.generate('usuario_recortaImagemProfile'),$.extend(coords,{name: $('#imgCrop').attr('o')}),function(data){
+        $.post(Routing.generate('usuario_recortar-imagem-profile'),$.extend(coords,{name: $('#imgCrop').attr('o')}),function(data){
             $('#cropForm').removeLoading();
             $('.userImageProfile a img').attr({src:data.url});
             $('#utilizeOutraFoto').click();

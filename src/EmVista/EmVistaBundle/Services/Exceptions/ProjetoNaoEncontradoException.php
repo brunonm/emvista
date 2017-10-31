@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services\Exceptions;
 
-class ProjetoNaoEncontradoException extends \Exception{
-
+class ProjetoNaoEncontradoException extends \Exception
+{
 }

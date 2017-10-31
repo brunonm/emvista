@@ -3,64 +3,51 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToOne;
-use EmVista\EmVistaBundle\Entity\MovimentacaoFinanceira;
 
 /**
  * EmVista\EmVistaBundle\Entity\LogPaypal
  *
- * @ORM\Table()
- * @ORM\Entity
  */
-class LogPagamento{
-    
-    
-
+class LogPagamento
+{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var text $conteudoRetorno
      *
-     * @ORM\Column(name="conteudoRetorno", type="text")
      */
     private $conteudoRetorno;
 
     /**
      * @var MovimentacaoFinanceira
      *
-     * @ManyToOne(targetEntity="MovimentacaoFinanceira")
      */
     private $movimentacaoFinanceira;
 
     /**
      * @var text $conteudo
      *
-     * @ORM\Column(name="conteudo_envio", type="text")
      */
     private $conteudoEnvio;
 
     /**
      * @var text $host
      *
-     * @ORM\Column(name="host", type="text")
      */
     private $host;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="dataCadastro", type="datetime")
      */
     private $dataCadastro;
-   
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->setDataCadastro(new \DateTime("now"));
     }
 
@@ -69,7 +56,8 @@ class LogPagamento{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -78,8 +66,10 @@ class LogPagamento{
      *
      * @param text $conteudoRetorno
      */
-    public function setConteudoRetorno($conteudoRetorno){
+    public function setConteudoRetorno($conteudoRetorno)
+    {
         $this->conteudoRetorno = $conteudoRetorno;
+
         return $this;
     }
 
@@ -88,7 +78,8 @@ class LogPagamento{
      *
      * @return text
      */
-    public function getConteudoRetorno(){
+    public function getConteudoRetorno()
+    {
         return $this->conteudoRetorno;
     }
 
@@ -97,8 +88,10 @@ class LogPagamento{
      *
      * @param MovimentacaoFinanceira $movimentacaoFinanceira
      */
-    public function setMovimentacaoFinanceira(MovimentacaoFinanceira $movimentacaoFinanceira){
+    public function setMovimentacaoFinanceira(MovimentacaoFinanceira $movimentacaoFinanceira)
+    {
         $this->movimentacaoFinanceira = $movimentacaoFinanceira;
+
         return $this;
     }
 
@@ -107,7 +100,8 @@ class LogPagamento{
      *
      * @return MovimentacaoFinanceira
      */
-    public function getMovimentacaoFinanceira(){
+    public function getMovimentacaoFinanceira()
+    {
         return $this->movimentacaoFinanceira;
     }
 
@@ -116,8 +110,10 @@ class LogPagamento{
      *
      * @param text $conteudoEnvio
      */
-    public function setConteudoEnvio($conteudo){
+    public function setConteudoEnvio($conteudo)
+    {
         $this->conteudoEnvio = $conteudo;
+
         return $this;
     }
 
@@ -126,7 +122,8 @@ class LogPagamento{
      *
      * @return text
      */
-    public function getConteudoEnvio(){
+    public function getConteudoEnvio()
+    {
         return $this->conteudoEnvio;
     }
 
@@ -135,8 +132,10 @@ class LogPagamento{
      *
      * @param text $host
      */
-    public function setHost($host){
+    public function setHost($host)
+    {
         $this->host = $host;
+
         return $this;
     }
 
@@ -145,7 +144,8 @@ class LogPagamento{
      *
      * @return text
      */
-    public function getHost(){
+    public function getHost()
+    {
         return $this->host;
     }
 
@@ -154,8 +154,10 @@ class LogPagamento{
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro(\DateTime $dataCadastro){
+    public function setDataCadastro(\DateTime $dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
+
         return $this;
     }
 
@@ -164,7 +166,8 @@ class LogPagamento{
      *
      * @return datetime
      */
-    public function getDataCadastro(){
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 

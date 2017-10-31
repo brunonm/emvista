@@ -8,6 +8,7 @@
     <thead>
         <tr>
             <th>Projeto</th>
+            <th>Valor arrecadado</th>
             <th>Data finalização</th>
             <th>Ações</th>
         </tr>
@@ -16,9 +17,10 @@
         <?php foreach($projetos as $projeto): ?>
             <tr>
                 <td><?php echo $projeto->getNome(); ?></td>
+                <td>R$ <?php echo $projeto->getValorArrecadadoFormatado(); ?></td>
                 <td><?php echo $projeto->getDataFim()->format('d/m/Y'); ?></td>
                 <td>
-                    <a href="<?php //echo $view['router']->generate('_pagamento_estorno_popup', array('projetoId' => $projeto->getId())); ?>">Visualizar contribuições</a>
+                    <a href="<?php echo $view['router']->generate('admin_estornos-projeto', array('projetoId' => $projeto->getId())); ?>">Visualizar contribuições</a>
                 </td>
             </tr>
         <?php endforeach; ?>

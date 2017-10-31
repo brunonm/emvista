@@ -4,12 +4,12 @@ namespace EmVista\EmVistaBundle\Tests\Services;
 
 use EmVista\EmVistaBundle\Tests\TestCase;
 use EmVista\EmVistaBundle\Entity\Projeto;
-use EmVista\EmVistaBundle\Entity\StatusSubmissao;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
 
-class ProjetoServiceTest extends TestCase{
-
-    protected function setUp(){
+class ProjetoServiceTest extends TestCase
+{
+    protected function setUp()
+    {
         parent::setUp();
         $this->loadTestFixtures('Domain');
         $this->loadTestFixtures('ProjetoServiceTest');
@@ -18,7 +18,8 @@ class ProjetoServiceTest extends TestCase{
     /**
      * @test
      */
-    public function deveListarCategoriasComSucesso(){
+    public function deveListarCategoriasComSucesso()
+    {
         $listaCategorias = $this->get('service.projeto')->listarCategorias();
         $this->assertEquals(15, count($listaCategorias));
     }
@@ -26,7 +27,8 @@ class ProjetoServiceTest extends TestCase{
     /**
      * @test
      */
-    public function deveCadastrarCategoriaComSucesso(){
+    public function deveCadastrarCategoriaComSucesso()
+    {
         $sd = ServiceData::build(array('nome' => 'Categoria 3'));
         $categoriaId = $this->get('service.projeto')->salvarCategoria($sd)->getId();
         $categoria = $this->getEntityManager()->find('EmVistaBundle:Categoria', $categoriaId);
@@ -36,7 +38,8 @@ class ProjetoServiceTest extends TestCase{
     /**
      * @test
      */
-    public function deveAlterarCategoriaComSucesso(){
+    public function deveAlterarCategoriaComSucesso()
+    {
         $sd = ServiceData::build(array('id' => 2, 'nome' => 'Categoria 3'));
         $categoriaId = $this->get('service.projeto')->salvarCategoria($sd)->getId();
         $categoria = $this->getEntityManager()->find('EmVistaBundle:Categoria', $categoriaId);
@@ -47,7 +50,8 @@ class ProjetoServiceTest extends TestCase{
      * @test
      * @expectedException EmVista\EmVistaBundle\Core\Exceptions\ServiceValidationException
      */
-    public function deveLancarExceptionSeNomeDaCategoriaForMenorQue2Caracteres(){
+    public function deveLancarExceptionSeNomeDaCategoriaForMenorQue2Caracteres()
+    {
         $sd = ServiceData::build(array('nome' => 'P'));
         $this->get('service.projeto')->salvarCategoria($sd)->getId();
     }
@@ -56,7 +60,8 @@ class ProjetoServiceTest extends TestCase{
      * @test
      * @expectedException EmVista\EmVistaBundle\Core\Exceptions\ServiceValidationException
      */
-    public function deveLancarExceptionSeIdDaCategoriaForInvalido(){
+    public function deveLancarExceptionSeIdDaCategoriaForInvalido()
+    {
         $sd = ServiceData::build(array('id' => '1231231asdasd', 'nome' => 'Categoria'));
         $this->get('service.projeto')->salvarCategoria($sd)->getId();
     }
@@ -64,7 +69,8 @@ class ProjetoServiceTest extends TestCase{
     /**
      * @test
      */
-    public function deveAtualizarQuantidadeDeProjetosPublicadosDasCategoriasComSucesso(){
+    public function deveAtualizarQuantidadeDeProjetosPublicadosDasCategoriasComSucesso()
+    {
         $em = $this->getEntityManager();
         $usuario   = $em->find('EmVistaBundle:Usuario', 1);
         $termoUso  = $em->find('EmVistaBundle:TermoUso', 1);

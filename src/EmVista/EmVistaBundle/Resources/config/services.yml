@@ -1,0 +1,61 @@
+parameters:
+    imagine.class: Imagine\Gd\Imagine
+    service.pagamento.class: EmVista\EmVistaBundle\Services\PagamentoService
+    service.projeto.class: EmVista\EmVistaBundle\Services\ProjetoService
+    service.submissao.class: EmVista\EmVistaBundle\Services\SubmissaoService
+    service.usuario.class: EmVista\EmVistaBundle\Services\UsuarioService
+    core.mailer.class: EmVista\EmVistaBundle\Core\Mailer\Swift
+
+services:
+    imagine:
+        class: %imagine.class%
+    core.mailer:
+        class: %core.mailer.class%
+        arguments: ['@mailer']
+        calls:
+            - [setDefaultFrom, ['%mailer_default_from%']]
+
+    service.pagamento:
+        class: %service.pagamento.class%
+        calls:
+            - [setEntityManager, ['@doctrine.orm.default_entity_manager']]
+            - [setValidator, ['@respect.validator']]
+            - [setPaymentGateway, ['@payment.moip']]
+            - [setMailer, ['@core.mailer']]
+
+    service.projeto:
+        class: %service.projeto.class%
+        calls:
+            - [setEntityManager, ['@doctrine.orm.default_entity_manager']]
+            - [setValidator, ['@respect.validator']]
+            - [setMailer, ['@core.mailer']]
+            - [setPercentualPlataforma, ['%percentual_plataforma%']]
+
+    service.submissao:
+        class: %service.submissao.class%
+        calls:
+            - [setEntityManager, ['@doctrine.orm.default_entity_manager']]
+            - [setValidator, ['@respect.validator']]
+            - [setMailer, ['@core.mailer']]
+            - [setProjetoService, ['@service.projeto']]
+            - [setQuantidadeDiasMinimo, ['%projeto_quantidade_dias_minimo%']]
+            - [setQuantidadeDiasMaximo, ['%projeto_quantidade_dias_maximo%']]
+            - [setUploadDir, ['%upload_dir%']]
+            - [setImagine, ['@imagine']]
+            - [setContatoEmail, ['%contato_email%']]
+
+    service.usuario:
+        class: %service.usuario.class%
+        calls:
+            - [setMailer, ['@core.mailer']]
+            - [setEntityManager, ['@doctrine.orm.default_entity_manager']]
+            - [setValidator, ['@respect.validator']]
+            - [setEncoderFactory, ['@security.encoder_factory']]
+            - [setImagine, ['@imagine']]
+            - [setProfileDir, ['%upload_profile_dir%']]
+            - [setProfileTempDir, ['%upload_profile_temp_dir%']]
+            - [setProfileWebPath, ['%profile_web_path%']]
+            - [setProfileWebTempPath, ['%profile_web_temp_path%']]
+            - [setProfileHeight, ['%profile_height%']]
+            - [setProfileWidth, ['%profile_width%']]
+            - [setContatoEmail, ['%contato_email%']]

@@ -19,10 +19,10 @@ use EmVista\EmVistaBundle\Entity\StatusArrecadacao;
 use EmVista\EmVistaBundle\Entity\TipoProjetoImagem;
 use EmVista\EmVistaBundle\Entity\TipoMovimentacaoFinanceira;
 
-class EmVista implements FixtureInterface{
-
-    public function load(ObjectManager $em){
-
+class EmVista implements FixtureInterface
+{
+    public function load(ObjectManager $em)
+    {
         //CATEGORIAS
 
         $categoriaArte = new Categoria();
@@ -156,29 +156,18 @@ class EmVista implements FixtureInterface{
                                    ->setDescricao('Cancelado');
         $em->persist($statusArrecadacaoCancelado);
 
+        $statusArrecadacaoAguardandoInicio = new StatusArrecadacao();
+        $statusArrecadacaoAguardandoInicio->setNome('AGUARDANDO_INICIO')
+                                          ->setDescricao('Aguardando início');
+        $em->persist($statusArrecadacaoAguardandoInicio);
+
         //TIPO PROJETO IMAGEM
-
-        $tipoProjetoImagemDestaque = new TipoProjetoImagem();
-        $tipoProjetoImagemDestaque->setNome('DESTAQUE')
-                                  ->setAspectRatio(860 / 200)
-                                  ->setLargura(860)
-                                  ->setAltura(200);
-
-        $em->persist($tipoProjetoImagemDestaque);
-
-        $tipoProjetoImagemDestaqueSecundario = new TipoProjetoImagem();
-        $tipoProjetoImagemDestaqueSecundario->setNome('DESTAQUE_SECUNDARIO')
-                                            ->setAspectRatio(360 / 200)
-                                            ->setLargura(360)
-                                            ->setAltura(200);
-
-        $em->persist($tipoProjetoImagemDestaqueSecundario);
 
         $tipoProjetoImagemThumb = new TipoProjetoImagem();
         $tipoProjetoImagemThumb->setNome('THUMB')
-                               ->setAspectRatio(220 / 300)
-                               ->setLargura(220)
-                               ->setAltura(300);
+                               ->setAspectRatio(360 / 360)
+                               ->setLargura(360)
+                               ->setAltura(360);
 
         $em->persist($tipoProjetoImagemThumb);
 
@@ -217,8 +206,6 @@ class EmVista implements FixtureInterface{
                 ->addUserRole($roleAdmin);
         $em->persist($usuario);
 
-
-
         //STATUS DOACAO
 
         $statusDoacaoAprovada = new StatusDoacao();
@@ -256,7 +243,6 @@ class EmVista implements FixtureInterface{
         $statusDoacaoAguardando->setDescricao('Aguardando pagamento.');
 
         $em->persist($statusDoacaoAguardando);
-
 
         //GATEWAYS DE PAGAMENTOS
 
@@ -338,7 +324,6 @@ class EmVista implements FixtureInterface{
         $statusMoipReembolsado->setStatusDoacao($statusDoacaoEstornado);
 
         $em->persist($statusMoipReembolsado);
-
 
         //TIPO MOVIMENTACAO FINANCEIRA
 
@@ -432,7 +417,6 @@ class EmVista implements FixtureInterface{
 
         $em->persist($fpMoipPaggo);
 
-
         $fpMoipBanrisul = new FormaPagamento();
         $fpMoipBanrisul->setGatewayPagamento($moipGateway);
         $fpMoipBanrisul->setCodigo(88);
@@ -440,9 +424,6 @@ class EmVista implements FixtureInterface{
         $fpMoipBanrisul->setDescricao('Débito em conta banco Banrisul');
 
         $em->persist($fpMoipBanrisul);
-
-
-
 
         $em->flush();
     }

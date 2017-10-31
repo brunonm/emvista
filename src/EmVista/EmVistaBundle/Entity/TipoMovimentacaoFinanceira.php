@@ -2,13 +2,9 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * EmVista\EmVistaBundle\Entity\TipoMovimentacaoFinanceira
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class TipoMovimentacaoFinanceira
 {
@@ -18,19 +14,14 @@ class TipoMovimentacaoFinanceira
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
-
 
     /**
      * Get id
@@ -50,6 +41,7 @@ class TipoMovimentacaoFinanceira
     public function setNome($nome)
     {
         $this->nome = $nome;
+
         return $this;
     }
 

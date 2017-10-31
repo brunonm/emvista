@@ -2,7 +2,7 @@
 <?php $view['slots']->start('submissao-body') ?>
 
 <form class="form-horizontal" method="post"
-      action="<?php echo $view['router']->generate('submissao_salvarVideo', array('submissaoId' => $submissao->getId())); ?>">
+      action="<?php echo $view['router']->generate('submissao_salvar-video', array('submissaoId' => $submissao->getId())); ?>">
 
     <input type="hidden" name="submissaoId" id="submissaoId" value="<?php echo $submissao->getId(); ?>"/>
 
@@ -10,10 +10,10 @@
 
     <fieldset>
         <legend>Video</legend>
-        <div class="control-group">
-            <label class="control-label" for="siteVideoId">Site do video</label>
-            <div class="controls">
-                <select type="text" name="siteVideoId" class="input-small">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="siteVideoId">Site do video</label>
+            <div class="col-sm-2">
+                <select type="text" name="siteVideoId" class="form-control">
                     <?php foreach($sitesVideo as $siteVideo): ?>
                         <?php $siteVideoId = ($video ? $video->getSiteVideo()->getId() : null); ?>
                         <?php $selected = ($siteVideo->getId() == $siteVideoId ? 'selected' : ''); ?>
@@ -22,18 +22,18 @@
                 </select>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="url">Endereço</label>
-            <div class="controls ">
-                <input type="text" name="url" class="input-xxlarge" value="<?php echo ($video ? $video->getWatchUrl() : ''); ?>">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="url">Endereço</label>
+            <div class="col-sm-6">
+                <input type="text" name="url" class="form-control" value="<?php echo ($video ? $video->getWatchUrl() : ''); ?>">
 
             </div>
         </div>
-        <div class="control-group">
-            <div class="controls">
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-2">
                 <a href="<?php echo $view['router']->generate('submissao_recompensas', array('submissaoId' => $submissao->getId())); ?>"
                    class="btn">Voltar</a>
-                <button type="submit" class="btn">Avançar</button>
+                <button type="submit" class="btn btn-success">Avançar</button>
             </div>
         </div>
     </fieldset>

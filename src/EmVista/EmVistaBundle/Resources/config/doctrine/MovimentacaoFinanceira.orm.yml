@@ -1,0 +1,121 @@
+EmVista\EmVistaBundle\Entity\MovimentacaoFinanceira:
+    type: entity
+    table: movimentacao_financeira
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        valor:
+            type: decimal
+            scale: 2
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        transacaoId:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        status:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        razaoPendencia:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        codigoRazao:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        errorCode:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        token:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        dataEdicao:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        taxa:
+            type: decimal
+            scale: 2
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        valorLiquido:
+            type: decimal
+            scale: 2
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+    manyToOne:
+        tipoMovimentacaoFinanceira:
+            targetEntity: EmVista\EmVistaBundle\Entity\TipoMovimentacaoFinanceira
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipomovimentacaofinanceira_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        doacao:
+            targetEntity: EmVista\EmVistaBundle\Entity\Doacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: movimentacoesFinanceiras
+            joinColumns:
+                doacao_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        gatewayPagamento:
+            targetEntity: EmVista\EmVistaBundle\Entity\GatewayPagamento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                gatewayPagamento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

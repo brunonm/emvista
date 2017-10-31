@@ -3,81 +3,62 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\OneToOne;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\JoinColumn;
-use EmVista\EmVistaBundle\Entity\Usuario;
 
 /**
  * EmVista\EmVistaBundle\Entity\UsuarioDetalhesPagamento
  *
- * @ORM\Table()
- * @ORM\Entity
  */
-class UsuarioDetalhesPagamento{
-
+class UsuarioDetalhesPagamento
+{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Usuario
-     * @ManyToOne(targetEntity="Usuario")
-     * @JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
     /**
      * @var GatewayPagamento
-     * @ManyToOne(targetEntity="GatewayPagamento")
-     * @JoinColumn(name="gatewayPagamento_id", referencedColumnName="id", nullable=false)
      */
     private $gatewayPagamento;
 
     /**
      * @var string $gatewayId
      *
-     * @ORM\Column(name="gatewayId", type="string", length=255)
      */
     private $gatewayId;
 
     /**
      * @var string $gatewayEmail
      *
-     * @ORM\Column(name="gatewayEmail", type="string", length=255)
      */
     private $gatewayEmail;
 
     /**
      * @var string $gatewayStatus
      *
-     * @ORM\Column(name="gatewayStatus", type="string", length=255, nullable=true)
      */
     private $gatewayStatus;
 
     /**
      * @var string $primeiroNome
      *
-     * @ORM\Column(name="primeiroNome", type="string", length=255)
      */
     private $primeiroNome;
 
     /**
      * @var string $ultimoNome
      *
-     * @ORM\Column(name="ultimoNome", type="string", length=255, nullable=true)
      */
     private $ultimoNome;
 
     /**
      * @var string $pais
      *
-     * @ORM\Column(name="pais", type="string", length=255)
      */
     private $pais;
 
@@ -86,7 +67,8 @@ class UsuarioDetalhesPagamento{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -95,8 +77,10 @@ class UsuarioDetalhesPagamento{
      *
      * @param Usuario $usuario
      */
-    public function setUsuario(Usuario $usuario){
+    public function setUsuario(Usuario $usuario)
+    {
         $this->usuario = $usuario;
+
         return $this;
     }
 
@@ -105,7 +89,8 @@ class UsuarioDetalhesPagamento{
      *
      * @return Usuario
      */
-    public function getUsuario(){
+    public function getUsuario()
+    {
         return $this->usuario;
     }
 
@@ -114,8 +99,10 @@ class UsuarioDetalhesPagamento{
      *
      * @param string $gatewayId
      */
-    public function setGatewayId($gatewayId){
+    public function setGatewayId($gatewayId)
+    {
         $this->gatewayId = $gatewayId;
+
         return $this;
     }
 
@@ -124,7 +111,8 @@ class UsuarioDetalhesPagamento{
      *
      * @return string
      */
-    public function getGatewayId(){
+    public function getGatewayId()
+    {
         return $this->gatewayId;
     }
 
@@ -133,8 +121,10 @@ class UsuarioDetalhesPagamento{
      *
      * @param string $gatewayEmail
      */
-    public function setGatewayEmail($gatewayEmail){
+    public function setGatewayEmail($gatewayEmail)
+    {
         $this->gatewayEmail = $gatewayEmail;
+
         return $this;
     }
 
@@ -143,7 +133,8 @@ class UsuarioDetalhesPagamento{
      *
      * @return string
      */
-    public function getGatewayEmail(){
+    public function getGatewayEmail()
+    {
         return $this->gatewayEmail;
     }
 
@@ -152,8 +143,10 @@ class UsuarioDetalhesPagamento{
      *
      * @param string $gatewayStatus
      */
-    public function setGatewayStatus($gatewayStatus){
+    public function setGatewayStatus($gatewayStatus)
+    {
         $this->gatewayStatus = $gatewayStatus;
+
         return $this;
     }
 
@@ -162,7 +155,8 @@ class UsuarioDetalhesPagamento{
      *
      * @return string
      */
-    public function getGatewayStatus(){
+    public function getGatewayStatus()
+    {
         return $this->gatewayStatus;
     }
 
@@ -171,8 +165,10 @@ class UsuarioDetalhesPagamento{
      *
      * @param string $primeiroNome
      */
-    public function setPrimeiroNome($primeiroNome){
+    public function setPrimeiroNome($primeiroNome)
+    {
         $this->primeiroNome = $primeiroNome;
+
         return $this;
     }
 
@@ -181,7 +177,8 @@ class UsuarioDetalhesPagamento{
      *
      * @return string
      */
-    public function getPrimeiroNome(){
+    public function getPrimeiroNome()
+    {
         return $this->primeiroNome;
     }
 
@@ -190,8 +187,10 @@ class UsuarioDetalhesPagamento{
      *
      * @param string $ultimoNome
      */
-    public function setUltimoNome($ultimoNome){
+    public function setUltimoNome($ultimoNome)
+    {
         $this->ultimoNome = $ultimoNome;
+
         return $this;
     }
 
@@ -200,7 +199,8 @@ class UsuarioDetalhesPagamento{
      *
      * @return string
      */
-    public function getUltimoNome(){
+    public function getUltimoNome()
+    {
         return $this->ultimoNome;
     }
 
@@ -209,8 +209,10 @@ class UsuarioDetalhesPagamento{
      *
      * @param string $pais
      */
-    public function setPais($pais){
+    public function setPais($pais)
+    {
         $this->pais = $pais;
+
         return $this;
     }
 
@@ -219,28 +221,30 @@ class UsuarioDetalhesPagamento{
      *
      * @return string
      */
-    public function getPais(){
+    public function getPais()
+    {
         return $this->pais;
     }
-    
+
     /**
      *
-     * @return  GatewayPagamento 
+     * @return GatewayPagamento
      */
-    public function getGateway() {
+    public function getGateway()
+    {
         return $this->gatewayPagamento;
     }
 
     /**
      *
-     * @param GatewayPagamento $gateway
-     * @return UsuarioDetalhesPagamento 
+     * @param  GatewayPagamento         $gateway
+     * @return UsuarioDetalhesPagamento
      */
-    public function setGateway(GatewayPagamento $gateway) {
+    public function setGateway(GatewayPagamento $gateway)
+    {
         $this->gatewayPagamento = $gateway;
+
         return $this;
     }
-
-
 
 }

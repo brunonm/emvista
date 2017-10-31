@@ -1,0 +1,77 @@
+EmVista\EmVistaBundle\Entity\UsuarioDetalhesPagamento:
+    type: entity
+    table: usuario_detalhes_pagamento
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        gatewayId:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        gatewayEmail:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        gatewayStatus:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        primeiroNome:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        ultimoNome:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: true
+            precision: 0
+        pais:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        usuario:
+            targetEntity: EmVista\EmVistaBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        gatewayPagamento:
+            targetEntity: EmVista\EmVistaBundle\Entity\GatewayPagamento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                gatewayPagamento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

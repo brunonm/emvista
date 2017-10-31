@@ -1,0 +1,69 @@
+EmVista\EmVistaBundle\Entity\Submissao:
+    type: entity
+    table: submissao
+    repositoryClass: EmVista\EmVistaBundle\Repository\SubmissaoRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        observacaoResposta:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: observacao_resposta
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: data_cadastro
+        dataEnvio:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: data_envio
+        dataResposta:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+            column: data_resposta
+    oneToOne:
+        projeto:
+            targetEntity: EmVista\EmVistaBundle\Entity\Projeto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                projeto_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToOne:
+        status:
+            targetEntity: EmVista\EmVistaBundle\Entity\StatusSubmissao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                status_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

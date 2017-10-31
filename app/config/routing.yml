@@ -1,9 +1,26 @@
-EmVistaBundle:
-    resource: "@EmVistaBundle/Controller/"
-    type:     annotation
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+    
+facebook_login:
+    pattern: /login/check-facebook
+
+google_login:
+    pattern: /login/check-google    
+
+twitter_login:
+    pattern: /login/check-twitter
+
+emvista:
+    resource: "@EmVistaBundle/Resources/config/routing.yml"
     prefix:   /
     options:
         expose: true
+
 login_check:
     pattern:   /login_check
     options:
@@ -18,6 +35,7 @@ projeto_visualizar:
     defaults: { _controller: EmVistaBundle:Projeto:visualizar}
     options:
         expose: true
+
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
     

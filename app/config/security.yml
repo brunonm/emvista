@@ -6,7 +6,7 @@ security:
             iterations: 1
 
     providers:
-        administrators:
+        emvista:
             entity: { class: EmVistaBundle:Usuario, property: email}
 
     firewalls:
@@ -19,45 +19,28 @@ security:
             logout:
                 path: /logout
                 target: /
+            oauth:
+                resource_owners:
+                    facebook: /login/check-facebook
+                    google:   /login/check-google
+                    twitter:  /login/check-twitter
+                login_path: /usuario/login
+                failure_path: /
+                oauth_user_provider:
+                    service: oauth_provider
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-
-#security:
-#    encoders:
-#        Symfony\Component\Security\Core\User\User: plaintext
-#
-#    role_hierarchy:
-#        ROLE_ADMIN:       ROLE_USER
-#        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-#
-#    providers:
-#        in_memory:
-#            users:
-#                user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-#                admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-#
-#    firewalls:
-#        dev:
-#            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-#            security: false
-#
-#        login:
-#            pattern:  ^/demo/secured/login$
-#            security: false
-#
-#        secured_area:
-#            pattern:    ^/demo/secured/
-#            form_login:
-#                check_path: /demo/secured/login_check
-#                login_path: /demo/secured/login
-#            logout:
-#                path:   /demo/secured/logout
-#                target: /demo/
-#            #anonymous: ~
-#            #http_basic:
-#            #    realm: "Secured Demo Area"
-#
-#    access_control:
-#        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-#        #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/pagamento/checkout, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/pagamento/continue-checkout, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/pagamento/retorno-pagamento, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/meus-projetos, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/contribuicoes, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/dados-pessoais, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/alterar-dados-pessoais, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/confirmacao-inativar-conta, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/inativar-conta, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/salvar-imagem-temporaria-profile, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/recorta-imagem-profile, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/usuario/apoiadores-projeto, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/submissao, roles: IS_AUTHENTICATED_FULLY }

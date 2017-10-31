@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services\Exceptions;
 
-class ProjetoNaoPublicadoException extends \Exception{
-
+class ProjetoNaoPublicadoException extends \Exception
+{
 }

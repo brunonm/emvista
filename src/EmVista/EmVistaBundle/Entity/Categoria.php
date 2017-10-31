@@ -2,57 +2,46 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\Categoria
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\CategoriaRepository")
  */
-class Categoria extends EntityAbstract{
-
+class Categoria extends EntityAbstract
+{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var integer $quantidadeProjetosPublicados
      *
-     * @ORM\Column(name="quantidade_projetos_publicados", type="integer", nullable=true)
      */
     private $quantidadeProjetosPublicados;
 
     /**
      *
-     * @Gedmo\Slug(fields={"nome"}, updatable=true)
-     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
-     * @var type
+     * @var string
      */
     private $slug;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setDataCadastro(new \DateTime("now"));
         $this->setQuantidadeProjetosPublicados(0);
@@ -63,7 +52,8 @@ class Categoria extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -72,8 +62,10 @@ class Categoria extends EntityAbstract{
      *
      * @param string $nome
      */
-    public function setNome($nome){
+    public function setNome($nome)
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -82,7 +74,8 @@ class Categoria extends EntityAbstract{
      *
      * @return string
      */
-    public function getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 
@@ -91,8 +84,10 @@ class Categoria extends EntityAbstract{
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro(\DateTime $dataCadastro){
+    public function setDataCadastro(\DateTime $dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
+
         return $this;
     }
 
@@ -101,29 +96,34 @@ class Categoria extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataCadastro(){
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 
     /**
      * @param integer $qtd
      */
-    public function setQuantidadeProjetosPublicados($qtd){
+    public function setQuantidadeProjetosPublicados($qtd)
+    {
         $this->quantidadeProjetosPublicados = $qtd;
+
         return $this;
     }
 
     /**
      * @return integer
      */
-    public function getQuantidadeProjetosPublicados(){
+    public function getQuantidadeProjetosPublicados()
+    {
         return $this->quantidadeProjetosPublicados;
     }
     /**
      *
      * @return string
      */
-    public function getSlug(){
+    public function getSlug()
+    {
         return $this->slug;
     }
 }

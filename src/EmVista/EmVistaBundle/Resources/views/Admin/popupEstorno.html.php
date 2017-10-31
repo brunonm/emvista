@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title><?php $view['slots']->output('title', 'EmVista.me'); ?></title>
+        <title><?php $view['slots']->output('title', 'cultura crowdfunding'); ?></title>
         <link rel="shortcut icon" href="<?php $view['slots']->output('title', 'favicon.ico'); ?>" />
     </head>
 

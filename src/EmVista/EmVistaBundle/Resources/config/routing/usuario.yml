@@ -1,0 +1,75 @@
+usuario_meus-projetos:
+    pattern: /usuario/meus-projetos
+    defaults: { _controller: EmVistaBundle:Usuario:meusProjetos }
+
+usuario_contribuicoes:
+    pattern: /usuario/contribuicoes
+    defaults: { _controller: EmVistaBundle:Usuario:contribuicoes }
+
+usuario_dados-pessoais:
+    pattern: /usuario/dados-pessoais
+    defaults: { _controller: EmVistaBundle:Usuario:dadosPessoais }
+
+usuario_alterar-dados-pessoais:
+    pattern: /usuario/alterar-dados-pessoais
+    defaults: { _controller: EmVistaBundle:Usuario:alterarDadosPessoais }
+    methods: [POST]
+
+usuario_confirmacao-inativar-conta:
+    pattern: /usuario/confirmacao-inativar-conta
+    defaults: { _controller: EmVistaBundle:Usuario:confirmacaoInativarConta }
+
+usuario_inativar-conta:
+    pattern: /usuario/inativar-conta
+    defaults: { _controller: EmVistaBundle:Usuario:inativarConta }
+
+usuario_login:
+    pattern: /usuario/login
+    defaults: { _controller: EmVistaBundle:Usuario:login }
+
+usuario_registro:
+    pattern: /usuario/registro
+    defaults: { _controller: EmVistaBundle:Usuario:registro }
+
+usuario_registrar:
+    pattern: /usuario/registrar
+    defaults: { _controller: EmVistaBundle:Usuario:registrar }
+
+usuario_registro-sucesso:
+    pattern: /usuario/registro-sucesso
+    defaults: { _controller: EmVistaBundle:Usuario:registroSucesso }
+
+usuario_esqueci-minha-senha:
+    pattern: /usuario/esqueci-minha-senha
+    defaults: { _controller: EmVistaBundle:Usuario:esqueciMinhaSenha }
+
+usuario_enviar-esqueci-minha-senha:
+    pattern: /usuario/enviar-esqueci-minha-senha
+    defaults: { _controller: EmVistaBundle:Usuario:enviarEsqueciMinhaSenha }
+
+usuario_evalidar-token-senha:
+    pattern: /usuario/validar-token-senha/{token}
+    defaults: { _controller: EmVistaBundle:Usuario:validarTokenSenha }
+
+usuario_cadastro-nova-senha:
+    pattern: /usuario/cadastro-nova-senha
+    defaults: { _controller: EmVistaBundle:Usuario:cadastroNovaSenha }
+
+usuario_alterar-senha:
+    pattern: /usuario/alterar-senha
+    defaults: { _controller: EmVistaBundle:Usuario:alterarSenha }
+    methods: [POST]
+
+usuario_salvar-imagem-temporaria-profile:
+    pattern: /usuario/salvar-imagem-temporaria-profile
+    defaults: { _controller: EmVistaBundle:Usuario:salvarImagemTemporariaProfile }
+    methods: [POST]
+
+usuario_recortar-imagem-profile:
+    pattern: /usuario/recortar-imagem-profile
+    defaults: { _controller: EmVistaBundle:Usuario:recortaImagemProfile }
+    methods: [POST]
+
+usuario_apoiadores-projeto:
+    pattern: /usuario/apoiadores-projeto/{projetoId}
+    defaults: { _controller: EmVistaBundle:Usuario:apoiadoresProjeto }

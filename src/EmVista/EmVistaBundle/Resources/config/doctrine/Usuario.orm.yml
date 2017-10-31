@@ -1,0 +1,117 @@
+EmVista\EmVistaBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    repositoryClass: EmVista\EmVistaBundle\Repository\UsuarioRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: false
+            nullable: false
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nome:
+            type: string
+            length: 255
+            unique: false
+            nullable: false
+        email:
+            type: string
+            length: 255
+            unique: false
+            nullable: true
+        senha:
+            type: string
+            length: 255
+            unique: false
+            nullable: true
+        salt:
+            type: string
+            length: 40
+            unique: false
+            nullable: false
+        dataCadastro:
+            type: datetime
+            length: null
+            unique: false
+            nullable: false
+            column: data_cadastro
+        status:
+            type: boolean
+            length: null
+            unique: false
+            nullable: false
+        facebookId:
+            type: string
+            length: 255
+            nullable: true
+        googleId:
+            type: string
+            length: 255
+            nullable: true
+        twitterId:
+            type: string
+            length: 255
+            nullable: true
+            
+    oneToMany:
+        projetos:
+            targetEntity: EmVista\EmVistaBundle\Entity\Projeto
+            cascade: {  }
+            mappedBy: usuario
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        doacoes:
+            targetEntity: EmVista\EmVistaBundle\Entity\Doacao
+            cascade: {  }
+            mappedBy: usuario
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    oneToOne:
+        imagemProfile:
+            targetEntity: EmVista\EmVistaBundle\Entity\Imagem
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                imagem_profile_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        endereco:
+            targetEntity: EmVista\EmVistaBundle\Entity\Endereco
+            cascade: {  }
+            mappedBy: usuario
+            inversedBy: null
+            joinColumns: {  }
+            orphanRemoval: false
+    manyToMany:
+        userRoles:
+            targetEntity: EmVista\EmVistaBundle\Entity\Role
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinTable:
+                name: usuario_role
+                schema: null
+                joinColumns:
+                    -
+                        name: usuario_id
+                        unique: false
+                        nullable: true
+                        onDelete: null
+                        columnDefinition: null
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: role_id
+                        unique: false
+                        nullable: true
+                        onDelete: null
+                        columnDefinition: null
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -5,18 +5,17 @@ namespace EmVista\EmVistaBundle\Tests\DataFixtures\ProjetoServiceTest;
 use EmVista\EmVistaBundle\Entity\Role;
 use EmVista\EmVistaBundle\Entity\Usuario;
 use EmVista\EmVistaBundle\Entity\Projeto;
-use EmVista\EmVistaBundle\Entity\Submissao;
 use Doctrine\Common\Persistence\ObjectManager;
-use EmVista\EmVistaBundle\Entity\StatusSubmissao;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 
-class Fixtures implements FixtureInterface{
-
+class Fixtures implements FixtureInterface
+{
     /**
      * Depende de Domain Fixtures
      * @param ObjectManager $em
      */
-    public function load(ObjectManager $em){
+    public function load(ObjectManager $em)
+    {
         $usuario = new Usuario();
         $usuario->setEmail('usuario@emvista.me')
                 ->setNome('Usuario')

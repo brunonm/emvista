@@ -1,7 +1,7 @@
 <?php $view->extend('EmVistaBundle:Admin:index.html.php'); ?>
 <?php $view['slots']->start('admin-body') ?>
 
-<p><strong>Usuários</strong></p>
+<legend>Usuários</legend>
 <p>As alterações terão efeito no próximo login.</p>
 
 <table class="table table-striped">
@@ -19,9 +19,9 @@
                 <td><?php echo $usuario->getEmail(); ?></td>
                 <td>
                     <?php if($usuario->isAdmin()): ?>
-                        <a href="<?php echo $view['router']->generate('admin_removerAdministrador', array('usuarioId' => $usuario->getId())); ?>">Remover acesso</a>
+                        <a href="<?php echo $view['router']->generate('admin_remover-administrador', array('usuarioId' => $usuario->getId())); ?>">Remover acesso</a>
                     <?php else: ?>
-                        <a href="<?php echo $view['router']->generate('admin_adicionarAdministrador', array('usuarioId' => $usuario->getId())); ?>">Adicionar acesso</a>
+                        <a href="<?php echo $view['router']->generate('admin_adicionar-administrador', array('usuarioId' => $usuario->getId())); ?>">Adicionar acesso</a>
                     <?php endif; ?>
                 </td>
             </tr>
@@ -29,6 +29,6 @@
     </tbody>
 </table>
 
-<a class="btn" href="<?php echo $view['router']->generate('admin_gerenciarAdministradores') ?>">Administradores</a>
+<a class="btn" href="<?php echo $view['router']->generate('admin_gerenciar-administradores') ?>">Administradores</a>
 
 <?php $view['slots']->stop(); ?>

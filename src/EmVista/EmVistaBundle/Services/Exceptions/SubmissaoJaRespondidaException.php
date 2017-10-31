@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services\Exceptions;
 
-class SubmissaoJaRespondidaException extends \Exception{
-
+class SubmissaoJaRespondidaException extends \Exception
+{
 }

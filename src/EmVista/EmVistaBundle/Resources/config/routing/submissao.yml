@@ -1,0 +1,75 @@
+submissao_termo-uso:
+    pattern: /submissao/termo-uso
+    defaults: { _controller: EmVistaBundle:Submissao:termosUso }
+
+submissao_iniciar:
+    pattern: /submissao/iniciar
+    defaults: { _controller: EmVistaBundle:Submissao:iniciar }
+
+submissao_dados-basicos:
+    pattern: /submissao/{submissaoId}/dados-basicos
+    defaults: { _controller: EmVistaBundle:Submissao:dadosBasicos }
+
+submissao_salvar-dados-basicos:
+    pattern: /submissao/{submissaoId}/salvar-dados-basicos
+    defaults: { _controller: EmVistaBundle:Submissao:salvarDadosBasicos }
+    methods: [POST]
+
+submissao_descricao:
+    pattern: /submissao/{submissaoId}/descricao
+    defaults: { _controller: EmVistaBundle:Submissao:descricao }
+
+submissao_salvar-descricao:
+    pattern: /submissao/salvar-descricao/{submissaoId}
+    defaults: { _controller: EmVistaBundle:Submissao:salvarDescricao }
+
+submissao_recompensas:
+    pattern: /submissao/{submissaoId}/recompensas
+    defaults: { _controller: EmVistaBundle:Submissao:recompensas }
+
+submissao_salvar-recompensas:
+    pattern: /submissao/salvar-recompensas/{submissaoId}
+    defaults: { _controller: EmVistaBundle:Submissao:salvarRecompensas }
+
+submissao_video:
+    pattern: /submissao/{submissaoId}/video
+    defaults: { _controller: EmVistaBundle:Submissao:video }
+
+submissao_salvar-video:
+    pattern: /submissao/{submissaoId}/salvarVideo
+    defaults: { _controller: EmVistaBundle:Submissao:salvarVideo }
+    methods: [POST]
+
+submissao_imagens:
+    pattern: /submissao/{submissaoId}/imagens
+    defaults: { _controller: EmVistaBundle:Submissao:imagens }
+
+submissao_salvar-imagem-original:
+    pattern: /submissao/{submissaoId}/salvar-imagem-original
+    defaults: { _controller: EmVistaBundle:Submissao:salvarImagemOriginal }
+
+submissao_salvar-crop:
+    pattern: /submissao/{submissaoId}/salvar-crop
+    defaults: { _controller: EmVistaBundle:Submissao:salvarCrop }
+    methods: [POST]
+
+submissao_get-crop-params:
+    pattern: /submissao/getCropParams
+    defaults: { _controller: EmVistaBundle:Submissao:getCropParams }
+
+submissao_mais-sobre-voce:
+    pattern: /submissao/{submissaoId}/mais-sobre-voce
+    defaults: { _controller: EmVistaBundle:Submissao:maisSobreVoce }
+
+submissao_salvar-mais-sobre-voce:
+    pattern: /submissao/{submissaoId}/salvar-mais-sobre-voce
+    defaults: { _controller: EmVistaBundle:Submissao:salvarMaisSobreVoce }
+    methods: [POST]
+
+submissao_concluir:
+    pattern: /submissao/{submissaoId}/concluir
+    defaults: { _controller: EmVistaBundle:Submissao:concluir }
+
+submissao_sucesso:
+    pattern: /submissao/{submissaoId}/sucesso
+    defaults: { _controller: EmVistaBundle:Submissao:sucesso }

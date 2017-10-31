@@ -1,0 +1,67 @@
+EmVista\EmVistaBundle\Entity\Doacao:
+    type: entity
+    table: doacao
+    repositoryClass: EmVista\EmVistaBundle\Repository\DoacaoRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        valor:
+            type: decimal
+            scale: 2
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        usuario:
+            targetEntity: EmVista\EmVistaBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: doacoes
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        recompensa:
+            targetEntity: EmVista\EmVistaBundle\Entity\Recompensa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: doacoes
+            joinColumns:
+                recompensa_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        status:
+            targetEntity: EmVista\EmVistaBundle\Entity\StatusDoacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                status_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        movimentacoesFinanceiras:
+            targetEntity: EmVista\EmVistaBundle\Entity\MovimentacaoFinanceira
+            cascade: {  }
+            mappedBy: doacao
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -2,10 +2,8 @@
 
 namespace EmVista\EmVistaBundle\Messages;
 
-use EmVista\EmVistaBundle\Messages\BaseMessages;
-
-class UsuarioMessages extends BaseMessages{
-
+class UsuarioMessages extends BaseMessages
+{
     const ERRO_EMAIL_OUTRA_CONTA = 'O email informado já existe no EmVista e pertence a outra conta.';
     const SUCESSO_DADOS_ALTERADOS = 'Dados alterados com sucesso.';
     const SUCESSO_CONTA_INATIVADA = 'Conta inativada com sucesso.';
@@ -16,9 +14,11 @@ class UsuarioMessages extends BaseMessages{
 
     const ERROR_LOGIN = 'Credenciais incorretas. Por favor, verifique novamente o email e senha informados.';
 
-    const ERRO_USUARIO_JA_EXISTE = 'Este email já foi cadastrado no EmVista.';
+    const ERRO_USUARIO_JA_EXISTE = 'Este email já foi cadastrado no Cultura Crowdfunding.';
 
     const SUCESSO_ENVIO_ESQUECI_MINHA_SENHA = 'Email enviado com sucesso. Verifique sua caixa de entrada.';
     const SUCESSO_ALTERAÇÃO_SENHA = 'Senha alterada com sucesso.';
     const ERRO_ALTERAÇÃO_SENHA = 'Senha inválida. Tente novamente.';
+    
+    const SUCESSO_EMAIL_CONTATO = 'Mensagem enviada com sucesso';
 }

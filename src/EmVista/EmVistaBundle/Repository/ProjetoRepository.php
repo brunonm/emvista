@@ -4,22 +4,26 @@ namespace EmVista\EmVistaBundle\Repository;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Internal\Hydration\HydrationException;
+use Doctrine\ORM\Query;
 use EmVista\EmVistaBundle\Util\Date;
 use EmVista\EmVistaBundle\Entity\Projeto;
 use EmVista\EmVistaBundle\Entity\StatusDoacao;
 use EmVista\EmVistaBundle\Entity\StatusArrecadacao;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * ProjetoRepository
  */
-class ProjetoRepository extends EntityRepository{
-
+class ProjetoRepository extends EntityRepository
+{
     /**
      * Lista os projetos que estão quase finalizando
-     * @param integer $diasAFrente
+     * @param  integer   $diasAFrente
      * @return Projeto[]
      */
-    public function listarProjetosRetaFinal($diasAFrente = 10){
+    public function listarProjetosRetaFinal($diasAFrente = 10)
+    {
         $date = Date::buildDateInFuture($diasAFrente);
 
         $qb   = $this->createQueryBuilder('p')
@@ -37,7 +41,8 @@ class ProjetoRepository extends EntityRepository{
      * @param integer
      * @return Projeto[]
      */
-    public function listarProjetosNovos($diasAtras = 10){
+    public function listarProjetosNovos($diasAtras = 10)
+    {
         $date = Date::buildDateInPast($diasAtras);
 
         $qb   = $this->createQueryBuilder('p')
@@ -54,7 +59,8 @@ class ProjetoRepository extends EntityRepository{
      * Lista os projetos concluidos e incompletos
      * @return Projeto[]
      */
-    public function listarProjetosFinalizadosSemSucessoNaoEstornados(){
+    public function listarProjetosFinalizadosSemSucessoNaoEstornados()
+    {
         $qb = $this->createQueryBuilder('p')
                    ->where('p.statusArrecadacao = :statusArrecadacao')
                    ->andWhere('p.statusFinanceiro is null')
@@ -67,7 +73,8 @@ class ProjetoRepository extends EntityRepository{
      * Lista os projetos concluidos e não pagos
      * @return Projeto[]
      */
-    public function listarProjetosConcluidosNaoPagos(){
+    public function listarProjetosConcluidosNaoPagos()
+    {
         $qb = $this->createQueryBuilder('p')
                    ->where('p.statusArrecadacao = :statusArrecadacao')
                    ->andWhere('p.statusFinanceiro is null')
@@ -80,7 +87,8 @@ class ProjetoRepository extends EntityRepository{
      * Retorna o valor já arrecadado de um projeto
      * @param integer $projetoId
      */
-    public function calcularValorArrecadado($projetoId){
+    public function calcularValorArrecadado($projetoId)
+    {
         $em = $this->getEntityManager();
 
         $query = $em->createQuery('
@@ -100,7 +108,8 @@ class ProjetoRepository extends EntityRepository{
      * Retorna a quantidade de projetos aprovados de uma determinada categoria
      * @param integer $categoriaId
      */
-    public function countProjetosAprovadosByCategoriaId($categoriaId){
+    public function countProjetosAprovadosByCategoriaId($categoriaId)
+    {
         $em = $this->getEntityManager();
 
         $query = $em->createQuery('
@@ -118,10 +127,11 @@ class ProjetoRepository extends EntityRepository{
 
     /**
      * Realiza busca de projetos
-     * @param string $text
+     * @param  string    $text
      * @return Projeto[]
      */
-    public function busca($text){
+    public function busca($text)
+    {
         $qb = $this->createQueryBuilder('p');
 
         $qb->where('p.publicado = :publicado')
@@ -135,13 +145,12 @@ class ProjetoRepository extends EntityRepository{
         return $query->getResult();
     }
 
-
-
     /**
      * pesquisa projetos com dt_aprovacao != null, publicado = 0, statusArrecadacao = null
      * @return Projeto[]
      */
-    public function listarProjetosAprovadosNaoPublicados(){
+    public function listarProjetosAprovadosNaoPublicados()
+    {
         $qb = $this->createQueryBuilder('p');
 
         $qb->where('p.publicado = :publicado')
@@ -154,10 +163,11 @@ class ProjetoRepository extends EntityRepository{
 
     /**
      * calcula o valor liquido arrecadado e taxas de um projeto
-     * @param Projeto $projeto
+     * @param  Projeto $projeto
      * @return float
      */
-    public function calcularValorLiquidoETaxa(Projeto $projeto){
+    public function calcularValorLiquidoETaxa(Projeto $projeto)
+    {
         $em = $this->getEntityManager();
 
         $query = $em->createQuery('
@@ -174,4 +184,50 @@ class ProjetoRepository extends EntityRepository{
 
         return $query->getSingleResult();
     }
+
+    public function getMore($lastProjectId, $count, $preCadastro = false)
+    {
+
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->where('p.publicado = :publicado')
+            ->andWhere('p.id < :lastId')
+            ->andWhere('p.preCadastro = :preCadastro')
+            ->setParameter('publicado', true, Type::BOOLEAN)
+            ->setParameter('preCadastro', $preCadastro, Type::BOOLEAN)
+            ->setParameter('lastId', $lastProjectId)
+            ->setMaxResults($count)
+            ->orderBy(
+                'p.id', 'DESC'
+            );
+        return $qb->getQuery()->getResult();
+
+    }
+
+    public function listaProjetosPublicadosNaoFinalizadosByData(\DateTime $data)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery('
+            SELECT p,r,d,s
+            FROM
+              EmVistaBundle:Projeto p
+              JOIN p.recompensas r
+              JOIN r.doacoes d
+              JOIN d.status s
+            WHERE p.publicado = :publicado
+            AND p.dataFim >= :dataFimInicial
+            and p.dataFim < :dataFimFinal
+            ');
+
+        $dataFim = new \DateTime($data->format('Y-m-d') . ' + 1 day');
+        $query->setParameter('dataFimInicial', $data->format('Y-m-d H:i:s'))
+            ->setParameter('dataFimFinal', $dataFim->format('Y-m-d H:i:s'))
+            ->setParameter('publicado', true);
+
+
+
+        return $query->getResult();
+    }
+
 }

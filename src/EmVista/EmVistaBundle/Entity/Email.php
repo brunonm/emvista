@@ -2,17 +2,14 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * Email
  *
- * @ORM\Table()
- * @ORM\Entity
  */
-class Email extends EntityAbstract{
-
+class Email extends EntityAbstract
+{
     # TIPO USUARIO DESTINO _ TITULO
 
     const APOIADOR_RECEMOS_SUA_CONTRIBUICAO = 1;
@@ -30,27 +27,23 @@ class Email extends EntityAbstract{
     const USUARIO_ALTERACAO_SENHA           = 13;
     const AUTOR_CONFIRMACAO_PRE_CADASTRO    = 14;
     const ADMIN_CADASTRO_PRE_PROJETO        = 15;
+    const ADMIN_CADASTRO_PROJETO            = 16;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="titulo", type="string", length=255)
      */
     private $titulo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="texto", type="text")
      */
     private $texto;
 
@@ -59,17 +52,19 @@ class Email extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * Set titulo
      *
-     * @param string $titulo
+     * @param  string $titulo
      * @return Email
      */
-    public function setTitulo($titulo){
+    public function setTitulo($titulo)
+    {
         $this->titulo = $titulo;
 
         return $this;
@@ -80,17 +75,19 @@ class Email extends EntityAbstract{
      *
      * @return string
      */
-    public function getTitulo(){
+    public function getTitulo()
+    {
         return $this->titulo;
     }
 
     /**
      * Set texto
      *
-     * @param string $texto
+     * @param  string $texto
      * @return Email
      */
-    public function setTexto($texto){
+    public function setTexto($texto)
+    {
         $this->texto = $texto;
 
         return $this;
@@ -101,7 +98,8 @@ class Email extends EntityAbstract{
      *
      * @return string
      */
-    public function getTexto(){
+    public function getTexto()
+    {
         return $this->texto;
     }
 }

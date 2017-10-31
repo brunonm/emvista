@@ -1,0 +1,47 @@
+home_index:
+    pattern: /
+    defaults: { _controller: EmVistaBundle:Home:index }
+
+home_footer:
+    pattern: /__home/footer
+    defaults: { _controller: EmVistaBundle:Home:footer }
+
+home_topbar:
+    pattern: /__home/topbar
+    defaults: { _controller: EmVistaBundle:Home:topbar }
+
+home_ajuda:
+    pattern: /ajuda
+    defaults: { _controller: EmVistaBundle:Home:ajuda }
+
+home_cadastre:
+    pattern: /cadastre
+    defaults: { _controller: EmVistaBundle:Home:cadastre }
+
+home_cadastre_submeter-email-projeto:
+    pattern: /cadastre/submeter-email-projeto
+    defaults: { _controller: EmVistaBundle:Home:submeterEmailProjeto }
+
+home_comece:
+    pattern: /comece
+    defaults: { _controller: EmVistaBundle:Home:comece }
+
+home_crowdfunding:
+    pattern: /crowdfunding
+    defaults: { _controller: EmVistaBundle:Home:crowdfunding }
+
+home_termos-uso:
+    pattern: /termos-uso
+    defaults: { _controller: EmVistaBundle:Home:termosUso }
+
+home_contato:
+    pattern: /contato
+    defaults: { _controller: EmVistaBundle:Home:contato }
+
+home_contato_enviar-email:
+    pattern: /contato/enviar-email
+    defaults: { _controller: EmVistaBundle:Home:enviarEmail }
+
+home_crowdfunding-festival:
+    pattern: /crowdfunding-festival
+    defaults: { _controller: EmVistaBundle:Home:crowdfundingFestival }

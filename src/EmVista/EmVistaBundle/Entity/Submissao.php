@@ -3,73 +3,58 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\OneToOne;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\JoinColumn;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\Submissao
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\SubmissaoRepository")
  */
-class Submissao extends EntityAbstract{
-
+class Submissao extends EntityAbstract
+{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Projeto
      *
-     * @OneToOne(targetEntity="Projeto")
-     * @JoinColumn(name="projeto_id", referencedColumnName="id", nullable=false)
      */
     private $projeto;
 
     /**
      * @var StatusSubmissao
      *
-     * @ManyToOne(targetEntity="StatusSubmissao")
-     * @JoinColumn(name="status_id", referencedColumnName="id", nullable=false)
      */
     private $status;
 
     /**
      * @var text $observacaoResposta
      *
-     * @ORM\Column(name="observacao_resposta", type="text", nullable=true)
      */
     private $observacaoResposta;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 
     /**
      * @var datetime $dataEnvio
      *
-     * @ORM\Column(name="data_envio", type="datetime", nullable=true)
      */
     private $dataEnvio;
 
     /**
      * @var datetime $dataResposta
      *
-     * @ORM\Column(name="data_resposta", type="datetime", nullable=true)
      */
     private $dataResposta;
 
-    function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setDataCadastro(new \DateTime('now'));
     }
@@ -78,7 +63,8 @@ class Submissao extends EntityAbstract{
      *
      * @return Projeto
      */
-    public function getProjeto(){
+    public function getProjeto()
+    {
         return $this->projeto;
     }
 
@@ -86,8 +72,10 @@ class Submissao extends EntityAbstract{
      *
      * @param Projeto $projeto
      */
-    public function setProjeto(Projeto $projeto){
+    public function setProjeto(Projeto $projeto)
+    {
         $this->projeto = $projeto;
+
         return $this;
     }
 
@@ -96,7 +84,8 @@ class Submissao extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -105,8 +94,10 @@ class Submissao extends EntityAbstract{
      *
      * @param StatusSubmissao $status
      */
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
+
         return $this;
     }
 
@@ -115,7 +106,8 @@ class Submissao extends EntityAbstract{
      *
      * @return boolean
      */
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
@@ -124,8 +116,10 @@ class Submissao extends EntityAbstract{
      *
      * @param text $observacaoResposta
      */
-    public function setObservacaoResposta($observacaoResposta){
+    public function setObservacaoResposta($observacaoResposta)
+    {
         $this->observacaoResposta = $observacaoResposta;
+
         return $this;
     }
 
@@ -134,7 +128,8 @@ class Submissao extends EntityAbstract{
      *
      * @return text
      */
-    public function getObservacaoResposta(){
+    public function getObservacaoResposta()
+    {
         return $this->observacaoResposta;
     }
 
@@ -143,8 +138,10 @@ class Submissao extends EntityAbstract{
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro($dataCadastro){
+    public function setDataCadastro($dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
+
         return $this;
     }
 
@@ -153,7 +150,8 @@ class Submissao extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataCadastro(){
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 
@@ -162,8 +160,10 @@ class Submissao extends EntityAbstract{
      *
      * @param datetime $dataResposta
      */
-    public function setDataResposta($dataResposta){
+    public function setDataResposta($dataResposta)
+    {
         $this->dataResposta = $dataResposta;
+
         return $this;
     }
 
@@ -172,7 +172,8 @@ class Submissao extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataResposta(){
+    public function getDataResposta()
+    {
         return $this->dataResposta;
     }
 
@@ -181,8 +182,10 @@ class Submissao extends EntityAbstract{
      *
      * @param datetime $dataEnvio
      */
-    public function setDataEnvio($dataEnvio){
+    public function setDataEnvio($dataEnvio)
+    {
         $this->dataEnvio = $dataEnvio;
+
         return $this;
     }
 
@@ -191,7 +194,16 @@ class Submissao extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataEnvio(){
+    public function getDataEnvio()
+    {
         return $this->dataEnvio;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function isRejeitada()
+    {
+        return $this->status != null && $this->status->getId() == StatusSubmissao::STATUS_REJEITADO;
     }
 }

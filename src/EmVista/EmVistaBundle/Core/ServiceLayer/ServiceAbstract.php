@@ -4,8 +4,8 @@ namespace EmVista\EmVistaBundle\Core\ServiceLayer;
 
 use EmVista\EmVistaBundle\Core\Mailer\MailerInterface;
 
-abstract class ServiceAbstract{
-
+abstract class ServiceAbstract
+{
     /**
      * @var \Doctrine\ORM\EntityManager
      */
@@ -29,42 +29,48 @@ abstract class ServiceAbstract{
     /**
      * @param \Doctrine\ORM\EntityManager
      */
-    public function setEntityManager($entityManager){
+    public function setEntityManager($entityManager)
+    {
         $this->entityManager = $entityManager;
     }
 
     /**
      * @return \Doctrine\ORM\EntityManager
      */
-    public function getEntityManager(){
+    public function getEntityManager()
+    {
         return $this->entityManager;
     }
 
     /**
      * @param \Respect\Validation\Validator
      */
-    public function setValidator($validator){
+    public function setValidator($validator)
+    {
         $this->validator = $validator;
     }
 
     /**
      * @return \Respect\Validation\Validator
      */
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->validator;
     }
 
     /**
      * @param \EmVista\EmVistaBundle\Core\Mailer\MailerInterface
      */
-    public function setMailer(MailerInterface $mailer){
+    public function setMailer(MailerInterface $mailer)
+    {
         $this->mailer = $mailer;
     }
 
     /**
      * @return \EmVista\EmVistaBundle\Core\Mailer\MailerInterface
      */
-    public function getMailer(){
+    public function getMailer()
+    {
         return $this->mailer;
     }
 }

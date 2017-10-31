@@ -26,16 +26,16 @@ var maisSobreVoce = {
         $('#documento').unmask();
         $('#documento').val('');
         $('#documento').mask('999.999.999-99');
-        $('#nome').parents('.control-group').children('label').html('Nome');
-        $('#documento').parents('.control-group').children('label').html('CPF');
+        $('#nome').parents('.form-group').children('label').html('Nome');
+        $('#documento').parents('.form-group').children('label').html('CPF');
     },
 
     showPessoaJuridica: function(){
         $('#documento').unmask();
         $('#documento').val('');
         $('#documento').mask('99.999.999/9999-99');
-        $('#nome').parents('.control-group').children('label').html('Razão social');
-        $('#documento').parents('.control-group').children('label').html('CNPJ');
+        $('#nome').parents('.form-group').children('label').html('Razão social');
+        $('#documento').parents('.form-group').children('label').html('CNPJ');
     }
 }
 

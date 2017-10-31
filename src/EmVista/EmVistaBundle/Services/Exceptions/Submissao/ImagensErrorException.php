@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services\Exceptions\Submissao;
 
-class ImagensErrorException extends \Exception{
-
+class ImagensErrorException extends \Exception
+{
 }

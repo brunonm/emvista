@@ -1,0 +1,69 @@
+EmVista\EmVistaBundle\Entity\Endereco:
+    type: entity
+    table: endereco
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        cep:
+            type: string
+            scale: 0
+            length: 8
+            unique: false
+            nullable: false
+            precision: 0
+        uf:
+            type: string
+            scale: 0
+            length: 2
+            unique: false
+            nullable: false
+            precision: 0
+        cidade:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: false
+            precision: 0
+        bairro:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        endereco:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        dataCadastro:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            column: data_cadastro
+    oneToOne:
+        usuario:
+            targetEntity: EmVista\EmVistaBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: endereco
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

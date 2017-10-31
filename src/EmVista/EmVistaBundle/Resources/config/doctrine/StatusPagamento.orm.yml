@@ -1,0 +1,56 @@
+EmVista\EmVistaBundle\Entity\StatusPagamento:
+    type: entity
+    table: status_pagamento
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        gatewayStatus:
+            type: string
+            scale: 0
+            length: 3
+            unique: false
+            nullable: false
+            precision: 0
+        valorGatewayStatus:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+        descricaoGatewayStatus:
+            type: string
+            scale: 0
+            length: 255
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        gatewayPagamento:
+            targetEntity: EmVista\EmVistaBundle\Entity\GatewayPagamento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                gatewayPagamento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        statusDoacao:
+            targetEntity: EmVista\EmVistaBundle\Entity\StatusDoacao
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                statusDoacao_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

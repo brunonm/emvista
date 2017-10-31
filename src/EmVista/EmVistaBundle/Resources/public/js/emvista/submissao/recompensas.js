@@ -1,12 +1,13 @@
 var recompensas = {
     init: function(){
-        recompensas.events();
+        this.events();
     },
 
     events: function(){
-        $('#btn-adicionar-recompensa').click(recompensas.handleButtonAdicionarRecompensa)
-        $('.btn-excluir-recompensa').live('click', recompensas.handleButtonExcluirRecompensa)
-        $('.checkbox-limite').live('change', recompensas.handleExibirLimite)
+        $('#btn-adicionar-recompensa').click(recompensas.handleButtonAdicionarRecompensa);
+        $(document).on('click', '.btn-excluir-recompensa', recompensas.handleButtonExcluirRecompensa);
+        $(document).on('change', '.checkbox-limite', recompensas.handleExibirLimite);
+        $('form').validationEngine().showMyValidationEngineMessages();
     },
 
     handleButtonAdicionarRecompensa: function(){
@@ -17,9 +18,13 @@ var recompensas = {
         if(count == 0){
             var btnExcluir = $('<a>').attr('href', 'javascript:;')
                                      .addClass('btn btn-danger btn-excluir-recompensa')
-                                     .html('<i class="icon-trash icon-white"></i> Excluir recompensa');
+                                     .html('<i class="fa fa-trash icon-white"></i> Excluir recompensa');
 
-            conteudo.children('div.control-group:first').children('.controls').append(btnExcluir);
+            conteudo.append(
+                $('<div>').addClass('form-group').append(
+                    $('<div>').addClass('col-sm-9 col-sm-offset-2').append(btnExcluir)
+                )
+            );
         }
 
         conteudo.find("input").each(function(){
@@ -30,8 +35,12 @@ var recompensas = {
 
         conteudo.find(':text').val('');
         conteudo.find('.recompensaId').val('');
+        conteudo.find('input').attr('readonly', false);
+        conteudo.find('.form-group.oculto').removeClass('oculto');
 
         $(".container-recompensas").append(conteudo);
+        conteudo.find('.checkbox-limite').change();
+        $('.money').attr('maxlength', 11).maskMoney({thousands:'.', decimal:','});
     },
 
     handleButtonExcluirRecompensa: function(){
@@ -43,11 +52,11 @@ var recompensas = {
     handleExibirLimite: function(){
         var divLimite = $(this).parents('div.recompensa').children('.div-limite-recompensa');
 
-        if(this.checked){
+        if($(this).is(':checked')){
             divLimite.addClass('oculto');
             divLimite.find('input').each(function(){
                 $(this).val('');
-            })
+            });
         }else{
             divLimite.removeClass('oculto');
         }

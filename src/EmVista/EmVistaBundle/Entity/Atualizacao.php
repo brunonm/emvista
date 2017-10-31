@@ -3,58 +3,46 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\JoinColumn;
-use EmVista\EmVistaBundle\Entity\Projeto;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\Atualizacao
  *
- * @ORM\Table()
- * @ORM\Entity
  */
-class Atualizacao extends EntityAbstract{
-
+class Atualizacao extends EntityAbstract
+{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Projeto
      *
-     * @ManyToOne(targetEntity="Projeto", inversedBy="recompensas")
-     * @JoinColumn(name="projeto_id", referencedColumnName="id", nullable=false)
      */
     private $projeto;
 
     /**
      * @var string $titulo
      *
-     * @ORM\Column(name="titulo", type="string", length=255)
      */
     private $titulo;
 
     /**
      * @var text $texto
      *
-     * @ORM\Column(name="texto", type="text")
      */
     private $texto;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime")
      */
     private $dataCadastro;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setDataCadastro(new \DateTime("now"));
     }
@@ -64,7 +52,8 @@ class Atualizacao extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -73,8 +62,10 @@ class Atualizacao extends EntityAbstract{
      *
      * @param string $titulo
      */
-    public function setTitulo($titulo){
+    public function setTitulo($titulo)
+    {
         $this->titulo = $titulo;
+
         return $this;
     }
 
@@ -83,7 +74,8 @@ class Atualizacao extends EntityAbstract{
      *
      * @return string
      */
-    public function getTitulo(){
+    public function getTitulo()
+    {
         return $this->titulo;
     }
 
@@ -92,8 +84,10 @@ class Atualizacao extends EntityAbstract{
      *
      * @param text $texto
      */
-    public function setTexto($texto){
+    public function setTexto($texto)
+    {
         $this->texto = $texto;
+
         return $this;
     }
 
@@ -102,7 +96,8 @@ class Atualizacao extends EntityAbstract{
      *
      * @return text
      */
-    public function getTexto(){
+    public function getTexto()
+    {
         return $this->texto;
     }
 
@@ -111,7 +106,8 @@ class Atualizacao extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataCadastro(){
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 
@@ -120,8 +116,10 @@ class Atualizacao extends EntityAbstract{
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro(\DateTime $dataCadastro){
+    public function setDataCadastro(\DateTime $dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
+
         return $this;
     }
 
@@ -130,7 +128,8 @@ class Atualizacao extends EntityAbstract{
      *
      * @return Projeto
      */
-    public function getProjeto(){
+    public function getProjeto()
+    {
         return $this->projeto;
     }
 
@@ -139,8 +138,10 @@ class Atualizacao extends EntityAbstract{
      *
      * @param Projeto $projeto
      */
-    public function setProjeto(Projeto $projeto){
+    public function setProjeto(Projeto $projeto)
+    {
         $this->projeto = $projeto;
+
         return $this;
     }
 }

@@ -2,43 +2,36 @@
 
 namespace EmVista\EmVistaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\StatusArrecadacao
  *
- * @ORM\Table()
- * @ORM\Entity
  */
-class StatusArrecadacao extends EntityAbstract{
-
+class StatusArrecadacao extends EntityAbstract
+{
     const STATUS_EM_ANDAMENTO      = 1;
     const STATUS_SUCESSO           = 2;
     const STATUS_INSUCESSO         = 3;
     const STATUS_AGUARDANDO_BOLETO = 4;
     const STATUS_CANCELADO         = 5;
+    const STATUS_AGUARDANDO_INICIO = 6;
 
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
     /**
      * @var string $descricao
      *
-     * @ORM\Column(name="descricao", type="string", length=255)
      */
     private $descricao;
 
@@ -47,7 +40,8 @@ class StatusArrecadacao extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -56,8 +50,10 @@ class StatusArrecadacao extends EntityAbstract{
      *
      * @param string $nome
      */
-    public function setNome($nome){
+    public function setNome($nome)
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -66,7 +62,8 @@ class StatusArrecadacao extends EntityAbstract{
      *
      * @return string
      */
-    public function getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 
@@ -75,8 +72,10 @@ class StatusArrecadacao extends EntityAbstract{
      *
      * @param string $descricao
      */
-    public function setDescricao($descricao){
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
+
         return $this;
     }
 
@@ -85,7 +84,8 @@ class StatusArrecadacao extends EntityAbstract{
      *
      * @return string
      */
-    public function getDescricao(){
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 

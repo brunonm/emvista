@@ -3,46 +3,35 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\JoinColumn;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\Imagem
  *
- * @ORM\Table()
- * @ORM\Entity
  */
-class Imagem extends EntityAbstract{
-
+class Imagem extends EntityAbstract
+{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Usuario $usuario
      *
-     * @ManyToOne(targetEntity="Usuario")
-     * @JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
     /**
      * @var string $originalFilename
      *
-     * @ORM\Column(name="original_filename", type="string", length=255)
      */
     private $originalFilename;
 
     /**
      * @var string $extensao
      *
-     * @ORM\Column(name="extensao", type="string", length=5)
      */
     private $extensao;
 
@@ -50,7 +39,6 @@ class Imagem extends EntityAbstract{
      * Tamanho em Kilobytes (KB)
      * @var integer $size
      *
-     * @ORM\Column(name="size", type="integer")
      */
     private $size;
 
@@ -58,7 +46,6 @@ class Imagem extends EntityAbstract{
      * Largura em pixels
      * @var integer $largura
      *
-     * @ORM\Column(name="largura", type="float")
      */
     private $largura;
 
@@ -66,7 +53,6 @@ class Imagem extends EntityAbstract{
      * Altura em pixels
      * @var integer $altura
      *
-     * @ORM\Column(name="altura", type="float")
      */
     private $altura;
 
@@ -74,18 +60,17 @@ class Imagem extends EntityAbstract{
      * Altura em pixels
      * @var integer $altura
      *
-     * @ORM\Column(name="webPath", type="string", length=255, nullable=true)
      */
     private $webPath;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="dataCadastro", type="datetime", nullable=false)
      */
     private $dataCadastro;
 
-    function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setDataCadastro(new \DateTime("now"));
     }
@@ -95,7 +80,8 @@ class Imagem extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -104,8 +90,10 @@ class Imagem extends EntityAbstract{
      *
      * @param Usuario $usuario
      */
-    public function setUsuario(Usuario $usuario){
+    public function setUsuario(Usuario $usuario)
+    {
         $this->usuario = $usuario;
+
         return $this;
     }
 
@@ -114,7 +102,8 @@ class Imagem extends EntityAbstract{
      *
      * @return Usuario
      */
-    public function getUsuario(){
+    public function getUsuario()
+    {
         return $this->usuario;
     }
 
@@ -123,8 +112,10 @@ class Imagem extends EntityAbstract{
      *
      * @param string $originalFilename
      */
-    public function setOriginalFilename($originalFilename){
+    public function setOriginalFilename($originalFilename)
+    {
         $this->originalFilename = $originalFilename;
+
         return $this;
     }
 
@@ -133,7 +124,8 @@ class Imagem extends EntityAbstract{
      *
      * @return string
      */
-    public function getOriginalFilename(){
+    public function getOriginalFilename()
+    {
         return $this->originalFilename;
     }
 
@@ -142,8 +134,10 @@ class Imagem extends EntityAbstract{
      *
      * @param string $extensao
      */
-    public function setExtensao($extensao){
+    public function setExtensao($extensao)
+    {
         $this->extensao = $extensao;
+
         return $this;
     }
 
@@ -152,7 +146,8 @@ class Imagem extends EntityAbstract{
      *
      * @return string
      */
-    public function getExtensao(){
+    public function getExtensao()
+    {
         return $this->extensao;
     }
 
@@ -161,8 +156,10 @@ class Imagem extends EntityAbstract{
      *
      * @param integer $size
      */
-    public function setSize($size){
+    public function setSize($size)
+    {
         $this->size = $size;
+
         return $this;
     }
 
@@ -171,7 +168,8 @@ class Imagem extends EntityAbstract{
      *
      * @return integer
      */
-    public function getSize(){
+    public function getSize()
+    {
         return $this->size;
     }
 
@@ -180,8 +178,10 @@ class Imagem extends EntityAbstract{
      *
      * @param integer $largura
      */
-    public function setLargura($largura){
+    public function setLargura($largura)
+    {
         $this->largura = $largura;
+
         return $this;
     }
 
@@ -190,7 +190,8 @@ class Imagem extends EntityAbstract{
      *
      * @return integer
      */
-    public function getLargura(){
+    public function getLargura()
+    {
         return $this->largura;
     }
 
@@ -199,8 +200,10 @@ class Imagem extends EntityAbstract{
      *
      * @param integer $altura
      */
-    public function setAltura($altura){
+    public function setAltura($altura)
+    {
         $this->altura = $altura;
+
         return $this;
     }
 
@@ -209,7 +212,8 @@ class Imagem extends EntityAbstract{
      *
      * @return integer
      */
-    public function getAltura(){
+    public function getAltura()
+    {
         return $this->altura;
     }
 
@@ -218,8 +222,10 @@ class Imagem extends EntityAbstract{
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro($dataCadastro){
+    public function setDataCadastro($dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
+
         return $this;
     }
 
@@ -228,7 +234,8 @@ class Imagem extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataCadastro(){
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 
@@ -237,25 +244,28 @@ class Imagem extends EntityAbstract{
      *
      * @return string
      */
-    public function getFilename(){
+    public function getFilename()
+    {
         return md5($this->id) . '.' . $this->extensao;
     }
     /**
      *
-     * @return string 
+     * @return string
      */
-    public function getWebPath() {
+    public function getWebPath()
+    {
         return $this->webPath;
     }
     /**
      *
-     * @param string $webPath
-     * @return \EmVista\EmVistaBundle\Entity\Imagem 
+     * @param  string                               $webPath
+     * @return \EmVista\EmVistaBundle\Entity\Imagem
      */
-    public function setWebPath($webPath) {
+    public function setWebPath($webPath)
+    {
         $this->webPath = $webPath;
+
         return $this;
     }
-
 
 }

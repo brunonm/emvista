@@ -1,0 +1,52 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+
+    mailer_transport:   gmail
+    mailer_host:        smtp.gmail.com
+    mailer_user:        emvista@emvista.me
+    mailer_password:    '3mv!st4.me'
+    mailer_default_from: emvista@emvista.me
+
+    contato_email: brunonm@gmail.com
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    debug_toolbar:          true
+    debug_redirects:        false
+    use_assetic_controller: true
+
+
+    projeto_quantidade_dias_minimo: 10
+    projeto_quantidade_dias_maximo: 60
+
+    profile_height: 140;
+    profile_width: 140;
+
+    upload_dir: /usr/local/zend/apache2/htdocs/emvista/trunk/web/uploads
+
+    upload_profile_dir: /usr/local/zend/apache2/htdocs/emvista/trunk/web/uploads/profiles/
+    upload_profile_temp_dir: /usr/local/zend/apache2/htdocs/emvista/trunk/web/uploads/profiles/temp/
+    profile_web_path: /uploads/profiles/
+    profile_web_temp_path: /uploads/profiles/temp/
+
+    percentual_plataforma: 0.05
+
+    facebook_client_id: ??????
+    facebook_client_secret: ??????
+    facebook_scope: email public_profile
+
+    google_client_id: ??????
+    google_client_secret: ??????
+    google_scope: email profile
+
+    twitter_client_id: ??????
+    twitter_client_secret: ??????
+
+    moip_token: ?????????
+    moip_key: ??????

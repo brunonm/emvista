@@ -6,14 +6,13 @@ use EmVista\EmVistaBundle\Tests\TestCase;
 use EmVista\EmVistaBundle\Core\ServiceLayer\ServiceData;
 use EmVista\EmVistaBundle\Entity\Usuario;
 use EmVista\EmVistaBundle\Entity\Recompensa;
-use EmVista\EmVistaBundle\Entity\Projeto;
 
-
-class PagamentoServiceTest extends TestCase{
-
+class PagamentoServiceTest extends TestCase
+{
     private $service;
 
-    protected function setUp(){
+    protected function setUp()
+    {
         parent::setUp();
         $this->fixtures();
 
@@ -36,7 +35,7 @@ class PagamentoServiceTest extends TestCase{
         $mock->expects($this->any())
                     ->method('setReturnURL')
                     ->will($this->returnSelf());
-        
+
         $mock->expects($this->any())
                     ->method('getAnswer')
                     ->with(false)
@@ -45,35 +44,31 @@ class PagamentoServiceTest extends TestCase{
         $mock->expects($this->any())
                     ->method('getAnswer')
                     ->will($this->returnValue('xml resposta'));
-        
+
         $mock->expects($this->any())
                     ->method('getXml')
                     ->will($this->returnValue('xml envio'));
-        
-        $mockResponse->expects($this->any())
-                    ->method('getToken')
-                    ->will($this->returnValue('EmVistaToken'));
-        
+
         $mockResponse->expects($this->any())
                     ->method('getToken')
                     ->will($this->returnValue('EmVistaToken'));
 
+        $mockResponse->expects($this->any())
+                    ->method('getToken')
+                    ->will($this->returnValue('EmVistaToken'));
 
         $mock->expects($this->any())
                     ->method('send')
                     ->will($this->returnValue($mockResponse));
 
-
-
         $mockResponse->payment_url = 'www.emvista.me';
         $this->service = $this->get('service.pagamento');
         $this->service->setPaymentGateway($mock);
 
-
-
     }
 
-    private function fixtures(){
+    private function fixtures()
+    {
         $this->loadTestFixtures('Domain');
         $this->loadTestFixtures('PagamentoServiceTest');
 
@@ -82,7 +77,8 @@ class PagamentoServiceTest extends TestCase{
     /**
      * @test
      */
-    public function deveRealizarCheckoutComSucesso(){
+    public function deveRealizarCheckoutComSucesso()
+    {
         $this->markTestIncomplete();
 
         $serviceData = ServiceData::build(
@@ -110,7 +106,8 @@ class PagamentoServiceTest extends TestCase{
      * @test
      * @expectedException EmVista\EmVistaBundle\Core\Exceptions\ServiceValidationException
      */
-    public function deveLancarExceptionSeOValorForInvalido(){
+    public function deveLancarExceptionSeOValorForInvalido()
+    {
         $this->markTestIncomplete();
 
         $serviceData = ServiceData::build(
@@ -124,7 +121,8 @@ class PagamentoServiceTest extends TestCase{
      * @test
      * @expectedException EmVista\EmVistaBundle\Core\Exceptions\ServiceValidationException
      */
-    public function deveLancarExceptionSeOValorForMenorQueARecompensaEscolhida(){
+    public function deveLancarExceptionSeOValorForMenorQueARecompensaEscolhida()
+    {
         $this->markTestIncomplete();
 
         $serviceData = ServiceData::build(
@@ -137,21 +135,24 @@ class PagamentoServiceTest extends TestCase{
     /**
      * @test
      */
-    public function deveLancarExceptionSeRecompensaJaTiverAtingidoNumeroMaximoDeDoadores(){
+    public function deveLancarExceptionSeRecompensaJaTiverAtingidoNumeroMaximoDeDoadores()
+    {
         $this->markTestIncomplete();
     }
 
     /**
      * @test
      */
-    public function deveLancarExceptionSeRecompensaForInvalida(){
+    public function deveLancarExceptionSeRecompensaForInvalida()
+    {
         $this->markTestIncomplete();
     }
 
     /**
      * @test
      */
-    public function deveLancarExceptionSeUsuarioForInvalido(){
+    public function deveLancarExceptionSeUsuarioForInvalido()
+    {
         $this->markTestIncomplete();
     }
 }

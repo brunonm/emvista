@@ -3,189 +3,160 @@
 namespace EmVista\EmVistaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\OrderBy;
-use Doctrine\ORM\Mapping\OneToOne;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\OneToMany;
-use Doctrine\ORM\Mapping\JoinColumn;
 use EmVista\EmVistaBundle\Util\Date;
-use Gedmo\Mapping\Annotation as Gedmo;
-use EmVista\EmVistaBundle\Entity\ProjetoImagem;
+use EmVista\EmVistaBundle\Util\Money;
 use Doctrine\Common\Collections\ArrayCollection;
 use EmVista\EmVistaBundle\Core\Entity\EntityAbstract;
 
 /**
  * EmVista\EmVistaBundle\Entity\Projeto
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="EmVista\EmVistaBundle\Repository\ProjetoRepository")
  */
-class Projeto extends EntityAbstract{
-
+class Projeto extends EntityAbstract
+{
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string $nome
      *
-     * @ORM\Column(name="nome", type="string", length=255, nullable=true)
      */
     private $nome;
-
 
     /**
      * @var string $slug
      *
-     * @Gedmo\Slug(fields={"nome"}, updatable=true)
-     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
      */
     private $slug;
-
 
     /**
      * @var text $descricao
      *
-     * @ORM\Column(name="descricao", type="text", nullable=true)
      */
     private $descricao;
 
     /**
      * @var string $descricaoCurta
      *
-     * @ORM\Column(name="descricao_curta", type="string", length=130, nullable=true)
      */
     private $descricaoCurta;
 
     /**
      * @var Usuario $usuario
      *
-     * @ManyToOne(targetEntity="Usuario", inversedBy="projetos")
-     * @JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
     /**
      * @var Categoria $categoria
      *
-     * @ManyToOne(targetEntity="Categoria")
-     * @JoinColumn(name="categoria_id", referencedColumnName="id")
      */
     private $categoria;
 
     /**
      * @var TermoUso $termoUso
      *
-     * @ManyToOne(targetEntity="TermoUso")
-     * @JoinColumn(name="termo_uso_id", referencedColumnName="id", nullable=false)
      */
     private $termoUso;
 
     /**
      * @var Recompensa[]
      *
-     * @OneToMany(targetEntity="Recompensa", mappedBy="projeto")
-     * @OrderBy({"valorMinimo" = "ASC"})
      */
     private $recompensas;
 
     /**
      * @var decimal $valor
      *
-     * @ORM\Column(name="valor", type="decimal", scale=2, nullable=true)
      */
     private $valor;
 
     /**
      * @var decimal $valorArrecadado
      *
-     * @ORM\Column(name="valor_arrecadado", type="decimal", scale=2, nullable=false)
      */
     private $valorArrecadado;
 
     /**
      * @var Video $video
      *
-     * @OneToOne(targetEntity="Video")
-     * @JoinColumn(name="video_id", referencedColumnName="id")
      */
     private $video;
 
     /**
      * @var datetime $dataInicio
      *
-     * @ORM\Column(name="data_inicio", type="datetime", nullable=true)
      */
     private $dataInicio;
 
     /**
      * @var datetime $dataFim
      *
-     * @ORM\Column(name="data_fim", type="datetime", nullable=true)
      */
     private $dataFim;
 
     /**
      * @var datetime $dataAprovacao
      *
-     * @ORM\Column(name="data_aprovacao", type="datetime", nullable=true)
      */
     private $dataAprovacao;
 
     /**
      * @var datetime $dataCadastro
      *
-     * @ORM\Column(name="data_cadastro", type="datetime", nullable=false)
      */
     private $dataCadastro;
 
     /**
      * @var integer $quantidadeDias
      *
-     * @ORM\Column(name="quantidade_dias", type="integer", nullable=true)
      */
     private $quantidadeDias;
 
     /**
      * @var StatusFinanceiro $statusFinanceiro
      *
-     * @ManyToOne(targetEntity="StatusFinanceiro")
-     * @JoinColumn(name="status_financeiro_id", referencedColumnName="id")
      */
     private $statusFinanceiro;
 
     /**
      * @var object $statusArrecadacao
      *
-     * @ManyToOne(targetEntity="StatusArrecadacao")
-     * @JoinColumn(name="status_arrecadacao_id", referencedColumnName="id")
      */
     private $statusArrecadacao;
 
     /**
      * @var boolean $publicado
      *
-     * @ORM\Column(name="publicado", type="boolean", nullable=false)
      */
     private $publicado;
+    
+    /**
+     * @var boolean
+     */
+    private $preCadastro;
+    
+    /**
+     * @var string
+     */
+    private $nomeAutorPreCadastro;
 
     /**
      * @var ProjetoImagem[]
      *
-     * @OneToMany(targetEntity="ProjetoImagem", mappedBy="projeto")
      */
     private $imagens;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setValorArrecadado(0)
              ->setPublicado(false)
-             ->setDataCadastro(new \DateTime("now"));
+             ->setDataCadastro(new \DateTime("now"))
+             ->setPreCadastro(false);
 
         $this->recompensas = new ArrayCollection();
         $this->imagens     = new ArrayCollection();
@@ -196,7 +167,8 @@ class Projeto extends EntityAbstract{
      *
      * @return integer
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -205,8 +177,10 @@ class Projeto extends EntityAbstract{
      *
      * @param string $nome
      */
-    public function setNome($nome){
+    public function setNome($nome)
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -215,7 +189,8 @@ class Projeto extends EntityAbstract{
      *
      * @return string
      */
-    public function getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 
@@ -224,8 +199,10 @@ class Projeto extends EntityAbstract{
      *
      * @param text $descricao
      */
-    public function setDescricao($descricao){
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
+
         return $this;
     }
 
@@ -234,7 +211,8 @@ class Projeto extends EntityAbstract{
      *
      * @return text
      */
-    public function getDescricao(){
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 
@@ -243,8 +221,10 @@ class Projeto extends EntityAbstract{
      *
      * @param string $descricaoCurta
      */
-    public function setDescricaoCurta($descricaoCurta){
+    public function setDescricaoCurta($descricaoCurta)
+    {
         $this->descricaoCurta = $descricaoCurta;
+
         return $this;
     }
 
@@ -253,7 +233,8 @@ class Projeto extends EntityAbstract{
      *
      * @return string
      */
-    public function getDescricaoCurta(){
+    public function getDescricaoCurta()
+    {
         return $this->descricaoCurta;
     }
 
@@ -262,8 +243,10 @@ class Projeto extends EntityAbstract{
      *
      * @param Usuario $usuario
      */
-    public function setUsuario(Usuario $usuario){
+    public function setUsuario(Usuario $usuario)
+    {
         $this->usuario = $usuario;
+
         return $this;
     }
 
@@ -272,7 +255,8 @@ class Projeto extends EntityAbstract{
      *
      * @return Usuario
      */
-    public function getUsuario(){
+    public function getUsuario()
+    {
         return $this->usuario;
     }
 
@@ -281,8 +265,10 @@ class Projeto extends EntityAbstract{
      *
      * @param Categoria $categoria
      */
-    public function setCategoria(Categoria $categoria){
+    public function setCategoria(Categoria $categoria)
+    {
         $this->categoria = $categoria;
+
         return $this;
     }
 
@@ -291,7 +277,8 @@ class Projeto extends EntityAbstract{
      *
      * @return Categoria
      */
-    public function getCategoria(){
+    public function getCategoria()
+    {
         return $this->categoria;
     }
 
@@ -300,8 +287,10 @@ class Projeto extends EntityAbstract{
      *
      * @param TermoUso $termoUso
      */
-    public function setTermoUso(TermoUso $termoUso){
+    public function setTermoUso(TermoUso $termoUso)
+    {
         $this->termoUso = $termoUso;
+
         return $this;
     }
 
@@ -310,7 +299,8 @@ class Projeto extends EntityAbstract{
      *
      * @return TermoUso
      */
-    public function getTermoUso(){
+    public function getTermoUso()
+    {
         return $this->termoUso;
     }
 
@@ -319,8 +309,10 @@ class Projeto extends EntityAbstract{
      *
      * @param decimal $valor
      */
-    public function setValor($valor){
+    public function setValor($valor)
+    {
         $this->valor = $valor;
+
         return $this;
     }
 
@@ -329,17 +321,24 @@ class Projeto extends EntityAbstract{
      *
      * @return decimal
      */
-    public function getValor(){
+    public function getValor()
+    {
         return $this->valor;
     }
 
+    public function getValorFormatado()
+    {
+        return Money::convert($this->valor);
+    }
     /**
      * Set valorArrecadado
      *
      * @param decimal $valorArrecadado
      */
-    public function setValorArrecadado($valorArrecadado){
+    public function setValorArrecadado($valorArrecadado)
+    {
         $this->valorArrecadado = $valorArrecadado;
+
         return $this;
     }
 
@@ -348,7 +347,8 @@ class Projeto extends EntityAbstract{
      *
      * @return decimal
      */
-    public function getValorArrecadado(){
+    public function getValorArrecadado()
+    {
         return $this->valorArrecadado;
     }
 
@@ -357,8 +357,10 @@ class Projeto extends EntityAbstract{
      *
      * @param Video $video
      */
-    public function setVideo($video){
+    public function setVideo($video)
+    {
         $this->video = $video;
+
         return $this;
     }
 
@@ -367,7 +369,8 @@ class Projeto extends EntityAbstract{
      *
      * @return Video
      */
-    public function getVideo(){
+    public function getVideo()
+    {
         return $this->video;
     }
 
@@ -376,8 +379,10 @@ class Projeto extends EntityAbstract{
      *
      * @param datetime $dataInicio
      */
-    public function setDataInicio($dataInicio){
+    public function setDataInicio($dataInicio)
+    {
         $this->dataInicio = $dataInicio;
+
         return $this;
     }
 
@@ -386,7 +391,8 @@ class Projeto extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataInicio(){
+    public function getDataInicio()
+    {
         return $this->dataInicio;
     }
 
@@ -395,8 +401,10 @@ class Projeto extends EntityAbstract{
      *
      * @param datetime $dataFim
      */
-    public function setDataFim($dataFim){
+    public function setDataFim($dataFim)
+    {
         $this->dataFim = $dataFim;
+
         return $this;
     }
 
@@ -405,7 +413,8 @@ class Projeto extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataFim(){
+    public function getDataFim()
+    {
         return $this->dataFim;
     }
 
@@ -414,8 +423,10 @@ class Projeto extends EntityAbstract{
      *
      * @param datetime $dataAprovacao
      */
-    public function setDataAprovacao($dataAprovacao){
+    public function setDataAprovacao($dataAprovacao)
+    {
         $this->dataAprovacao = $dataAprovacao;
+
         return $this;
     }
 
@@ -424,7 +435,8 @@ class Projeto extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataAprovacao(){
+    public function getDataAprovacao()
+    {
         return $this->dataAprovacao;
     }
 
@@ -433,8 +445,10 @@ class Projeto extends EntityAbstract{
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro($dataCadastro){
+    public function setDataCadastro($dataCadastro)
+    {
         $this->dataCadastro = $dataCadastro;
+
         return $this;
     }
 
@@ -443,7 +457,8 @@ class Projeto extends EntityAbstract{
      *
      * @return datetime
      */
-    public function getDataCadastro(){
+    public function getDataCadastro()
+    {
         return $this->dataCadastro;
     }
 
@@ -452,8 +467,10 @@ class Projeto extends EntityAbstract{
      *
      * @param integer $quantidadeDias
      */
-    public function setQuantidadeDias($quantidadeDias){
+    public function setQuantidadeDias($quantidadeDias)
+    {
         $this->quantidadeDias = $quantidadeDias;
+
         return $this;
     }
 
@@ -462,7 +479,8 @@ class Projeto extends EntityAbstract{
      *
      * @return integer
      */
-    public function getQuantidadeDias(){
+    public function getQuantidadeDias()
+    {
         return $this->quantidadeDias;
     }
 
@@ -471,8 +489,10 @@ class Projeto extends EntityAbstract{
      *
      * @param StatusFinanceiro $statusFinanceiro
      */
-    public function setStatusFinanceiro(StatusFinanceiro $statusFinanceiro){
+    public function setStatusFinanceiro(StatusFinanceiro $statusFinanceiro)
+    {
         $this->statusFinanceiro = $statusFinanceiro;
+
         return $this;
     }
 
@@ -481,7 +501,8 @@ class Projeto extends EntityAbstract{
      *
      * @return StatusFinanceiro
      */
-    public function getStatusFinanceiro(){
+    public function getStatusFinanceiro()
+    {
         return $this->statusFinanceiro;
     }
 
@@ -490,8 +511,10 @@ class Projeto extends EntityAbstract{
      *
      * @param StatusArrecadacao $statusArrecadacao
      */
-    public function setStatusArrecadacao(StatusArrecadacao $statusArrecadacao){
+    public function setStatusArrecadacao(StatusArrecadacao $statusArrecadacao)
+    {
         $this->statusArrecadacao = $statusArrecadacao;
+
         return $this;
     }
 
@@ -500,7 +523,8 @@ class Projeto extends EntityAbstract{
      *
      * @return StatusArrecadacao
      */
-    public function getStatusArrecadacao(){
+    public function getStatusArrecadacao()
+    {
         return $this->statusArrecadacao;
     }
 
@@ -509,8 +533,10 @@ class Projeto extends EntityAbstract{
      *
      * @param boolean $publicado
      */
-    public function setPublicado($publicado){
+    public function setPublicado($publicado)
+    {
         $this->publicado = $publicado;
+
         return $this;
     }
 
@@ -519,7 +545,8 @@ class Projeto extends EntityAbstract{
      *
      * @return boolean
      */
-    public function getPublicado(){
+    public function getPublicado()
+    {
         return $this->publicado;
     }
 
@@ -528,42 +555,47 @@ class Projeto extends EntityAbstract{
      *
      * @return Recompensa[]
      */
-    public function getRecompensas(){
+    public function getRecompensas()
+    {
         return $this->recompensas;
     }
 
     /**
      * @param Recompensa $recompensa
      */
-    public function addRecompensa(Recompensa $recompensa){
+    public function addRecompensa(Recompensa $recompensa)
+    {
         $this->recompensas[] = $recompensa;
+
         return $this;
     }
 
     /**
      * @return ProjetoImagem[]
      */
-    public function getImagens(){
+    public function getImagens()
+    {
         return $this->imagens;
     }
 
     /**
      * @param ProjetoImagem $imagem
      */
-    public function addImagem(ProjetoImagem $imagem){
+    public function addImagem(ProjetoImagem $imagem)
+    {
         $this->imagens[] = $imagem;
+
         return $this;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         return array(
             'id' => $this->getId(),
             'titulo' => $this->getNome(),
-            'autor' => $this->getUsuario()->getNome(),
+            'autor' => $this->isPreCadastro() ? $this->getNomeAutorPreCadastro() : $this->getUsuario()->getNome(),
             'descricaoCurta' => $this->getDescricaoCurta(),
             'urlImagemThumb' => $this->getImagemThumb()->getWebPath(),
-            'urlImagemDestaque' => $this->getImagemDestaque()->getWebPath(),
-            'urlImagemDestaqueSecundario' => $this->getImagemDestaqueSecundario()->getWebPath(),
             'urlImagemOriginal' => $this->getImagemOriginal()->getWebPath(),
             'valorArrecadado' => $this->getValorArrecadado(),
             'valorArrecadadoFormatado' => $this->getValorArrecadadoFormatado(),
@@ -571,23 +603,31 @@ class Projeto extends EntityAbstract{
             'diasRestantes' => $this->getDiasRestantes(),
             'urlProjeto' => '/'.$this->getSlug(),
             'labelTempoRestante' => $this->getLabelTempoRestante(),
-            'statusArrecadacao' => $this->getStatusArrecadacao()->getId()
+            'statusArrecadacao' => $this->getStatusArrecadacao()->getId(),
+            'tempo' => $this->getValorTempoRestante(),
+            'preCadastro' => $this->isPreCadastro(),
         );
     }
 
     /**
      * @return float
      */
-    public function getPercentualArrecadado(){
+    public function getPercentualArrecadado()
+    {
+        if ($this->preCadastro) {
+            return 0;
+        }
+        
         return (int) floor($this->getValorArrecadado() * 100 / $this->getValor());
     }
 
     /**
      * @return ProjetoImagem
      */
-    public function getImagemDestaque(){
-        foreach($this->getImagens() as $imagem){
-            if($imagem->getTipoProjetoImagem()->getId() == TipoProjetoImagem::TIPO_DESTAQUE){
+    public function getImagemThumb()
+    {
+        foreach ($this->getImagens() as $imagem) {
+            if ($imagem->getTipoProjetoImagem()->getId() == TipoProjetoImagem::TIPO_THUMB) {
                 return $imagem;
             }
         }
@@ -596,33 +636,10 @@ class Projeto extends EntityAbstract{
     /**
      * @return ProjetoImagem
      */
-    public function getImagemDestaqueSecundario(){
-        foreach($this->getImagens() as $imagem){
-            if($imagem->getTipoProjetoImagem()->getId() == TipoProjetoImagem::TIPO_DESTAQUE_SECUNDARIO){
-                return $imagem;
-            }
-        }
-    }
-
-
-    /**
-     * @return ProjetoImagem
-     */
-    public function getImagemThumb(){
-        foreach($this->getImagens() as $imagem){
-            if($imagem->getTipoProjetoImagem()->getId() == TipoProjetoImagem::TIPO_THUMB){
-                return $imagem;
-            }
-        }
-    }
-
-
-    /**
-     * @return ProjetoImagem
-     */
-    public function getImagemOriginal(){
-        foreach($this->getImagens() as $imagem){
-            if($imagem->getTipoProjetoImagem()->getId() == TipoProjetoImagem::TIPO_ORIGINAL){
+    public function getImagemOriginal()
+    {
+        foreach ($this->getImagens() as $imagem) {
+            if ($imagem->getTipoProjetoImagem()->getId() == TipoProjetoImagem::TIPO_ORIGINAL) {
                 return $imagem;
             }
         }
@@ -631,45 +648,140 @@ class Projeto extends EntityAbstract{
     /**
      * @return string
      */
-    public function getSlug(){
+    public function getSlug()
+    {
         return $this->slug;
     }
 
-    public function getDiasRestantes(){
+    public function getDiasRestantes()
+    {
         return Date::getDateDiff($this)->days;
     }
 
     /**
      * @return string
      */
-    public function getValorArrecadadoFormatado(){
-        return number_format($this->valorArrecadado, 2, ',', '.');
+    public function getValorArrecadadoFormatado()
+    {
+        return Money::convert($this->valorArrecadado);
     }
-    
-    public function getLabelTempoRestante(){
-        if($this->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO){
+
+    public function getLabelTempoRestante()
+    {
+        if ($this->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO) {
 
             $date = Date::getDateDiff($this);
-            if($date->days == 0){
-                if($date->h > 0): 
-                    $numero = $date->h; 
-                    $tempo = ($numero == 1 ? 'hora' : 'horas'); 
-                else: 
-                    $numero = $date->i; 
-                    $tempo = ($numero == 1 ? 'minuto' : 'minutos'); 
-                endif; 
-            }else{
-                $numero = $date->days; 
-                $tempo = ($numero == 1 ? 'dia' : 'dias'); 
-            } 
-            $faltam = ($numero == 1 ? 'Falta' : 'Faltam'); 
-            $retorno = '<span class="time-left project-time-left"> ' . $faltam . ' <span class="time-left-days"> ' . 
+            if ($date->days == 0) {
+                if($date->h > 0):
+                    $numero = $date->h;
+                    $tempo = ($numero == 1 ? 'hora' : 'horas');
+                else:
+                    $numero = $date->i;
+                    $tempo = ($numero == 1 ? 'minuto' : 'minutos');
+                endif;
+            } else {
+                $numero = $date->days;
+                $tempo = ($numero == 1 ? 'dia' : 'dias');
+            }
+            $faltam = ($numero == 1 ? 'Falta' : 'Faltam');
+            $retorno = '<span class="time-left project-time-left"> ' . $faltam . ' <span class="time-left-days"> ' .
                     $numero . ' </span> ' . $tempo . ' </span>';
 
-        }else{
+        } else {
             $retorno = '<span class="time-left project-time-left">Finalizado</span>';
-        }; 
+        };
+
         return $retorno;
     }
+
+    public function getValorTempoRestante()
+    {
+        if ($this->getStatusArrecadacao()->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO) {
+
+            $date = Date::getDateDiff($this);
+            if ($date->days == 0) {
+                if($date->h > 0):
+                    $numero = $date->h;
+                    $tempo = ($numero == 1 ? 'hora' : 'horas');
+                else:
+                    $numero = $date->i;
+                    $tempo = ($numero == 1 ? 'minuto' : 'minutos');
+                endif;
+            } else {
+                $numero = $date->days;
+                $tempo = ($numero == 1 ? 'dia' : 'dias');
+            }
+            $faltam = ($numero == 1 ? 'Falta' : 'Faltam');
+            $retorno = array(
+                'faltam' => $faltam,
+                'tempo' => $tempo,
+                'numero' => $numero
+            );
+
+        } else {
+            $retorno = null;
+        };
+        return $retorno;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIndexable()
+    {
+        return $this->publicado == true;
+    }
     
+    /**
+     * retorna a informa
+     * @return boolean 
+     */
+    public function isArrecadando()
+    {
+        return $this->statusArrecadacao != null && $this->statusArrecadacao->getId() == StatusArrecadacao::STATUS_EM_ANDAMENTO;
+    }
+    
+    /**
+     * @return boolean
+     */
+    function getPreCadastro()
+    {
+        return $this->preCadastro;
+    }
+    
+    /**
+     * @return boolean
+     */
+     public function isPreCadastro()
+     {
+        return $this->getPreCadastro();
+     }
+
+    /**
+     * @param boolean $preCadastro
+     * @return \EmVista\EmVistaBundle\Entity\Projeto
+     */
+    function setPreCadastro($preCadastro)
+    {
+        $this->preCadastro = $preCadastro;
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    function getNomeAutorPreCadastro()
+    {
+        return $this->nomeAutorPreCadastro;
+    }
+
+    /**
+     * @param string $nomeAutorPreCadastro
+     * @return \EmVista\EmVistaBundle\Entity\Projeto
+     */
+    function setNomeAutorPreCadastro($nomeAutorPreCadastro)
+    {
+        $this->nomeAutorPreCadastro = $nomeAutorPreCadastro;
+        return $this;
+    }
 }

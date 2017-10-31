@@ -1,0 +1,69 @@
+admin_index:
+    pattern: /admin
+    defaults: { _controller: EmVistaBundle:Admin:index }
+
+admin_gerenciar-administradores:
+    pattern: /admin/gerenciar-administradores
+    defaults: { _controller: EmVistaBundle:Admin:gerenciarAdministradores }
+
+admin_vincular-usuario-administrador:
+    pattern: /admin/vincular-usuario-administrador
+    defaults: { _controller: EmVistaBundle:Admin:vincularUsuarioAdministrador }
+
+admin_adicionar-administrador:
+    pattern: /admin/adicionar-administrador/{usuarioId}
+    defaults: { _controller: EmVistaBundle:Admin:adicionarAdministrador }
+
+admin_remover-administrador:
+    pattern: /admin/remover-administrador/{usuarioId}
+    defaults: { _controller: EmVistaBundle:Admin:removerAdministrador }
+
+admin_pagamentos:
+    pattern: /admin/pagamentos
+    defaults: { _controller: EmVistaBundle:Admin:pagamentos }
+
+admin_informar-pagamento:
+    pattern: /admin/informar-pagamento/{projetoId}
+    defaults: { _controller: EmVistaBundle:Admin:informarPagamento }
+
+admin_registro-termo-uso:
+    pattern: /admin/registro-termo-uso
+    defaults: { _controller: EmVistaBundle:Admin:registroTermoUso }
+
+admin_registrar-termo-uso:
+    pattern: /admin/registrar-termo-uso
+    defaults: { _controller: EmVistaBundle:Admin:registrarTermoUso }
+
+admin_categorias:
+    pattern: /admin/categorias
+    defaults: { _controller: EmVistaBundle:Admin:categorias }
+
+admin_salvar-categoria:
+    pattern: /admin/salvar-categoria
+    defaults: { _controller: EmVistaBundle:Admin:salvarCategoria }
+    methods: [POST]
+
+admin_lista-aprovacao-submissao:
+    pattern: /admin/lista-aprovacao-submissao
+    defaults: { _controller: EmVistaBundle:Admin:listaAprovacaoSubmissao }
+
+admin_aprovacao-submissao:
+    pattern: /admin/aprovacao-submissao/{submissaoId}
+    defaults: { _controller: EmVistaBundle:Admin:aprovacaoSubmissao }
+
+admin_salvar-aprovacao-submissao:
+    pattern: /admin/salvar-aprovacao-submissao
+    defaults: { _controller: EmVistaBundle:Admin:salvarAprovacaoSubmissao }
+    methods: [POST]
+
+admin_estornos:
+    pattern: /admin/estornos
+    defaults: { _controller: EmVistaBundle:Admin:estornos }
+
+admin_estornos-projeto:
+    pattern: /admin/estornos/{projetoId}
+    defaults: { _controller: EmVistaBundle:Admin:estornosProjeto }
+
+admin_estornar-doacao:
+    pattern: /admin/estornos/estornar-doacao/{doacaoId}
+    defaults: { _controller: EmVistaBundle:Admin:estornarDoacao }

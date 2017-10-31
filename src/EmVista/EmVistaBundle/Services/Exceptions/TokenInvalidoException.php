@@ -2,6 +2,6 @@
 
 namespace EmVista\EmVistaBundle\Services\Exceptions;
 
-class TokenInvalidoException extends \Exception{
-
+class TokenInvalidoException extends \Exception
+{
 }
