@@ -27,3 +27,7 @@ Originalmente desenvolvido em 2011, como projeto de TCC para o curso de Bacharel
  - Bruno Neves 
  - Leonn Leite
  - Raphael Castro
+
+## Licença
+
+MIT
